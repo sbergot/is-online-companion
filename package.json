@@ -1,0 +1,15 @@
+{
+  "name": "is-companion",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Simon Bergot <sbergot@talentsoft.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "typescript": "^3.5.3",
+    "webpack": "^4.36.1"
+  }
+}
