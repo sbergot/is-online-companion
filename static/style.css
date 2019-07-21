@@ -1,0 +1,25 @@
+.character {
+    display: grid;
+    grid-template-columns: 50px 500px 50px;
+    grid-template-rows: 100px 600px;
+    grid-template-areas:
+        "header     header   header"
+        "momentum   tracks   status";
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+}
+
+.momentum {
+    grid-area: momentum
+}
+
+.status {
+    grid-area: status
+}
+
+.middle {
+    grid-area: tracks
+}

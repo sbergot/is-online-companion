@@ -48,7 +48,7 @@ function makeDefaultCharacter(): Character {
 function useCharacterState(inpCharacter?: Character) {
     const initialCharacter: Character = inpCharacter || makeDefaultCharacter();
     const [character, setCharacter] = useState(initialCharacter);
-    return [character, setCharacter];
+    return {character, setCharacter};
 }
 
 export const { Provider, useContainer } = createContainer(useCharacterState);

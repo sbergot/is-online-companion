@@ -5,25 +5,34 @@ export interface CharacterProps {
     character: Character;
 }
 
-export function Character({character}: CharacterProps) {
+export function Character({ character }: CharacterProps) {
     return <div className="character" >
-        <h1>Character</h1>
-        <span className="character-name" >{character.name}</span>
-        <Experience level={character.experience} />
+        <div className="header">
+            <div className="character-name">
+                <h2>Character</h2>
+                <span>{character.name}</span>
+            </div>
+            <Experience level={character.experience} />
+        </div>
         <Momentum momentum={character.momentum} />
-        <Resources resources={character.status} />
-        <Stats stats={character.stats} />
-        <Bonds bonds={character.bonds} />
-        <Vows vows={character.vows} />
-        <Debilities debilities={character.debilities} />
+        <Status resources={character.status} />
+        <div className="middle">
+            <Stats stats={character.stats} />
+            <Bonds bonds={character.bonds} />
+            <Vows vows={character.vows} />
+            <Debilities debilities={character.debilities} />
+        </div>
     </div>
 }
 
-function Experience({level}: {level: number}) {
-    return <span className="experience">{level}</span>
+function Experience({ level }: { level: number }) {
+    return <div className="experience">
+        <h2>Experience</h2>
+        <span className="experience-level">{level}</span>
+    </div>
 }
 
-function Momentum({momentum}: {momentum: Momentum}) {
+function Momentum({ momentum }: { momentum: Momentum }) {
     return <div className="momentum">
         <span>{momentum.level}</span>
         <span>{momentum.max}</span>
@@ -31,22 +40,22 @@ function Momentum({momentum}: {momentum: Momentum}) {
     </div>
 }
 
-function Resources({resources}: {resources: Status}) {
-    return <div className="resources">
-        <ResourceMeter title="health" level={resources.health} />
-        <ResourceMeter title="spirit" level={resources.spirit} />
-        <ResourceMeter title="supply" level={resources.supply} />
+function Status({ resources }: { resources: Status }) {
+    return <div className="status">
+        <StatusMeter title="health" level={resources.health} />
+        <StatusMeter title="spirit" level={resources.spirit} />
+        <StatusMeter title="supply" level={resources.supply} />
     </div>
 }
 
-function ResourceMeter({level, title}: {level: number, title: string}) {
+function StatusMeter({ level, title }: { level: number, title: string }) {
     return <div className={`resource`}>
         <span className={`resource__title`}>{title}</span>
         <span className={`resource__level`}>{level}</span>
     </div>
 }
 
-function Stats({stats}: {stats: Stats}) {
+function Stats({ stats }: { stats: Stats }) {
     return <div className="stats">
         <Stat title="edge" level={stats.edge} />
         <Stat title="heart" level={stats.heart} />
@@ -56,25 +65,25 @@ function Stats({stats}: {stats: Stats}) {
     </div>
 }
 
-function Stat({ title, level }: {title: string, level: number}) {
+function Stat({ title, level }: { title: string, level: number }) {
     return <div className="stat">
         <span className="stat__title">{title}</span>
         <span className="stat__level">{level}</span>
     </div>
 }
 
-function Bonds({bonds}: {bonds: Track}) {
+function Bonds({ bonds }: { bonds: Track }) {
     return <div className="bonds">
         <h2>Bonds</h2>
         <TrackMeter track={bonds} />
     </div>
 }
 
-function TrackMeter({track}: {track: Track}) {
+function TrackMeter({ track }: { track: Track }) {
     return <span className="track">{track}</span>
 }
 
-function Vows({vows}: {vows: Vow[]}) {
+function Vows({ vows }: { vows: Vow[] }) {
     return <div className="vows">
         <h2>Vows</h2>
         {vows.map(v => <div className="vow">
@@ -85,7 +94,7 @@ function Vows({vows}: {vows: Vow[]}) {
     </div>
 }
 
-function Debilities({debilities}: {debilities: Debilities}) {
+function Debilities({ debilities }: { debilities: Debilities }) {
     return <div className="debilities">
         <h2>Debilities</h2>
         <div className="conditions">
@@ -108,9 +117,9 @@ function Debilities({debilities}: {debilities: Debilities}) {
     </div>
 }
 
-function CheckBox({checked, title}: {checked: boolean, title: string}) {
+function CheckBox({ checked, title }: { checked: boolean, title: string }) {
     return <div className="checkbox">
         <label>{title}</label>
-        <input type="checkbox" checked={checked}/>
+        <input type="checkbox" checked={checked} />
     </div>
 }
