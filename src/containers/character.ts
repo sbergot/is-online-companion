@@ -40,8 +40,8 @@ function makeDefaultCharacter(): Character {
             }
         },
         assets: [],
-        bonds: 0,
-        vows: []
+        bonds: 10,
+        vows: [{ description:"save the princess", rank:"dangerous", track:15 }]
     }
 }
 

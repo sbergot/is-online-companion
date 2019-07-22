@@ -7,7 +7,7 @@ export interface CharacterProps {
 }
 
 export function Character({ character }: CharacterProps) {
-    return <div className="character flex-col" >
+    return <div className="mycontainer mx-auto px-4 py-2 bg-gray-200" >
         <Section title="Character">
             <SubSection>
                 <CharacterName name={character.name} />
@@ -34,16 +34,16 @@ export function Character({ character }: CharacterProps) {
 }
 
 function CharacterName({ name }: { name: string }) {
-    return <span className="character-name text-m">{name}</span>
+    return <span>{name}</span>
 }
 
 function Experience({ level }: { level: number }) {
-    return <span className="experience text-m">Experience: {level}</span>
+    return <span className="ml-8">Experience: {level}</span>
 }
 
 function Momentum({ momentum }: { momentum: Momentum }) {
     return <div className="momentum">
-        <div>Momentum</div>
+        <div className="text-lg">Momentum</div>
         <MomentumMeter
             minVal={-6}
             maxVal={10}
@@ -55,7 +55,7 @@ function Momentum({ momentum }: { momentum: Momentum }) {
 }
 
 function Status({ resources }: { resources: Status }) {
-    return <div className="status flex-row space-between">
+    return <div className="flex flex-row flex-wrap justify-between">
         <StatusMeter title="health" level={resources.health} />
         <StatusMeter title="spirit" level={resources.spirit} />
         <StatusMeter title="supply" level={resources.supply} />
@@ -63,16 +63,16 @@ function Status({ resources }: { resources: Status }) {
 }
 
 function StatusMeter({ level, title }: { level: number, title: string }) {
-    return <div className={`resource`}>
-        <span className={`resource__title`}>{title}</span>
-        <span className={`resource__level`}>
+    return <div className="mr-2">
+        <span className="text-lg">{title}</span>
+        <span>
             <ResourceMeter level={level} minVal={0} maxVal={5} />
         </span>
     </div>
 }
 
 function Stats({ stats }: { stats: Stats }) {
-    return <div className="stats flex-row space-between">
+    return <div className="flex flex-row">
         <Stat title="edge" level={stats.edge} />
         <Stat title="heart" level={stats.heart} />
         <Stat title="iron" level={stats.iron} />
@@ -82,32 +82,29 @@ function Stats({ stats }: { stats: Stats }) {
 }
 
 function Bonds({ bonds }: { bonds: Track }) {
-    return <div className="bonds">
-        <h2>Bonds</h2>
+    return <SubSection title="Bonds">
         <TrackMeter track={bonds} />
-    </div>
+    </SubSection>
 }
 
 function Vows({ vows }: { vows: Vow[] }) {
-    return <div className="vows">
-        <h2>Vows</h2>
+    return <SubSection title="Vows">
         {vows.map(v => <div className="vow">
-            <span className="vow__title">{v.description}</span>
-            <span className="vow__rank">{v.rank}</span>
-            <span className="vow__track">{v.track}</span>
+            <div>{v.description} / {v.rank}</div>
+            <TrackMeter track={v.track} />
         </div>)}
-    </div>
+    </SubSection>
 }
 
 function Debilities({ debilities }: { debilities: Debilities }) {
-    return <div className="debilities flex-row space-between">
-        <SubSection title="Conditions">
+    return <div className="flex flex-row">
+        <SubSection title="Conditions" className="w-32 mr-24">
             <Conditions conditions={debilities.conditions} />
         </SubSection>
-        <SubSection title="Banes">
+        <SubSection title="Banes" className="w-32 mr-24">
             <Banes banes={debilities.banes} />
         </SubSection>
-        <SubSection title="Burdens">
+        <SubSection title="Burdens" className="w-32 mr-24">
             <Burdens burdens={debilities.burdens} />
         </SubSection>
     </div>
