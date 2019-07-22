@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function makeDefaultCharacter(): Character {
     return {
-        name: "",
+        name: "John",
         experience: 0,
         stats: {
             edge: 0,

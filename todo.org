@@ -1,0 +1,13 @@
+* ux
+
+** TODO resources & momentum: current, reset, max & hover styles
+** TODO track design
+** TODO rank display
+** TODO fonts & colors selection
+** TODO edition
+
+* tooling
+
+** TODO saass
+
+* services

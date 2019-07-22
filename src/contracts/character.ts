@@ -20,22 +20,26 @@ export interface Vow {
 }
 
 export interface Debilities {
-    conditions: {
-        wounded: boolean;
-        shaken: boolean;
-        unprepared: boolean;
-        encumbered: boolean;
-    };
+    conditions: Conditions;
+    banes: Banes;
+    burdens: Burdens;
+}
 
-    banes: {
-        maimed: boolean;
-        corrupted: boolean;
-    };
+export interface Conditions {
+    wounded: boolean;
+    shaken: boolean;
+    unprepared: boolean;
+    encumbered: boolean;
+}
 
-    burdens: {
-        cursed: boolean;
-        tormented: boolean;
-    }
+export interface Banes {
+    maimed: boolean;
+    corrupted: boolean;
+}
+
+export interface Burdens {
+    cursed: boolean;
+    tormented: boolean;
 }
 
 export interface Momentum {

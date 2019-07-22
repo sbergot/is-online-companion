@@ -1,25 +1,110 @@
-.character {
-    display: grid;
-    grid-template-columns: 50px 500px 50px;
-    grid-template-rows: 100px 600px;
-    grid-template-areas:
-        "header     header   header"
-        "momentum   tracks   status";
+.flex-row {
+    display: flex;
+    flex-direction: row
 }
 
-.header {
-    grid-area: header;
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-xl {
+    font-size: 2em;
+}
+
+.text-l {
+    font-size: 1.8em;
+}
+
+.text-m {
+    font-size: 1.5em;
+}
+
+.text-s {
+    font-size: 1.1em;
+}
+
+.bg-blue {
+    background-color: #5555aa;
+}
+
+.bg-red {
+    background-color: #aa5555;
+}
+
+.bg-green {
+    background-color: #55aa55;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.border {
+    border: 1px solid;
+}
+
+.border-bold {
+    border: 3px solid;
+}
+
+.margin-r-min1 {
+    margin-right: -1px
+}
+
+.margin-r-min2 {
+    margin-right: -2px
+}
+
+.section {
+    margin-top: 1em;
+}
+
+.section__title {
+    margin: 0.4em 0em;
+}
+
+.subsection {
+    margin-top: 0.5em;
+}
+
+.subsection__title {
+    margin: 0.2em 0em;
+}
+
+.character {
+    font-family: Sans-Serif;
+    max-width: 800px;
+    margin: auto;
+    background-color: #cccccc;
+    padding: 0em 1em;
+}
+
+.character-name, .experience {
+    margin-right: 1em;
+}
+
+.stats {
+    max-width: 400px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid;
+    width: 4em;
+    height: 4em;
+}
+
+.resource-meter {
     display: flex;
 }
 
-.momentum {
-    grid-area: momentum
-}
-
-.status {
-    grid-area: status
-}
-
-.middle {
-    grid-area: tracks
+.resource-meter__slot {
+    text-align: center;
+    line-height: 1.7em;
+    width: 1.7em;
+    height: 1.7em;
 }
