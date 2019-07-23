@@ -6,7 +6,7 @@ export interface DataSet<T> {
 }
 
 export interface DataService {
-    campaigns: DataSet<Campaign[]>;
+    campaigns: DataSet<Record<string, Campaign>>;
 }
 
 class LocalStorageDataSet<T> implements DataSet<T> {
@@ -23,5 +23,5 @@ class LocalStorageDataSet<T> implements DataSet<T> {
 }
 
 export const DataService: DataService = {
-    campaigns: new LocalStorageDataSet("campaigns", () => [])
+    campaigns: new LocalStorageDataSet("campaigns", () => ({}))
 }

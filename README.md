@@ -2,4 +2,8 @@
 
 Ironsworn online companion
 
-Work in progress.
+Ironsworn is a role playing game created by Shawn Tomkin
+
+https://www.ironswornrpg.com/
+
+Work in progress

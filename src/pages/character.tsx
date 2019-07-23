@@ -1,20 +1,22 @@
 import * as React from "react";
-import { Character, Momentum, Status, Stats, Track, Vow, Debilities, Conditions, Banes, Burdens } from "../contracts/character";
-import { CheckBox, TrackMeter, Stat, Section, ResourceMeter, SubSection, MomentumMeter } from "./atoms";
+import { Character, Momentum, Status, Track, Vow, Debilities, Conditions, Banes, Burdens } from "../contracts/character";
+import { CheckBox } from "../components/controls";
+import { StatsBoxes } from "../components/stats";
+import { CharacterContainer } from "../containers/character";
+import { Section, SubSection, MainContainer } from "../components/layout";
+import { MomentumMeter, ResourceMeter, TrackMeter } from "../components/bars";
 
-export interface CharacterProps {
-    character: Character;
-}
+export function Character() {
+    const { character } = CharacterContainer.useContainer();
 
-export function Character({ character }: CharacterProps) {
-    return <div className="mycontainer mx-auto px-4 py-2 bg-gray-200" >
+    return <MainContainer>
         <Section title="Character">
             <SubSection>
                 <CharacterName name={character.name} />
                 <Experience level={character.experience} />
             </SubSection>
             <SubSection>
-                <Stats stats={character.stats} />
+                <StatsBoxes stats={character.stats} />
             </SubSection>
         </Section>
         <Section title="Resources">
@@ -30,7 +32,7 @@ export function Character({ character }: CharacterProps) {
         <Section title="Debilities">
             <Debilities debilities={character.debilities} />
         </Section>
-    </div>
+    </MainContainer>
 }
 
 function CharacterName({ name }: { name: string }) {
@@ -68,16 +70,6 @@ function StatusMeter({ level, title }: { level: number, title: string }) {
         <span>
             <ResourceMeter level={level} minVal={0} maxVal={5} />
         </span>
-    </div>
-}
-
-function Stats({ stats }: { stats: Stats }) {
-    return <div className="flex flex-row">
-        <Stat title="edge" level={stats.edge} />
-        <Stat title="heart" level={stats.heart} />
-        <Stat title="iron" level={stats.iron} />
-        <Stat title="shadow" level={stats.shadow} />
-        <Stat title="wits" level={stats.wits} />
     </div>
 }
 

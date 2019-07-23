@@ -52,4 +52,4 @@ function useCharacterState(inpCharacter?: Character) {
     return {character, setCharacter};
 }
 
-export const { Provider, useContainer } = createContainer(useCharacterState);
+export const CharacterContainer = createContainer(useCharacterState);

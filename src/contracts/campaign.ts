@@ -1,12 +1,11 @@
 import { Character } from "./character";
 
 export interface Campaign {
+    uuid: string;
     name: string;
     createdAt: Date;
     lastPlayed: Date;
     characters: Character[];
 }
 
-export interface CampaignSelectionState {
-    campaigns: Campaign[];
-}
+export type CampaignSelectionState = Record<string, Campaign>;
