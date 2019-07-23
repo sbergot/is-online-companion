@@ -1,6 +1,7 @@
-import { createContainer } from "unstated-next"
-import { Character } from '../contracts/character';
 import { useState } from "react";
+import { createContainer } from "unstated-next"
+
+import { Character } from '../contracts/character';
 
 function makeDefaultCharacter(): Character {
     return {

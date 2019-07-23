@@ -1,13 +1,24 @@
-* ux
+* TODO routing
+* TODO campaign & caracter creation/selection
+* TODO game session
 
-** TODO resources & momentum: current, reset, max & hover styles
-** TODO track design
-** TODO rank display
-** TODO fonts & colors selection
+* character screen
 ** TODO edition
+** TODO dice roll
+*** basic one (popin avec un petit formulaire et un bouton roll)
+*** shortcut that fills some parts of the form (like "roll + stats")
 
-* tooling
+* TODO journal
+alimenté par l'appli (vow created / progressed, dice roll)
+alimenté par le joueur
+paginé?
 
-** TODO saass
+- date, text, type (stat event, index update, dice roll, player entry, etc)
 
-* services
+* TODO index
+contient des objets narratifs (lieux, personnages, objets)
+** référencement des éléments de l'index dans le journal avec des liens
+
+* TODO character assets import from is android companion
+
+* TODO map integration (diplay locations stored in index)
