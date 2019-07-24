@@ -8,7 +8,7 @@ export function Campaign({ match }: RouteComponentProps<{ uuid: string }>) {
     const { uuid } = match.params;
     return <MainContainer>
         <Section title="Campaign">
-            {campaignService.campaigns[uuid].name}
+            {campaignService.campaigns[uuid].data.name}
         </Section>
     </MainContainer>;
 }

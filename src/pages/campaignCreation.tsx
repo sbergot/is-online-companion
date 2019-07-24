@@ -10,7 +10,7 @@ function CampaignCreationInner({history} : { history: History }) {
 
     function onClick() {
         const campaign = campaignService.createCampaign(name);
-        history.push('/campaign/uuid/' + campaign.uuid);
+        history.push(campaignService.routeTo(campaign));
     }
 
     return <MainContainer>
