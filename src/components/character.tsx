@@ -1,15 +1,13 @@
 import * as React from "react";
+
 import { Character, Momentum, Status, Track, Vow, Debilities, Conditions, Banes, Burdens } from "../contracts/character";
-import { CheckBox } from "../components/controls";
-import { StatsBoxes } from "../components/stats";
-import { CharacterContainer } from "../containers/character";
-import { Section, SubSection, MainContainer } from "../components/layout";
-import { MomentumMeter, ResourceMeter, TrackMeter } from "../components/bars";
+import { CheckBox } from "./controls";
+import { StatsBoxes } from "./stats";
+import { Section, SubSection } from "./layout";
+import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 
-export function Character() {
-    const { character } = CharacterContainer.useContainer();
-
-    return <MainContainer>
+export function Character({ character }: { character: Character }) {
+    return <div>
         <Section title="Character">
             <SubSection>
                 <CharacterName name={character.name} />
@@ -32,7 +30,7 @@ export function Character() {
         <Section title="Debilities">
             <Debilities debilities={character.debilities} />
         </Section>
-    </MainContainer>
+    </div>
 }
 
 function CharacterName({ name }: { name: string }) {

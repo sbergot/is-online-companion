@@ -1,5 +1,6 @@
 import { KeyMapSource, KeyMap, Entry } from "./persistence";
 import { Campaign } from "./campaign";
+import { Character } from "./character";
 
 export interface KeyMapHook<T> {
     values: KeyMap<T>;
@@ -9,4 +10,5 @@ export interface KeyMapHook<T> {
 
 export interface DataService {
     campaigns: KeyMapHook<Campaign>;
+    characters: KeyMapHook<Character>;
 }

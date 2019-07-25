@@ -3,9 +3,9 @@ import { createContainer } from "unstated-next"
 
 import { Character } from '../contracts/character';
 
-function makeDefaultCharacter(): Character {
+export function makeDefaultCharacter(): Character {
     return {
-        name: "John",
+        name: "",
         experience: 0,
         stats: {
             edge: 0,
@@ -41,15 +41,7 @@ function makeDefaultCharacter(): Character {
             }
         },
         assets: [],
-        bonds: 10,
-        vows: [{ description:"save the princess", rank:"dangerous", track:15 }]
+        bonds: 3,
+        vows: []
     }
 }
-
-function useCharacterState(inpCharacter?: Character) {
-    const initialCharacter: Character = inpCharacter || makeDefaultCharacter();
-    const [character, setCharacter] = useState(initialCharacter);
-    return {character, setCharacter};
-}
-
-export const CharacterContainer = createContainer(useCharacterState);

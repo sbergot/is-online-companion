@@ -17,12 +17,20 @@ export function newEntry<T>(data: T): Entry<T> {
     };
 }
 
+function reviveDate(name: string, value: unknown) {
+    if (typeof value === "string" && /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.\d\d\dZ$/.test(value)) {
+        return new Date(value);
+    }
+    return value;
+}
+
 export class LocalStorageDataSet<T> implements KeyMapSource<T> {
     constructor(private key: string) {}
 
     loadAll(): KeyMap<T> {
         const rawData = localStorage.getItem(this.key);
-        return rawData ? JSON.parse(rawData) : {};
+        const values: KeyMap<T> =  rawData ? JSON.parse(rawData, reviveDate) : {};
+        return values;
     }
 
     saveNew(data: T) {

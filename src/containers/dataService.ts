@@ -1,11 +1,14 @@
 import * as React from "react";
+import { createContainer } from "unstated-next";
+
 import { Entry, KeyMapSource } from "../contracts/persistence";
 import { DataService, KeyMapHook } from "../contracts/dataservice";
-import { LocalStorageDataSet } from "./persistence";
+import { LocalStorageDataSet } from "../services/persistence";
 
-export function useDataService(): DataService {
+function useDataService(): DataService {
     return {
-        campaigns: wrapKeyMap(new LocalStorageDataSet("campaigns"))
+        campaigns: wrapKeyMap(new LocalStorageDataSet("campaigns")),
+        characters: wrapKeyMap(new LocalStorageDataSet("characters"))
     }
 }
 
@@ -32,3 +35,5 @@ function wrapKeyMap<T>(source: KeyMapSource<T>): KeyMapHook<T> {
         }
     }
 }
+
+export const DataServiceContainer = createContainer(useDataService);

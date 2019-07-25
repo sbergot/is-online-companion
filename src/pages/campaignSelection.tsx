@@ -1,7 +1,8 @@
 import * as React from "react";
 import { MainContainer, Section } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
-import { Link } from "react-router-dom";
+import { Link } from "../components/controls";
+import { EntryItem } from "../components/controls";
 
 export function CampaignSelection() {
     const campaignService = CampaignServiceContainer.useContainer();
@@ -11,9 +12,9 @@ export function CampaignSelection() {
             <ul>
                 {Object.values(campaignService.campaigns).map((c) => {
                     const route = campaignService.routeTo(c);
-                    return <Link to={route} key={c.key}>
-                        {c.data.name}
-                    </Link>
+                    return <EntryItem entry={c} key={c.key}>
+                        <Link to={route} >{c.data.name}</Link>
+                    </EntryItem>
                 })}
             </ul>
         </Section>

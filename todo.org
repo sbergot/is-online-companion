@@ -1,5 +1,5 @@
-* TODO routing
-* TODO campaign & caracter creation/selection
+* DONE routing
+* DONE campaign & caracter creation/selection
 * TODO game session
 
 * character screen
@@ -7,6 +7,8 @@
 ** TODO dice roll
 *** basic one (popin avec un petit formulaire et un bouton roll)
 *** shortcut that fills some parts of the form (like "roll + stats")
+
+** TODO class icon
 
 * TODO journal
 alimenté par l'appli (vow created / progressed, dice roll)

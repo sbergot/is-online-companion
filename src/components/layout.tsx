@@ -33,3 +33,9 @@ export function SubSection({ title, children, className }: SectionProps) {
         {children}
     </div>
 }
+
+export function Nav({ children }: { children: React.ReactNode }) {
+    return <nav className="mycontainer mx-auto bg-gray-300 p-3">
+        {children}
+    </nav>
+}

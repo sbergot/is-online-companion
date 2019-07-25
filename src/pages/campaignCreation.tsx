@@ -3,6 +3,7 @@ import { MainContainer, Section } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { withRouter } from "react-router-dom";
 import { History } from "history";
+import { TextInput, Button, Label } from "../components/controls";
 
 function CampaignCreationInner({history} : { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();
@@ -15,13 +16,11 @@ function CampaignCreationInner({history} : { history: History }) {
 
     return <MainContainer>
         <Section title="Campaign creation">
-            <form>
-                <label>
-                    Name:
-                    <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
-                </label>
-                <input type="submit" onClick={onClick} />
-            </form>
+            <div className="mb-4">
+                <Label>Name</Label>
+                <TextInput value={name} onChange={setName} />
+            </div>
+            <Button onClick={onClick}>Ok</Button>
         </Section>
     </MainContainer>;
 }

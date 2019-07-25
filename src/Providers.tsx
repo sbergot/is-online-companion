@@ -1,12 +1,11 @@
 import * as React from "react";
 
-import { CharacterContainer } from "./containers/character";
 import { CampaignServiceContainer } from "./containers/campaign";
+import { DataServiceContainer } from "./containers/dataService";
 
-export function Providers({children}: {children: React.ReactNode}) {
-    return <CharacterContainer.Provider>
-        <CampaignServiceContainer.Provider>
-            {children}
-        </CampaignServiceContainer.Provider>
-    </CharacterContainer.Provider>
+export function Providers({ children }: { children: React.ReactNode }) {
+    return <DataServiceContainer.Provider><CampaignServiceContainer.Provider>
+        {children}
+    </CampaignServiceContainer.Provider>
+    </DataServiceContainer.Provider>
 }
