@@ -27,7 +27,10 @@ export function ResourceMeter({ level, minVal, maxVal, onUpdate }: ResourceMeter
     return <div className="flex flex-row flex-wrap">
         {range(minVal, maxVal).map(v => {
             const slotClass = [
-                "w-10 h-10 mr-1 py-1 border border-gray-500 text-center text-lg mt-1 cursor-pointer",
+                `w-10 h-10 mr-1 mt-1 py-1
+                 border border-gray-500
+                 text-center text-lg
+                 cursor-pointer`,
                 v === level ? "bg-gray-400" : "bg-gray-200",
             ].join(" ")
             return <div key={v} className={slotClass} onClick={() => onUpdate(v)}>{v}</div>

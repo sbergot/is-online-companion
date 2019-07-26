@@ -12,12 +12,20 @@ export function Campaign({ match }: RouteComponentProps<{ uuid: string }>) {
     const campaignService = CampaignServiceContainer.useContainer();
     const dataService = DataServiceContainer.useContainer();
     const { uuid } = match.params;
-    const [character, setCharacter] = React.useState<Character | null>(null);
+    const [character, setCharacter] = React.useState<Entry<Character> | null>(null);
     const campaign = campaignService.campaigns[uuid].data;
 
     function onCharacterSelected(selectedChar: Entry<Character>) {
         campaignService.addCharacter(uuid, selectedChar.key);
-        setCharacter(selectedChar.data);
+        setCharacter(selectedChar);
+    }
+
+    function persistCharacter(newChar: Character) {
+        if (character) {
+            const newEntry: Entry<Character> = {...character, data: newChar};
+            dataService.characters.save(newEntry);
+            setCharacter(newEntry);
+        }
     }
 
     return <MainContainer>
@@ -25,7 +33,7 @@ export function Campaign({ match }: RouteComponentProps<{ uuid: string }>) {
             {campaign.name}
         </Section>
         {character ?
-            <CharacterSheet character={character} setCharacter={setCharacter} /> :
+            <CharacterSheet character={character.data} setCharacter={persistCharacter} /> :
             <CharacterSelection
                 onSelected={onCharacterSelected}
                 characters={Array.from(campaign.characters).map((c) => dataService.characters.values[c])} />}
