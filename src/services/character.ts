@@ -42,6 +42,6 @@ export function makeDefaultCharacter(): Character {
         },
         assets: [],
         bonds: 3,
-        vows: []
+        vows: {}
     }
 }

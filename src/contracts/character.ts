@@ -1,3 +1,5 @@
+import { KeyMap } from "./persistence";
+
 export interface Character {
     name: string;
     status: Status;
@@ -5,18 +7,18 @@ export interface Character {
     stats: Stats;
     experience: number;
     debilities: Debilities;
-    bonds: Track;
-    vows: Vow[];
+    bonds: TrackProgress;
+    vows: KeyMap<Vow>;
     assets: Asset[];
 }
 
-export type Track = number;
+export type TrackProgress = number;
 export type Rank = "troublesome" | "dangerous" | "formidable" | "extreme" | "epic";
 
 export interface Vow {
     description: string;
     rank: Rank;
-    track: Track;
+    track: TrackProgress;
 }
 
 export interface Debilities {

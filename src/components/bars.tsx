@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Track } from "../contracts/character";
+import { TrackProgress } from "../contracts/character";
 
 function Ticks({t}: {t: number}) {
     return <div className="w-6 h-6 mr-1 flex flex-row flex-wrap">
@@ -7,12 +7,21 @@ function Ticks({t}: {t: number}) {
     </div>
 }
 
-export function TrackMeter({ track }: { track: Track }) {
-    const progress = Math.floor(track/4);
-    const rest = track % 4;
+export interface TrackMeterProps {
+    progress: TrackProgress;
+    setProgress(p: TrackProgress): void;
+    progressStep: number;
+}
+
+export function TrackMeter({ progress, progressStep, setProgress }: TrackMeterProps) {
+    const progressLevels = Math.floor(progress/4);
+    const rest = progress % 4;
     return <div className="flex flex-row flex-wrap mt-1">
-        {range(1, progress).map((i) => <Ticks t={4} key={i} />)}
+        {range(1, progressLevels).map((i) => <Ticks t={4} key={i} />)}
         <Ticks t={rest} />
+        {range(1, 9 - progressLevels).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
+        <div onClick={() => setProgress(progress - progressStep)} className="text-xl mr-2 cursor-pointer">-</div>
+        <div onClick={() => setProgress(progress + progressStep)} className="text-xl mr-2 cursor-pointer">+</div>
     </div>
 }
 

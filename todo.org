@@ -1,14 +1,10 @@
-* DONE routing
-* DONE campaign & caracter creation/selection
-
-* TODO style entry component
-
 * character screen
 ** TODO edition
-    conditions
-    vows/bons progression
-    vows ending
-    resources/momentum update
+*** DONE conditions
+*** DONE resources/momentum update
+*** DONE vows/bons progression
+*** TODO vows ending
+
 ** TODO dice roll
 *** components
 form to select stat/resource & bonus
@@ -19,7 +15,7 @@ log display (roll type, dices, hit/miss)
 accessible from a button in a character sheet
 the log should always be visible (should be the common log)
 
-** TODO travels tracks
+** TODO travels & combat tracks
 
 * TODO journal
 alimenté par l'appli (vow created / progressed, dice roll)

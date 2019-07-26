@@ -39,7 +39,7 @@ export function InlineLink({to, children}: { to: string, children: React.ReactNo
 export function TextInput({ value, onChange }: { value: string, onChange: (s: string) => void }) {
     const classes = `
     shadow border rounded
-    w-full py-2 px-3
+    w-full py-2 px-3 my-2
     text-gray-700 leading-tight
     focus:outline-none focus:shadow-outline
     `
@@ -48,6 +48,18 @@ export function TextInput({ value, onChange }: { value: string, onChange: (s: st
         onChange={(e) => onChange(e.target.value)}
         value={value}
         className={classes}/>
+}
+
+export function SmallButton({ onClick, children }: { onClick: () => void, children: React.ReactNode }) {
+    const classes = `
+        bg-blue-500 hover:bg-blue-700
+        text-white
+        py-1 px-3 rounded
+        focus:outline-none focus:shadow-outline
+    `
+    return <button onClick={onClick} className={classes}>
+        {children}
+    </button>
 }
 
 export function Button({ onClick, children }: { onClick: () => void, children: React.ReactNode }) {

@@ -1,10 +1,12 @@
 import * as React from "react";
 
-import { Character, Momentum, Status, Track, Vow, Debilities, Conditions, Banes, Burdens } from "../contracts/character";
-import { CheckBox } from "./controls";
+import { Character, Status, TrackProgress, Vow, Debilities, Conditions, Banes, Burdens, Rank } from "../contracts/character";
+import { CheckBox, Label, TextInput, Button, SmallButton } from "./controls";
 import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "./layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
+import { KeyMap } from "../contracts/persistence";
+import { newEntry } from "../services/persistence";
 
 export interface CharacterSheetProps {
     character: Character;
@@ -38,8 +40,8 @@ export function CharacterSheet({ character, setCharacter }: CharacterSheetProps)
             </SubSection>
         </Section>
         <Section title="Tracks">
-            <Bonds bonds={character.bonds} />
-            <Vows vows={character.vows} />
+            <Bonds bonds={character.bonds} setBonds={(bonds) => setCharacter({...character, bonds})} />
+            <Vows vows={character.vows} setVows={(vows) => setCharacter({...character, vows})} />
         </Section>
         <Section title="Debilities">
             <Debilities
@@ -74,19 +76,76 @@ function Status({ resources, setResources }: { resources: Status, setResources: 
     </div>
 }
 
-function Bonds({ bonds }: { bonds: Track }) {
+function Bonds({ bonds, setBonds }: { bonds: TrackProgress, setBonds: (b: TrackProgress) => void }) {
     return <SubSection title="Bonds">
-        <TrackMeter track={bonds} />
+        <TrackMeter progress={bonds} setProgress={setBonds} progressStep={1} />
     </SubSection>
 }
 
-function Vows({ vows }: { vows: Vow[] }) {
+function getProgressStepFromRank(rank: Rank): number {
+    switch (rank) {
+        case 'troublesome':
+            return 12
+        case 'dangerous':
+            return 8
+        case 'formidable':
+            return 4
+        case 'extreme':
+            return 2
+        case 'epic':
+            return 1
+        default:
+            throw new Error("unknow rank: " + rank);
+    }
+}
+
+function Vows({ vows, setVows }: { vows: KeyMap<Vow>; setVows: (v: KeyMap<Vow>) => void}) {
+    const [vowFormVisible, setVowFormVisible] = React.useState(false);
+
     return <SubSection title="Vows">
-        {vows.map(v => <div className="vow">
-            <div>{v.description} / {v.rank}</div>
-            <TrackMeter track={v.track} />
+        {vowFormVisible ?
+            <VowForm onSubmit={(vow) => {
+                const entry = newEntry(vow);
+                setVows({...vows, [entry.key]: entry});
+                setVowFormVisible(false);
+            }} /> :
+            <SmallButton onClick={() => setVowFormVisible(true)}>new vow</SmallButton>}
+        {Object.values(vows).map(v => <div className="vow" key={v.key}>
+            <div>{v.data.description} / {v.data.rank}</div>
+            <TrackMeter
+                progress={v.data.track}
+                progressStep={getProgressStepFromRank(v.data.rank)}
+                setProgress={(track) => setVows({...vows, [v.key]: {...v, data: {...v.data, track}}})} />
         </div>)}
     </SubSection>
+}
+
+function VowForm({ onSubmit }: { onSubmit: (vow: Vow) => void }) {
+    const [descr, setDescr] = React.useState("");
+    const [rank, setRank] = React.useState<Rank>("troublesome")
+    return <div>
+        <Label>Description</Label>
+        <TextInput value={descr} onChange={setDescr} />
+        <div className="flex items-center">
+            <RankSelector value={rank} onChange={setRank} />
+            <SmallButton onClick={() => onSubmit({ description: descr, rank, track: 0 })} >Ok</SmallButton>
+        </div>
+    </div>
+}
+
+function RankSelector({ value, onChange }: { value: Rank; onChange: (r: Rank) => void }) {
+    const ranks: Rank[] = ["troublesome", "dangerous", "formidable", "extreme", "epic"];
+    return <div className="flex">
+        {ranks.map((r) => {
+            const classes = [
+                "border mr-2 w-32 text-center py-2 my-2 cursor-pointer",
+                value == r ? "bg-gray-400" : "bg-gray-200"
+            ].join(" ");
+            return <div key={r} onClick={() => onChange(r)} className={classes}>
+                {r}
+            </div>
+        })}
+    </div>
 }
 
 interface DebilitiesProps {
