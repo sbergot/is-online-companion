@@ -3,10 +3,16 @@ import * as React from "react";
 import { Entry } from "../contracts/persistence"
 import { Link } from "react-router-dom";
 
-export function CheckBox({ checked, title }: { checked: boolean, title: string }) {
+export interface CheckBoxProps {
+    checked: boolean;
+    title: string;
+    onClick: () => void;
+}
+
+export function CheckBox({ checked, title, onClick }: CheckBoxProps) {
     return <div className="flex flex-row justify-between items-center w-full">
-        <label>{title}</label>
-        <input type="checkbox" checked={checked} />
+        <label htmlFor={title}>{title}</label>
+        <input name={title} onChange={onClick} type="checkbox" checked={checked} />
     </div>
 }
 

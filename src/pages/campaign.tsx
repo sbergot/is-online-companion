@@ -25,7 +25,7 @@ export function Campaign({ match }: RouteComponentProps<{ uuid: string }>) {
             {campaign.name}
         </Section>
         {character ?
-            <CharacterSheet character={character} /> :
+            <CharacterSheet character={character} setCharacter={setCharacter} /> :
             <CharacterSelection
                 onSelected={onCharacterSelected}
                 characters={Array.from(campaign.characters).map((c) => dataService.characters.values[c])} />}

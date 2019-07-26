@@ -20,16 +20,17 @@ export interface ResourceMeterProps {
     level: number;
     minVal: number;
     maxVal: number;
+    onUpdate: (v: number) => void;
 }
 
-export function ResourceMeter({ level, minVal, maxVal }: ResourceMeterProps) {
+export function ResourceMeter({ level, minVal, maxVal, onUpdate }: ResourceMeterProps) {
     return <div className="flex flex-row flex-wrap">
         {range(minVal, maxVal).map(v => {
             const slotClass = [
-                "w-10 h-10 mr-1 py-1 border border-gray-500 text-center text-lg mt-1",
+                "w-10 h-10 mr-1 py-1 border border-gray-500 text-center text-lg mt-1 cursor-pointer",
                 v === level ? "bg-gray-400" : "bg-gray-200",
             ].join(" ")
-            return <div key={v} className={slotClass}>{v}</div>
+            return <div key={v} className={slotClass} onClick={() => onUpdate(v)}>{v}</div>
         })}
     </div>
 }
@@ -47,9 +48,9 @@ export interface MomentumMeterProps extends ResourceMeterProps {
     tempMax: number;
 }
 
-export function MomentumMeter({ level, minVal, maxVal, reset, tempMax }: MomentumMeterProps) {
+export function MomentumMeter({ level, minVal, maxVal, reset, tempMax, onUpdate }: MomentumMeterProps) {
     return <>
-        <ResourceMeter level={level} minVal={minVal} maxVal={maxVal} />
+        <ResourceMeter level={level} minVal={minVal} maxVal={maxVal} onUpdate={onUpdate} />
         <span className="mr-2">reset: {reset}</span>
         <span>max: {tempMax}</span>
     </>

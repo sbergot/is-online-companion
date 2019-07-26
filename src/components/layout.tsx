@@ -14,22 +14,20 @@ export interface SectionProps {
 
 export function Section({ title, children, className }: SectionProps) {
     const classes = [
-        "mt-4",
-        className ? className : ""
+        className ? className : "mt-3"
     ].join(" ");
     return <div className={classes}>
-        {title && <h2 className="text-2xl mb-4">{title}</h2>}
+        {title && <h2 className="text-2xl mb-1">{title}</h2>}
         {children}
     </div>
 }
 
 export function SubSection({ title, children, className }: SectionProps) {
     const classes = [
-        "mt-2",
-        className ? className : ""
+        className ? className : "mt-3"
     ].join(" ");
     return <div className={classes}>
-        {title && <h3 className="text-xl">{title}</h3>}
+        {title && <h3 className="text-xl mb-1">{title}</h3>}
         {children}
     </div>
 }
