@@ -18,7 +18,7 @@ export function Section({ title, children, className }: SectionProps) {
         className ? className : ""
     ].join(" ");
     return <div className={classes}>
-        {title && <h2 className="text-2xl">{title}</h2>}
+        {title && <h2 className="text-2xl mb-4">{title}</h2>}
         {children}
     </div>
 }

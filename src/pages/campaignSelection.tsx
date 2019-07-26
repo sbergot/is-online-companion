@@ -19,13 +19,6 @@ export function CampaignSelection({ history }: { history: History }) {
             <div className="flex">
                 <div className="w-1/2 p-4">
                     Select a campaign...
-            </div>
-                <div className="w-1/2 p-4">
-                    ... or create a new one.
-            </div>
-            </div>
-            <div className="flex">
-                <div className="w-1/2 p-4">
                     {Object.values(campaignService.campaigns).map((c) => {
                         const route = campaignService.routeTo(c);
                         return <Link className="max-w-xs" to={route} key={c.key}>
@@ -34,11 +27,10 @@ export function CampaignSelection({ history }: { history: History }) {
                     })}
                 </div>
                 <div className="w-1/2 p-4">
+                    ... or create a new one.
                     <CampaignForm onSubmit={(c) => onClick(c)} />
                 </div>
             </div>
-
-            <span>Select a campaign or <Link to='/campaign/creation'>create one</Link></span>
         </Section>
     </MainContainer>;
 }

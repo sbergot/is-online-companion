@@ -6,7 +6,12 @@ import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "./layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 
-export function Character({ character }: { character: Character }) {
+export interface CharacterSheetProps {
+    character: Character;
+    setCharacter: (c: Character) => void;
+}
+
+export function CharacterSheet({ character }: { character: Character }) {
     return <div>
         <Section title="Character">
             <SubSection>

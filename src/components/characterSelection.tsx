@@ -14,18 +14,12 @@ export interface CharacterSelectionProps {
 export function CharacterSelection({ characters, onSelected }: CharacterSelectionProps) {
     return <Section title="Character selection">
         <div className="flex">
-            <div className="w-1/2 p-4">
+            <div className="w-1/2 mr-4">
                 Select a character...
-            </div>
-            <div className="w-1/2 p-4">
-                ... or create a new one.
-            </div>
-        </div>
-        <div className="flex">
-            <div className="w-1/2 p-4">
                 <CharacterPicker characters={characters} onSelected={onSelected} />
             </div>
-            <div className="w-1/2 p-4">
+            <div className="w-1/2">
+                ... or create a new one.
                 <CharacterForm onCreated={onSelected} />
             </div>
         </div>
