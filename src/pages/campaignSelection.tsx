@@ -1,22 +1,57 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
+import { History } from "history";
+
 import { MainContainer, Section } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
-import { Link } from "../components/controls";
-import { EntryItem } from "../components/controls";
+import { EntryItem, Label, TextInput, Button } from "../components/controls";
+import { Campaign } from "../contracts/campaign";
+import { Entry } from "../contracts/persistence";
 
-export function CampaignSelection() {
+export function CampaignSelection({ history }: { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();
+    function onClick(c: Entry<Campaign>) {
+        history.push(campaignService.routeTo(c));
+    }
+
     return <MainContainer>
         <Section title="Campaign selection">
+            <div className="flex">
+                <div className="w-1/2 p-4">
+                    Select a campaign...
+            </div>
+                <div className="w-1/2 p-4">
+                    ... or create a new one.
+            </div>
+            </div>
+            <div className="flex">
+                <div className="w-1/2 p-4">
+                    {Object.values(campaignService.campaigns).map((c) => {
+                        const route = campaignService.routeTo(c);
+                        return <Link className="max-w-xs" to={route} key={c.key}>
+                            <EntryItem entry={c} />
+                        </Link>
+                    })}
+                </div>
+                <div className="w-1/2 p-4">
+                    <CampaignForm onSubmit={(c) => onClick(c)} />
+                </div>
+            </div>
+
             <span>Select a campaign or <Link to='/campaign/creation'>create one</Link></span>
-            <ul>
-                {Object.values(campaignService.campaigns).map((c) => {
-                    const route = campaignService.routeTo(c);
-                    return <EntryItem entry={c} key={c.key}>
-                        <Link to={route} >{c.data.name}</Link>
-                    </EntryItem>
-                })}
-            </ul>
         </Section>
     </MainContainer>;
+}
+
+export function CampaignForm({ onSubmit }: { onSubmit: (c: Entry<Campaign>) => void }) {
+    const campaignService = CampaignServiceContainer.useContainer();
+    const [name, setName] = React.useState("");
+
+    return <div>
+        <div className="mb-4">
+            <Label>Name</Label>
+            <TextInput value={name} onChange={setName} />
+        </div>
+        <Button onClick={() => onSubmit(campaignService.createCampaign(name))}>Ok</Button>
+    </div>
 }

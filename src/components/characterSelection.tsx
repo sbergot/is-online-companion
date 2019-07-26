@@ -82,9 +82,9 @@ export function CharacterPicker({ characters, onSelected }: CharacterSelectionPr
     return characters.length ?
         <ul>
             {characters.map((c) => {
-                return <EntryItem entry={c} key={c.key}>
-                    <span onClick={() => onSelected(c)}>{c.data.name}</span>
-                </EntryItem>
+                return <div className="cursor-pointer" onClick={() => onSelected(c)} key={c.key}>
+                    <EntryItem entry={c} />
+                </div>
             })}
         </ul> :
         <div className="w-full p-8 border-dashed border-2 text-center text-gray-500 border-gray-500">

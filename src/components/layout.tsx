@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export function MainContainer({ children }: { children: React.ReactNode }) {
-    return <div className="mycontainer mx-auto px-4 py-2 bg-gray-200" >
+    return <div className="px-4 py-2 bg-gray-200" >
         {children}
     </div>
 }
@@ -35,7 +35,7 @@ export function SubSection({ title, children, className }: SectionProps) {
 }
 
 export function Nav({ children }: { children: React.ReactNode }) {
-    return <nav className="mycontainer mx-auto bg-gray-300 p-3">
+    return <nav className="bg-gray-300 p-3">
         {children}
     </nav>
 }
