@@ -1,4 +1,4 @@
 export interface Campaign {
     name: string;
-    characters: string[];
+    characters: Set<string>;
 }

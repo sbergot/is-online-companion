@@ -1,14 +1,25 @@
 * DONE routing
 * DONE campaign & caracter creation/selection
-* TODO game session
+
+* TODO style entry component
 
 * character screen
 ** TODO edition
+    conditions
+    vows/bons progression
+    vows ending
+    resources/momentum update
 ** TODO dice roll
-*** basic one (popin avec un petit formulaire et un bouton roll)
-*** shortcut that fills some parts of the form (like "roll + stats")
+*** components
+form to select stat/resource & bonus
+roll button
+result display
+log display (roll type, dices, hit/miss)
 
-** TODO class icon
+accessible from a button in a character sheet
+the log should always be visible (should be the common log)
+
+** TODO travels tracks
 
 * TODO journal
 alimenté par l'appli (vow created / progressed, dice roll)
@@ -26,3 +37,5 @@ contient des objets narratifs (lieux, personnages, objets)
 * TODO map integration (diplay locations stored in index)
 
 * TODO add sass + custom tailwind build
+
+** TODO class icon

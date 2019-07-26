@@ -8,7 +8,7 @@ import { Entry } from "../contracts/persistence";
 function createCampaign(name: string): Campaign {
     return {
         name,
-        characters: []
+        characters: new Set()
     }
 }
 

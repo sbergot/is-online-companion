@@ -17,9 +17,22 @@ export function newEntry<T>(data: T): Entry<T> {
     };
 }
 
-function reviveDate(name: string, value: unknown) {
+function replacer(key: string, value: unknown) {
+    if (typeof value === 'object' && value instanceof Set) {
+        return {
+            _type: "set",
+            values: Array.from(value)
+        };
+      }
+      return value;
+}
+
+function reviver(name: string, value: unknown) {
     if (typeof value === "string" && /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.\d\d\dZ$/.test(value)) {
         return new Date(value);
+    }
+    if (typeof value === 'object' && (value != null) && (value.hasOwnProperty('_type') && (value as { _type: string })._type == "set")) {
+        return new Set((value as { values: string[] }).values);
     }
     return value;
 }
@@ -29,7 +42,7 @@ export class LocalStorageDataSet<T> implements KeyMapSource<T> {
 
     loadAll(): KeyMap<T> {
         const rawData = localStorage.getItem(this.key);
-        const values: KeyMap<T> =  rawData ? JSON.parse(rawData, reviveDate) : {};
+        const values: KeyMap<T> =  rawData ? JSON.parse(rawData, reviver) : {};
         return values;
     }
 
@@ -46,7 +59,7 @@ export class LocalStorageDataSet<T> implements KeyMapSource<T> {
     innerSave(entry: Entry<T>): Entry<T> {
         const allEntries = this.loadAll();
         allEntries[entry.key] = entry;
-        localStorage.setItem(this.key, JSON.stringify(allEntries));
+        localStorage.setItem(this.key, JSON.stringify(allEntries, replacer));
         return entry;
     }
 }

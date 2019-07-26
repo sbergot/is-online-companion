@@ -17,13 +17,13 @@ export function Campaign({ match }: RouteComponentProps<{ uuid: string }>) {
 
     function onCharacterSelected(selectedChar: Entry<Character>) {
         const oldCampaign = campaignService.campaigns[uuid];
+        const newcharacters = new Set(oldCampaign.data.characters);
+        newcharacters.add(selectedChar.key);
         dataService.campaigns.save({
             ...oldCampaign,
             data: {
                 ...oldCampaign.data,
-                characters: [
-                    ...oldCampaign.data.characters,
-                    selectedChar.key]
+                characters: newcharacters
             }
         });
         setCharacter(selectedChar.data);
@@ -37,6 +37,6 @@ export function Campaign({ match }: RouteComponentProps<{ uuid: string }>) {
             <CharacterComp character={character} /> :
             <CharacterSelection
                 onSelected={onCharacterSelected}
-                characters={campaign.characters.map((c) => dataService.characters.values[c])} />}
+                characters={Array.from(campaign.characters).map((c) => dataService.characters.values[c])} />}
     </MainContainer>;
 }

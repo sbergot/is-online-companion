@@ -49,11 +49,10 @@ function CharacterForm({ onCreated }: { onCreated: (c: Entry<Character>) => void
                 value={character.name}
                 onChange={(name) => { setCharacter({ ...character, name }) }}
             />
-            <div className="flex flex-wrap my-2">
+            <div className="flex flex-wrap justify-around my-2">
                 {Object.keys(character.stats).map((key) => {
                     const tkey = key as keyof typeof character.stats;
-                    return <div className="mr-2" key={key}>
-                        <Label>{key}</Label>
+                    return <div className="mr-2 mt-3 flex flex-col items-center" key={key}>
                         <Select
                             options={statOptions}
                             value={character.stats[tkey]}
@@ -67,11 +66,14 @@ function CharacterForm({ onCreated }: { onCreated: (c: Entry<Character>) => void
                                 })
                             }}
                         />
+                        <Label>{key}</Label>
                     </div>
                 })}
             </div>
         </div>
-        <Button onClick={onSubmit}>Ok</Button>
+        <div className="text-right">
+            <Button onClick={onSubmit}>Ok</Button>
+        </div>
     </div>
 }
 
