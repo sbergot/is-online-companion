@@ -1,6 +1,7 @@
 import * as React from "react";
 import { TrackProgress } from "../contracts/character";
 import { ProfunctorState } from "@staltz/use-profunctor-state";
+import { Lens } from "../services/functors";
 
 function Ticks({t}: {t: number}) {
     return <div className="w-6 h-6 mr-1 flex flex-row flex-wrap">
@@ -9,7 +10,7 @@ function Ticks({t}: {t: number}) {
 }
 
 export interface TrackMeterProps {
-    lens: ProfunctorState<TrackProgress>;
+    lens: Lens<TrackProgress>;
     progressStep: number;
 }
 
@@ -26,7 +27,7 @@ export function TrackMeter({ progressStep, lens: { state:progress, setState:setP
 }
 
 export interface ResourceMeterProps {
-    lens: ProfunctorState<number>;
+    lens: Lens<number>;
     minVal: number;
     maxVal: number;
 }

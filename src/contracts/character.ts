@@ -8,14 +8,14 @@ export interface Character {
     experience: number;
     debilities: Debilities;
     bonds: TrackProgress;
-    vows: KeyMap<Vow>;
+    vows: KeyMap<ProgressChallenge>;
     assets: Asset[];
 }
 
 export type TrackProgress = number;
 export type Rank = "troublesome" | "dangerous" | "formidable" | "extreme" | "epic";
 
-export interface Vow {
+export interface ProgressChallenge {
     description: string;
     rank: Rank;
     track: TrackProgress;

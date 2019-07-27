@@ -5,6 +5,10 @@
 *** DONE vows/bons progression
 *** TODO vows ending
 
+** standard atoms
+*** TODO button
+*** TODO rabio selector
+
 ** TODO dice roll
 *** components
 form to select stat/resource & bonus

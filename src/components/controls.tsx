@@ -2,11 +2,10 @@ import * as React from "react";
 
 import { Entry } from "../contracts/persistence"
 import { Link } from "react-router-dom";
-import { ProfunctorState } from "@staltz/use-profunctor-state";
+import { LensProps } from "../services/functors";
 
-export interface CheckBoxProps {
+export interface CheckBoxProps extends LensProps<boolean> {
     title: string;
-    lens: ProfunctorState<boolean>;
 }
 
 export function CheckBox({ title, lens:{ state:checked, setState } }: CheckBoxProps) {
