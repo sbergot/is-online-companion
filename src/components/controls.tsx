@@ -2,17 +2,17 @@ import * as React from "react";
 
 import { Entry } from "../contracts/persistence"
 import { Link } from "react-router-dom";
+import { ProfunctorState } from "@staltz/use-profunctor-state";
 
 export interface CheckBoxProps {
-    checked: boolean;
     title: string;
-    onClick: () => void;
+    lens: ProfunctorState<boolean>;
 }
 
-export function CheckBox({ checked, title, onClick }: CheckBoxProps) {
+export function CheckBox({ title, lens:{ state:checked, setState } }: CheckBoxProps) {
     return <div className="flex flex-row justify-between items-center w-full">
         <label htmlFor={title}>{title}</label>
-        <input name={title} onChange={onClick} type="checkbox" checked={checked} />
+        <input name={title} onChange={() => setState(b => !b)} type="checkbox" checked={checked} />
     </div>
 }
 

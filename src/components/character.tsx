@@ -1,19 +1,21 @@
 import * as React from "react";
 
-import { Character, Status, TrackProgress, Vow, Debilities, Conditions, Banes, Burdens, Rank } from "../contracts/character";
-import { CheckBox, Label, TextInput, Button, SmallButton } from "./controls";
+import { Character, Status, TrackProgress, Vow, Debilities, Rank } from "../contracts/character";
+import { CheckBox, Label, TextInput, SmallButton } from "./controls";
 import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "./layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 import { KeyMap } from "../contracts/persistence";
 import { newEntry } from "../services/persistence";
+import { ProfunctorState } from "@staltz/use-profunctor-state";
+import { drill } from "../services/functors";
 
 export interface CharacterSheetProps {
     character: Character;
     setCharacter: (c: Character) => void;
 }
 
-export function CharacterSheet({ character, setCharacter }: CharacterSheetProps) {
+export function CharacterSheet({ lens: { state: character, promap }}: {lens: ProfunctorState<Character>}) {
     return <div>
         <Section title="Character">
             <SubSection>
@@ -29,24 +31,21 @@ export function CharacterSheet({ character, setCharacter }: CharacterSheetProps)
                 <MomentumMeter
                     minVal={-6}
                     maxVal={10}
-                    level={character.momentum.level}
                     reset={character.momentum.reset}
                     tempMax={character.momentum.max}
-                    onUpdate={(level) => setCharacter({ ...character, momentum: { ...character.momentum, level } })}
+                    lens={drill(drill(promap, "momentum").promap, "level")}
                 />
             </SubSection>
             <SubSection title="resources">
-                <Status resources={character.status} setResources={(status) => setCharacter({...character, status})} />
+                <Status lens={drill(promap, "status")} />
             </SubSection>
         </Section>
         <Section title="Tracks">
-            <Bonds bonds={character.bonds} setBonds={(bonds) => setCharacter({...character, bonds})} />
-            <Vows vows={character.vows} setVows={(vows) => setCharacter({...character, vows})} />
+            <Bonds lens={drill(promap, "bonds")} />
+            <Vows lens={drill(promap, "vows")} />
         </Section>
         <Section title="Debilities">
-            <Debilities
-                debilities={character.debilities}
-                setDebilities={(debilities) => setCharacter({ ...character, debilities })} />
+            <Debilities lens={drill(promap, "debilities")} />
         </Section>
     </div>
 }
@@ -60,25 +59,22 @@ function Experience({ level }: { level: number }) {
 }
 
 
-function Status({ resources, setResources }: { resources: Status, setResources: (s: Status) => void }) {
+function Status({lens: { state:resources, promap }}: { lens: ProfunctorState<Status> }) {
     return <div className="flex flex-row flex-wrap justify-between">
         {Object.keys(resources).map((key) => {
             const tkey = key as keyof typeof resources;
+            const subLens = drill(promap, tkey);
             return <div className="mr-2" key={key}>
                 <span className="text-lg">{key}</span>
-                <ResourceMeter
-                    level={resources[tkey]}
-                    minVal={0}
-                    maxVal={5}
-                    onUpdate={(v) => setResources({...resources, [tkey]: v})} />
+                <ResourceMeter minVal={0} maxVal={5} lens={subLens} />
             </div>
         })}
     </div>
 }
 
-function Bonds({ bonds, setBonds }: { bonds: TrackProgress, setBonds: (b: TrackProgress) => void }) {
+function Bonds({lens}: {lens: ProfunctorState<TrackProgress>}) {
     return <SubSection title="Bonds">
-        <TrackMeter progress={bonds} setProgress={setBonds} progressStep={1} />
+        <TrackMeter lens={lens} progressStep={1} />
     </SubSection>
 }
 
@@ -99,24 +95,29 @@ function getProgressStepFromRank(rank: Rank): number {
     }
 }
 
-function Vows({ vows, setVows }: { vows: KeyMap<Vow>; setVows: (v: KeyMap<Vow>) => void}) {
+function Vows({ lens: { state: vows, setState: setVows, promap } }: { lens: ProfunctorState<KeyMap<Vow>> }) {
     const [vowFormVisible, setVowFormVisible] = React.useState(false);
 
     return <SubSection title="Vows">
         {vowFormVisible ?
             <VowForm onSubmit={(vow) => {
                 const entry = newEntry(vow);
-                setVows({...vows, [entry.key]: entry});
+                setVows((vows) => ({ ...vows, [entry.key]: entry }));
                 setVowFormVisible(false);
             }} /> :
             <SmallButton onClick={() => setVowFormVisible(true)}>new vow</SmallButton>}
-        {Object.values(vows).map(v => <div className="vow" key={v.key}>
-            <div>{v.data.description} / {v.data.rank}</div>
-            <TrackMeter
-                progress={v.data.track}
-                progressStep={getProgressStepFromRank(v.data.rank)}
-                setProgress={(track) => setVows({...vows, [v.key]: {...v, data: {...v.data, track}}})} />
-        </div>)}
+        {Object.values(vows).map(v => {
+            const entryLens = drill(promap, v.key);
+            const vowLens = drill(entryLens.promap, "data");
+            const trackLens = drill(vowLens.promap, "track");
+            
+            return <div className="vow" key={v.key}>
+                <div>{v.data.description} / {v.data.rank}</div>
+                <TrackMeter
+                    lens={trackLens}
+                    progressStep={getProgressStepFromRank(v.data.rank)} />
+            </div>
+        })}
     </SubSection>
 }
 
@@ -148,24 +149,17 @@ function RankSelector({ value, onChange }: { value: Rank; onChange: (r: Rank) =>
     </div>
 }
 
-interface DebilitiesProps {
-    debilities: Debilities;
-    setDebilities: (d: Debilities) => void;
-}
-
-function Debilities({ debilities, setDebilities }: DebilitiesProps) {
+function Debilities({lens: {state:debilities, promap}}: {lens: ProfunctorState<Debilities>}) {
     return <div className="flex flex-row justify-between">
         {Object.keys(debilities).map((parentKey) => {
             const tparentkey = parentKey as keyof typeof debilities;
             const subObject = debilities[tparentkey];
+            const subLens = drill(promap, tparentkey);
             return <SubSection title={parentKey} className="w-32 mr-24" key={parentKey}>
                 {Object.keys(subObject).map(key => {
                     const tkey = key as keyof typeof subObject;
-                    const value = subObject[tkey] as boolean;
-                    function onToggle() {
-                        setDebilities({ ...debilities, [parentKey]: { ...subObject, [key]: !value } });
-                    }
-                    return <CheckBox checked={value} title={key} onClick={onToggle} key={key} />
+                    const boolLens = drill(subLens.promap as any, tkey) as unknown as ProfunctorState<boolean>;
+                    return <CheckBox title={key} key={key} lens={boolLens} />
                 })}
             </SubSection>
         })}

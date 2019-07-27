@@ -1,5 +1,6 @@
 import * as React from "react";
 import { TrackProgress } from "../contracts/character";
+import { ProfunctorState } from "@staltz/use-profunctor-state";
 
 function Ticks({t}: {t: number}) {
     return <div className="w-6 h-6 mr-1 flex flex-row flex-wrap">
@@ -8,31 +9,29 @@ function Ticks({t}: {t: number}) {
 }
 
 export interface TrackMeterProps {
-    progress: TrackProgress;
-    setProgress(p: TrackProgress): void;
+    lens: ProfunctorState<TrackProgress>;
     progressStep: number;
 }
 
-export function TrackMeter({ progress, progressStep, setProgress }: TrackMeterProps) {
+export function TrackMeter({ progressStep, lens: { state:progress, setState:setProgress } }: TrackMeterProps) {
     const progressLevels = Math.floor(progress/4);
     const rest = progress % 4;
     return <div className="flex flex-row flex-wrap mt-1">
         {range(1, progressLevels).map((i) => <Ticks t={4} key={i} />)}
         <Ticks t={rest} />
         {range(1, 9 - progressLevels).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
-        <div onClick={() => setProgress(progress - progressStep)} className="text-xl mr-2 cursor-pointer">-</div>
-        <div onClick={() => setProgress(progress + progressStep)} className="text-xl mr-2 cursor-pointer">+</div>
+        <div onClick={() => setProgress((p) => p - progressStep)} className="text-xl mr-2 cursor-pointer">-</div>
+        <div onClick={() => setProgress((p) => p + progressStep)} className="text-xl mr-2 cursor-pointer">+</div>
     </div>
 }
 
 export interface ResourceMeterProps {
-    level: number;
+    lens: ProfunctorState<number>;
     minVal: number;
     maxVal: number;
-    onUpdate: (v: number) => void;
 }
 
-export function ResourceMeter({ level, minVal, maxVal, onUpdate }: ResourceMeterProps) {
+export function ResourceMeter({ minVal, maxVal, lens: { state:level, setState:setLevel } }: ResourceMeterProps) {
     return <div className="flex flex-row flex-wrap">
         {range(minVal, maxVal).map(v => {
             const slotClass = [
@@ -42,7 +41,7 @@ export function ResourceMeter({ level, minVal, maxVal, onUpdate }: ResourceMeter
                  cursor-pointer`,
                 v === level ? "bg-gray-400" : "bg-gray-200",
             ].join(" ")
-            return <div key={v} className={slotClass} onClick={() => onUpdate(v)}>{v}</div>
+            return <div key={v} className={slotClass} onClick={() => setLevel(() => v)}>{v}</div>
         })}
     </div>
 }
@@ -60,9 +59,9 @@ export interface MomentumMeterProps extends ResourceMeterProps {
     tempMax: number;
 }
 
-export function MomentumMeter({ level, minVal, maxVal, reset, tempMax, onUpdate }: MomentumMeterProps) {
+export function MomentumMeter({ minVal, maxVal, reset, tempMax, lens }: MomentumMeterProps) {
     return <>
-        <ResourceMeter level={level} minVal={minVal} maxVal={maxVal} onUpdate={onUpdate} />
+        <ResourceMeter minVal={minVal} maxVal={maxVal} lens={lens} />
         <span className="mr-2">reset: {reset}</span>
         <span>max: {tempMax}</span>
     </>
