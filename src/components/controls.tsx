@@ -3,6 +3,7 @@ import * as React from "react";
 import { Entry } from "../contracts/persistence"
 import { Link } from "react-router-dom";
 import { LensProps } from "../services/functors";
+import { ChildrenProp, ClassProp } from "../contracts/component";
 
 export interface CheckBoxProps extends LensProps<boolean> {
     title: string;
@@ -29,7 +30,7 @@ export function EntryItem({ entry }: EntryItemProps) {
     </div>
 }
 
-export function InlineLink({to, children}: { to: string, children: React.ReactNode }) {
+export function InlineLink({to, children}: { to: string } & ChildrenProp) {
     return <Link to={to} className="text-gray-600 hover:text-red-600">
         {children}
     </Link>
@@ -49,32 +50,32 @@ export function TextInput({ value, onChange }: { value: string, onChange: (s: st
         className={classes}/>
 }
 
-export function SmallButton({ onClick, children }: { onClick: () => void, children: React.ReactNode }) {
+export function SmallButton({ onClick, children, className }: { onClick: () => void } & ChildrenProp & ClassProp) {
     const classes = `
         bg-blue-500 hover:bg-blue-700
         text-white
         py-1 px-3 rounded
         focus:outline-none focus:shadow-outline
-    `
+    ` + className || "";
     return <button onClick={onClick} className={classes}>
         {children}
     </button>
 }
 
-export function Button({ onClick, children }: { onClick: () => void, children: React.ReactNode }) {
+export function Button({ onClick, children, className }: { onClick: () => void } & ChildrenProp & ClassProp) {
     const classes = `
         bg-blue-500 hover:bg-blue-700
         text-white font-bold
         py-2 px-4 rounded
         focus:outline-none focus:shadow-outline
-    `
+    ` + className || "";
     return <button onClick={onClick} className={classes}>
         {children}
     </button>
 }
 
 
-export function Label({ children }: { children: React.ReactNode }) {
+export function Label({ children }: ChildrenProp) {
     const classes = `
     block text-gray-700 text-sm font-bold mb-2
     `

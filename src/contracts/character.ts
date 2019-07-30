@@ -19,6 +19,7 @@ export interface ProgressChallenge {
     description: string;
     rank: Rank;
     track: TrackProgress;
+    finished: boolean;
 }
 
 export interface Debilities {

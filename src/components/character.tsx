@@ -41,7 +41,7 @@ export function CharacterSheet({lens: {state: character, zoom}}: {lens: Lens<Cha
         </Section>
         <Section title="Tracks">
             <Bonds lens={zoom("bonds")} />
-            <Vows lens={zoom("vows")} />
+            <Vows lens={zoom("vows")} setExp={zoom("experience").setState} />
         </Section>
         <Section title="Debilities">
             <Debilities lens={zoom("debilities")} />
@@ -64,7 +64,7 @@ function Status({lens: { state:resources, zoom }}: { lens: Lens<Status> }) {
 
 function Bonds({lens}: {lens: Lens<TrackProgress>}) {
     return <SubSection title="Bonds">
-        <TrackMeter lens={lens} progressStep={1} />
+        <TrackMeter lens={lens} progressStep={1} finished={false} />
     </SubSection>
 }
 

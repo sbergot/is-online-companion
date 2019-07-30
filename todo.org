@@ -1,13 +1,23 @@
 * character screen
-** TODO edition
+** DONE edition
 *** DONE conditions
 *** DONE resources/momentum update
 *** DONE vows/bons progression
-*** TODO vows ending
+*** DONE vows ending
 
+* ui
 ** standard atoms
 *** TODO button
 *** TODO rabio selector
+
+
+* TODO journal
+** TODO mvp: simple messages  with edit / remove
+alimenté par l'appli (vow created / progressed, dice roll)
+alimenté par le joueur
+paginé?
+
+- date, text, type (stat event, index update, dice roll, player entry, etc)
 
 ** TODO dice roll
 *** components
@@ -19,18 +29,12 @@ log display (roll type, dices, hit/miss)
 accessible from a button in a character sheet
 the log should always be visible (should be the common log)
 
-** TODO travels & combat tracks
-
-* TODO journal
-alimenté par l'appli (vow created / progressed, dice roll)
-alimenté par le joueur
-paginé?
-
-- date, text, type (stat event, index update, dice roll, player entry, etc)
-
 * TODO index
 contient des objets narratifs (lieux, personnages, objets)
-** référencement des éléments de l'index dans le journal avec des liens
+contient aussi les éléments de règles (moves, assets, regions)
+** TODO référencement des éléments de l'index dans le journal avec des liens
+** TODO travels & combat tracks
+
 
 * TODO character assets import from is android companion
 

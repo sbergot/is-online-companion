@@ -5,6 +5,7 @@ import { EntryItem, Label, TextInput, Button, Select } from "./controls";
 import { Entry } from "../contracts/persistence";
 import { makeDefaultCharacter } from "../services/character";
 import { DataServiceContainer } from "../containers/dataService";
+import { useLens } from "../services/functors";
 
 export interface CharacterSelectionProps {
     characters: Entry<Character>[];
@@ -28,8 +29,10 @@ export function CharacterSelection({ characters, onSelected }: CharacterSelectio
 
 function CharacterForm({ onCreated }: { onCreated: (c: Entry<Character>) => void }) {
     const dataService = DataServiceContainer.useContainer();
-    const [character, setCharacter] = React.useState(makeDefaultCharacter())
+    const { state:character, zoom } = useLens(makeDefaultCharacter())
     const statOptions = [0, 1, 2, 3].map(i => ({ name: i.toString(), value: i }));
+    const statLens = zoom("stats");
+    const {state:name, setState:setName} = zoom("name");
 
     function onSubmit() {
         const entry = dataService.characters.saveNew(character);
@@ -40,25 +43,18 @@ function CharacterForm({ onCreated }: { onCreated: (c: Entry<Character>) => void
         <div className="my-2">
             <Label>Name</Label>
             <TextInput
-                value={character.name}
-                onChange={(name) => { setCharacter({ ...character, name }) }}
+                value={name}
+                onChange={(name) => setName(() => name)}
             />
             <div className="flex flex-wrap justify-around my-2">
                 {Object.keys(character.stats).map((key) => {
                     const tkey = key as keyof typeof character.stats;
+                    const {state:value, setState:setValue} = statLens.zoom(tkey);
                     return <div className="mr-2 mt-3 flex flex-col items-center" key={key}>
                         <Select
                             options={statOptions}
-                            value={character.stats[tkey]}
-                            onSelect={(v) => {
-                                setCharacter({
-                                    ...character,
-                                    stats: {
-                                        ...character.stats,
-                                        [tkey]: v
-                                    }
-                                })
-                            }}
+                            value={value}
+                            onSelect={(v) => setValue(() => v)}
                         />
                         <Label>{key}</Label>
                     </div>

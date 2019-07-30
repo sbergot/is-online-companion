@@ -1,28 +1,38 @@
 import * as React from "react";
 import { TrackProgress } from "../contracts/character";
-import { ProfunctorState } from "@staltz/use-profunctor-state";
 import { Lens } from "../services/functors";
+import { SmallButton } from "./controls";
 
 function Ticks({t}: {t: number}) {
-    return <div className="w-6 h-6 mr-1 flex flex-row flex-wrap">
-        {range(1, t).map((i) => <div key={i} className="w-2 h-2 bg-gray-600 mr-1 mb-1" />)}
+    const capped = Math.min(t, 4);
+    return <div className="w-8 h-8 mr-1 p-1 flex flex-row flex-wrap items-center justify-between content-between border border-gray-400 rounded">
+        {range(1, capped).map((i) => <div key={i} className="w-1/3 h-2 mx-px bg-gray-600 rounded-sm" />)}
     </div>
 }
 
 export interface TrackMeterProps {
     lens: Lens<TrackProgress>;
     progressStep: number;
+    finished: boolean;
 }
 
-export function TrackMeter({ progressStep, lens: { state:progress, setState:setProgress } }: TrackMeterProps) {
-    const progressLevels = Math.floor(progress/4);
-    const rest = progress % 4;
-    return <div className="flex flex-row flex-wrap mt-1">
+export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
+    const { state: progress, setState: setProgress } = lens;
+    const capped = Math.min(progress, 40);
+    const progressLevels = Math.floor(capped / 4);
+    const rest = capped % 4;
+    const buttonClasses = [
+        "ml-2",
+        finished ? "hidden" : ""
+    ].join(" ");
+    return <div className="flex flex-row flex-wrap">
         {range(1, progressLevels).map((i) => <Ticks t={4} key={i} />)}
-        <Ticks t={rest} />
-        {range(1, 9 - progressLevels).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
-        <div onClick={() => setProgress((p) => p - progressStep)} className="text-xl mr-2 cursor-pointer">-</div>
-        <div onClick={() => setProgress((p) => p + progressStep)} className="text-xl mr-2 cursor-pointer">+</div>
+        {rest > 0 && <Ticks t={rest} />}
+        {range(1, 10 - progressLevels - (rest > 0 ? 1 : 0)).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
+        <div className={buttonClasses}>
+            <SmallButton className="mr-2" onClick={() => setProgress((p) => p - progressStep)}>-</SmallButton>
+            <SmallButton onClick={() => setProgress((p) => p + progressStep)}>+</SmallButton>
+        </div>
     </div>
 }
 
