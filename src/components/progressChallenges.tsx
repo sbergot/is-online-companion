@@ -3,7 +3,7 @@ import * as React from "react";
 import { KeyMap } from "../contracts/persistence";
 import { ProgressChallenge, Rank } from "../contracts/character";
 import { SubSection } from "./layout";
-import { newEntry } from "../services/persistence";
+import { newEntry } from "../services/persistence/shared";
 import { SmallButton, Label, TextInput } from "./controls";
 import { LensProps, useLens } from "../services/functors";
 import { TrackMeter } from "./bars";

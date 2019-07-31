@@ -6,11 +6,11 @@ import { MainContainer, Section } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { EntryItem, Label, TextInput, Button } from "../components/controls";
 import { Campaign } from "../contracts/campaign";
-import { Entry } from "../contracts/persistence";
+import { KeyEntry } from "../contracts/persistence";
 
 export function CampaignSelection({ history }: { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();
-    function onClick(c: Entry<Campaign>) {
+    function onClick(c: KeyEntry<Campaign>) {
         history.push(campaignService.routeTo(c));
     }
 
@@ -35,7 +35,7 @@ export function CampaignSelection({ history }: { history: History }) {
     </MainContainer>;
 }
 
-export function CampaignForm({ onSubmit }: { onSubmit: (c: Entry<Campaign>) => void }) {
+export function CampaignForm({ onSubmit }: { onSubmit: (c: KeyEntry<Campaign>) => void }) {
     const campaignService = CampaignServiceContainer.useContainer();
     const [name, setName] = React.useState("");
 

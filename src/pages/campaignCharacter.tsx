@@ -7,26 +7,26 @@ import { Character } from "../contracts/character";
 import { CharacterSelection } from "../components/characterSelection";
 import { CharacterSheet } from "../components/character";
 import { DataServiceContainer } from "../containers/dataService";
-import { Entry } from "../contracts/persistence";
+import { KeyEntry } from "../contracts/persistence";
 import { useLens, wrapFunctor, Lens } from "../services/functors";
 
-export function Campaign({ match }: RouteComponentProps<{ uuid: string }>) {
+export function CampaignCharacter({ match }: RouteComponentProps<{ key: string }>) {
     const campaignService = CampaignServiceContainer.useContainer();
     const dataService = DataServiceContainer.useContainer();
-    const { uuid } = match.params;
-    const { state: character, setState: setCharacter, promap } = useLens<Entry<Character> | null>(null);
-    const campaign = campaignService.campaigns[uuid].data;
+    const { key } = match.params;
+    const { state: character, setState: setCharacter, promap } = useLens<KeyEntry<Character> | null>(null);
+    const campaign = campaignService.campaigns[key].data;
 
-    function onCharacterSelected(selectedChar: Entry<Character>) {
-        campaignService.addCharacter(uuid, selectedChar.key);
+    function onCharacterSelected(selectedChar: KeyEntry<Character>) {
+        campaignService.addCharacter(key, selectedChar.key);
         setCharacter(() => selectedChar);
     }
 
     const subFunction: Lens<Character> = wrapFunctor(promap(
-        (c: Entry<Character> | null) => c ? c.data: null as any,
-        (c: Character, e: Entry<Character> | null) => {
+        (c: KeyEntry<Character> | null) => c ? c.data: null as any,
+        (c: Character, e: KeyEntry<Character> | null) => {
             if (e) {
-                const newEntry: Entry<Character> = {...e, data: c};
+                const newEntry: KeyEntry<Character> = {...e, data: c};
                 dataService.characters.save(newEntry);
                 return newEntry;
             }

@@ -2,14 +2,14 @@ import * as React from "react";
 import { Character } from "../contracts/character";
 import { Section } from "./layout";
 import { EntryItem, Label, TextInput, Button, Select } from "./controls";
-import { Entry } from "../contracts/persistence";
+import { KeyEntry } from "../contracts/persistence";
 import { makeDefaultCharacter } from "../services/character";
 import { DataServiceContainer } from "../containers/dataService";
 import { useLens } from "../services/functors";
 
 export interface CharacterSelectionProps {
-    characters: Entry<Character>[];
-    onSelected: (character: Entry<Character>) => void;
+    characters: KeyEntry<Character>[];
+    onSelected: (character: KeyEntry<Character>) => void;
 }
 
 export function CharacterSelection({ characters, onSelected }: CharacterSelectionProps) {
@@ -27,7 +27,7 @@ export function CharacterSelection({ characters, onSelected }: CharacterSelectio
     </Section>
 }
 
-function CharacterForm({ onCreated }: { onCreated: (c: Entry<Character>) => void }) {
+function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => void }) {
     const dataService = DataServiceContainer.useContainer();
     const { state:character, zoom } = useLens(makeDefaultCharacter())
     const statOptions = [0, 1, 2, 3].map(i => ({ name: i.toString(), value: i }));

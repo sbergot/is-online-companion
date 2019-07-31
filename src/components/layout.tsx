@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export function MainContainer({ children }: { children: React.ReactNode }) {
-    return <div className="px-4 py-2 bg-gray-200" >
+    return <div className="px-4 py-2 bg-gray-200 h-full" >
         {children}
     </div>
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Entry } from "../contracts/persistence"
+import { KeyEntry } from "../contracts/persistence"
 import { Link } from "react-router-dom";
 import { LensProps } from "../services/functors";
 import { ChildrenProp, ClassProp } from "../contracts/component";
@@ -17,7 +17,7 @@ export function CheckBox({ title, lens:{ state:checked, setState } }: CheckBoxPr
 }
 
 export interface EntryItemProps {
-    entry: Entry<{ name: string }>;
+    entry: KeyEntry<{ name: string }>;
 }
 
 export function EntryItem({ entry }: EntryItemProps) {
