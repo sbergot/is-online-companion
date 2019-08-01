@@ -21,4 +21,6 @@ export interface StreamSource<T> {
     pushNew(value: T): StreamEntry<T>;
     getEntries(page?: number): StreamEntry<T>[];
     edit(entry: StreamEntry<T>): StreamEntry<T>;
+    remove(entry: StreamEntry<T>): boolean;
+    canRemove(entry: StreamEntry<T>): boolean;
 }

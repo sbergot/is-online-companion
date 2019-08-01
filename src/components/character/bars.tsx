@@ -1,7 +1,7 @@
 import * as React from "react";
-import { TrackProgress } from "../contracts/character";
-import { Lens } from "../services/functors";
-import { SmallButton } from "./controls";
+import { TrackProgress } from "../../contracts/character";
+import { Lens } from "../../services/functors";
+import { SmallButton } from "../controls";
 
 function Ticks({t}: {t: number}) {
     const capped = Math.min(t, 4);

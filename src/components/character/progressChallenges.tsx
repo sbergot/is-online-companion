@@ -1,13 +1,13 @@
 import * as React from "react";
 
-import { KeyMap } from "../contracts/persistence";
-import { ProgressChallenge, Rank } from "../contracts/character";
-import { SubSection } from "./layout";
-import { newEntry } from "../services/persistence/shared";
-import { SmallButton, Label, TextInput } from "./controls";
-import { LensProps, useLens } from "../services/functors";
+import { KeyMap } from "../../contracts/persistence";
+import { ProgressChallenge, Rank } from "../../contracts/character";
+import { SubSection } from "../layout";
+import { newEntry } from "../../services/persistence/shared";
+import { SmallButton, Label, TextInput } from "../controls";
+import { LensProps, useLens } from "../../services/functors";
 import { TrackMeter } from "./bars";
-import { getProgressStepFromRank, newChallenge, finishChallenge, failChallenge, allRanks, getExperienceFromRank } from "../services/progressChallenges";
+import { getProgressStepFromRank, newChallenge, finishChallenge, failChallenge, allRanks, getExperienceFromRank } from "../../services/progressChallenges";
 import { SetState } from "@staltz/use-profunctor-state";
 
 export function Vows({ lens, setExp }: LensProps<KeyMap<ProgressChallenge>> & { setExp: SetState<number> }) {

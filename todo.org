@@ -1,15 +1,4 @@
 * journal
-fed by app (vow created / progressed, dice roll)
-fed by player entries
-paginated
-
-properties:
-- date
-- type (stat event, index update, dice roll, player entry, etc)
-- characterkey 
-- type specific payload
-
-** TODO mvp: simple messages  with edit / remove
 
 ** TODO dice roll log block
 select stat/resource & bonus
@@ -20,7 +9,7 @@ log button --> add to log
 *** TODO log block component
 
 * menus
-** TODO place resources & momentum in the left bar
+** TODO place resources & momentum in the left bar?
 ** TODO show/hide toggle
 
 * travels & combat tracks

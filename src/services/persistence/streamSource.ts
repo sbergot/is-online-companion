@@ -61,16 +61,33 @@ export class LocalStorageStreamSource<T> implements StreamSource<T> {
         return this.getPage(realPage);
     }
 
-    edit(entry: StreamEntry<T>): StreamEntry<T> {
-        const entries = this.getEntries(entry.page);
+    findIdx(entries: StreamEntry<T>[], entry: StreamEntry<T>) {
         const idx = entries.findIndex(e => e.key === entry.key);
         if (idx < 0) {
             throw new Error(`entry not found in page ${entry.page} for key ${entry.key}`);
         }
+        return idx;
+    }
+
+    edit(entry: StreamEntry<T>): StreamEntry<T> {
+        const entries = this.getPage(entry.page);
+        const idx = this.findIdx(entries, entry);
         const newEntry = {...entry, lastModified: new Date()};
         const newEntries = [...entries];
         newEntries[idx] = newEntry;
         this.savePage(entry.page, newEntries);
         return newEntry;
+    }
+
+    remove(entry: StreamEntry<T>): boolean {
+        if (!this.canRemove(entry)) { return false; }
+        const entries = this.getEntries();
+        const idx = this.findIdx(entries, entry);
+        entries.splice(idx, 1);
+        return true;
+    }
+
+    canRemove(entry: StreamEntry<T>): boolean {
+        return this.getMetadata().currentPage === entry.page;
     }
 }

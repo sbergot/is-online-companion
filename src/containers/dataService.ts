@@ -41,7 +41,7 @@ function wrapStream<T>(stream: StreamSource<T>): StreamHook<T> {
         return [...stream.getEntries(1), ...stream.getEntries(0)];
     }
 
-    const [streamState, setStreamState] = React.useState<KeyEntry<T>[]>(getLast2Pages());
+    const [streamState, setStreamState] = React.useState<StreamEntry<T>[]>(getLast2Pages());
 
     return {
         values: streamState,
@@ -59,6 +59,20 @@ function wrapStream<T>(stream: StreamSource<T>): StreamHook<T> {
                 setStreamState(newArray);
             }
             return newEntry;
+        },
+        remove(entry: StreamEntry<T>): boolean {
+            if (!stream.canRemove(entry)) { return false; }
+            stream.remove(entry);
+            const idx = streamState.findIndex(v => v.key === entry.key);
+            if (idx >= 0) {
+                const newArray = streamState.slice();
+                newArray.splice(idx, 1);
+                setStreamState(newArray);
+            }
+            return true;
+        },
+        canRemove(entry: StreamEntry<T>): boolean {
+            return stream.canRemove(entry);
         }
     }
 }

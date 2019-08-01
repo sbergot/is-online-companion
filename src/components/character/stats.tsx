@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Stats } from "../contracts/character";
+import { Stats } from "../../contracts/character";
 
 export function Stat({ title, level }: { title: string, level: number }) {
     return <div className="flex flex-col border border-gray-500 mr-4 w-16">

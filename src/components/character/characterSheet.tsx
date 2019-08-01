@@ -1,11 +1,11 @@
 import * as React from "react";
 
-import { Character, Status, TrackProgress, Debilities } from "../contracts/character";
-import { CheckBox } from "./controls";
+import { Character, Status, TrackProgress, Debilities } from "../../contracts/character";
+import { CheckBox } from "../controls";
 import { StatsBoxes } from "./stats";
-import { Section, SubSection } from "./layout";
+import { Section, SubSection } from "../layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
-import { Lens } from "../services/functors";
+import { Lens } from "../../services/functors";
 import { Vows } from "./progressChallenges";
 
 export interface CharacterSheetProps {

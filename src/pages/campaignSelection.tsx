@@ -22,7 +22,7 @@ export function CampaignSelection({ history }: { history: History }) {
                     Select a campaign...
                     {Object.values(campaignService.campaigns).map((c) => {
                         const route = routeToCampaign({campaignKey: c.key});
-                        return <Link className="max-w-xs" to={route} key={c.key}>
+                        return <Link to={route} key={c.key}>
                             <EntryItem entry={c} />
                         </Link>
                     })}

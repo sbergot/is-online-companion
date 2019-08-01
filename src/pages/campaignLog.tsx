@@ -1,22 +1,18 @@
 import * as React from "react";
 import { DataServiceContainer } from "../containers/dataService";
-import { Button } from "../components/controls";
 import { RouteComponentProps } from "react-router-dom";
 import { CampaignLogRouteParams } from "../services/routes";
 import { Section } from "../components/layout";
+import { AnyLogBlock } from "../contracts/log";
+import { StreamEntry } from "../contracts/persistence";
+import { LogBlock, UserInputEditor } from "../components/log";
 
 export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParams>) {
     const dataService = DataServiceContainer.useContainer();
-    const { campaignKey } = match.params;
+    const { campaignKey, characterKey } = match.params;
     const logSource = dataService.logs(campaignKey);
     const logs = logSource.values;
-    const [input, setinput] = React.useState("");
     const logView = React.useRef<HTMLDivElement>(null);
-
-    function onLog() {
-        logSource.pushNew({ type: "UserInput", payload: { text: input } });
-        setinput("");
-    }
 
     React.useEffect(() => {
         if (logView.current) {
@@ -25,25 +21,31 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
         }
     }, [logs])
 
+    function onLog(block: AnyLogBlock) { logSource.pushNew(block); }
+
+    function onEditLog(oldEntry: StreamEntry<AnyLogBlock>, newBlock: AnyLogBlock) {
+        const newEntry = {
+            ...oldEntry,
+            data: newBlock
+        };
+        logSource.edit(newEntry)
+    }
+
     return <Section className="flex flex-col justify-between h-full" title="Log">
-            <div className="h-64 overflow-y-auto flex-grow" ref={logView} >
-                {logs.map(l => {
-                    const log = l.data;
-                    if (log.type == "UserInput") {
-                        return <p key={l.key}>{log.payload.text}</p>
-                    }
-                })}
-            </div>
-            <div>
-                <div>
-                    <textarea className="resize-none"
-                        value={input}
-                        onChange={(e) => setinput(e.target.value)}
-                        rows={10}
-                        cols={80}
-                    />
-                </div>
-                <Button onClick={onLog}>Log</Button>
-            </div>
+        <div className="h-64 overflow-y-auto flex-grow" ref={logView} >
+            {logs.map(l => {
+                return <LogBlock
+                    key={l.key}
+                    entry={l}
+                    canDelete={logSource.canRemove(l)}
+                    onDelete={logSource.remove}
+                    onLog={(newBlock) => onEditLog(l, newBlock)}
+                />
+            })}
+        </div>
+        <div>
+            <UserInputEditor onLog={onLog} characterKey={characterKey} initialText="" />
+        </div>
     </Section>
 }
+
