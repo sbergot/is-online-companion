@@ -9,5 +9,9 @@ export interface Campaign {
      * a set of character keys
      */
     characters: Set<string>;
+    /**
+     * The key of the last used character
+     */
+    lastUsedCharacter?: string;
 }
 

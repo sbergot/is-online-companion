@@ -3,6 +3,7 @@ import { createContainer } from "unstated-next";
 import { Campaign } from "../contracts/campaign";
 import { DataServiceContainer } from "./dataService";
 import { KeyEntry } from "../contracts/persistence";
+import { Character } from "../contracts/character";
 
 function createCampaign(name: string): Campaign {
     return {
@@ -21,9 +22,6 @@ function useCampaignService() {
             return newEntry;
         },
         campaigns,
-        routeTo(campaign: KeyEntry<Campaign>) {
-            return `/campaign/${campaign.key}/character`;
-        },
         addCharacter(campaignKey: string, characterKey: string) {
             const oldCampaign = campaigns[campaignKey];
             const newcharacters = new Set(oldCampaign.data.characters);
@@ -32,6 +30,7 @@ function useCampaignService() {
                 ...oldCampaign,
                 data: {
                     ...oldCampaign.data,
+                    lastUsedCharacter: characterKey,
                     characters: newcharacters
                 }
             });

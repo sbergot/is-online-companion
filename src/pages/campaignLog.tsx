@@ -1,5 +1,4 @@
 import * as React from "react";
-import { MainContainer } from "../components/layout";
 import { DataServiceContainer } from "../containers/dataService";
 import { Button } from "../components/controls";
 import { RouteComponentProps } from "react-router-dom";
@@ -24,13 +23,13 @@ export function CampaignLog({ match }: RouteComponentProps<{ key: string }>) {
         }
     }, [logs])
 
-    return <MainContainer>
+    return <>
         <div className='flex flex-col justify-between h-full'>
             <div className="h-64 overflow-y-auto" ref={logView} >
                 {logs.map(l => {
                     const log = l.data;
                     if (log.type == "UserInput") {
-                        return <p>{log.payload.text}</p>
+                        return <p key={l.key}>{log.payload.text}</p>
                     }
                 })}
             </div>
@@ -46,5 +45,5 @@ export function CampaignLog({ match }: RouteComponentProps<{ key: string }>) {
                 <Button onClick={onLog}>Log</Button>
             </div>
         </div>
-    </MainContainer>
+    </>
 }

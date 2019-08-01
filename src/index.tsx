@@ -1,5 +1,11 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { App } from "./app";
+import { Layout } from "./layout";
+import { Providers } from "./providers";
 
-render(<App />, document.getElementById("root"));
+render(
+    <Providers>
+        <Layout />
+    </Providers>,
+    document.getElementById("root")
+);

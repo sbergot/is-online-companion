@@ -2,40 +2,41 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { History } from "history";
 
-import { MainContainer, Section } from "../components/layout";
+import { Section } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { EntryItem, Label, TextInput, Button } from "../components/controls";
 import { Campaign } from "../contracts/campaign";
 import { KeyEntry } from "../contracts/persistence";
+import { routeToCampaign } from "../services/routes";
 
 export function CampaignSelection({ history }: { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();
     function onClick(c: KeyEntry<Campaign>) {
-        history.push(campaignService.routeTo(c));
+        history.push(routeToCampaign(c.key));
     }
 
-    return <MainContainer>
+    return <>
         <Section title="Campaign selection">
             <div className="flex">
-                <div className="w-1/2 p-4">
+                <div className="flex-grow p-4">
                     Select a campaign...
                     {Object.values(campaignService.campaigns).map((c) => {
-                        const route = campaignService.routeTo(c);
+                        const route = routeToCampaign(c.key);
                         return <Link className="max-w-xs" to={route} key={c.key}>
                             <EntryItem entry={c} />
                         </Link>
                     })}
                 </div>
-                <div className="w-1/2 p-4">
+                <div className="flex-grow p-4">
                     ... or create a new one.
                     <CampaignForm onSubmit={(c) => onClick(c)} />
                 </div>
             </div>
         </Section>
-    </MainContainer>;
+    </>;
 }
 
-export function CampaignForm({ onSubmit }: { onSubmit: (c: KeyEntry<Campaign>) => void }) {
+function CampaignForm({ onSubmit }: { onSubmit: (c: KeyEntry<Campaign>) => void }) {
     const campaignService = CampaignServiceContainer.useContainer();
     const [name, setName] = React.useState("");
 
@@ -44,6 +45,8 @@ export function CampaignForm({ onSubmit }: { onSubmit: (c: KeyEntry<Campaign>) =
             <Label>Name</Label>
             <TextInput value={name} onChange={setName} />
         </div>
-        <Button onClick={() => onSubmit(campaignService.createCampaign(name))}>Ok</Button>
+        <div className="text-right">
+            <Button onClick={() => onSubmit(campaignService.createCampaign(name))}>Ok</Button>
+        </div>
     </div>
 }

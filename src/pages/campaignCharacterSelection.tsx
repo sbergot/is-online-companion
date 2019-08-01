@@ -1,30 +1,42 @@
 import * as React from "react";
-import { Character } from "../contracts/character";
-import { Section } from "./layout";
-import { EntryItem, Label, TextInput, Button, Select } from "./controls";
-import { KeyEntry } from "../contracts/persistence";
-import { makeDefaultCharacter } from "../services/character";
+import { RouteComponentProps } from "react-router-dom";
+
+import { Section } from "../components/layout";
+import { Select, Label, TextInput, Button, EntryItem } from "../components/controls";
+import { CampaignServiceContainer } from "../containers/campaign";
 import { DataServiceContainer } from "../containers/dataService";
+import { Character } from "../contracts/character";
+import { KeyEntry } from "../contracts/persistence";
+import { routeToCampaignCharacter } from "../services/routes";
 import { useLens } from "../services/functors";
+import { makeDefaultCharacter } from "../services/character";
 
-export interface CharacterSelectionProps {
-    characters: KeyEntry<Character>[];
-    onSelected: (character: KeyEntry<Character>) => void;
-}
+export function CampaignCharacterSelection({ match, history }: RouteComponentProps<{ campaignKey: string }>) {
+    const campaignService = CampaignServiceContainer.useContainer();
+    const dataService = DataServiceContainer.useContainer();
+    const { campaignKey } = match.params;
+    const campaignEntry = campaignService.campaigns[campaignKey];
+    const campaign = campaignEntry.data;
 
-export function CharacterSelection({ characters, onSelected }: CharacterSelectionProps) {
+    function onCharacterSelected(selectedChar: KeyEntry<Character>) {
+        campaignService.addCharacter(campaignKey, selectedChar.key);
+        history.push(routeToCampaignCharacter(campaignKey, selectedChar.key))
+    }
+
+    const characters = Array.from(campaign.characters).map((c) => dataService.characters.values[c]);
+
     return <Section title="Character selection">
         <div className="flex">
-            <div className="w-1/2 mr-4">
+            <div className="flex-grow mr-4">
                 Select a character...
-                <CharacterPicker characters={characters} onSelected={onSelected} />
+                <CharacterPicker characters={characters} onSelected={onCharacterSelected} />
             </div>
-            <div className="w-1/2">
+            <div className="flex-grow">
                 ... or create a new one.
-                <CharacterForm onCreated={onSelected} />
+                <CharacterForm onCreated={onCharacterSelected} />
             </div>
         </div>
-    </Section>
+    </Section>;
 }
 
 function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => void }) {
@@ -67,8 +79,12 @@ function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => v
     </div>
 }
 
+interface CharacterSelectionProps {
+    characters: KeyEntry<Character>[];
+    onSelected: (character: KeyEntry<Character>) => void;
+}
 
-export function CharacterPicker({ characters, onSelected }: CharacterSelectionProps) {
+function CharacterPicker({ characters, onSelected }: CharacterSelectionProps) {
     return characters.length ?
         <ul>
             {characters.map((c) => {

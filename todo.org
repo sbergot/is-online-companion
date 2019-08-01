@@ -5,7 +5,15 @@
 *** DONE vows/bons progression
 *** DONE vows ending
 
-* TODO journal
+* menus
+** TODO auto pick last used character (stored in campaign object)
+** TODO route should have a character key
+** TODO move menu on the left
+** TODO place resrouces & momentum in the left bar
+
+* journal
+** DONE log / character navigation
+** TODO logblock should have character key in another prperty
 ** TODO mvp: simple messages  with edit / remove
 alimenté par l'appli (vow created / progressed, dice roll)
 alimenté par le joueur
