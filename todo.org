@@ -1,42 +1,27 @@
-* character sheet
+* journal
+** TODO mvp: simple messages  with edit / remove
+fed by app (vow created / progressed, dice roll)
+fed by player entries
+paginated
 
-* routing
-** TODO create type checked route system
-- get param type
-- get route function
-- get route template
+properties:
+- date
+- type (stat event, index update, dice roll, player entry, etc)
+- characterkey 
+- type specific payload
 
 * menus
-** TODO place resrouces & momentum in the left bar
-
-* journal
-** TODO logblock should have character key in another property
-** TODO mvp: simple messages  with edit / remove
-alimenté par l'appli (vow created / progressed, dice roll)
-alimenté par le joueur
-paginé?
-
-- date, text, type (stat event, index update, dice roll, player entry, etc)
+** TODO place resources & momentum in the left bar
 
 * data
 ** TODO localstorage events subscription
-use IDB-keyval and implement pagination
-campaign-<campaign_key>-log
-=> { total_pages: 15 }
-campaign-<campaign_key>-log-page-1
-=> { page: 1, values: [] }
+to keep multiple tabs in sync (charactersheet, log)
 
-top level api to define
-- access key (campaign-<campaign_key>-log)
-- add element
-- get last x elements
-- page size should be well hidden/part of configuration
+* first alpha release to show Shawn Tomkin
+** TODO add credits
 
 * design system
-** TODO button
-** TODO rabio selector
-** TODO resource bar
-it should "fill up" --> color boxes lower or equal to the level
+** TODO review some other systems & discuss with Shawn Tomkin
 
 ** TODO dice roll
 *** components

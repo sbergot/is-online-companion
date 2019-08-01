@@ -15,7 +15,7 @@ export interface CharacterSheetProps {
 }
 
 export function CharacterSheet({lens: {state: character, zoom}}: {lens: Lens<Character>}) {
-    return <div>
+    return <>
         <Section title="Character">
             <SubSection>
                 <span>{character.name}</span>
@@ -46,7 +46,7 @@ export function CharacterSheet({lens: {state: character, zoom}}: {lens: Lens<Cha
         <Section title="Debilities">
             <Debilities lens={zoom("debilities")} />
         </Section>
-    </div>
+    </>
 }
 
 function Status({lens: { state:resources, zoom }}: { lens: Lens<Status> }) {

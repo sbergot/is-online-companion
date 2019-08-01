@@ -47,6 +47,8 @@ function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & 
 function Menu() {
     return <nav className="bg-gray-300 p-3 flex flex-col">
         <h1>Ironsworn online companion</h1>
+        <p>a game by Shawn Tomkin</p>
+        <a href="https://www.ironswornrpg.com">https://www.ironswornrpg.com</a>
         <Route path={routes.campaignRouteTemplate} component={CampaignMenu} />
         <Route path="/campaign/:campaignKey/character/:characterKey" component={CharacterMenu} />
     </nav>
@@ -56,7 +58,7 @@ export function Layout() {
     return <Router>
         <div className="min-h-screen flex items-stretch">
             <Menu />
-            <div className="max-w-4xl p-4">
+            <div className="max-w-4xl pl-4 pb-4">
                 <Switch>
                     <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
                     <Route exact path={routes.campaignRouteTemplate} component={Campaign} />

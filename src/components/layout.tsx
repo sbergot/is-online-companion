@@ -8,7 +8,8 @@ export interface SectionProps {
 
 export function Section({ title, children, className }: SectionProps) {
     const classes = [
-        className ? className : "mt-3"
+        "mt-3",
+        className ? className : ""
     ].join(" ");
     return <div className={classes}>
         {title && <h2 className="text-2xl mb-1">{title}</h2>}
@@ -18,7 +19,8 @@ export function Section({ title, children, className }: SectionProps) {
 
 export function SubSection({ title, children, className }: SectionProps) {
     const classes = [
-        className ? className : "mt-3"
+        "mt-3",
+        className ? className : ""
     ].join(" ");
     return <div className={classes}>
         {title && <h3 className="text-xl mb-1">{title}</h3>}

@@ -3,6 +3,7 @@ import { DataServiceContainer } from "../containers/dataService";
 import { Button } from "../components/controls";
 import { RouteComponentProps } from "react-router-dom";
 import { CampaignLogRouteParams } from "../services/routes";
+import { Section } from "../components/layout";
 
 export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParams>) {
     const dataService = DataServiceContainer.useContainer();
@@ -24,9 +25,8 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
         }
     }, [logs])
 
-    return <>
-        <div className='flex flex-col justify-between h-full'>
-            <div className="h-64 overflow-y-auto" ref={logView} >
+    return <Section className="flex flex-col justify-between h-full" title="Log">
+            <div className="h-64 overflow-y-auto flex-grow" ref={logView} >
                 {logs.map(l => {
                     const log = l.data;
                     if (log.type == "UserInput") {
@@ -45,6 +45,5 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
                 </div>
                 <Button onClick={onLog}>Log</Button>
             </div>
-        </div>
-    </>
+    </Section>
 }
