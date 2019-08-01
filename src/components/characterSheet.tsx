@@ -5,7 +5,6 @@ import { CheckBox } from "./controls";
 import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "./layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
-import { ProfunctorState } from "@staltz/use-profunctor-state";
 import { Lens } from "../services/functors";
 import { Vows } from "./progressChallenges";
 
@@ -74,7 +73,7 @@ function Debilities({lens: {state:debilities, zoom}}: {lens: Lens<Debilities>}) 
             const tparentkey = parentKey as keyof typeof debilities;
             const subObject = debilities[tparentkey];
             const subLens = zoom(tparentkey);
-            return <SubSection title={parentKey} className="w-32 mr-24" key={parentKey}>
+            return <SubSection title={parentKey} className="w-32" key={parentKey}>
                 {Object.keys(subObject).map(key => {
                     const tkey = key as keyof typeof subObject;
                     const boolLens = subLens.zoom(tkey) as unknown as Lens<boolean>;

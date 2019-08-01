@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { RouteComponentProps } from "react-router-dom";
 import { Character } from "../contracts/character";
-import { CharacterSheet } from "../components/character";
+import { CharacterSheet } from "../components/characterSheet";
 import { DataServiceContainer } from "../containers/dataService";
 import { useLens } from "../services/functors";
 import { CampaignCharacterRouteParams } from "../services/routes";

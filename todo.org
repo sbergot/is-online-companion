@@ -1,5 +1,4 @@
 * journal
-** TODO mvp: simple messages  with edit / remove
 fed by app (vow created / progressed, dice roll)
 fed by player entries
 paginated
@@ -10,40 +9,48 @@ properties:
 - characterkey 
 - type specific payload
 
+** TODO mvp: simple messages  with edit / remove
+
+** TODO dice roll log block
+select stat/resource & bonus
+roll button
+result display
+log button --> add to log
+*** TODO form
+*** TODO log block component
+
 * menus
 ** TODO place resources & momentum in the left bar
+** TODO show/hide toggle
+
+* travels & combat tracks
+could be another type of log block
+active tracks are displayed in the left panel or somewhere on the right
 
 * data
 ** TODO localstorage events subscription
 to keep multiple tabs in sync (charactersheet, log)
 
 * first alpha release to show Shawn Tomkin
-** TODO add credits
+** TODO add credits & confirm that this is ok
+** TODO explain roadmap (better ui, index, map, online storage)
+** TODO ask about design elements (color, font) --> reproduce website?
 
-* design system
-** TODO review some other systems & discuss with Shawn Tomkin
+* UI
+** TODO review some other design systems & discuss with Shawn Tomkin
+** TODO improve the character sheet layout
 
-** TODO dice roll
-*** components
-form to select stat/resource & bonus
-roll button
-result display
-log display (roll type, dices, hit/miss)
+* index
+contains narrative objects (places, NPCs, objects)
+contains rules elements (moves, assets, regions)
+user should be able to reference index elements in the log
+** TODO referentials import from is android companion
 
-accessible from a button in a character sheet
-the log should always be visible (should be the common log)
+* online storage
+look into google app engine storage datastore
+look into cognito for user management
+look into firebase for everything
 
-* TODO index
-contient des objets narratifs (lieux, personnages, objets)
-contient aussi les éléments de règles (moves, assets, regions)
-** TODO référencement des éléments de l'index dans le journal avec des liens
-** TODO travels & combat tracks
+* map integration (diplay locations stored in index)
 
-
-* TODO character assets import from is android companion
-
-* TODO map integration (diplay locations stored in index)
-
-* TODO add sass + custom tailwind build
-
-** TODO class icon
+* add sass + custom tailwind build
