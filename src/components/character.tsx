@@ -19,7 +19,7 @@ export function CharacterSheet({lens: {state: character, zoom}}: {lens: Lens<Cha
         <Section title="Character">
             <SubSection>
                 <span>{character.name}</span>
-                <span className="ml-8">Experience: {character.experience}</span>
+                <span className="ml-8">experience: {character.experience}</span>
             </SubSection>
             <SubSection>
                 <StatsBoxes stats={character.stats} />

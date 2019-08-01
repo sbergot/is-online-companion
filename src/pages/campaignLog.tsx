@@ -3,10 +3,10 @@ import { DataServiceContainer } from "../containers/dataService";
 import { Button } from "../components/controls";
 import { RouteComponentProps } from "react-router-dom";
 
-export function CampaignLog({ match }: RouteComponentProps<{ key: string }>) {
+export function CampaignLog({ match }: RouteComponentProps<{ campaignKey: string; characterKey: string }>) {
     const dataService = DataServiceContainer.useContainer();
-    const { key } = match.params;
-    const logSource = dataService.logs(key);
+    const { campaignKey } = match.params;
+    const logSource = dataService.logs(campaignKey);
     const logs = logSource.values;
     const [input, setinput] = React.useState("");
     const logView = React.useRef<HTMLDivElement>(null);
