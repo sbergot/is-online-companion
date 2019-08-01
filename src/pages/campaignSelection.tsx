@@ -12,7 +12,7 @@ import { routeToCampaign } from "../services/routes";
 export function CampaignSelection({ history }: { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();
     function onClick(c: KeyEntry<Campaign>) {
-        history.push(routeToCampaign(c.key));
+        history.push(routeToCampaign({campaignKey: c.key}));
     }
 
     return <>
@@ -21,7 +21,7 @@ export function CampaignSelection({ history }: { history: History }) {
                 <div className="flex-grow p-4">
                     Select a campaign...
                     {Object.values(campaignService.campaigns).map((c) => {
-                        const route = routeToCampaign(c.key);
+                        const route = routeToCampaign({campaignKey: c.key});
                         return <Link className="max-w-xs" to={route} key={c.key}>
                             <EntryItem entry={c} />
                         </Link>

@@ -2,8 +2,9 @@ import * as React from "react";
 import { DataServiceContainer } from "../containers/dataService";
 import { Button } from "../components/controls";
 import { RouteComponentProps } from "react-router-dom";
+import { CampaignLogRouteParams } from "../services/routes";
 
-export function CampaignLog({ match }: RouteComponentProps<{ campaignKey: string; characterKey: string }>) {
+export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParams>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey } = match.params;
     const logSource = dataService.logs(campaignKey);

@@ -7,10 +7,10 @@ import { InlineLink } from "./components/controls";
 import { CampaignLog } from "./pages/campaignLog";
 import { CampaignCharacterSelection } from "./pages/campaignCharacterSelection";
 import { Campaign } from "./pages/campaign";
-import { routeToCampaignCharacter, routeToCampaignLog, routeToCampaignCharacterSelection } from "./services/routes";
+import * as routes from "./services/routes";
 import { DataServiceContainer } from "./containers/dataService";
 
-function CampaignMenu({ match }: RouteComponentProps<{ campaignKey: string }>) {
+function CampaignMenu({ match }: RouteComponentProps<routes.CampaignKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey } = match.params;
     const campaign = dataService.campaigns.values[campaignKey];
@@ -18,13 +18,13 @@ function CampaignMenu({ match }: RouteComponentProps<{ campaignKey: string }>) {
         <p>
             campaign: {campaign.data.name}
         </p>
-        <InlineLink to="/campaign/selection">
+        <InlineLink to={routes.campaignSelectionRoute}>
             select another campaign
         </InlineLink>
     </> : null
 }
 
-function CharacterMenu({ match }: RouteComponentProps<{ campaignKey: string; characterKey: string }>) {
+function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & routes.CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey, characterKey } = match.params;
     const character = dataService.characters.values[characterKey];
@@ -32,13 +32,13 @@ function CharacterMenu({ match }: RouteComponentProps<{ campaignKey: string; cha
         <p>
             character: {character.data.name}
         </p>
-        <InlineLink to={routeToCampaignCharacterSelection(campaignKey)}>
+        <InlineLink to={routes.routeToCampaignCharacterSelection({campaignKey})}>
             select another character
             </InlineLink>
-        <InlineLink to={routeToCampaignCharacter(campaignKey, characterKey)}>
+        <InlineLink to={routes.routeToCampaignCharacter({campaignKey, characterKey})}>
             go to character sheet
         </InlineLink>
-        <InlineLink to={routeToCampaignLog(campaignKey, characterKey)}>
+        <InlineLink to={routes.routeToCampaignLog({campaignKey, characterKey})}>
             go to log
         </InlineLink>
     </>
@@ -47,7 +47,7 @@ function CharacterMenu({ match }: RouteComponentProps<{ campaignKey: string; cha
 function Menu() {
     return <nav className="bg-gray-300 p-3 flex flex-col">
         <h1>Ironsworn online companion</h1>
-        <Route path="/campaign/:campaignKey" component={CampaignMenu} />
+        <Route path={routes.campaignRouteTemplate} component={CampaignMenu} />
         <Route path="/campaign/:campaignKey/character/:characterKey" component={CharacterMenu} />
     </nav>
 }
@@ -58,11 +58,11 @@ export function Layout() {
             <Menu />
             <div className="max-w-4xl p-4">
                 <Switch>
-                    <Route exact path="/campaign/selection" component={CampaignSelection} />
-                    <Route exact path="/campaign/:campaignKey" component={Campaign} />
-                    <Route exact path="/campaign/:campaignKey/character-selection" component={CampaignCharacterSelection} />
-                    <Route exact path="/campaign/:campaignKey/character/:characterKey/log" component={CampaignLog} />
-                    <Route exact path="/campaign/:campaignKey/character/:characterKey/character" component={CampaignCharacter} />
+                    <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
+                    <Route exact path={routes.campaignRouteTemplate} component={Campaign} />
+                    <Route exact path={routes.campaignCharacterSelectionRouteTemplate} component={CampaignCharacterSelection} />
+                    <Route exact path={routes.campaignLogRouteTemplate} component={CampaignLog} />
+                    <Route exact path={routes.campaignCharacterRouteTemplate} component={CampaignCharacter} />
                 </Switch>
             </div>
         </div>
