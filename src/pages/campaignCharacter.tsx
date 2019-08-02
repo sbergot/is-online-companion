@@ -6,6 +6,7 @@ import { CharacterSheet } from "../components/character/characterSheet";
 import { DataServiceContainer } from "../containers/dataService";
 import { useLens } from "../services/functors";
 import { CampaignCharacterRouteParams } from "../services/routes";
+import { MainPanel } from "../components/layout";
 
 export function CampaignCharacter({ match }: RouteComponentProps<CampaignCharacterRouteParams>) {
     const dataService = DataServiceContainer.useContainer();
@@ -13,5 +14,5 @@ export function CampaignCharacter({ match }: RouteComponentProps<CampaignCharact
     const initialCharacter = dataService.characters.values[characterKey];
     const lens = useLens<Character>(initialCharacter.data);
 
-    return <CharacterSheet lens={lens} />;
+    return <MainPanel><CharacterSheet lens={lens} /></MainPanel>;
 }

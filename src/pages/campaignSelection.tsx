@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { History } from "history";
 
-import { Section } from "../components/layout";
+import { Section, MainPanel } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { EntryItem, Label, TextInput, Button } from "../components/controls";
 import { Campaign } from "../contracts/campaign";
@@ -15,7 +15,7 @@ export function CampaignSelection({ history }: { history: History }) {
         history.push(routeToCampaign({campaignKey: c.key}));
     }
 
-    return <>
+    return <MainPanel>
         <Section title="Campaign selection">
             <div className="flex">
                 <div className="flex-grow p-4">
@@ -33,7 +33,7 @@ export function CampaignSelection({ history }: { history: History }) {
                 </div>
             </div>
         </Section>
-    </>;
+    </MainPanel>;
 }
 
 function CampaignForm({ onSubmit }: { onSubmit: (c: KeyEntry<Campaign>) => void }) {

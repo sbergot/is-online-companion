@@ -11,28 +11,23 @@ interface EditorProps<T extends AnyLogBlock> {
 
 interface LogBlockProps {
     entry: StreamEntry<AnyLogBlock>;
-    onDelete(entry: StreamEntry<AnyLogBlock>): void;
-    canDelete: boolean;
+    onSelect(entry: StreamEntry<AnyLogBlock>): void;
+    selected: boolean;
 }
 
-export function LogBlock({ entry, onLog, onDelete, canDelete }: LogBlockProps & EditorProps<AnyLogBlock>) {
-    const [editMode, setEditMode] = React.useState(false);
+export function LogBlock({ entry, onSelect, selected }: LogBlockProps) {
     const dataService = DataServiceContainer.useContainer();
     const character = dataService.characters.values[entry.data.characterKey];
-    return <div className="border rounded p-2 mt-2">
+    const classes = [
+        "border border-gray-600 rounded p-2 mt-2 cursor-pointer",
+        selected ? "bg-gray-400" : ""
+    ].join(" ");
+    return <div className={classes} onClick={() => onSelect(entry)}>
         <div className="text-sm text-gray-600 w-full flex justify-between">
             <span>{character.data.name}</span>
             <span>{entry.createdAt.toDateString()}</span>
         </div>
-        {editMode ?
-            <LogBlockEditor
-                onLog={(b) => {onLog(b); setEditMode(false)}}
-                logBlok={entry.data} /> : 
-            <>
-                <LogBlockContent log={entry.data} />
-                <SmallButton onClick={() => setEditMode(true)} >edit</SmallButton>
-                {canDelete ? <SmallButton onClick={() => onDelete(entry)} >delete</SmallButton> : null}
-            </>}
+        <LogBlockContent log={entry.data} />
     </div>
 }
 
@@ -92,7 +87,7 @@ interface LogBlockEditorProps extends EditorProps<AnyLogBlock> {
     logBlok: AnyLogBlock;
 }
 
-function LogBlockEditor({ onLog, logBlok }: LogBlockEditorProps) {
+export function LogBlockEditor({ onLog, logBlok }: LogBlockEditorProps) {
     switch (logBlok.type) {
         case "UserInput":
             return <UserInputEditor

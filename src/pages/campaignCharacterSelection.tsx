@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import { Section } from "../components/layout";
+import { Section, MainPanel } from "../components/layout";
 import { Select, Label, TextInput, Button, EntryItem } from "../components/controls";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { DataServiceContainer } from "../containers/dataService";
@@ -20,31 +20,33 @@ export function CampaignCharacterSelection({ match, history }: RouteComponentPro
 
     function onCharacterSelected(selectedChar: KeyEntry<Character>) {
         campaignService.addCharacter(campaignKey, selectedChar.key);
-        history.push(routeToCampaignCharacter({campaignKey, characterKey: selectedChar.key}))
+        history.push(routeToCampaignCharacter({ campaignKey, characterKey: selectedChar.key }))
     }
 
     const characters = Array.from(campaign.characters).map((c) => dataService.characters.values[c]);
 
-    return <Section title="Character selection">
-        <div className="flex">
-            <div className="flex-grow mr-4">
-                Select a character...
+    return <MainPanel>
+        <Section title="Character selection">
+            <div className="flex">
+                <div className="flex-grow mr-4">
+                    Select a character...
                 <CharacterPicker characters={characters} onSelected={onCharacterSelected} />
-            </div>
-            <div className="flex-grow">
-                ... or create a new one.
+                </div>
+                <div className="flex-grow">
+                    ... or create a new one.
                 <CharacterForm onCreated={onCharacterSelected} />
+                </div>
             </div>
-        </div>
-    </Section>;
+        </Section>
+    </MainPanel>;
 }
 
 function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => void }) {
     const dataService = DataServiceContainer.useContainer();
-    const { state:character, zoom } = useLens(makeDefaultCharacter())
+    const { state: character, zoom } = useLens(makeDefaultCharacter())
     const statOptions = [0, 1, 2, 3].map(i => ({ name: i.toString(), value: i }));
     const statLens = zoom("stats");
-    const {state:name, setState:setName} = zoom("name");
+    const { state: name, setState: setName } = zoom("name");
 
     function onSubmit() {
         const entry = dataService.characters.saveNew(character);
@@ -61,7 +63,7 @@ function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => v
             <div className="flex flex-wrap justify-around my-2">
                 {Object.keys(character.stats).map((key) => {
                     const tkey = key as keyof typeof character.stats;
-                    const {state:value, setState:setValue} = statLens.zoom(tkey);
+                    const { state: value, setState: setValue } = statLens.zoom(tkey);
                     return <div className="mr-2 mt-3 flex flex-col items-center" key={key}>
                         <Select
                             options={statOptions}

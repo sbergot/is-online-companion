@@ -8,18 +8,16 @@ import { CampaignSelection, Campaign, CampaignCharacterSelection, CampaignLog, C
 
 export function Layout() {
     return <Router>
-        <div className="min-h-screen flex items-stretch">
+        <div className="min-h-screen flex">
             <Menu />
-            <div className="max-w-4xl w-full pl-4 pb-4">
-                <Switch>
-                    <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
-                    <Route exact path={routes.campaignRouteTemplate} component={Campaign} />
-                    <Route exact path={routes.campaignCharacterSelectionRouteTemplate} component={CampaignCharacterSelection} />
-                    <Route exact path={routes.campaignLogRouteTemplate} component={CampaignLog} />
-                    <Route exact path={routes.campaignCharacterRouteTemplate} component={CampaignCharacter} />
-                    <Route exact path="" component={CampaignSelection} />
-                </Switch>
-            </div>
+            <Switch>
+                <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
+                <Route exact path={routes.campaignRouteTemplate} component={Campaign} />
+                <Route exact path={routes.campaignCharacterSelectionRouteTemplate} component={CampaignCharacterSelection} />
+                <Route exact path={routes.campaignLogRouteTemplate} component={CampaignLog} />
+                <Route exact path={routes.campaignCharacterRouteTemplate} component={CampaignCharacter} />
+                <Route exact path="" component={CampaignSelection} />
+            </Switch>
         </div>
     </Router>
 }
