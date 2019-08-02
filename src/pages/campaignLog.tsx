@@ -24,14 +24,14 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
     const [selected, setSelected] = React.useState<StreamEntry<AnyLogBlock> | null>(null);
     const [selectedEdited, setSelectedEdited] = React.useState(false);
 
-    function unSelect() {
+    function escapeSelection() {
         setSelected(null);
         setSelectedEdited(false);
     }
 
     function toggleSelected(entry: StreamEntry<AnyLogBlock>) {
         if (selected != null && selected.key === entry.key) {
-            unSelect();
+            escapeSelection();
         } else {
             setSelectedEdited(false);
             setSelected(entry);
@@ -40,7 +40,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
 
     function onRemove(entry: StreamEntry<AnyLogBlock>) {
         logSource.remove(entry);
-        unSelect();
+        escapeSelection();
     }
 
     React.useEffect(() => {
@@ -52,7 +52,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
 
     function onLog(block: AnyLogBlock) {
         logSource.pushNew(block);
-        unSelect();
+        escapeSelection();
     }
 
     function onEditLog(oldEntry: StreamEntry<AnyLogBlock>, newBlock: AnyLogBlock) {
@@ -61,7 +61,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
             data: newBlock
         };
         logSource.edit(newEntry);
-        unSelect();
+        escapeSelection();
     }
 
     function onEdit(entry: StreamEntry<AnyLogBlock>) {
@@ -70,7 +70,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
     }
 
     function onSelectLogType(logType: LogType) {
-        unSelect();
+        escapeSelection();
         setLogType(logType);
     }
 
