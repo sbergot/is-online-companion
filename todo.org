@@ -1,14 +1,9 @@
-* first alpha release to show Shawn Tomkin
-** TODO add credits & confirm that this is ok
-** TODO explain roadmap (better ui, index, map, online storage)
-** TODO ask about design elements (color, font) --> reproduce website?
-
 * data
 ** TODO localstorage events subscription
 to keep multiple tabs in sync (charactersheet, log)
 
 * UI
-** TODO review some other design systems & discuss
+** TODO review some other design systems
 ** TODO improve the character sheet layout
 
 * travels & combat tracks
