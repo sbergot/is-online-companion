@@ -55,7 +55,7 @@ function Credits() {
 }
 
 export function Menu() {
-    return <nav className="bg-gray-300 p-3 flex flex-col">
+    return <nav className="bg-gray-300 p-3 flex flex-col w-full max-w-xs">
         <Credits />
         <Route path={routes.campaignRouteTemplate} component={CampaignMenu} />
         <Route path="/campaign/:campaignKey/character/:characterKey" component={CharacterMenu} />

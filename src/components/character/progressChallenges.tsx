@@ -4,7 +4,7 @@ import { KeyMap } from "../../contracts/persistence";
 import { ProgressChallenge, Rank } from "../../contracts/challenge";
 import { SubSection } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
-import { SmallButton, Label, TextInput } from "../controls";
+import { SmallButton, Label, TextInput, Select } from "../controls";
 import { LensProps, useLens } from "../../services/functors";
 import { TrackMeter } from "./bars";
 import { getProgressStepFromRank, newChallenge, finishChallenge, failChallenge, allRanks, getExperienceFromRank } from "../../services/progressChallenges";
@@ -70,23 +70,18 @@ function VowForm({ onSubmit }: { onSubmit: (vow: ProgressChallenge) => void }) {
     return <div>
         <Label>Description</Label>
         <TextInput value={descr} onChange={setDescr} />
-        <div className="flex items-stretch">
-            <RankSelector lens={rankLens} />
-            <SmallButton onClick={() => onSubmit(newChallenge(descr, rankLens.state))}>Ok</SmallButton>
-        </div>
+        <RankSelector lens={rankLens} />
+        <SmallButton
+            className="mt-2"
+            onClick={() => onSubmit(newChallenge(descr, rankLens.state))}>
+            Create vow
+        </SmallButton>
     </div>
 }
 
 function RankSelector({ lens: { state: value, setState: setRank } }: LensProps<Rank>) {
-    return <div className="flex">
-        {allRanks.map((r) => {
-            const classes = [
-                "border mr-2 w-32 text-center py-2 cursor-pointer",
-                value == r ? "bg-gray-400" : "bg-gray-200"
-            ].join(" ");
-            return <div key={r} onClick={() => setRank(() => r)} className={classes}>
-                {r}
-            </div>
-        })}
-    </div>
+    return <Select
+        options={allRanks.map(r => ({ name: r, value: r }))}
+        value={value}
+        onSelect={v => setRank(() => v)}/>
 }

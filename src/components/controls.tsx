@@ -23,9 +23,9 @@ export interface EntryItemProps {
 export function EntryItem({ entry }: EntryItemProps) {
     return <div className="flex mt-2 py-2 px-4 justify-between rounded-lg border bg-gray-100 hover:shadow">
         <div className="text-xl py-2 pr-8">{entry.data.name}</div>
-        <div className="text-sm text-gray-600 w-48">
-            <div>created: {entry.createdAt.toDateString()}</div>
-            <div>modified: {entry.lastModified.toDateString()}</div>
+        <div className="text-sm text-gray-600 w-40">
+            <div>created: {entry.createdAt.toLocaleDateString("en")}</div>
+            <div>modified: {entry.lastModified.toLocaleDateString("en")}</div>
         </div>
     </div>
 }

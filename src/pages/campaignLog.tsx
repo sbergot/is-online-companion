@@ -7,7 +7,7 @@ import { DataServiceContainer } from "../containers/dataService";
 import { CampaignLogRouteParams } from "../services/routes";
 import { Section, MainPanel } from "../components/layout";
 import { Select, SmallButton } from "../components/controls";
-import { LogBlock } from "../components/log/logContent";
+import { LogBlock, InnerLogBlock } from "../components/log/logContent";
 import { NewLogBlockEditor, LogBlockEditor } from "../components/log/logEditor";
 import { StreamHook } from "../contracts/dataservice";
 import { getLogTypeDescription } from "../services/logHelpers";
@@ -24,12 +24,16 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
     const [selected, setSelected] = React.useState<StreamEntry<AnyLogBlock> | null>(null);
     const [selectedEdited, setSelectedEdited] = React.useState(false);
 
-    function unSelect() { setSelected(null); }
+    function unSelect() {
+        setSelected(null);
+        setSelectedEdited(false);
+    }
 
     function toggleSelected(entry: StreamEntry<AnyLogBlock>) {
         if (selected != null && selected.key === entry.key) {
             unSelect();
         } else {
+            setSelectedEdited(false);
             setSelected(entry);
         }
     }
@@ -44,7 +48,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
             const div = logView.current;
             div.scrollTop = div.scrollHeight;
         }
-    }, [logs])
+    }, [logs, logType])
 
     function onLog(block: AnyLogBlock) {
         logSource.pushNew(block);
@@ -57,12 +61,17 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
             data: newBlock
         };
         logSource.edit(newEntry);
-        setSelectedEdited(false);
         unSelect();
     }
 
-    function onEdit() {
+    function onEdit(entry: StreamEntry<AnyLogBlock>) {
+        setLogType(entry.data.type);
         setSelectedEdited(true);
+    }
+
+    function onSelectLogType(logType: LogType) {
+        unSelect();
+        setLogType(logType);
     }
 
     return <>
@@ -81,7 +90,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
                 <Select
                     options={allLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
                     value={logType}
-                    onSelect={setLogType} />
+                    onSelect={onSelectLogType} />
                 <div className="h-40 pt-2">
                     {selected != null && selectedEdited ?
                         <LogBlockEditor
@@ -94,13 +103,15 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
                 </div>
             </Section>
         </MainPanel>
-        <div className="p-4">
+        <div className="p-4 w-full max-w-xs">
             {selected != null &&
                 <ActionPanel
                     selected={selected}
                     onRemove={onRemove}
                     onEdit={onEdit}
                     logSource={logSource} />}
+            {selectedEdited &&
+                <p className="font-bold mt-2">Editing an entry...</p>}
         </div>
     </>
 }
@@ -114,15 +125,22 @@ interface ActionPanelProps {
 
 function ActionPanel({ selected, logSource, onRemove, onEdit }: ActionPanelProps) {
     const canDeleteSelected = logSource.canRemove(selected);
+    const dataService = DataServiceContainer.useContainer();
+    const character = dataService.characters.values[selected.data.characterKey];
 
-    return <>
-        <SmallButton onClick={() => onEdit(selected)}>
-            edit
-        </SmallButton>
-        {canDeleteSelected ?
-            <SmallButton onClick={() => onRemove(selected)} >
-                delete
-            </SmallButton> :
-            null}
-    </>
+    return <div className="w-full">
+        <InnerLogBlock entry={selected} character={character.data} />
+        <div className="pt-2">
+            <SmallButton
+                className="mr-2"
+                onClick={() => onEdit(selected)}>
+                edit
+            </SmallButton>
+            {canDeleteSelected ?
+                <SmallButton onClick={() => onRemove(selected)} >
+                    delete
+                </SmallButton> :
+                null}
+        </div>
+    </div>
 }

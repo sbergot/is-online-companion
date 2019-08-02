@@ -2,6 +2,7 @@ import * as React from "react";
 import { AnyLogBlock, UserInputLog, DiceRollLog, ChallengeRoll } from "../../contracts/log";
 import { StreamEntry } from "../../contracts/persistence";
 import { DataServiceContainer } from "../../containers/dataService";
+import { Character } from "../../contracts/character";
 
 
 interface LogBlockProps {
@@ -18,12 +19,23 @@ export function LogBlock({ entry, onSelect, selected }: LogBlockProps) {
         selected ? "bg-gray-400" : ""
     ].join(" ");
     return <div className={classes} onClick={() => onSelect(entry)}>
+        <InnerLogBlock entry={entry} character={character.data} />
+    </div>
+}
+
+interface InnerLogBlockProps {
+    entry: StreamEntry<AnyLogBlock>;
+    character: Character;
+}
+
+export function InnerLogBlock({ entry, character }: InnerLogBlockProps) {
+    return <>
         <div className="text-sm text-gray-600 w-full flex justify-between">
-            <span>{character.data.name}</span>
-            <span>{entry.createdAt.toDateString()}</span>
+            <span>{character.name}</span>
+            <span>{entry.createdAt.toLocaleString("en")}</span>
         </div>
         <LogBlockContent log={entry.data} />
-    </div>
+    </>
 }
 
 function LogBlockContent({ log }: { log: AnyLogBlock }) {
