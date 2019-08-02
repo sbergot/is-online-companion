@@ -17,6 +17,7 @@ export function Layout() {
                     <Route exact path={routes.campaignCharacterSelectionRouteTemplate} component={CampaignCharacterSelection} />
                     <Route exact path={routes.campaignLogRouteTemplate} component={CampaignLog} />
                     <Route exact path={routes.campaignCharacterRouteTemplate} component={CampaignCharacter} />
+                    <Route exact path="" component={CampaignSelection} />
                 </Switch>
             </div>
         </div>

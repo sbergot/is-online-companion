@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TrackProgress } from "../../contracts/character";
+import { TrackProgress } from "../../contracts/challenge";
 import { Lens } from "../../services/functors";
 import { SmallButton } from "../controls";
 

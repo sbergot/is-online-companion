@@ -1,11 +1,15 @@
 import * as React from "react";
-import { DataServiceContainer } from "../containers/dataService";
 import { RouteComponentProps } from "react-router-dom";
+
+import { AnyLogBlock, LogType } from "../contracts/log";
+import { StreamEntry } from "../contracts/persistence";
+import { DataServiceContainer } from "../containers/dataService";
 import { CampaignLogRouteParams } from "../services/routes";
 import { Section } from "../components/layout";
-import { AnyLogBlock } from "../contracts/log";
-import { StreamEntry } from "../contracts/persistence";
-import { LogBlock, UserInputEditor } from "../components/log";
+import { Select } from "../components/controls";
+import { LogBlock, NewLogBlockEditor } from "../components/log";
+
+const allLogTypes: LogType[] = [ "UserInput", "DiceRoll" ];
 
 export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParams>) {
     const dataService = DataServiceContainer.useContainer();
@@ -13,6 +17,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
     const logSource = dataService.logs(campaignKey);
     const logs = logSource.values;
     const logView = React.useRef<HTMLDivElement>(null);
+    const [logType, setLogType] = React.useState<LogType>("UserInput");
 
     React.useEffect(() => {
         if (logView.current) {
@@ -43,8 +48,12 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
                 />
             })}
         </div>
+        <Select
+            options={allLogTypes.map(lt => ({ name: lt, value: lt }))}
+            value={logType}
+            onSelect={setLogType} />
         <div>
-            <UserInputEditor onLog={onLog} characterKey={characterKey} initialText="" />
+            <NewLogBlockEditor onLog={onLog} characterKey={characterKey} logType={logType} />
         </div>
     </Section>
 }

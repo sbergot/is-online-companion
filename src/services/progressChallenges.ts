@@ -1,4 +1,4 @@
-import { Rank, ProgressChallenge } from "../contracts/character";
+import { Rank, ProgressChallenge } from "../contracts/challenge";
 
 export const allRanks: Rank[] = ["troublesome", "dangerous", "formidable", "extreme", "epic"];
 

@@ -93,8 +93,9 @@ export interface SelectProps<T> {
     onSelect: (v: T) => void;
 }
 
-export function Select<T>({ options, value, onSelect }: SelectProps<T>) {
-    return <div className="flex">
+export function Select<T>({ options, value, onSelect, className }: SelectProps<T> & ClassProp) {
+    const classes = ["flex", className || ""].join(" ");
+    return <div className={classes}>
         {options.map(({name, value: v}, idx) => {
             const classes = [
                 "py-2 px-3 mr-px",

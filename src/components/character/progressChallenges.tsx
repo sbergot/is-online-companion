@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { KeyMap } from "../../contracts/persistence";
-import { ProgressChallenge, Rank } from "../../contracts/character";
+import { ProgressChallenge, Rank } from "../../contracts/challenge";
 import { SubSection } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
 import { SmallButton, Label, TextInput } from "../controls";

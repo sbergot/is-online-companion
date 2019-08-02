@@ -1,12 +1,15 @@
 * journal
 
-** TODO dice roll log block
-select stat/resource & bonus
-roll button
-result display
-log button --> add to log
-*** TODO form
-*** TODO log block component
+* action panel
+the right part of the screen is the action panel
+it contains actions relative to the selected item
+if not item is selected it is empty
+** TODO log action panel
+edit / remove
+when editing, the editor is at the bottom of the screen (not inline)
+
+** TODO character sheet action panel
+progress track actions
 
 * menus
 ** TODO place resources & momentum in the left bar?

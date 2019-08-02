@@ -1,4 +1,5 @@
 import { KeyMap } from "./persistence";
+import { TrackProgress, Rank, ProgressChallenge } from "./challenge";
 
 export interface Character {
     name: string;
@@ -10,16 +11,6 @@ export interface Character {
     bonds: TrackProgress;
     vows: KeyMap<ProgressChallenge>;
     assets: Asset[];
-}
-
-export type TrackProgress = number;
-export type Rank = "troublesome" | "dangerous" | "formidable" | "extreme" | "epic";
-
-export interface ProgressChallenge {
-    description: string;
-    rank: Rank;
-    track: TrackProgress;
-    finished: boolean;
 }
 
 export interface Debilities {
@@ -57,6 +48,8 @@ export interface Status {
     supply: number;
 }
 
+export type StatusKey = keyof Status;
+
 export interface Stats {
     edge: number;
     heart: number;
@@ -64,6 +57,8 @@ export interface Stats {
     shadow: number;
     wits: number;
 }
+
+export type StatKey = keyof Stats;
 
 export interface Asset {
     name: string;

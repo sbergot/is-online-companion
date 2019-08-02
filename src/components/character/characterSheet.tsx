@@ -1,6 +1,7 @@
 import * as React from "react";
 
-import { Character, Status, TrackProgress, Debilities } from "../../contracts/character";
+import { Character, Status, Debilities } from "../../contracts/character";
+import { TrackProgress } from "../../contracts/challenge";
 import { CheckBox } from "../controls";
 import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "../layout";

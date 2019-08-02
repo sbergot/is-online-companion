@@ -2,7 +2,7 @@ import { KeyEntry, KeyMap, KeyMapSource } from "../../contracts/persistence";
 import { newEntry } from "./shared";
 import { reviver, replacer } from "./serialization";
 
-export class LocalStorageDataSet<T> implements KeyMapSource<T> {
+export class LocalStorageKeyMapSource<T> implements KeyMapSource<T> {
     constructor(private key: string) {}
 
     loadAll(): KeyMap<T> {

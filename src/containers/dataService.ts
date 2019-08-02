@@ -3,14 +3,14 @@ import { createContainer } from "unstated-next";
 
 import { KeyEntry, KeyMapSource, StreamSource, StreamEntry } from "../contracts/persistence";
 import { DataService, KeyMapHook, StreamHook } from "../contracts/dataservice";
-import { LocalStorageDataSet } from "../services/persistence/localStorageDataSet";
+import { LocalStorageKeyMapSource } from "../services/persistence/localStorageKeyMapSource";
 import { LocalStorageStreamSource } from "../services/persistence/streamSource";
 
 function useDataService(): DataService {
     return {
-        campaigns: wrapKeyMap(new LocalStorageDataSet("campaigns")),
-        characters: wrapKeyMap(new LocalStorageDataSet("characters")),
-        logs: (campaignName: string) => wrapStream(new LocalStorageStreamSource('logs', campaignName, 3))
+        campaigns: wrapKeyMap(new LocalStorageKeyMapSource("campaigns")),
+        characters: wrapKeyMap(new LocalStorageKeyMapSource("characters")),
+        logs: (campaignName: string) => wrapStream(new LocalStorageStreamSource('logs', campaignName, 30))
     }
 }
 
