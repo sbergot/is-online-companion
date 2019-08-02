@@ -99,7 +99,7 @@ export function Select<T>({ options, value, onSelect, className }: SelectProps<T
         {options.map(({name, value: v}, idx) => {
             const classes = [
                 "py-2 px-3 mr-px",
-                v == value ? "bg-blue-500" : "bg-gray-500 hover:bg-gray-400",
+                v == value ? "bg-blue-500 text-white" : "bg-gray-500 hover:bg-gray-400",
                 idx == 0 ? "rounded-l" : "",
                 idx == (options.length - 1) ? "rounded-r" : ""
             ].join(" ");

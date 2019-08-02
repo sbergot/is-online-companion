@@ -7,8 +7,10 @@ import { DataServiceContainer } from "../containers/dataService";
 import { CampaignLogRouteParams } from "../services/routes";
 import { Section, MainPanel } from "../components/layout";
 import { Select, SmallButton } from "../components/controls";
-import { LogBlock, NewLogBlockEditor, LogBlockEditor } from "../components/log";
+import { LogBlock } from "../components/log/logContent";
+import { NewLogBlockEditor, LogBlockEditor } from "../components/log/logEditor";
 import { StreamHook } from "../contracts/dataservice";
+import { getLogTypeDescription } from "../services/logHelpers";
 
 const allLogTypes: LogType[] = ["UserInput", "DiceRoll"];
 
@@ -66,7 +68,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
     return <>
         <MainPanel>
             <Section className="flex flex-col justify-between h-full" title="Log">
-                <div className="h-64 overflow-y-auto flex-grow" ref={logView} >
+                <div className="h-64 overflow-y-auto flex-grow mb-2 pr-2" ref={logView} >
                     {logs.map(l => {
                         return <LogBlock
                             key={l.key}
@@ -77,14 +79,14 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
                     })}
                 </div>
                 <Select
-                    options={allLogTypes.map(lt => ({ name: lt, value: lt }))}
+                    options={allLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
                     value={logType}
                     onSelect={setLogType} />
-                <div>
+                <div className="h-40 pt-2">
                     {selected != null && selectedEdited ?
                         <LogBlockEditor
                             onLog={(newBlock) => onEditLog(selected, newBlock)}
-                            logBlok={selected.data}/> :
+                            logBlok={selected.data} /> :
                         <NewLogBlockEditor
                             onLog={onLog}
                             characterKey={characterKey}
@@ -93,7 +95,7 @@ export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParam
             </Section>
         </MainPanel>
         <div className="p-4">
-            {selected != null && 
+            {selected != null &&
                 <ActionPanel
                     selected={selected}
                     onRemove={onRemove}

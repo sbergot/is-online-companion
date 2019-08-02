@@ -1,86 +1,11 @@
 import * as React from "react";
-import { AnyLogBlock, UserInputLog, LogType, DiceRollLog, RollType, ChallengeRoll } from "../contracts/log";
-import { StreamEntry } from "../contracts/persistence";
-import { DataServiceContainer } from "../containers/dataService";
-import { SmallButton, Select } from "./controls";
-import { StatKey, StatusKey } from "../contracts/character";
+import { AnyLogBlock, LogType, UserInputLog, DiceRollLog, RollType } from "../../contracts/log";
+import { SmallButton, Select } from "../controls";
+import { StatKey, StatusKey } from "../../contracts/character";
+import { DataServiceContainer } from "../../containers/dataService";
 
 interface EditorProps<T extends AnyLogBlock> {
     onLog(block: T): void;
-}
-
-interface LogBlockProps {
-    entry: StreamEntry<AnyLogBlock>;
-    onSelect(entry: StreamEntry<AnyLogBlock>): void;
-    selected: boolean;
-}
-
-export function LogBlock({ entry, onSelect, selected }: LogBlockProps) {
-    const dataService = DataServiceContainer.useContainer();
-    const character = dataService.characters.values[entry.data.characterKey];
-    const classes = [
-        "border border-gray-600 rounded p-2 mt-2 cursor-pointer",
-        selected ? "bg-gray-400" : ""
-    ].join(" ");
-    return <div className={classes} onClick={() => onSelect(entry)}>
-        <div className="text-sm text-gray-600 w-full flex justify-between">
-            <span>{character.data.name}</span>
-            <span>{entry.createdAt.toDateString()}</span>
-        </div>
-        <LogBlockContent log={entry.data} />
-    </div>
-}
-
-function LogBlockContent({ log }: { log: AnyLogBlock }) {
-    switch (log.type) {
-        case "UserInput":
-            return <UserInputLogBlock block={log} />;
-        case "DiceRoll":
-            return <DiceRollLogBlock block={log} />;
-        default:
-            return null;
-    }
-}
-
-function UserInputLogBlock({ block }: { block: UserInputLog }) {
-    return <p className="whitespace-pre-wrap" >{block.payload.text}</p>
-}
-
-function getActionScore(challenge: ChallengeRoll): number {
-    return challenge.roll.actionDie + challenge.rollTypeStat + challenge.bonus;
-}
-
-function getResult(challenge: ChallengeRoll): string {
-    const actionScore = getActionScore(challenge);
-    const success = challenge.roll.challengeDice.filter(cd => cd < actionScore).length;
-    switch(success) {
-        case 0:
-            return "miss";
-        case 1:
-            return "weak hit";
-        case 2:
-            return "strong hit";
-        default:
-            return "impossible";
-    }
-
-}
-
-function DiceRollLogBlock({ block }: { block: DiceRollLog }) {
-    const challenge = block.payload;
-    const challengeBonusDisplay = challenge.bonus ? " + " + challenge.bonus : ""
-    return <>
-        <p>roll + {challenge.rollType}{challengeBonusDisplay}</p>
-        <p>
-            {challenge.roll.actionDie} + {challenge.rollTypeStat}{challengeBonusDisplay}
-             = {getActionScore(challenge)}
-            <span className="font-semibold mx-2">vs</span>{" "}
-            {challenge.roll.challengeDice[0]} & {challenge.roll.challengeDice[1]}
-        </p>
-        <p className="font-semibold">
-            {getResult(challenge)}
-        </p>
-    </>
 }
 
 interface LogBlockEditorProps extends EditorProps<AnyLogBlock> {
@@ -136,17 +61,17 @@ function UserInputEditor({ onLog, characterKey, initialText }: UserInputEditorPr
         setinput("");
     }
 
-    return <>
-        <div>
+    return <div className="h-full flex flex-col items-start">
+        <div className="flex-grow">
             <textarea className="resize-none border"
                 value={input}
                 onChange={(e) => setinput(e.target.value)}
-                rows={5}
+                rows={4}
                 cols={70}
             />
         </div>
         <SmallButton onClick={onClick}>Log</SmallButton>
-    </>
+    </div>
 }
 
 interface DiceRollEditorProps extends EditorProps<DiceRollLog> {
@@ -196,19 +121,21 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
         });
     }
 
-    return <div className="flex flex-wrap">
-        <Select className="mr-2"
-            options={statsRollTypes.map(rt => ({ name: `${rt} (${getStat(rt)})`, value: rt }))}
-            value={rollType as StatKey}
-            onSelect={onStatSelect} />
-        <Select className="mr-2"
-            options={statusRollTypes.map(rt => ({ name: `${rt} (${getStatus(rt)})`, value: rt }))}
-            value={rollType as StatusKey}
-            onSelect={onStatusSelect} />
-        <Select className="mr-2"
-            options={[0, 1, 2].map(b => ({ name: b.toString(), value: b.toString() }))}
-            value={bonus.toString()}
-            onSelect={(b) => setBonus(parseInt(b))} />
+    return <div className="h-full flex flex-col items-start">
+        <div className="flex flex-wrap flex-grow content-around mb-2">
+            <Select className="mr-2"
+                options={statsRollTypes.map(rt => ({ name: `${rt} (${getStat(rt)})`, value: rt }))}
+                value={rollType as StatKey}
+                onSelect={onStatSelect} />
+            <Select className="mr-2"
+                options={statusRollTypes.map(rt => ({ name: `${rt} (${getStatus(rt)})`, value: rt }))}
+                value={rollType as StatusKey}
+                onSelect={onStatusSelect} />
+            <Select className="mr-2"
+                options={[0, 1, 2].map(b => ({ name: b.toString(), value: b.toString() }))}
+                value={bonus.toString()}
+                onSelect={(b) => setBonus(parseInt(b))} />
+        </div>
         <SmallButton onClick={onSubmit}>Log</SmallButton>
     </div>
 }

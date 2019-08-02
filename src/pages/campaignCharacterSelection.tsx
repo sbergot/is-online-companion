@@ -9,7 +9,7 @@ import { Character } from "../contracts/character";
 import { KeyEntry } from "../contracts/persistence";
 import { routeToCampaignCharacter, CampaignCharacterSelectionRouteParams } from "../services/routes";
 import { useLens } from "../services/functors";
-import { makeDefaultCharacter } from "../services/character";
+import { makeDefaultCharacter } from "../services/characterHelpers";
 
 export function CampaignCharacterSelection({ match, history }: RouteComponentProps<CampaignCharacterSelectionRouteParams>) {
     const campaignService = CampaignServiceContainer.useContainer();
