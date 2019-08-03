@@ -3,10 +3,10 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { CharacterSheet } from "../components/character/characterSheet";
 import { DataServiceContainer } from "../containers/dataService";
-import { CharacterSheetRouteParams } from "../services/routes";
+import { CampaignKeyParam, CharacterKeyParam } from "../services/routes";
 import { MainPanel } from "../components/layout";
 
-export function CharacterSheetPage({ match }: RouteComponentProps<CharacterSheetRouteParams>) {
+export function CharacterSheetPage({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { characterKey } = match.params;
     const charactersSource = dataService.characters;

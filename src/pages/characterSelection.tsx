@@ -7,11 +7,11 @@ import { CampaignServiceContainer } from "../containers/campaign";
 import { DataServiceContainer } from "../containers/dataService";
 import { Character } from "../contracts/character";
 import { KeyEntry } from "../contracts/persistence";
-import { routeToCharacterSheet, CharacterSelectionRouteParams } from "../services/routes";
+import { characterSheetRoute, CampaignKeyParam } from "../services/routes";
 import { useLens } from "../services/functors";
 import { makeDefaultCharacter } from "../services/characterHelpers";
 
-export function CharacterSelection({ match, history }: RouteComponentProps<CharacterSelectionRouteParams>) {
+export function CharacterSelection({ match, history }: RouteComponentProps<CampaignKeyParam>) {
     const campaignService = CampaignServiceContainer.useContainer();
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey } = match.params;
@@ -20,7 +20,7 @@ export function CharacterSelection({ match, history }: RouteComponentProps<Chara
 
     function onCharacterSelected(selectedChar: KeyEntry<Character>) {
         campaignService.addCharacter(campaignKey, selectedChar.key);
-        history.push(routeToCharacterSheet({ campaignKey, characterKey: selectedChar.key }))
+        history.push(characterSheetRoute.to({ campaignKey, characterKey: selectedChar.key }))
     }
     const characterSource = dataService.characters;
     const characters = Array.from(campaign.characters).map((c) => characterSource.values[c]);

@@ -32,13 +32,13 @@ function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & 
         <MenuTitle>
             character > {character.data.name}
         </MenuTitle>
-        <InlineLink to={routes.routeToCharacterSelection({ campaignKey })}>
+        <InlineLink to={routes.characterSelectionRoute.to({ campaignKey })}>
             select another character
             </InlineLink>
-        <InlineLink to={routes.routeToCharacterSheet({ campaignKey, characterKey })}>
+        <InlineLink to={routes.characterSheetRoute.to({ campaignKey, characterKey })}>
             go to character sheet
         </InlineLink>
-        <InlineLink to={routes.routeToLog({ campaignKey, characterKey })}>
+        <InlineLink to={routes.logRoute.to({ campaignKey, characterKey })}>
             go to log
         </InlineLink>
     </>
@@ -57,7 +57,7 @@ function Credits() {
 export function Menu() {
     return <nav className="bg-gray-300 p-3 flex flex-col w-full max-w-xs">
         <Credits />
-        <Route path={routes.campaignRouteTemplate} component={CampaignMenu} />
+        <Route path={routes.campaignRoute.template} component={CampaignMenu} />
         <Route path="/campaign/:campaignKey/character/:characterKey" component={CharacterMenu} />
     </nav>
 }

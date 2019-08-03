@@ -7,12 +7,12 @@ import { CampaignServiceContainer } from "../containers/campaign";
 import { EntryItem, Label, TextInput, Button } from "../components/controls";
 import { Campaign } from "../contracts/campaign";
 import { KeyEntry } from "../contracts/persistence";
-import { routeToCampaign } from "../services/routes";
+import { campaignRoute } from "../services/routes";
 
 export function CampaignSelection({ history }: { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();
     function onClick(c: KeyEntry<Campaign>) {
-        history.push(routeToCampaign({campaignKey: c.key}));
+        history.push(campaignRoute.to({campaignKey: c.key}));
     }
 
     return <MainPanel>
@@ -21,7 +21,7 @@ export function CampaignSelection({ history }: { history: History }) {
                 <div className="flex-grow p-4">
                     Select a campaign...
                     {Object.values(campaignService.campaigns).map((c) => {
-                        const route = routeToCampaign({campaignKey: c.key});
+                        const route = campaignRoute.to({campaignKey: c.key});
                         return <Link to={route} key={c.key}>
                             <EntryItem entry={c} />
                         </Link>

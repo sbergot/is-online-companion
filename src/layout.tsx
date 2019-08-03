@@ -12,10 +12,10 @@ export function Layout() {
             <Menu />
             <Switch>
                 <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
-                <Route exact path={routes.campaignRouteTemplate} component={RootPage} />
-                <Route exact path={routes.characterSelectionRouteTemplate} component={CharacterSelection} />
-                <Route exact path={routes.logRouteTemplate} component={LogPage} />
-                <Route exact path={routes.characterSheetRouteTemplate} component={CharacterSheetPage} />
+                <Route exact path={routes.campaignRoute.template} component={RootPage} />
+                <Route exact path={routes.characterSelectionRoute.template} component={CharacterSelection} />
+                <Route exact path={routes.logRoute.template} component={LogPage} />
+                <Route exact path={routes.characterSheetRoute.template} component={CharacterSheetPage} />
                 <Route exact path="" component={RootPage} />
             </Switch>
         </div>

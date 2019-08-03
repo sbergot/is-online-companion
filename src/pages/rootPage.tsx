@@ -3,9 +3,9 @@ import * as React from "react";
 import { Section, MainPanel } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { RouteComponentProps } from "react-router-dom";
-import { routeToCharacterSheet, routeToCharacterSelection, CampaignRouteParams } from "../services/routes";
+import { characterSheetRoute, characterSelectionRoute, CampaignKeyParam } from "../services/routes";
 
-export function RootPage({ match, history }: RouteComponentProps<CampaignRouteParams>) {
+export function RootPage({ match, history }: RouteComponentProps<CampaignKeyParam>) {
     const campaignService = CampaignServiceContainer.useContainer();
     const { campaignKey } = match.params;
     const campaignEntry = campaignService.campaigns[campaignKey];
@@ -13,9 +13,9 @@ export function RootPage({ match, history }: RouteComponentProps<CampaignRoutePa
     const initialCharacter = campaign.lastUsedCharacter;
 
     if (initialCharacter) {
-        history.push(routeToCharacterSheet({ campaignKey, characterKey: initialCharacter }))
+        history.push(characterSheetRoute.to({ campaignKey, characterKey: initialCharacter }))
     } else {
-        history.push(routeToCharacterSelection({ campaignKey }));
+        history.push(characterSelectionRoute.to({ campaignKey }));
     }
 
     return <MainPanel>

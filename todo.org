@@ -20,6 +20,9 @@ user should be able to reference index elements in the log
 ** TODO review some other design systems
 ** TODO improve the character sheet layout
 
+* code organization
+** TODO split app & persistence (& controls?)
+
 * images
 add images to campaigns & character
 store them in indexed db (using idb-keyval)
