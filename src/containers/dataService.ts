@@ -23,7 +23,14 @@ function useDataService(): DataService {
 function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
     const lens = useLens(source.loadAll());
     React.useEffect(() => {
-        function refresh() { lens.setState(() => source.loadAll()) }
+        function refresh() {
+            console.log("refresh")
+            lens.setState(() => {
+                const data = source.loadAll();
+                console.log("load all", data);
+                return data
+            });
+        }
         source.onUpdate(refresh);
         return () => {
             source.unRegister(refresh);

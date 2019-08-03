@@ -1,4 +1,4 @@
-export { RootPage } from "./rootPage";
+export { CharacterAutoSelection } from "./characterAutoSelectionPage";
 export { CharacterSheetPage } from "./characterSheetPage";
 export { CharacterSelection } from "./characterSelection";
 export { LogPage } from "./logPage";

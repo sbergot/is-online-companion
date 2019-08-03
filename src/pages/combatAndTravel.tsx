@@ -8,7 +8,7 @@ import { MainPanel } from "../components/layout";
 export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey, characterKey } = match.params;
-
+    console.log("render c&t", dataService.travels.lens.state)
     return <MainPanel>
         <Challenge type="travel" lens={dataService.travels.lens} />
         <Challenge type="combat" lens={dataService.combats.lens} />

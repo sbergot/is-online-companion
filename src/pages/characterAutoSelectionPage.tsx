@@ -5,7 +5,7 @@ import { CampaignServiceContainer } from "../containers/campaign";
 import { RouteComponentProps } from "react-router-dom";
 import { characterSheetRoute, characterSelectionRoute, CampaignKeyParam } from "../services/routes";
 
-export function RootPage({ match, history }: RouteComponentProps<CampaignKeyParam>) {
+export function CharacterAutoSelection({ match, history }: RouteComponentProps<CampaignKeyParam>) {
     const campaignService = CampaignServiceContainer.useContainer();
     const { campaignKey } = match.params;
     const campaignEntry = campaignService.campaigns[campaignKey];

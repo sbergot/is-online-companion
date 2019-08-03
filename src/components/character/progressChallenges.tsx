@@ -9,7 +9,6 @@ import { LensProps, useLens, Lens } from "../../services/functors";
 import { TrackMeter } from "./bars";
 import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, challengeResources } from "../../services/progressChallenges";
 import { SetState } from "@staltz/use-profunctor-state";
-import { KeyMapHook } from "../../contracts/dataservice";
 
 interface ChallengeProps<T extends ChallengeType> {
     lens: Lens<KeyMap<ProgressChallenge<T>>>

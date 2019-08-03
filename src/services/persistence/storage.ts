@@ -5,6 +5,12 @@ export interface KeyValueStore {
     unRegister(cb: () => void): void;
 }
 
+const registered: Function[] = [];
+
+window.addEventListener("storage", () => {
+    registered.forEach(cb => cb());
+});
+
 export class LocalStorage implements KeyValueStore {
     set(key: string, value: string): void {
         localStorage[key] = value;
@@ -15,10 +21,11 @@ export class LocalStorage implements KeyValueStore {
     }
 
     onUpdate(cb: () => void) {
-        window.addEventListener("storage", cb);
+        registered.push(cb);
     }
 
     unRegister(cb: () => void): void {
-        window.removeEventListener("storage", cb);
+        const idx = registered.findIndex((e) => e===cb);
+        if (idx >= 0) { registered.splice(idx, 1); }
     }
 }
