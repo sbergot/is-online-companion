@@ -9,7 +9,7 @@ export interface Character {
     experience: number;
     debilities: Debilities;
     bonds: TrackProgress;
-    vows: KeyMap<ProgressChallenge>;
+    vows: KeyMap<ProgressChallenge<"vow">>;
     assets: Asset[];
 }
 

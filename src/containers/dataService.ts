@@ -14,6 +14,8 @@ function useDataService(): DataService {
     return {
         campaigns: wrapKeyMap(new KeyMapSource(storage, "campaigns")),
         characters: wrapKeyMap(new KeyMapSource(storage, "characters")),
+        combats: wrapKeyMap(new KeyMapSource(storage, "combats")),
+        travels: wrapKeyMap(new KeyMapSource(storage, "travels")),
         logs: (campaignName: string) => wrapStream(new StreamSource(storage, 'logs', campaignName, 30))
     }
 }
@@ -46,7 +48,7 @@ function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
     }
 
     return {
-        values: lens.state,
+        lens,
         getEntryLens,
         saveNew(data: T) {
             const newEntry = source.saveNew(data);

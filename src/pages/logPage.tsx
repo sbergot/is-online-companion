@@ -126,7 +126,7 @@ interface ActionPanelProps {
 function ActionPanel({ selected, logSource, onRemove, onEdit }: ActionPanelProps) {
     const canDeleteSelected = logSource.canRemove(selected);
     const dataService = DataServiceContainer.useContainer();
-    const character = dataService.characters.values[selected.data.characterKey];
+    const character = dataService.characters.lens.state[selected.data.characterKey];
 
     return <div className="w-full">
         <InnerLogBlock entry={selected} character={character.data} />

@@ -7,7 +7,7 @@ import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "../layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 import { Lens } from "../../services/functors";
-import { Vows } from "./progressChallenges";
+import { Challenge } from "./progressChallenges";
 
 export interface CharacterSheetProps {
     character: Character;
@@ -41,7 +41,7 @@ export function CharacterSheet({lens: {state: character, zoom}}: {lens: Lens<Cha
         </Section>
         <Section title="Tracks">
             <Bonds lens={zoom("bonds")} />
-            <Vows lens={zoom("vows")} setExp={zoom("experience").setState} />
+            <Challenge lens={zoom("vows")} setExp={zoom("experience").setState} type="vow" />
         </Section>
         <Section title="Debilities">
             <Debilities lens={zoom("debilities")} />

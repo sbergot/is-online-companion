@@ -3,9 +3,10 @@ import { Campaign } from "./campaign";
 import { Character } from "./character";
 import { AnyLogBlock } from "./log";
 import { Lens } from "../services/functors";
+import { ProgressChallenge } from "./challenge";
 
 export interface KeyMapHook<T> {
-    values: KeyMap<T>;
+    lens: Lens<KeyMap<T>>;
     getEntryLens(key: string): Lens<KeyEntry<T>>;
     saveNew(data: T): KeyEntry<T>;
     save(entry: KeyEntry<T>): KeyEntry<T>;
@@ -22,5 +23,7 @@ export interface StreamHook<T> {
 export interface DataService {
     campaigns: KeyMapHook<Campaign>;
     characters: KeyMapHook<Character>;
+    combats: KeyMapHook<ProgressChallenge<"combat">>;
+    travels: KeyMapHook<ProgressChallenge<"travel">>;
     logs: (campaignName: string) => StreamHook<AnyLogBlock>;
 }

@@ -87,7 +87,7 @@ function rollDie(i: number) {
 
 function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
     const dataService = DataServiceContainer.useContainer();
-    const character = dataService.characters.values[characterKey];
+    const character = dataService.characters.lens.state[characterKey];
     const [rollType, setRollType] = React.useState<RollType>("edge");
     const [bonus, setBonus] = React.useState(0);
     const [rollTypeStat, setRollTypeStat] = React.useState(getStat("edge"));

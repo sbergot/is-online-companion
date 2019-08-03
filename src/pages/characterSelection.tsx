@@ -23,7 +23,7 @@ export function CharacterSelection({ match, history }: RouteComponentProps<Campa
         history.push(characterSheetRoute.to({ campaignKey, characterKey: selectedChar.key }))
     }
     const characterSource = dataService.characters;
-    const characters = Array.from(campaign.characters).map((c) => characterSource.values[c]);
+    const characters = Array.from(campaign.characters).map((c) => characterSource.lens.state[c]);
 
     return <MainPanel>
         <Section title="Character selection">

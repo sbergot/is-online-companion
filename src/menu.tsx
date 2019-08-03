@@ -13,7 +13,7 @@ function MenuTitle({ children }: { children: React.ReactText[] }) {
 function CampaignMenu({ match }: RouteComponentProps<routes.CampaignKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey } = match.params;
-    const campaign = dataService.campaigns.values[campaignKey];
+    const campaign = dataService.campaigns.lens.state[campaignKey];
     return campaign ? <>
         <MenuTitle>
             campaign > {campaign.data.name}
@@ -27,7 +27,7 @@ function CampaignMenu({ match }: RouteComponentProps<routes.CampaignKeyParam>) {
 function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & routes.CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey, characterKey } = match.params;
-    const character = dataService.characters.values[characterKey];
+    const character = dataService.characters.lens.state[characterKey];
     return <>
         <MenuTitle>
             character > {character.data.name}

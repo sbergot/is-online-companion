@@ -1,67 +1,59 @@
-import { Rank, ProgressChallenge } from "../contracts/challenge";
+import { Rank, ProgressChallenge, ChallengeType } from "../contracts/challenge";
 
 export const allRanks: Rank[] = ["troublesome", "dangerous", "formidable", "extreme", "epic"];
 
-export function getProgressStepFromRank(rank: Rank): number {
-    switch (rank) {
-        case 'troublesome':
-            return 12
-        case 'dangerous':
-            return 8
-        case 'formidable':
-            return 4
-        case 'extreme':
-            return 2
-        case 'epic':
-            return 1
-        default:
-            throw new Error("unknow rank: " + rank);
-    }
+interface RankStats {
+    progress: number;
+    next: Rank;
+    experience: number;
 }
 
-export function getNextRank(rank: Rank): Rank {
-    switch (rank) {
-        case 'troublesome':
-            return 'dangerous'
-        case 'dangerous':
-            return 'formidable'
-        case 'formidable':
-            return 'extreme'
-        case 'extreme':
-            return 'epic'
-        case 'epic':
-            return 'epic'
-        default:
-            throw new Error("unknow rank: " + rank);
-    }
+export const rankStats: Record<Rank, RankStats> = {
+    troublesome: {
+        progress: 12,
+        next: "dangerous",
+        experience: 1
+    },
+    dangerous: {
+        progress: 8,
+        next: "formidable",
+        experience: 2
+    },
+    formidable: {
+        progress: 4,
+        next: "extreme",
+        experience: 3
+    },
+    extreme: {
+        progress: 2,
+        next: "epic",
+        experience: 4
+    },
+    epic: {
+        progress: 1,
+        next: "epic",
+        experience: 5
+    },
 }
 
-
-export function getExperienceFromRank(rank: Rank): number {
-    switch (rank) {
-        case 'troublesome':
-            return 1
-        case 'dangerous':
-            return 2
-        case 'formidable':
-            return 3
-        case 'extreme':
-            return 4
-        case 'epic':
-            return 5
-        default:
-            throw new Error("unknow rank: " + rank);
-    }
+export function newChallenge<T extends ChallengeType>(description: string, rank: Rank, type: T): ProgressChallenge<T> {
+    return { description, rank, track: 0, finished: false, type };
 }
 
-export function newChallenge(description: string, rank: Rank): ProgressChallenge {
-    return { description, rank, track: 0, finished: false };
-}
-
-export function finishChallenge(challenge: ProgressChallenge): ProgressChallenge {
+export function finishChallenge<T extends ChallengeType>(challenge: ProgressChallenge<T>): ProgressChallenge<T> {
     return {...challenge, finished: true};
 }
 
-export function failChallenge(challenge: ProgressChallenge): ProgressChallenge {
-    return {...challenge, track: Math.min(challenge.track, 4), rank: getNextRank(challenge.rank)};
+export function failChallenge<T extends ChallengeType>(challenge: ProgressChallenge<T>): ProgressChallenge<T> {
+    return {...challenge, track: Math.min(challenge.track, 4), rank: rankStats[challenge.rank].next};
+}
+
+interface ChallengeResource {
+    createAction: string;
+}
+
+export const challengeResources: Record<ChallengeType, ChallengeResource> = {
+    combat: { createAction: "enter the fray" },
+    travel: { createAction: "undertake a journey" },
+    vow: { createAction: "swear a vow" },
 }

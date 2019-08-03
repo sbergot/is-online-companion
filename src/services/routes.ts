@@ -7,7 +7,7 @@ interface RouteDef<T> {
     template: string;
 }
 
-function createRouteTemplateInput<T>(to: (p: T) => string, input: RouteTemplateInput<T>): RouteDef<T> {
+function createRouteDef<T>(to: (p: T) => string, input: RouteTemplateInput<T>): RouteDef<T> {
     const result: Record<string, string> = {};
     Object.keys(input).map((k) => { result[k] = ':' + k; });
     return {
@@ -24,27 +24,27 @@ export interface CharacterKeyParam {
     characterKey: string;
 }
 
-export const campaignRoute: RouteDef<CampaignKeyParam> = createRouteTemplateInput(
+export const campaignRoute: RouteDef<CampaignKeyParam> = createRouteDef(
     ({campaignKey}) => `/campaign/${campaignKey}`,
     { campaignKey: null }
 );
 
-export const characterSelectionRoute: RouteDef<CampaignKeyParam> = createRouteTemplateInput(
+export const characterSelectionRoute: RouteDef<CampaignKeyParam> = createRouteDef(
     ({campaignKey}) => `/campaign/${campaignKey}/character-selection`,
     { campaignKey: null }
 );
 
-export const characterSheetRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteTemplateInput(
+export const characterSheetRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteDef(
     ({campaignKey, characterKey}) => `/campaign/${campaignKey}/character/${characterKey}/character`,
     { campaignKey: null, characterKey: null }
 );
 
-export const logRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteTemplateInput(
+export const logRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteDef(
     ({campaignKey, characterKey}) => `/campaign/${campaignKey}/character/${characterKey}/log`,
     { campaignKey: null, characterKey: null }
 );
 
-export const tracksRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteTemplateInput(
+export const tracksRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteDef(
     ({campaignKey, characterKey}) => `/campaign/${campaignKey}/character/${characterKey}/tracks`,
     { campaignKey: null, characterKey: null }
 );

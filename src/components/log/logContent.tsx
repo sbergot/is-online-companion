@@ -13,7 +13,7 @@ interface LogBlockProps {
 
 export function LogBlock({ entry, onSelect, selected }: LogBlockProps) {
     const dataService = DataServiceContainer.useContainer();
-    const character = dataService.characters.values[entry.data.characterKey];
+    const character = dataService.characters.lens.state[entry.data.characterKey];
     const classes = [
         "border border-gray-200 rounded p-2 mt-2 cursor-pointer hover:shadow",
         selected ? "bg-gray-400" : ""

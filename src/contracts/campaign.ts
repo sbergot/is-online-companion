@@ -10,6 +10,14 @@ export interface Campaign {
      */
     characters: Set<string>;
     /**
+     * a set of combat tracks keys
+     */
+    combats: Set<string>;
+    /**
+     * a set of travel tracks keys
+     */
+    travels: Set<string>;
+    /**
      * The key of the last used character
      */
     lastUsedCharacter?: string;

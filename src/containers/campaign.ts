@@ -6,14 +6,16 @@ import { DataServiceContainer } from "./dataService";
 function createCampaign(name: string): Campaign {
     return {
         name,
-        characters: new Set()
+        characters: new Set(),
+        combats: new Set(),
+        travels: new Set()
     }
 }
 
 function useCampaignService() {
     const dataService = DataServiceContainer.useContainer();
     const campaignsSource = dataService.campaigns;
-    const campaigns = campaignsSource.values;
+    const campaigns = campaignsSource.lens.state;
     return {
         createCampaign(name: string) {
             const createdCampaign = createCampaign(name);
