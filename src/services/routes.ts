@@ -1,4 +1,3 @@
-
 export interface CampaignKeyParam {
     campaignKey: string;
 }
@@ -24,25 +23,25 @@ export function routeToCampaign({campaignKey}: CampaignRouteParams) {
 export const campaignRouteTemplate = routeToCampaign(
     createRouteTemplateInput<CampaignRouteParams>({ campaignKey: null }));
 
-export type CampaignCharacterSelectionRouteParams = CampaignKeyParam;
-export function routeToCampaignCharacterSelection({campaignKey}: CampaignCharacterSelectionRouteParams) {
+export type CharacterSelectionRouteParams = CampaignKeyParam;
+export function routeToCharacterSelection({campaignKey}: CharacterSelectionRouteParams) {
     return `/campaign/${campaignKey}/character-selection`;
 }
-export const campaignCharacterSelectionRouteTemplate = routeToCampaignCharacterSelection(
-    createRouteTemplateInput<CampaignCharacterSelectionRouteParams>({ campaignKey: null }));
+export const characterSelectionRouteTemplate = routeToCharacterSelection(
+    createRouteTemplateInput<CharacterSelectionRouteParams>({ campaignKey: null }));
 
-export type CampaignCharacterRouteParams = CampaignKeyParam & CharacterKeyParam;
-export function routeToCampaignCharacter({campaignKey, characterKey}: CampaignCharacterRouteParams) {
+export type CharacterSheetRouteParams = CampaignKeyParam & CharacterKeyParam;
+export function routeToCharacterSheet({campaignKey, characterKey}: CharacterSheetRouteParams) {
     return `/campaign/${campaignKey}/character/${characterKey}/character`;
 }
-export const campaignCharacterRouteTemplate = routeToCampaignCharacter(
-    createRouteTemplateInput<CampaignCharacterRouteParams>({ campaignKey: null, characterKey: null }));
+export const characterSheetRouteTemplate = routeToCharacterSheet(
+    createRouteTemplateInput<CharacterSheetRouteParams>({ campaignKey: null, characterKey: null }));
 
-export type CampaignLogRouteParams = CampaignKeyParam & CharacterKeyParam;
-export function routeToCampaignLog({campaignKey, characterKey}: CampaignLogRouteParams) {
+export type LogRouteParams = CampaignKeyParam & CharacterKeyParam;
+export function routeToLog({campaignKey, characterKey}: LogRouteParams) {
     return `/campaign/${campaignKey}/character/${characterKey}/log`;
 }
-export const campaignLogRouteTemplate = routeToCampaignLog(
-    createRouteTemplateInput<CampaignLogRouteParams>({ campaignKey: null, characterKey: null }));
+export const logRouteTemplate = routeToLog(
+    createRouteTemplateInput<LogRouteParams>({ campaignKey: null, characterKey: null }));
 
 export const campaignSelectionRoute = "/campaign/selection";

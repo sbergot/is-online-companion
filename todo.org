@@ -1,14 +1,6 @@
-* data
-** TODO localstorage events subscription
-to keep multiple tabs in sync (charactersheet, log)
-
-* UI
-** TODO review some other design systems
-** TODO improve the character sheet layout
-
 * travels & combat tracks
-could be another type of log block
-active tracks are displayed in the left panel or somewhere on the right
+** TODO new page
+** TODO actions in the action panel
 
 * action panel
 ** TODO character sheet action panel
@@ -23,6 +15,10 @@ contains narrative objects (places, NPCs, objects)
 contains rules elements (moves, assets, regions)
 user should be able to reference index elements in the log
 ** TODO referentials import from is android companion
+
+* UI
+** TODO review some other design systems
+** TODO improve the character sheet layout
 
 * images
 add images to campaigns & character

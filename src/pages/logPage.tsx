@@ -4,7 +4,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { AnyLogBlock, LogType } from "../contracts/log";
 import { StreamEntry } from "../contracts/persistence";
 import { DataServiceContainer } from "../containers/dataService";
-import { CampaignLogRouteParams } from "../services/routes";
+import { LogRouteParams } from "../services/routes";
 import { Section, MainPanel } from "../components/layout";
 import { Select, SmallButton } from "../components/controls";
 import { LogBlock, InnerLogBlock } from "../components/log/logContent";
@@ -14,7 +14,7 @@ import { getLogTypeDescription } from "../services/logHelpers";
 
 const allLogTypes: LogType[] = ["UserInput", "DiceRoll"];
 
-export function CampaignLog({ match }: RouteComponentProps<CampaignLogRouteParams>) {
+export function LogPage({ match }: RouteComponentProps<LogRouteParams>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey, characterKey } = match.params;
     const logSource = dataService.logs(campaignKey);

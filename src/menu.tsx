@@ -32,13 +32,13 @@ function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & 
         <MenuTitle>
             character > {character.data.name}
         </MenuTitle>
-        <InlineLink to={routes.routeToCampaignCharacterSelection({ campaignKey })}>
+        <InlineLink to={routes.routeToCharacterSelection({ campaignKey })}>
             select another character
             </InlineLink>
-        <InlineLink to={routes.routeToCampaignCharacter({ campaignKey, characterKey })}>
+        <InlineLink to={routes.routeToCharacterSheet({ campaignKey, characterKey })}>
             go to character sheet
         </InlineLink>
-        <InlineLink to={routes.routeToCampaignLog({ campaignKey, characterKey })}>
+        <InlineLink to={routes.routeToLog({ campaignKey, characterKey })}>
             go to log
         </InlineLink>
     </>
