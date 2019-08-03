@@ -1,20 +1,26 @@
+* sync bug
+** TODO sync not working on log and tracks
+
 * travels & combat tracks
-** TODO new page
+** DONE new page
 ** TODO actions in the action panel
 
 * action panel
 ** TODO character sheet action panel
 progress track actions
 
-* menus
-** TODO place resources & momentum in the left bar?
-** TODO show/hide toggle
+* momentum rules
+** TODO momentum max & reset rules
 
 * index
 contains narrative objects (places, NPCs, objects)
 contains rules elements (moves, assets, regions)
 user should be able to reference index elements in the log
 ** TODO referentials import from is android companion
+
+* menus
+** TODO place resources & momentum in the left bar?
+** TODO show/hide toggle
 
 * UI
 ** TODO review some other design systems

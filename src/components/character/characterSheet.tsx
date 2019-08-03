@@ -9,11 +9,6 @@ import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 import { Lens } from "../../services/functors";
 import { Challenge } from "./progressChallenges";
 
-export interface CharacterSheetProps {
-    character: Character;
-    setCharacter: (c: Character) => void;
-}
-
 export function CharacterSheet({lens: {state: character, zoom}}: {lens: Lens<Character>}) {
     return <>
         <Section title="Character">

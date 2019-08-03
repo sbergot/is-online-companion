@@ -34,21 +34,20 @@ function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
         lens.setState((values) => ({...values, [entry.key]: entry}));
     }
 
+    const savingLens = wrapFunctor(lens.promap(
+        state => state,
+        (newState, _) => {
+            source.saveAll(newState);
+            return newState;
+        }
+    ));
+
     function getEntryLens(key: string) {
-        return wrapFunctor(lens.promap(
-            state => state[key],
-            (entry, prevState) => {
-                const newEntry = source.save(entry);
-                return {
-                    ...prevState,
-                    [newEntry.key]: newEntry
-                }
-            }
-        ));
+        return savingLens.zoom(key);
     }
 
     return {
-        lens,
+        lens: savingLens,
         getEntryLens,
         saveNew(data: T) {
             const newEntry = source.saveNew(data);

@@ -7,6 +7,7 @@ export interface KeyEntry<T> {
 
 export interface IKeyMapSource<T> {
     loadAll(): KeyMap<T>;
+    saveAll(entries: KeyMap<T>): void;
     saveNew(data: T): KeyEntry<T>;
     save(entry: KeyEntry<T>): KeyEntry<T>;
     onUpdate(cb: () => void): void;

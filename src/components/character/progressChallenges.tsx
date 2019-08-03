@@ -5,22 +5,24 @@ import { ProgressChallenge, Rank, ChallengeType } from "../../contracts/challeng
 import { SubSection } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
 import { SmallButton, Label, TextInput, Select } from "../controls";
-import { LensProps, useLens } from "../../services/functors";
+import { LensProps, useLens, Lens } from "../../services/functors";
 import { TrackMeter } from "./bars";
 import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, challengeResources } from "../../services/progressChallenges";
 import { SetState } from "@staltz/use-profunctor-state";
+import { KeyMapHook } from "../../contracts/dataservice";
 
-interface ChallengeProps<T extends ChallengeType> extends LensProps<KeyMap<ProgressChallenge<T>>> {
+interface ChallengeProps<T extends ChallengeType> {
+    lens: Lens<KeyMap<ProgressChallenge<T>>>
     setExp?: SetState<number>;
     type: T;
 }
 
 export function Challenge<T extends ChallengeType>({ lens, setExp, type }:  ChallengeProps<T>) {
-    const [vowFormVisible, setVowFormVisible] = React.useState(false);
-    const { state: vows, setState: setVows } = lens;
+    const [formVisible, setFormVisible] = React.useState(false);
+    const { state: challenges } = lens;
 
     return <SubSection title={type}>
-        {Object.values(vows).map(v => {
+        {Object.values(challenges).map(v => {
             function onSuccess() {
                 if (setExp) {
                     setExp(xp => xp + rankStats[v.data.rank].experience);
@@ -29,21 +31,22 @@ export function Challenge<T extends ChallengeType>({ lens, setExp, type }:  Chal
             return <ProgressTrack key={v.key} entryKey={v.key} lens={lens} onSuccess={onSuccess} />
         })}
         <div className="mt-2">
-            {vowFormVisible ?
-                <ChallengeForm onSubmit={(vow) => {
-                    const entry = newEntry(vow);
-                    setVowFormVisible(false);
-                    setVows((vows) => ({ ...vows, [entry.key]: entry }));
+            {formVisible ?
+                <ChallengeForm onSubmit={(challenge) => {
+                    const entry = newEntry(challenge);
+                    setFormVisible(false);
+                    lens.setState(challenges => ({...challenges, [entry.key]: entry}));
                 }}
                 type={type} /> :
-                <SmallButton onClick={() => setVowFormVisible(true)}>
+                <SmallButton onClick={() => setFormVisible(true)}>
                     {challengeResources[type].createAction}
                 </SmallButton>}
         </div>
     </SubSection>
 }
 
-interface ProgressTrackProps<T extends ChallengeType> extends LensProps<KeyMap<ProgressChallenge<T>>> {
+interface ProgressTrackProps<T extends ChallengeType> {
+    lens: Lens<KeyMap<ProgressChallenge<T>>>
     entryKey: string;
     onSuccess: () => void;
 }

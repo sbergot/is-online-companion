@@ -41,6 +41,9 @@ function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & 
         <InlineLink to={routes.logRoute.to({ campaignKey, characterKey })}>
             go to log
         </InlineLink>
+        <InlineLink to={routes.tracksRoute.to({ campaignKey, characterKey })}>
+            go to tracks
+        </InlineLink>
     </>
 }
 

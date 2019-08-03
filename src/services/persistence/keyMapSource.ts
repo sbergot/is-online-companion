@@ -12,6 +12,10 @@ export class KeyMapSource<T> implements IKeyMapSource<T> {
         return values;
     }
 
+    saveAll(entries: Record<string, KeyEntry<T>>): void {
+        this.innerSaveAll(entries);
+    }
+
     saveNew(data: T) {
         const entry: KeyEntry<T> = newEntry(data);
         this.innerSave(entry);
@@ -22,10 +26,14 @@ export class KeyMapSource<T> implements IKeyMapSource<T> {
         return this.innerSave({...entry, lastModified: new Date()});
     }
 
+    innerSaveAll(entries: Record<string, KeyEntry<T>>) {
+        this.storage.set(this.key, JSON.stringify(entries, replacer));
+    }
+
     innerSave(entry: KeyEntry<T>): KeyEntry<T> {
         const allEntries = this.loadAll();
         allEntries[entry.key] = entry;
-        this.storage.set(this.key, JSON.stringify(allEntries, replacer));
+        this.innerSaveAll(allEntries);
         return entry;
     }
 
