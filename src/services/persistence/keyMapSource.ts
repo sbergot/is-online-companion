@@ -1,12 +1,13 @@
-import { KeyEntry, KeyMap, KeyMapSource } from "../../contracts/persistence";
+import { KeyEntry, KeyMap, IKeyMapSource } from "../../contracts/persistence";
 import { newEntry } from "./shared";
 import { reviver, replacer } from "./serialization";
+import { KeyValueStore } from "./storage";
 
-export class LocalStorageKeyMapSource<T> implements KeyMapSource<T> {
-    constructor(private key: string) {}
+export class KeyMapSource<T> implements IKeyMapSource<T> {
+    constructor(private storage: KeyValueStore, private key: string) {}
 
     loadAll(): KeyMap<T> {
-        const rawData = localStorage.getItem(this.key);
+        const rawData = this.storage.get(this.key);
         const values: KeyMap<T> =  rawData ? JSON.parse(rawData, reviver) : {};
         return values;
     }
@@ -24,7 +25,11 @@ export class LocalStorageKeyMapSource<T> implements KeyMapSource<T> {
     innerSave(entry: KeyEntry<T>): KeyEntry<T> {
         const allEntries = this.loadAll();
         allEntries[entry.key] = entry;
-        localStorage.setItem(this.key, JSON.stringify(allEntries, replacer));
+        this.storage.set(this.key, JSON.stringify(allEntries, replacer));
         return entry;
+    }
+
+    onUpdate(cb: () => void): void {
+        this.storage.onUpdate(cb);
     }
 }

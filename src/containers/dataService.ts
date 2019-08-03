@@ -1,24 +1,30 @@
 import * as React from "react";
 import { createContainer } from "unstated-next";
 
-import { KeyEntry, KeyMapSource, StreamSource, StreamEntry } from "../contracts/persistence";
+import { KeyEntry, IKeyMapSource, IStreamSource, StreamEntry } from "../contracts/persistence";
 import { DataService, KeyMapHook, StreamHook } from "../contracts/dataservice";
-import { LocalStorageKeyMapSource } from "../services/persistence/localStorageKeyMapSource";
-import { LocalStorageStreamSource } from "../services/persistence/streamSource";
+import { KeyMapSource } from "../services/persistence/keyMapSource";
+import { StreamSource } from "../services/persistence/streamSource";
+import { LocalStorage } from "../services/persistence/storage";
 
 function useDataService(): DataService {
+    const storage = new LocalStorage();
+
     return {
-        campaigns: wrapKeyMap(new LocalStorageKeyMapSource("campaigns")),
-        characters: wrapKeyMap(new LocalStorageKeyMapSource("characters")),
-        logs: (campaignName: string) => wrapStream(new LocalStorageStreamSource('logs', campaignName, 30))
+        campaigns: wrapKeyMap(new KeyMapSource(storage, "campaigns")),
+        characters: wrapKeyMap(new KeyMapSource(storage, "characters")),
+        logs: (campaignName: string) => wrapStream(new StreamSource(storage, 'logs', campaignName, 30))
     }
 }
 
-function wrapKeyMap<T>(source: KeyMapSource<T>): KeyMapHook<T> {
+function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
     const [values, setValues] = React.useState(source.loadAll());
+    source.onUpdate(() => {
+        setValues(source.loadAll());
+    });
 
     function registerEntry(entry: KeyEntry<T>) {
-        setValues({...values, [entry.key]: entry})
+        setValues({...values, [entry.key]: entry});
     }
 
     return {
@@ -36,12 +42,12 @@ function wrapKeyMap<T>(source: KeyMapSource<T>): KeyMapHook<T> {
     }
 }
 
-function wrapStream<T>(stream: StreamSource<T>): StreamHook<T> {
+function wrapStream<T>(stream: IStreamSource<T>): StreamHook<T> {
     function getLast2Pages() {
         return [...stream.getEntries(1), ...stream.getEntries(0)];
     }
-
     const [streamState, setStreamState] = React.useState<StreamEntry<T>[]>(getLast2Pages());
+    stream.onUpdate(() => setStreamState(getLast2Pages()));
 
     return {
         values: streamState,

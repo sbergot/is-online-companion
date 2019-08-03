@@ -22,8 +22,8 @@ export function CampaignCharacterSelection({ match, history }: RouteComponentPro
         campaignService.addCharacter(campaignKey, selectedChar.key);
         history.push(routeToCampaignCharacter({ campaignKey, characterKey: selectedChar.key }))
     }
-
-    const characters = Array.from(campaign.characters).map((c) => dataService.characters.values[c]);
+    const characterSource = dataService.characters;
+    const characters = Array.from(campaign.characters).map((c) => characterSource.values[c]);
 
     return <MainPanel>
         <Section title="Character selection">
@@ -48,8 +48,9 @@ function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => v
     const statLens = zoom("stats");
     const { state: name, setState: setName } = zoom("name");
 
+    const campaignSource = dataService.characters;
     function onSubmit() {
-        const entry = dataService.characters.saveNew(character);
+        const entry = campaignSource.saveNew(character);
         onCreated(entry);
     }
 

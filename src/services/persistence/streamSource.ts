@@ -1,28 +1,33 @@
-import { StreamSource, StreamEntry } from "../../contracts/persistence";
+import { IStreamSource, StreamEntry } from "../../contracts/persistence";
 import { newEntry } from "./shared";
 import { reviver, replacer } from "./serialization";
+import { KeyValueStore } from "./storage";
 
 interface Metadata {
     currentPage: number;
 }
 
-export class LocalStorageStreamSource<T> implements StreamSource<T> {
-    constructor(private name: string, private campaignName: string, private pageSize: number) {}
+export class StreamSource<T> implements IStreamSource<T> {
+    constructor(
+        private storage: KeyValueStore,
+        private name: string,
+        private campaignName: string,
+        private pageSize: number) {}
 
     getRootKey() { return `${this.name}-${this.campaignName}`; }
 
     getPageKey(i: number) { return `${this.getRootKey()}-page-${i}`; }
 
     savePage(i: number, entries: StreamEntry<T>[]): void {
-        localStorage[this.getPageKey(i)] = JSON.stringify(entries, replacer);
+        this.storage.set(this.getPageKey(i), JSON.stringify(entries, replacer));
     }
 
     saveMetadata(metadata: Metadata) {
-        localStorage[this.getRootKey()] = JSON.stringify(metadata);
+        this.storage.set(this.getRootKey(), JSON.stringify(metadata));
     }
 
     getMetadata(): Metadata {
-        const metadataRaw = localStorage[this.getRootKey()];
+        const metadataRaw = this.storage.get(this.getRootKey());
         if (!metadataRaw) {
             const metadata = { currentPage: 0 };
             this.saveMetadata(metadata);
@@ -32,7 +37,7 @@ export class LocalStorageStreamSource<T> implements StreamSource<T> {
     }
 
     getPage(i: number) {
-        const rawData = localStorage[this.getPageKey(i)];
+        const rawData = this.storage.get(this.getPageKey(i));
         const entries = rawData ? JSON.parse(rawData, reviver) : [];
         return entries;
     }
@@ -89,5 +94,9 @@ export class LocalStorageStreamSource<T> implements StreamSource<T> {
 
     canRemove(entry: StreamEntry<T>): boolean {
         return this.getMetadata().currentPage === entry.page;
+    }
+    
+    onUpdate(cb: () => void): void {
+        this.storage.onUpdate(cb);
     }
 }

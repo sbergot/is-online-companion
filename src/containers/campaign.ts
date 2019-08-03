@@ -14,11 +14,12 @@ function createCampaign(name: string): Campaign {
 
 function useCampaignService() {
     const dataService = DataServiceContainer.useContainer();
-    const campaigns = dataService.campaigns.values;
+    const campaignsSource = dataService.campaigns;
+    const campaigns = campaignsSource.values;
     return {
         createCampaign(name: string) {
             const createdCampaign = createCampaign(name);
-            const newEntry = dataService.campaigns.saveNew(createdCampaign);
+            const newEntry = campaignsSource.saveNew(createdCampaign);
             return newEntry;
         },
         campaigns,
@@ -26,7 +27,7 @@ function useCampaignService() {
             const oldCampaign = campaigns[campaignKey];
             const newcharacters = new Set(oldCampaign.data.characters);
             newcharacters.add(characterKey);
-            dataService.campaigns.save({
+            campaignsSource.save({
                 ...oldCampaign,
                 data: {
                     ...oldCampaign.data,
