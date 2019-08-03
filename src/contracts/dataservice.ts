@@ -2,9 +2,11 @@ import { KeyMap, KeyEntry, StreamEntry } from "./persistence";
 import { Campaign } from "./campaign";
 import { Character } from "./character";
 import { AnyLogBlock } from "./log";
+import { Lens } from "../services/functors";
 
 export interface KeyMapHook<T> {
     values: KeyMap<T>;
+    getEntryLens(key: string): Lens<KeyEntry<T>>;
     saveNew(data: T): KeyEntry<T>;
     save(entry: KeyEntry<T>): KeyEntry<T>;
 }

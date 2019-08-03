@@ -2,8 +2,6 @@ import { createContainer } from "unstated-next";
 
 import { Campaign } from "../contracts/campaign";
 import { DataServiceContainer } from "./dataService";
-import { KeyEntry } from "../contracts/persistence";
-import { Character } from "../contracts/character";
 
 function createCampaign(name: string): Campaign {
     return {

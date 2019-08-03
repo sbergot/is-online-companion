@@ -99,4 +99,8 @@ export class StreamSource<T> implements IStreamSource<T> {
     onUpdate(cb: () => void): void {
         this.storage.onUpdate(cb);
     }
+    
+    unRegister(cb: () => void): void {
+        this.storage.unRegister(cb);
+    }
 }

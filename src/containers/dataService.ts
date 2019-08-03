@@ -6,6 +6,7 @@ import { DataService, KeyMapHook, StreamHook } from "../contracts/dataservice";
 import { KeyMapSource } from "../services/persistence/keyMapSource";
 import { StreamSource } from "../services/persistence/streamSource";
 import { LocalStorage } from "../services/persistence/storage";
+import { useLens, wrapFunctor } from "../services/functors";
 
 function useDataService(): DataService {
     const storage = new LocalStorage();
@@ -18,17 +19,35 @@ function useDataService(): DataService {
 }
 
 function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
-    const [values, setValues] = React.useState(source.loadAll());
-    source.onUpdate(() => {
-        setValues(source.loadAll());
-    });
+    const lens = useLens(source.loadAll());
+    React.useEffect(() => {
+        function refresh() { lens.setState(() => source.loadAll()) }
+        source.onUpdate(refresh);
+        return () => {
+            source.unRegister(refresh);
+        }
+    })
 
     function registerEntry(entry: KeyEntry<T>) {
-        setValues({...values, [entry.key]: entry});
+        lens.setState((values) => ({...values, [entry.key]: entry}));
+    }
+
+    function getEntryLens(key: string) {
+        return wrapFunctor(lens.promap(
+            state => state[key],
+            (entry, prevState) => {
+                const newEntry = source.save(entry);
+                return {
+                    ...prevState,
+                    [newEntry.key]: newEntry
+                }
+            }
+        ));
     }
 
     return {
-        values,
+        values: lens.state,
+        getEntryLens,
         saveNew(data: T) {
             const newEntry = source.saveNew(data);
             registerEntry(newEntry);
@@ -47,7 +66,13 @@ function wrapStream<T>(stream: IStreamSource<T>): StreamHook<T> {
         return [...stream.getEntries(1), ...stream.getEntries(0)];
     }
     const [streamState, setStreamState] = React.useState<StreamEntry<T>[]>(getLast2Pages());
-    stream.onUpdate(() => setStreamState(getLast2Pages()));
+    React.useEffect(() => {
+        function refresh() { setStreamState(getLast2Pages()); }
+        stream.onUpdate(refresh);
+        return () => {
+            stream.unRegister(refresh);
+        }
+    })
 
     return {
         values: streamState,

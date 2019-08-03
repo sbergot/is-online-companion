@@ -32,4 +32,8 @@ export class KeyMapSource<T> implements IKeyMapSource<T> {
     onUpdate(cb: () => void): void {
         this.storage.onUpdate(cb);
     }
+
+    unRegister(cb: () => void): void {
+        this.storage.unRegister(cb);
+    }
 }

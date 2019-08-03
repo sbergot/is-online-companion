@@ -10,6 +10,7 @@ export interface IKeyMapSource<T> {
     saveNew(data: T): KeyEntry<T>;
     save(entry: KeyEntry<T>): KeyEntry<T>;
     onUpdate(cb: () => void): void;
+    unRegister(cb: () => void): void;
 }
 
 export type KeyMap<T> = Record<string, KeyEntry<T>>;
@@ -25,4 +26,5 @@ export interface IStreamSource<T> {
     remove(entry: StreamEntry<T>): boolean;
     canRemove(entry: StreamEntry<T>): boolean;
     onUpdate(cb: () => void): void;
+    unRegister(cb: () => void): void;
 }
