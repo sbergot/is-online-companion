@@ -21,7 +21,7 @@ export function Challenge<T extends ChallengeType>({ lens, type, onSelect, selec
     const [formVisible, setFormVisible] = React.useState(false);
     const { state: challenges } = lens;
 
-    return <SubSection title={type}>
+    return <SubSection className="flex flex-col items-start" title={type}>
         {Object.values(challenges).map(v => {
             return <Selectable
                 key={v.key}
@@ -86,7 +86,7 @@ function ChallengeForm<T extends ChallengeType>({ onSubmit, type, onCancel }: Ch
         <TextInput value={descr} onChange={setDescr} />
         <RankSelector lens={rankLens} />
         <SmallButton
-            className="mt-2"
+            className="mt-2 mr-2"
             onClick={() => onSubmit(newChallenge(descr, rankLens.state, type))}>
             save
         </SmallButton>

@@ -22,7 +22,7 @@ export interface TrackMeterProps {
 }
 
 export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
-    const { state: progress, setState: setProgress } = lens;
+    const { state: progress, setState } = lens;
     const capped = Math.min(progress, 40);
     const progressLevels = Math.floor(capped / 4);
     const rest = capped % 4;
@@ -30,13 +30,19 @@ export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
         "ml-2",
         finished ? "hidden" : ""
     ].join(" ");
+
+    function setProgress(e: React.SyntheticEvent<any>, step: number) {
+        e.stopPropagation();
+        setState(p => p + step);
+    }
+
     return <div className="flex flex-row flex-wrap">
         {range(1, progressLevels).map((i) => <Ticks t={4} key={i} />)}
         {rest > 0 && <Ticks t={rest} />}
         {range(1, 10 - progressLevels - (rest > 0 ? 1 : 0)).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
         <div className={buttonClasses}>
-            <SmallButton className="mr-2" onClick={() => setProgress((p) => p - progressStep)}>-</SmallButton>
-            <SmallButton onClick={() => setProgress((p) => p + progressStep)}>+</SmallButton>
+            <SmallButton className="mr-2" onClick={(e) => setProgress(e, -progressStep)}>-</SmallButton>
+            <SmallButton onClick={(e) => setProgress(e, progressStep)}>+</SmallButton>
         </div>
     </div>
 }

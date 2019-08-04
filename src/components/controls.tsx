@@ -30,10 +30,32 @@ export function EntryItem({ entry }: EntryItemProps) {
     </div>
 }
 
-export function InlineLink({to, children, className}: { to: string } & ChildrenProp & ClassProp) {
-    return <Link to={to} className={"text-gray-600 hover:text-red-600 " + className || ""}>
+interface InlineLinkProps extends ChildrenProp, ClassProp {
+    to: string
+}
+
+export function InlineLink({to, children, className}: InlineLinkProps) {
+    const classes = [
+        "text-gray-600 hover:text-red-600",
+        className || ""
+    ].join(" ");
+    return <Link to={to} className={classes}>
         {children}
     </Link>
+}
+
+interface NavigationLinkProps extends InlineLinkProps {
+    current: string
+}
+
+export function NavigationLink({to, children, className, current}: NavigationLinkProps) {
+    const classes = [
+        to === current ? "text-red-600" : "",
+        className || ""
+    ].join(" ");
+    return <InlineLink to={to} className={classes}>
+        {children}
+    </InlineLink>
 }
 
 export function TextInput({ value, onChange }: { value: string, onChange: (s: string) => void }) {
@@ -50,7 +72,7 @@ export function TextInput({ value, onChange }: { value: string, onChange: (s: st
         className={classes}/>
 }
 
-export function SmallButton({ onClick, children, className }: { onClick: () => void } & ChildrenProp & ClassProp) {
+export function SmallButton({ onClick, children, className }: { onClick: (e: React.SyntheticEvent<any>) => void } & ChildrenProp & ClassProp) {
     const classes = `
         bg-blue-500 hover:bg-blue-700
         text-white

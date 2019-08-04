@@ -1,7 +1,5 @@
 * ui improvements
-** TODO sticky action panel
-** TODO better challenge design
-** TODO navigation link in red for current location
+** TODO multiple button type (primary, secondary, danger)
 
 * momentum rules
 ** TODO momentum max & reset rules
@@ -16,9 +14,8 @@ user should be able to reference index elements in the log
 ** TODO place resources & momentum in the left bar?
 ** TODO show/hide toggle
 
-* UI
-** TODO review some other design systems
-** TODO improve the character sheet layout
+* progress challenges
+** TODO add action to hide finished challenge
 
 * code organization
 ** TODO split app & persistence (& controls?)

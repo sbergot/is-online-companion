@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps, Route } from "react-router";
 import { DataServiceContainer } from "./containers/dataService";
-import { InlineLink } from "./components/controls";
+import { InlineLink, NavigationLink } from "./components/controls";
 import * as routes from "./services/routes";
 
 function MenuTitle({ children }: { children: React.ReactText[] }) {
@@ -24,26 +24,28 @@ function CampaignMenu({ match }: RouteComponentProps<routes.CampaignKeyParam>) {
     </> : null
 }
 
-function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & routes.CharacterKeyParam>) {
+function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignKeyParam & routes.CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey, characterKey } = match.params;
     const character = dataService.characters.lens.state[characterKey];
+    const { pathname } = location;
+    const currentClass = "text-red-600";
     return <>
         <MenuTitle>
             character > {character.data.name}
         </MenuTitle>
-        <InlineLink to={routes.characterSelectionRoute.to({ campaignKey })}>
+        <NavigationLink current={pathname} to={routes.characterSelectionRoute.to({ campaignKey })}>
             character selection
-        </InlineLink>
-        <InlineLink to={routes.characterSheetRoute.to({ campaignKey, characterKey })}>
+        </NavigationLink>
+        <NavigationLink current={pathname} to={routes.characterSheetRoute.to({ campaignKey, characterKey })}>
             character sheet
-        </InlineLink>
-        <InlineLink to={routes.logRoute.to({ campaignKey, characterKey })}>
+        </NavigationLink>
+        <NavigationLink current={pathname} to={routes.logRoute.to({ campaignKey, characterKey })}>
             log
-        </InlineLink>
-        <InlineLink to={routes.tracksRoute.to({ campaignKey, characterKey })}>
+        </NavigationLink>
+        <NavigationLink current={pathname} to={routes.tracksRoute.to({ campaignKey, characterKey })}>
             tracks
-        </InlineLink>
+        </NavigationLink>
     </>
 }
 

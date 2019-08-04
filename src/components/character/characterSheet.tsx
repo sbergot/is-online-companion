@@ -72,7 +72,9 @@ function Status({lens: { state:resources, zoom }}: { lens: Lens<Status> }) {
 
 function Bonds({lens}: {lens: Lens<TrackProgress>}) {
     return <SubSection title="Bonds">
-        <TrackMeter lens={lens} progressStep={1} finished={false} />
+        <div className="pl-2">
+            <TrackMeter lens={lens} progressStep={1} finished={false} />
+        </div>
     </SubSection>
 }
 
