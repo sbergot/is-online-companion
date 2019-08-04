@@ -4,8 +4,13 @@ import { Lens } from "../../services/functors";
 import { SmallButton } from "../controls";
 
 function Ticks({t}: {t: number}) {
+    const boxClasses = `
+        w-8 h-8 mr-1 p-1
+        flex flex-row flex-wrap items-center justify-between content-between
+        border border-gray-400 rounded
+    `
     const capped = Math.min(t, 4);
-    return <div className="w-8 h-8 mr-1 p-1 flex flex-row flex-wrap items-center justify-between content-between border border-gray-400 rounded">
+    return <div className={boxClasses}>
         {range(1, capped).map((i) => <div key={i} className="w-1/3 h-2 mx-px bg-gray-600 rounded-sm" />)}
     </div>
 }
