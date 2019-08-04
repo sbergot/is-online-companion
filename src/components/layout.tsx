@@ -9,7 +9,6 @@ export interface SectionProps {
 
 export function Section({ title, children, className }: SectionProps) {
     const classes = [
-        "mt-3",
         className ? className : ""
     ].join(" ");
     return <div className={classes}>
@@ -20,7 +19,6 @@ export function Section({ title, children, className }: SectionProps) {
 
 export function SubSection({ title, children, className }: SectionProps) {
     const classes = [
-        "mt-3",
         className ? className : ""
     ].join(" ");
     return <div className={classes}>
@@ -30,7 +28,7 @@ export function SubSection({ title, children, className }: SectionProps) {
 }
 
 export function MainPanel({ children }: ChildrenProp) {
-    return <div className="max-w-3xl w-full pl-4 pb-4">
+    return <div className="max-w-4xl w-full pl-4 max-h-screen overflow-y-auto pb-2">
         {children}
     </div>
 }

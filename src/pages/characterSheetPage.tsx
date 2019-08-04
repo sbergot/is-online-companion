@@ -12,16 +12,17 @@ import { ChallengeActions } from "../components/character/progressChallenges";
 
 export function CharacterSheetPage({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
-    const { characterKey, campaignKey } = match.params;
+    const { characterKey } = match.params;
     const charactersSource = dataService.characters;
-    const campaignLens = dataService.campaigns.getEntryLens(campaignKey).zoom("data");
     const charLens = charactersSource.getEntryLens(characterKey).zoom("data");
     const selectedVowLens = useLens<KeyEntry<ProgressChallenge<"vow">> | null>(null);
     const selectedVow = selectedVowLens.state;
 
     return <>
         <MainPanel>
-            <CharacterSheet lens={charLens} selectedVowLens={selectedVowLens}/>
+            <div className="pr-2">
+                <CharacterSheet lens={charLens} selectedVowLens={selectedVowLens}/>
+            </div>
         </MainPanel>
         <ActionPanel>
         {selectedVow != null ? <Zoom
