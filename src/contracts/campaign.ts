@@ -1,4 +1,5 @@
-import { KeyEntry } from "./persistence";
+import { KeyMap } from "./persistence";
+import { ProgressChallenge } from "./challenge";
 
 export interface Campaign {
     /**
@@ -12,11 +13,11 @@ export interface Campaign {
     /**
      * a set of combat tracks keys
      */
-    combats: Set<string>;
+    combats: KeyMap<ProgressChallenge<"combat">>;
     /**
      * a set of travel tracks keys
      */
-    travels: Set<string>;
+    travels: KeyMap<ProgressChallenge<"travel">>;
     /**
      * The key of the last used character
      */

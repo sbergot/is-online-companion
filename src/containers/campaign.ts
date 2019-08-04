@@ -7,8 +7,8 @@ function createCampaign(name: string): Campaign {
     return {
         name,
         characters: new Set(),
-        combats: new Set(),
-        travels: new Set()
+        combats: {},
+        travels: {}
     }
 }
 

@@ -1,8 +1,4 @@
-* sync bug
-** TODO sync not working on log and tracks
-
 * travels & combat tracks
-** DONE new page
 ** TODO actions in the action panel
 
 * action panel

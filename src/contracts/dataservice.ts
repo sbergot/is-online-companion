@@ -23,7 +23,5 @@ export interface StreamHook<T> {
 export interface DataService {
     campaigns: KeyMapHook<Campaign>;
     characters: KeyMapHook<Character>;
-    combats: KeyMapHook<ProgressChallenge<"combat">>;
-    travels: KeyMapHook<ProgressChallenge<"travel">>;
     logs: (campaignName: string) => StreamHook<AnyLogBlock>;
 }

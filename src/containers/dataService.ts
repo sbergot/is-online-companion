@@ -14,8 +14,6 @@ function useDataService(): DataService {
     return {
         campaigns: wrapKeyMap(new KeyMapSource(storage, "campaigns")),
         characters: wrapKeyMap(new KeyMapSource(storage, "characters")),
-        combats: wrapKeyMap(new KeyMapSource(storage, "combats")),
-        travels: wrapKeyMap(new KeyMapSource(storage, "travels")),
         logs: (campaignName: string) => wrapStream(new StreamSource(storage, 'logs', campaignName, 30))
     }
 }
@@ -24,10 +22,8 @@ function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
     const lens = useLens(source.loadAll());
     React.useEffect(() => {
         function refresh() {
-            console.log("refresh")
             lens.setState(() => {
                 const data = source.loadAll();
-                console.log("load all", data);
                 return data
             });
         }

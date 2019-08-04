@@ -5,7 +5,7 @@ import { AnyLogBlock, LogType } from "../contracts/log";
 import { StreamEntry } from "../contracts/persistence";
 import { DataServiceContainer } from "../containers/dataService";
 import { CampaignKeyParam, CharacterKeyParam } from "../services/routes";
-import { Section, MainPanel } from "../components/layout";
+import { Section, MainPanel, ActionPanel } from "../components/layout";
 import { Select, SmallButton } from "../components/controls";
 import { LogBlock, InnerLogBlock } from "../components/log/logContent";
 import { NewLogBlockEditor, LogBlockEditor } from "../components/log/logEditor";
@@ -103,32 +103,32 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
                 </div>
             </Section>
         </MainPanel>
-        <div className="p-4 w-full max-w-xs">
+        <ActionPanel>
             {selected != null &&
-                <ActionPanel
+                <LogBlockActions
                     selected={selected}
                     onRemove={onRemove}
                     onEdit={onEdit}
                     logSource={logSource} />}
             {selectedEdited &&
                 <p className="font-bold mt-2">Editing an entry...</p>}
-        </div>
+        </ActionPanel>
     </>
 }
 
-interface ActionPanelProps {
+interface LogBlockActionsProps {
     selected: StreamEntry<AnyLogBlock>
     onRemove(entry: StreamEntry<AnyLogBlock>): void;
     onEdit(entry: StreamEntry<AnyLogBlock>): void;
     logSource: StreamHook<AnyLogBlock>;
 }
 
-function ActionPanel({ selected, logSource, onRemove, onEdit }: ActionPanelProps) {
+function LogBlockActions({ selected, logSource, onRemove, onEdit }: LogBlockActionsProps) {
     const canDeleteSelected = logSource.canRemove(selected);
     const dataService = DataServiceContainer.useContainer();
     const character = dataService.characters.lens.state[selected.data.characterKey];
 
-    return <div className="w-full">
+    return <>
         <InnerLogBlock entry={selected} character={character.data} />
         <div className="pt-2">
             <SmallButton
@@ -142,5 +142,5 @@ function ActionPanel({ selected, logSource, onRemove, onEdit }: ActionPanelProps
                 </SmallButton> :
                 null}
         </div>
-    </div>
+    </>
 }

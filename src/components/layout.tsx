@@ -34,3 +34,24 @@ export function MainPanel({ children }: ChildrenProp) {
         {children}
     </div>
 }
+
+export function ActionPanel({ children }: ChildrenProp) {
+    return <div className="p-4 w-full max-w-xs">
+        {children}
+    </div>
+}
+
+export interface SelectableProps extends ChildrenProp {
+    selected?: boolean
+    onClick?: () => void;
+}
+
+export function Selectable({ children, selected, onClick }: SelectableProps) {
+    const classes = [
+        "border border-gray-200 rounded p-2 mt-2 cursor-pointer hover:shadow",
+        selected || false ? "bg-gray-400" : ""
+    ].join(" ");
+    return <div className={classes} onClick={onClick} >
+        {children}
+    </div>
+}

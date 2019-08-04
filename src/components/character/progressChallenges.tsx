@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { KeyMap } from "../../contracts/persistence";
+import { KeyMap, KeyEntry } from "../../contracts/persistence";
 import { ProgressChallenge, Rank, ChallengeType } from "../../contracts/challenge";
-import { SubSection } from "../layout";
+import { SubSection, Selectable } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
 import { SmallButton, Label, TextInput, Select } from "../controls";
 import { LensProps, useLens, Lens } from "../../services/functors";
@@ -11,12 +11,14 @@ import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, chal
 import { SetState } from "@staltz/use-profunctor-state";
 
 interface ChallengeProps<T extends ChallengeType> {
+    type: T;
     lens: Lens<KeyMap<ProgressChallenge<T>>>
     setExp?: SetState<number>;
-    type: T;
+    onSelect?: (entry: KeyEntry<ProgressChallenge<T>>) => void;
+    selectedKey?: string;
 }
 
-export function Challenge<T extends ChallengeType>({ lens, setExp, type }:  ChallengeProps<T>) {
+export function Challenge<T extends ChallengeType>({ lens, setExp, type, onSelect, selectedKey }:  ChallengeProps<T>) {
     const [formVisible, setFormVisible] = React.useState(false);
     const { state: challenges } = lens;
 
@@ -27,7 +29,15 @@ export function Challenge<T extends ChallengeType>({ lens, setExp, type }:  Chal
                     setExp(xp => xp + rankStats[v.data.rank].experience);
                 }
             }
-            return <ProgressTrack key={v.key} entryKey={v.key} lens={lens} onSuccess={onSuccess} />
+            return <Selectable
+                key={v.key}
+                onClick={() => {onSelect ? onSelect(v) : null}}
+                selected={selectedKey != null && selectedKey == v.key}>
+                <ProgressTrack
+                    entryKey={v.key}
+                    lens={lens}
+                    onSuccess={onSuccess} />
+            </Selectable> 
         })}
         <div className="mt-2">
             {formVisible ?
@@ -51,8 +61,7 @@ interface ProgressTrackProps<T extends ChallengeType> {
 }
 
 function ProgressTrack<T extends ChallengeType>({ lens, entryKey, onSuccess }: ProgressTrackProps<T>) {
-    const { state: challenge, setState: setChallenge, zoom } = lens.zoom(entryKey).zoom("data");
-    const descrClasses = challenge.finished ? "text-gray-500 line-through" : "";
+    const { state: challenge, setState: setChallenge, zoom: zoom } = lens.zoom(entryKey).zoom("data");
     const buttonClasses = challenge.finished ? "hidden" : "";
 
     function onSuccessClick() {
@@ -61,19 +70,30 @@ function ProgressTrack<T extends ChallengeType>({ lens, entryKey, onSuccess }: P
     }
 
     return <div>
-        <div className={descrClasses}>{challenge.description} / {challenge.rank}</div>
+        <ChallengeDescription challenge={challenge} />
         <div className="flex flex-wrap">
             <TrackMeter
                 lens={zoom("track")}
                 finished={challenge.finished}
                 progressStep={rankStats[challenge.rank].progress} />
             <div className={"ml-2 " + buttonClasses}>
-                <SmallButton className="mr-2" onClick={onSuccessClick}>Success</SmallButton>
-                <SmallButton className="mr-2" onClick={() => setChallenge(failChallenge)}>Failure</SmallButton>
-                <SmallButton onClick={() => setChallenge(finishChallenge)}>Abandon</SmallButton>
+                <SmallButton className="mr-2" onClick={onSuccessClick}>
+                    Success
+                </SmallButton>
+                <SmallButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
+                    Failure
+                </SmallButton>
+                <SmallButton onClick={() => setChallenge(finishChallenge)}>
+                    Abandon
+                </SmallButton>
             </div>
         </div>
     </div>
+}
+
+function ChallengeDescription({challenge}: {challenge: ProgressChallenge<ChallengeType>}) {
+    const descrClasses = challenge.finished ? "text-gray-500 line-through" : "";
+    return <div className={descrClasses}>{challenge.description} / {challenge.rank}</div>
 }
 
 function ChallengeForm<T extends ChallengeType>({ onSubmit, type }: { type: T; onSubmit: (vow: ProgressChallenge<T>) => void }) {
@@ -96,4 +116,51 @@ function RankSelector({ lens: { state: value, setState: setRank } }: LensProps<R
         options={allRanks.map(r => ({ name: r, value: r }))}
         value={value}
         onSelect={v => setRank(() => v)}/>
+}
+
+export interface ChallengeActionsProps {
+    lens: Lens<ProgressChallenge<ChallengeType>>
+    setExp?: SetState<number>;
+}
+
+export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
+    const { state: challenge, setState: setChallenge } = lens;
+    const { setState: setProgress } = lens.zoom("track");
+    const buttonClasses = [
+        "mt-2",
+        challenge.finished ? "hidden" : ""
+    ].join(" ");
+    const progressStep = rankStats[challenge.rank].progress;
+
+    function onSuccessClick() {
+        setChallenge(finishChallenge);
+        if (setExp && challenge.type === "vow") {
+            setExp(xp => xp + rankStats[challenge.rank].experience);
+        }
+    }
+
+    return <>
+        <ChallengeDescription challenge={challenge} />
+        <div className={buttonClasses}>
+            <div className="mb-2">
+                <SmallButton className="mr-2" onClick={() => setProgress((p) => p + progressStep)}>
+                    Progress
+                </SmallButton>
+                <SmallButton onClick={() => setProgress((p) => p - progressStep)}>
+                    Regress
+                </SmallButton>
+            </div>
+            <div>
+                <SmallButton className="mr-2" onClick={onSuccessClick}>
+                    Success
+                </SmallButton>
+                <SmallButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
+                    Failure
+                </SmallButton>
+                <SmallButton onClick={() => setChallenge(finishChallenge)}>
+                    Abandon
+                </SmallButton>
+            </div>
+        </div>
+    </>
 }

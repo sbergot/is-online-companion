@@ -3,6 +3,7 @@ import { AnyLogBlock, UserInputLog, DiceRollLog, ChallengeRoll } from "../../con
 import { StreamEntry } from "../../contracts/persistence";
 import { DataServiceContainer } from "../../containers/dataService";
 import { Character } from "../../contracts/character";
+import { Selectable } from "../layout";
 
 
 interface LogBlockProps {
@@ -14,13 +15,9 @@ interface LogBlockProps {
 export function LogBlock({ entry, onSelect, selected }: LogBlockProps) {
     const dataService = DataServiceContainer.useContainer();
     const character = dataService.characters.lens.state[entry.data.characterKey];
-    const classes = [
-        "border border-gray-200 rounded p-2 mt-2 cursor-pointer hover:shadow",
-        selected ? "bg-gray-400" : ""
-    ].join(" ");
-    return <div className={classes} onClick={() => onSelect(entry)}>
+    return <Selectable selected={selected} onClick={() => onSelect(entry)}>
         <InnerLogBlock entry={entry} character={character.data} />
-    </div>
+    </Selectable>
 }
 
 interface InnerLogBlockProps {
