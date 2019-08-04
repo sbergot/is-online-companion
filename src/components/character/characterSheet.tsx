@@ -79,7 +79,7 @@ function Bonds({lens}: {lens: Lens<TrackProgress>}) {
 }
 
 function Debilities({lens: {state:debilities, zoom}}: {lens: Lens<Debilities>}) {
-    return <div className="flex flex-row justify-between">
+    return <div className="flex flex-row justify-between max-w-2xl">
         {Object.keys(debilities).map((parentKey) => {
             const tparentkey = parentKey as keyof typeof debilities;
             const subObject = debilities[tparentkey];
