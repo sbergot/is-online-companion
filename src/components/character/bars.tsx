@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TrackProgress } from "../../contracts/challenge";
 import { Lens } from "../../services/functors";
-import { SmallButton } from "../controls";
+import { SmallPrimaryButton, SmallDangerButton } from "../controls";
 
 function Ticks({t}: {t: number}) {
     const boxClasses = `
@@ -41,8 +41,12 @@ export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
         {rest > 0 && <Ticks t={rest} />}
         {range(1, 10 - progressLevels - (rest > 0 ? 1 : 0)).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
         <div className={buttonClasses}>
-            <SmallButton className="mr-2" onClick={(e) => setProgress(e, -progressStep)}>-</SmallButton>
-            <SmallButton onClick={(e) => setProgress(e, progressStep)}>+</SmallButton>
+            <SmallDangerButton className="mr-2" onClick={(e) => setProgress(e, -progressStep)}>
+                -
+            </SmallDangerButton>
+            <SmallPrimaryButton onClick={(e) => setProgress(e, progressStep)}>
+                +
+            </SmallPrimaryButton>
         </div>
     </div>
 }

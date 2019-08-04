@@ -2,7 +2,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { Section, MainPanel } from "../components/layout";
-import { Select, Label, TextInput, Button, EntryItem } from "../components/controls";
+import { Select, Label, TextInput, PrimaryButton, EntryItem } from "../components/controls";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { DataServiceContainer } from "../containers/dataService";
 import { Character } from "../contracts/character";
@@ -77,7 +77,7 @@ function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => v
             </div>
         </div>
         <div className="text-right">
-            <Button onClick={onSubmit}>Ok</Button>
+            <PrimaryButton onClick={onSubmit}>Ok</PrimaryButton>
         </div>
     </div>
 }

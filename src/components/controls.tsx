@@ -72,7 +72,11 @@ export function TextInput({ value, onChange }: { value: string, onChange: (s: st
         className={classes}/>
 }
 
-export function SmallButton({ onClick, children, className }: { onClick: (e: React.SyntheticEvent<any>) => void } & ChildrenProp & ClassProp) {
+interface ButtonProps extends ChildrenProp, ClassProp {
+    onClick: (e: React.SyntheticEvent<any>) => void
+}
+
+export function SmallPrimaryButton({ onClick, children, className }: ButtonProps) {
     const classes = `
         bg-blue-500 hover:bg-blue-700
         text-white
@@ -84,7 +88,7 @@ export function SmallButton({ onClick, children, className }: { onClick: (e: Rea
     </button>
 }
 
-export function Button({ onClick, children, className }: { onClick: () => void } & ChildrenProp & ClassProp) {
+export function PrimaryButton({ onClick, children, className }: ButtonProps) {
     const classes = `
         bg-blue-500 hover:bg-blue-700
         text-white font-bold
@@ -96,6 +100,53 @@ export function Button({ onClick, children, className }: { onClick: () => void }
     </button>
 }
 
+export function SmallSecondaryButton({ onClick, children, className }: ButtonProps) {
+    const classes = `
+        bg-gray-500 hover:bg-gray-700
+        text-white
+        py-1 px-3 rounded
+        focus:outline-none focus:shadow-outline
+    ` + className || "";
+    return <button onClick={onClick} className={classes}>
+        {children}
+    </button>
+}
+
+export function SecondaryButton({ onClick, children, className }: ButtonProps) {
+    const classes = `
+        bg-gray-500 hover:bg-gray-700
+        text-white font-bold
+        py-2 px-4 rounded
+        focus:outline-none focus:shadow-outline
+    ` + className || "";
+    return <button onClick={onClick} className={classes}>
+        {children}
+    </button>
+}
+
+export function SmallDangerButton({ onClick, children, className }: ButtonProps) {
+    const classes = `
+        bg-red-500 hover:bg-red-700
+        text-white
+        py-1 px-3 rounded
+        focus:outline-none focus:shadow-outline
+    ` + className || "";
+    return <button onClick={onClick} className={classes}>
+        {children}
+    </button>
+}
+
+export function DangerButton({ onClick, children, className }: ButtonProps) {
+    const classes = `
+        bg-red-500 hover:bg-red-700
+        text-white font-bold
+        py-2 px-4 rounded
+        focus:outline-none focus:shadow-outline
+    ` + className || "";
+    return <button onClick={onClick} className={classes}>
+        {children}
+    </button>
+}
 
 export function Label({ children }: ChildrenProp) {
     const classes = `
@@ -120,8 +171,8 @@ export function Select<T>({ options, value, onSelect, className }: SelectProps<T
     return <div className={classes}>
         {options.map(({name, value: v}, idx) => {
             const classes = [
-                "py-2 px-3 mr-px",
-                v == value ? "bg-blue-500 text-white" : "bg-gray-500 hover:bg-gray-400",
+                "py-2 px-3 mr-px text-white",
+                v == value ? "bg-blue-500 hover:bg-blue-700" : "bg-gray-500 hover:bg-gray-700",
                 idx == 0 ? "rounded-l" : "",
                 idx == (options.length - 1) ? "rounded-r" : ""
             ].join(" ");

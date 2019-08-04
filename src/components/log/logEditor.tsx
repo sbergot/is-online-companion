@@ -1,6 +1,6 @@
 import * as React from "react";
 import { AnyLogBlock, LogType, UserInputLog, DiceRollLog, RollType } from "../../contracts/log";
-import { SmallButton, Select } from "../controls";
+import { SmallPrimaryButton, Select } from "../controls";
 import { StatKey, StatusKey } from "../../contracts/character";
 import { DataServiceContainer } from "../../containers/dataService";
 
@@ -70,7 +70,7 @@ function UserInputEditor({ onLog, characterKey, initialText }: UserInputEditorPr
                 cols={70}
             />
         </div>
-        <SmallButton onClick={onClick}>Log</SmallButton>
+        <SmallPrimaryButton onClick={onClick}>Log</SmallPrimaryButton>
     </div>
 }
 
@@ -136,6 +136,6 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
                 value={bonus.toString()}
                 onSelect={(b) => setBonus(parseInt(b))} />
         </div>
-        <SmallButton onClick={onSubmit}>Log</SmallButton>
+        <SmallPrimaryButton onClick={onSubmit}>Log</SmallPrimaryButton>
     </div>
 }

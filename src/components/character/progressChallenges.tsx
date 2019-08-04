@@ -4,7 +4,7 @@ import { KeyMap, KeyEntry } from "../../contracts/persistence";
 import { ProgressChallenge, Rank, ChallengeType } from "../../contracts/challenge";
 import { SubSection, Selectable } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
-import { SmallButton, Label, TextInput, Select } from "../controls";
+import { SmallPrimaryButton, Label, TextInput, SmallSecondaryButton, Select, SmallDangerButton } from "../controls";
 import { LensProps, useLens, Lens, Zoom } from "../../services/functors";
 import { TrackMeter } from "./bars";
 import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, challengeResources } from "../../services/progressChallenges";
@@ -42,9 +42,9 @@ export function Challenge<T extends ChallengeType>({ lens, type, onSelect, selec
                     }}
                     onCancel={() => setFormVisible(false)}
                     type={type} /> :
-                <SmallButton onClick={() => {setFormVisible(true); onSelect(null);}}>
+                <SmallPrimaryButton onClick={() => {setFormVisible(true); onSelect(null);}}>
                     {challengeResources[type].createAction}
-                </SmallButton>}
+                </SmallPrimaryButton>}
         </div>
     </SubSection>
 }
@@ -85,16 +85,16 @@ function ChallengeForm<T extends ChallengeType>({ onSubmit, type, onCancel }: Ch
         <Label>Description</Label>
         <TextInput value={descr} onChange={setDescr} />
         <RankSelector lens={rankLens} />
-        <SmallButton
+        <SmallPrimaryButton
             className="mt-2 mr-2"
             onClick={() => onSubmit(newChallenge(descr, rankLens.state, type))}>
             save
-        </SmallButton>
-        <SmallButton
+        </SmallPrimaryButton>
+        <SmallSecondaryButton
             className="mt-2"
             onClick={onCancel}>
             cancel
-        </SmallButton>
+        </SmallSecondaryButton>
     </div>
 }
 
@@ -130,23 +130,23 @@ export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
         <ChallengeDescription challenge={challenge} />
         <div className={buttonClasses}>
             <div className="mb-2">
-                <SmallButton className="mr-2" onClick={() => setProgress((p) => p + progressStep)}>
+                <SmallPrimaryButton className="mr-2" onClick={() => setProgress((p) => p + progressStep)}>
                     Progress
-                </SmallButton>
-                <SmallButton onClick={() => setProgress((p) => p - progressStep)}>
+                </SmallPrimaryButton>
+                <SmallDangerButton onClick={() => setProgress((p) => p - progressStep)}>
                     Regress
-                </SmallButton>
+                </SmallDangerButton>
             </div>
             <div>
-                <SmallButton className="mr-2" onClick={onSuccessClick}>
+                <SmallPrimaryButton className="mr-2" onClick={onSuccessClick}>
                     Success
-                </SmallButton>
-                <SmallButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
+                </SmallPrimaryButton>
+                <SmallDangerButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
                     Failure
-                </SmallButton>
-                <SmallButton onClick={() => setChallenge(finishChallenge)}>
+                </SmallDangerButton>
+                <SmallDangerButton onClick={() => setChallenge(finishChallenge)}>
                     Abandon
-                </SmallButton>
+                </SmallDangerButton>
             </div>
         </div>
     </>

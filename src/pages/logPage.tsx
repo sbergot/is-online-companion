@@ -6,7 +6,7 @@ import { StreamEntry } from "../contracts/persistence";
 import { DataServiceContainer } from "../containers/dataService";
 import { CampaignKeyParam, CharacterKeyParam } from "../services/routes";
 import { Section, MainPanel, ActionPanel } from "../components/layout";
-import { Select, SmallButton } from "../components/controls";
+import { Select, SmallPrimaryButton } from "../components/controls";
 import { LogBlock, InnerLogBlock } from "../components/log/logContent";
 import { NewLogBlockEditor, LogBlockEditor } from "../components/log/logEditor";
 import { StreamHook } from "../contracts/dataservice";
@@ -131,15 +131,15 @@ function LogBlockActions({ selected, logSource, onRemove, onEdit }: LogBlockActi
     return <>
         <InnerLogBlock entry={selected} character={character.data} />
         <div className="pt-2">
-            <SmallButton
+            <SmallPrimaryButton
                 className="mr-2"
                 onClick={() => onEdit(selected)}>
                 edit
-            </SmallButton>
+            </SmallPrimaryButton>
             {canDeleteSelected ?
-                <SmallButton onClick={() => onRemove(selected)} >
+                <SmallPrimaryButton onClick={() => onRemove(selected)} >
                     delete
-                </SmallButton> :
+                </SmallPrimaryButton> :
                 null}
         </div>
     </>

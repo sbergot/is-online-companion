@@ -1,6 +1,3 @@
-* ui improvements
-** TODO multiple button type (primary, secondary, danger)
-
 * momentum rules
 ** TODO momentum max & reset rules
 

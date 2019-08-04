@@ -4,7 +4,7 @@ import { History } from "history";
 
 import { Section, MainPanel } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
-import { EntryItem, Label, TextInput, Button } from "../components/controls";
+import { EntryItem, Label, TextInput, PrimaryButton } from "../components/controls";
 import { Campaign } from "../contracts/campaign";
 import { KeyEntry } from "../contracts/persistence";
 import { campaignRoute } from "../services/routes";
@@ -46,7 +46,7 @@ function CampaignForm({ onSubmit }: { onSubmit: (c: KeyEntry<Campaign>) => void 
             <TextInput value={name} onChange={setName} />
         </div>
         <div className="text-right">
-            <Button onClick={() => onSubmit(campaignService.createCampaign(name))}>Ok</Button>
+            <PrimaryButton onClick={() => onSubmit(campaignService.createCampaign(name))}>Ok</PrimaryButton>
         </div>
     </div>
 }
