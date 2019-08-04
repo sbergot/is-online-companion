@@ -6,7 +6,7 @@ import { Challenge, ChallengeActions } from "../components/character/progressCha
 import { MainPanel, ActionPanel } from "../components/layout";
 import { KeyEntry } from "../contracts/persistence";
 import { ProgressChallenge, ChallengeType } from "../contracts/challenge";
-import { Lens } from "../services/functors";
+import { Lens, Zoom } from "../services/functors";
 import { Campaign } from "../contracts/campaign";
 
 export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
@@ -29,20 +29,14 @@ export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam 
                 selectedKey={selected ? selected.key : undefined}/>
         </MainPanel>
         <ActionPanel>
-            {selected != null ? <ChallengeActionsSelector lens={campaignLens} selected={selected} /> : null}
+            {selected != null ? <Zoom
+                parentLens={campaignLens}
+                zoomTo={selected.data.type == "combat" ? "combats" : "travels"}>
+                {sublens  => {
+                    const selectedLens = sublens.zoom(selected.key).zoom("data") as Lens<ProgressChallenge<ChallengeType>>;
+                    return <ChallengeActions key="challengeActions" lens={selectedLens} />
+                }}
+            </Zoom>  : null}
         </ActionPanel>
     </>
-}
-
-interface ChallengeActionsSelectorProps {
-    lens: Lens<Campaign>;
-    selected: KeyEntry<ProgressChallenge<"combat" | "travel">>;
-}
-
-function ChallengeActionsSelector({ lens, selected }: ChallengeActionsSelectorProps) {
-    const selectedLens = lens
-            .zoom(selected.data.type == "combat" ? "combats" : "travels")
-            .zoom(selected.key) as Lens<KeyEntry<ProgressChallenge<ChallengeType>>>;
-
-    return <ChallengeActions key="challengeActions" lens={selectedLens.zoom("data")} />
 }

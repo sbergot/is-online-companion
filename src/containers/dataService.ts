@@ -6,7 +6,7 @@ import { DataService, KeyMapHook, StreamHook } from "../contracts/dataservice";
 import { KeyMapSource } from "../services/persistence/keyMapSource";
 import { StreamSource } from "../services/persistence/streamSource";
 import { LocalStorage } from "../services/persistence/storage";
-import { useLens, wrapFunctor } from "../services/functors";
+import { useLens } from "../services/functors";
 
 function useDataService(): DataService {
     const storage = new LocalStorage();
@@ -37,13 +37,13 @@ function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
         lens.setState((values) => ({...values, [entry.key]: entry}));
     }
 
-    const savingLens = wrapFunctor(lens.promap(
+    const savingLens = lens.promap(
         state => state,
         (newState, _) => {
             source.saveAll(newState);
             return newState;
         }
-    ));
+    );
 
     function getEntryLens(key: string) {
         return savingLens.zoom(key);

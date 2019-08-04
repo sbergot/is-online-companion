@@ -1,20 +1,29 @@
 import * as React from "react";
 
 import { Character, Status, Debilities } from "../../contracts/character";
-import { TrackProgress } from "../../contracts/challenge";
+import { TrackProgress, ProgressChallenge } from "../../contracts/challenge";
 import { CheckBox } from "../controls";
 import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "../layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 import { Lens } from "../../services/functors";
 import { Challenge } from "./progressChallenges";
+import { KeyEntry } from "../../contracts/persistence";
 
-export function CharacterSheet({lens: {state: character, zoom: zoom}}: {lens: Lens<Character>}) {
+export interface CharacterSheetProps {
+    lens: Lens<Character>;
+    selectedVowLens: Lens<KeyEntry<ProgressChallenge<"vow">> | null>;
+}
+
+export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
+    const {state: character, zoom: zoom} = lens;
     return <>
         <Section title="Character">
             <SubSection>
                 <span>{character.name}</span>
-                <span className="ml-8">experience: {character.experience}</span>
+                <span className="ml-8">
+                    experience: {character.experience}
+                </span>
             </SubSection>
             <SubSection>
                 <StatsBoxes stats={character.stats} />
@@ -36,7 +45,12 @@ export function CharacterSheet({lens: {state: character, zoom: zoom}}: {lens: Le
         </Section>
         <Section title="Tracks">
             <Bonds lens={zoom("bonds")} />
-            <Challenge lens={zoom("vows")} setExp={zoom("experience").setState} type="vow" />
+            <Challenge
+                lens={zoom("vows")}
+                setExp={zoom("experience").setState}
+                type="vow"
+                onSelect={(entry) => selectedVowLens.setState(() => entry)}
+                selectedKey={selectedVowLens.state ? selectedVowLens.state.key : undefined} />
         </Section>
         <Section title="Debilities">
             <Debilities lens={zoom("debilities")} />

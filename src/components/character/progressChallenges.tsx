@@ -5,7 +5,7 @@ import { ProgressChallenge, Rank, ChallengeType } from "../../contracts/challeng
 import { SubSection, Selectable } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
 import { SmallButton, Label, TextInput, Select } from "../controls";
-import { LensProps, useLens, Lens } from "../../services/functors";
+import { LensProps, useLens, Lens, Zoom } from "../../services/functors";
 import { TrackMeter } from "./bars";
 import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, challengeResources } from "../../services/progressChallenges";
 import { SetState } from "@staltz/use-profunctor-state";
@@ -33,10 +33,12 @@ export function Challenge<T extends ChallengeType>({ lens, setExp, type, onSelec
                 key={v.key}
                 onClick={() => {onSelect ? onSelect(v) : null}}
                 selected={selectedKey != null && selectedKey == v.key}>
-                <ProgressTrack
-                    entryKey={v.key}
-                    lens={lens}
-                    onSuccess={onSuccess} />
+                    <Zoom parentLens={lens} zoomTo={v.key} >
+                        {sublens => <ProgressTrack
+                            lens={sublens}
+                            onSuccess={onSuccess} />
+                        }
+                    </Zoom>
             </Selectable> 
         })}
         <div className="mt-2">
@@ -55,13 +57,12 @@ export function Challenge<T extends ChallengeType>({ lens, setExp, type, onSelec
 }
 
 interface ProgressTrackProps<T extends ChallengeType> {
-    lens: Lens<KeyMap<ProgressChallenge<T>>>
-    entryKey: string;
+    lens: Lens<KeyEntry<ProgressChallenge<T>>>
     onSuccess: () => void;
 }
 
-function ProgressTrack<T extends ChallengeType>({ lens, entryKey, onSuccess }: ProgressTrackProps<T>) {
-    const { state: challenge, setState: setChallenge, zoom: zoom } = lens.zoom(entryKey).zoom("data");
+function ProgressTrack<T extends ChallengeType>({ lens, onSuccess }: ProgressTrackProps<T>) {
+    const { state: challenge, setState: setChallenge, zoom: zoom } = lens.zoom("data");
     const buttonClasses = challenge.finished ? "hidden" : "";
 
     function onSuccessClick() {
