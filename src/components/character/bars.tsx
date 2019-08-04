@@ -36,10 +36,12 @@ export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
         setState(p => p + step);
     }
 
-    return <div className="flex flex-row flex-wrap">
-        {range(1, progressLevels).map((i) => <Ticks t={4} key={i} />)}
-        {rest > 0 && <Ticks t={rest} />}
-        {range(1, 10 - progressLevels - (rest > 0 ? 1 : 0)).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
+    return <div className="flex flex-row flex-wrap justify-between">
+        <div className="flex flex-row">
+            {range(1, progressLevels).map((i) => <Ticks t={4} key={i} />)}
+            {rest > 0 && <Ticks t={rest} />}
+            {range(1, 10 - progressLevels - (rest > 0 ? 1 : 0)).map((i) => <Ticks t={0} key={i + progressLevels + 1} />)}
+        </div>
         <div className={buttonClasses}>
             <SmallDangerButton className="mr-2" onClick={(e) => setProgress(e, -progressStep)}>
                 -

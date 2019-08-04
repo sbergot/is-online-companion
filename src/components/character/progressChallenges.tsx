@@ -21,7 +21,7 @@ export function Challenge<T extends ChallengeType>({ lens, type, onSelect, selec
     const [formVisible, setFormVisible] = React.useState(false);
     const { state: challenges } = lens;
 
-    return <SubSection className="flex flex-col items-start" title={type}>
+    return <SubSection className="flex flex-col max-w-xl" title={type}>
         {Object.values(challenges).map(v => {
             return <Selectable
                 key={v.key}
@@ -58,12 +58,10 @@ function ProgressTrack<T extends ChallengeType>({ lens }: ProgressTrackProps<T>)
 
     return <div>
         <ChallengeDescription challenge={challenge} />
-        <div className="flex flex-wrap">
-            <TrackMeter
-                lens={zoom("track")}
-                finished={challenge.finished}
-                progressStep={rankStats[challenge.rank].progress} />
-        </div>
+        <TrackMeter
+            lens={zoom("track")}
+            finished={challenge.finished}
+            progressStep={rankStats[challenge.rank].progress} />
     </div>
 }
 
