@@ -7,7 +7,6 @@ import { MainPanel, ActionPanel } from "../components/layout";
 import { KeyEntry } from "../contracts/persistence";
 import { ProgressChallenge, ChallengeType } from "../contracts/challenge";
 import { Lens, Zoom } from "../services/functors";
-import { Campaign } from "../contracts/campaign";
 
 export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();

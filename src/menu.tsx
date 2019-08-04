@@ -19,7 +19,7 @@ function CampaignMenu({ match }: RouteComponentProps<routes.CampaignKeyParam>) {
             campaign > {campaign.data.name}
         </MenuTitle>
         <InlineLink to={routes.campaignSelectionRoute}>
-            select another campaign
+            campaign selection
         </InlineLink>
     </> : null
 }
@@ -33,16 +33,16 @@ function CharacterMenu({ match }: RouteComponentProps<routes.CampaignKeyParam & 
             character > {character.data.name}
         </MenuTitle>
         <InlineLink to={routes.characterSelectionRoute.to({ campaignKey })}>
-            select another character
-            </InlineLink>
+            character selection
+        </InlineLink>
         <InlineLink to={routes.characterSheetRoute.to({ campaignKey, characterKey })}>
-            go to character sheet
+            character sheet
         </InlineLink>
         <InlineLink to={routes.logRoute.to({ campaignKey, characterKey })}>
-            go to log
+            log
         </InlineLink>
         <InlineLink to={routes.tracksRoute.to({ campaignKey, characterKey })}>
-            go to tracks
+            tracks
         </InlineLink>
     </>
 }

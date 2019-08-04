@@ -13,43 +13,36 @@ import { SetState } from "@staltz/use-profunctor-state";
 interface ChallengeProps<T extends ChallengeType> {
     type: T;
     lens: Lens<KeyMap<ProgressChallenge<T>>>
-    setExp?: SetState<number>;
-    onSelect?: (entry: KeyEntry<ProgressChallenge<T>>) => void;
+    onSelect: (entry: KeyEntry<ProgressChallenge<T>> | null) => void;
     selectedKey?: string;
 }
 
-export function Challenge<T extends ChallengeType>({ lens, setExp, type, onSelect, selectedKey }:  ChallengeProps<T>) {
+export function Challenge<T extends ChallengeType>({ lens, type, onSelect, selectedKey }:  ChallengeProps<T>) {
     const [formVisible, setFormVisible] = React.useState(false);
     const { state: challenges } = lens;
 
     return <SubSection title={type}>
         {Object.values(challenges).map(v => {
-            function onSuccess() {
-                if (setExp) {
-                    setExp(xp => xp + rankStats[v.data.rank].experience);
-                }
-            }
             return <Selectable
                 key={v.key}
-                onClick={() => {onSelect ? onSelect(v) : null}}
+                onClick={() => v.key == selectedKey ? onSelect(null) : onSelect(v)}
                 selected={selectedKey != null && selectedKey == v.key}>
                     <Zoom parentLens={lens} zoomTo={v.key} >
-                        {sublens => <ProgressTrack
-                            lens={sublens}
-                            onSuccess={onSuccess} />
-                        }
+                        {sublens => <ProgressTrack lens={sublens}/>}
                     </Zoom>
             </Selectable> 
         })}
         <div className="mt-2">
             {formVisible ?
-                <ChallengeForm onSubmit={(challenge) => {
-                    const entry = newEntry(challenge);
-                    setFormVisible(false);
-                    lens.setState(challenges => ({...challenges, [entry.key]: entry}));
-                }}
-                type={type} /> :
-                <SmallButton onClick={() => setFormVisible(true)}>
+                <ChallengeForm 
+                    onSubmit={(challenge) => {
+                        const entry = newEntry(challenge);
+                        setFormVisible(false);
+                        lens.setState(challenges => ({...challenges, [entry.key]: entry}));
+                    }}
+                    onCancel={() => setFormVisible(false)}
+                    type={type} /> :
+                <SmallButton onClick={() => {setFormVisible(true); onSelect(null);}}>
                     {challengeResources[type].createAction}
                 </SmallButton>}
         </div>
@@ -58,17 +51,10 @@ export function Challenge<T extends ChallengeType>({ lens, setExp, type, onSelec
 
 interface ProgressTrackProps<T extends ChallengeType> {
     lens: Lens<KeyEntry<ProgressChallenge<T>>>
-    onSuccess: () => void;
 }
 
-function ProgressTrack<T extends ChallengeType>({ lens, onSuccess }: ProgressTrackProps<T>) {
-    const { state: challenge, setState: setChallenge, zoom: zoom } = lens.zoom("data");
-    const buttonClasses = challenge.finished ? "hidden" : "";
-
-    function onSuccessClick() {
-        setChallenge(finishChallenge);
-        onSuccess();
-    }
+function ProgressTrack<T extends ChallengeType>({ lens }: ProgressTrackProps<T>) {
+    const { state: challenge, zoom } = lens.zoom("data");
 
     return <div>
         <ChallengeDescription challenge={challenge} />
@@ -77,17 +63,6 @@ function ProgressTrack<T extends ChallengeType>({ lens, onSuccess }: ProgressTra
                 lens={zoom("track")}
                 finished={challenge.finished}
                 progressStep={rankStats[challenge.rank].progress} />
-            <div className={"ml-2 " + buttonClasses}>
-                <SmallButton className="mr-2" onClick={onSuccessClick}>
-                    Success
-                </SmallButton>
-                <SmallButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
-                    Failure
-                </SmallButton>
-                <SmallButton onClick={() => setChallenge(finishChallenge)}>
-                    Abandon
-                </SmallButton>
-            </div>
         </div>
     </div>
 }
@@ -97,7 +72,13 @@ function ChallengeDescription({challenge}: {challenge: ProgressChallenge<Challen
     return <div className={descrClasses}>{challenge.description} / {challenge.rank}</div>
 }
 
-function ChallengeForm<T extends ChallengeType>({ onSubmit, type }: { type: T; onSubmit: (vow: ProgressChallenge<T>) => void }) {
+interface ChallengeFormProps<T extends ChallengeType> {
+    type: T;
+    onSubmit: (vow: ProgressChallenge<T>) => void
+    onCancel: () => void;
+}
+
+function ChallengeForm<T extends ChallengeType>({ onSubmit, type, onCancel }: ChallengeFormProps<T>) {
     const [descr, setDescr] = React.useState("");
     const rankLens = useLens<Rank>("troublesome")
     return <div>
@@ -108,6 +89,11 @@ function ChallengeForm<T extends ChallengeType>({ onSubmit, type }: { type: T; o
             className="mt-2"
             onClick={() => onSubmit(newChallenge(descr, rankLens.state, type))}>
             save
+        </SmallButton>
+        <SmallButton
+            className="mt-2"
+            onClick={onCancel}>
+            cancel
         </SmallButton>
     </div>
 }

@@ -16,7 +16,7 @@ export interface CharacterSheetProps {
 }
 
 export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
-    const {state: character, zoom: zoom} = lens;
+    const {state: character, zoom} = lens;
     return <>
         <Section title="Character">
             <SubSection>
@@ -47,7 +47,6 @@ export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
             <Bonds lens={zoom("bonds")} />
             <Challenge
                 lens={zoom("vows")}
-                setExp={zoom("experience").setState}
                 type="vow"
                 onSelect={(entry) => selectedVowLens.setState(() => entry)}
                 selectedKey={selectedVowLens.state ? selectedVowLens.state.key : undefined} />
@@ -58,7 +57,7 @@ export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
     </>
 }
 
-function Status({lens: { state:resources, zoom: zoom }}: { lens: Lens<Status> }) {
+function Status({lens: { state:resources, zoom }}: { lens: Lens<Status> }) {
     return <div className="flex flex-row flex-wrap justify-between">
         {Object.keys(resources).map((key) => {
             const tkey = key as keyof typeof resources;
@@ -77,7 +76,7 @@ function Bonds({lens}: {lens: Lens<TrackProgress>}) {
     </SubSection>
 }
 
-function Debilities({lens: {state:debilities, zoom: zoom}}: {lens: Lens<Debilities>}) {
+function Debilities({lens: {state:debilities, zoom}}: {lens: Lens<Debilities>}) {
     return <div className="flex flex-row justify-between">
         {Object.keys(debilities).map((parentKey) => {
             const tparentkey = parentKey as keyof typeof debilities;

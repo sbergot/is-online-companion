@@ -1,9 +1,7 @@
-* travels & combat tracks
-** TODO actions in the action panel
-
-* action panel
-** TODO character sheet action panel
-progress track actions
+* ui improvements
+** TODO sticky action panel
+** TODO better challenge design
+** TODO navigation link in red for current location
 
 * momentum rules
 ** TODO momentum max & reset rules
