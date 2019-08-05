@@ -142,7 +142,7 @@ export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
                 <SmallDangerButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
                     Failure
                 </SmallDangerButton>
-                <SmallDangerButton onClick={() => setChallenge(finishChallenge)}>
+                <SmallDangerButton className="mt-2" onClick={() => setChallenge(finishChallenge)}>
                     Abandon
                 </SmallDangerButton>
             </div>

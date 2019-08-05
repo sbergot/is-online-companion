@@ -34,7 +34,7 @@ export function MainPanel({ children }: ChildrenProp) {
 }
 
 export function ActionPanel({ children }: ChildrenProp) {
-    return <div className="w-full p-4"  style={{maxWidth: "15rem"}}>
+    return <div className="p-4"  style={{maxWidth: "15rem"}}>
         {children}
     </div>
 }
