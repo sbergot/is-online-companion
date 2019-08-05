@@ -1,6 +1,3 @@
-* momentum rules
-** TODO momentum max & reset rules
-
 * index
 contains narrative objects (places, NPCs, objects)
 contains rules elements (moves, assets, regions)

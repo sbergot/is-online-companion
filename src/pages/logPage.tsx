@@ -6,11 +6,11 @@ import { StreamEntry } from "../contracts/persistence";
 import { DataServiceContainer } from "../containers/dataService";
 import { CampaignKeyParam, CharacterKeyParam } from "../services/routes";
 import { Section, MainPanel, ActionPanel } from "../components/layout";
-import { Select, SmallPrimaryButton } from "../components/controls";
-import { LogBlock, InnerLogBlock } from "../components/log/logContent";
+import { Select } from "../components/controls";
+import { LogBlock } from "../components/log/logContent";
 import { NewLogBlockEditor, LogBlockEditor } from "../components/log/logEditor";
-import { StreamHook } from "../contracts/dataservice";
 import { getLogTypeDescription } from "../services/logHelpers";
+import { LogBlockActions } from "../components/log/logActions";
 
 const allLogTypes: LogType[] = ["UserInput", "DiceRoll"];
 
@@ -23,6 +23,14 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
     const [logType, setLogType] = React.useState<LogType>("UserInput");
     const [selected, setSelected] = React.useState<StreamEntry<AnyLogBlock> | null>(null);
     const [selectedEdited, setSelectedEdited] = React.useState(false);
+    const characterLens = dataService.characters.getEntryLens(characterKey).zoom('data');
+
+    React.useEffect(() => {
+        if (logView.current) {
+            const div = logView.current;
+            div.scrollTop = div.scrollHeight;
+        }
+    }, [logs, logType])
 
     function escapeSelection() {
         setSelected(null);
@@ -38,40 +46,33 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
         }
     }
 
-    function onRemove(entry: StreamEntry<AnyLogBlock>) {
-        logSource.remove(entry);
+    function selectLogType(logType: LogType) {
         escapeSelection();
+        setLogType(logType);
     }
 
-    React.useEffect(() => {
-        if (logView.current) {
-            const div = logView.current;
-            div.scrollTop = div.scrollHeight;
-        }
-    }, [logs, logType])
-
-    function onLog(block: AnyLogBlock) {
+    function saveNewLog(block: AnyLogBlock) {
         logSource.pushNew(block);
         escapeSelection();
     }
 
-    function onEditLog(oldEntry: StreamEntry<AnyLogBlock>, newBlock: AnyLogBlock) {
+    function removeLog(entry: StreamEntry<AnyLogBlock>) {
+        logSource.remove(entry);
+        escapeSelection();
+    }
+
+    function editStart(entry: StreamEntry<AnyLogBlock>) {
+        setLogType(entry.data.type);
+        setSelectedEdited(true);
+    }
+
+    function editSave(oldEntry: StreamEntry<AnyLogBlock>, newBlock: AnyLogBlock) {
         const newEntry = {
             ...oldEntry,
             data: newBlock
         };
         logSource.edit(newEntry);
         escapeSelection();
-    }
-
-    function onEdit(entry: StreamEntry<AnyLogBlock>) {
-        setLogType(entry.data.type);
-        setSelectedEdited(true);
-    }
-
-    function onSelectLogType(logType: LogType) {
-        escapeSelection();
-        setLogType(logType);
     }
 
     return <>
@@ -90,14 +91,14 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
                 <Select
                     options={allLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
                     value={logType}
-                    onSelect={onSelectLogType} />
+                    onSelect={selectLogType} />
                 <div className="h-40 pt-2">
                     {selected != null && selectedEdited ?
                         <LogBlockEditor
-                            onLog={(newBlock) => onEditLog(selected, newBlock)}
+                            onLog={(newBlock) => editSave(selected, newBlock)}
                             logBlok={selected.data} /> :
                         <NewLogBlockEditor
-                            onLog={onLog}
+                            onLog={saveNewLog}
                             characterKey={characterKey}
                             logType={logType} />}
                 </div>
@@ -107,40 +108,13 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
             {selected != null &&
                 <LogBlockActions
                     selected={selected}
-                    onRemove={onRemove}
-                    onEdit={onEdit}
-                    logSource={logSource} />}
+                    onRemove={removeLog}
+                    onEdit={editStart}
+                    logSource={logSource}
+                    characterLens={characterLens} />}
             {selectedEdited &&
                 <p className="font-bold mt-2">Editing an entry...</p>}
         </ActionPanel>
     </>
 }
 
-interface LogBlockActionsProps {
-    selected: StreamEntry<AnyLogBlock>
-    onRemove(entry: StreamEntry<AnyLogBlock>): void;
-    onEdit(entry: StreamEntry<AnyLogBlock>): void;
-    logSource: StreamHook<AnyLogBlock>;
-}
-
-function LogBlockActions({ selected, logSource, onRemove, onEdit }: LogBlockActionsProps) {
-    const canDeleteSelected = logSource.canRemove(selected);
-    const dataService = DataServiceContainer.useContainer();
-    const character = dataService.characters.lens.state[selected.data.characterKey];
-
-    return <>
-        <InnerLogBlock entry={selected} character={character.data} />
-        <div className="pt-2">
-            <SmallPrimaryButton
-                className="mr-2"
-                onClick={() => onEdit(selected)}>
-                edit
-            </SmallPrimaryButton>
-            {canDeleteSelected ?
-                <SmallPrimaryButton onClick={() => onRemove(selected)} >
-                    delete
-                </SmallPrimaryButton> :
-                null}
-        </div>
-    </>
-}

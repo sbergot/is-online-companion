@@ -9,6 +9,7 @@ import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 import { Lens } from "../../services/functors";
 import { Challenge } from "./progressChallenges";
 import { KeyEntry } from "../../contracts/persistence";
+import { getMomentumMeta } from "../../services/characterHelpers";
 
 export interface CharacterSheetProps {
     lens: Lens<Character>;
@@ -17,6 +18,7 @@ export interface CharacterSheetProps {
 
 export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
     const {state: character, zoom} = lens;
+    const momentumMeta = getMomentumMeta(character);
     return <>
         <Section title="Character">
             <SubSection>
@@ -34,8 +36,8 @@ export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
                 <MomentumMeter
                     minVal={-6}
                     maxVal={10}
-                    reset={character.momentum.reset}
-                    tempMax={character.momentum.max}
+                    reset={momentumMeta.reset}
+                    tempMax={momentumMeta.max}
                     lens={zoom("momentum").zoom("level")}
                 />
             </SubSection>

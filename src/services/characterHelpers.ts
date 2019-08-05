@@ -1,4 +1,4 @@
-import { Character } from '../contracts/character';
+import { Character, Debilities } from '../contracts/character';
 
 export function makeDefaultCharacter(): Character {
     return {
@@ -12,9 +12,7 @@ export function makeDefaultCharacter(): Character {
             wits: 0
         },
         momentum: {
-            level: 2,
-            max: 10,
-            reset: 2
+            level: 2
         },
         status: {
             health: 5,
@@ -40,5 +38,26 @@ export function makeDefaultCharacter(): Character {
         assets: [],
         bonds: 3,
         vows: {}
+    }
+}
+
+function countTrueMembers(obj: object): number {
+    return Object.values(obj).filter(b => b).length
+}
+
+function countDebilities(deb: Debilities): number {
+    return countTrueMembers(deb.banes) + countTrueMembers(deb.burdens) + countTrueMembers(deb.conditions);
+}
+
+export interface MomentumMeta {
+    reset: number;
+    max: number;
+}
+
+export function getMomentumMeta(character: Character): MomentumMeta {
+    const debilitiesCount = countDebilities(character.debilities);
+    return {
+        max: 10 - debilitiesCount,
+        reset: 2 - Math.min(debilitiesCount, 2)
     }
 }

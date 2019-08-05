@@ -38,8 +38,6 @@ export interface Burdens {
 
 export interface Momentum {
     level: number;
-    max: number;
-    reset: number;
 }
 
 export interface Status {

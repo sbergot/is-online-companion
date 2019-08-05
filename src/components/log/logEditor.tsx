@@ -106,6 +106,11 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
     }
 
     function onSubmit() {
+        let actionDie = rollDie(6);
+        const currentMomentum = character.data.momentum.level;
+        if (currentMomentum < 0 && (-currentMomentum) === actionDie) {
+            actionDie = 0;
+        }
         onLog({
             type: "DiceRoll",
             characterKey,
@@ -114,7 +119,7 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
                 rollTypeStat: rollTypeStat,
                 bonus,
                 roll: {
-                    actionDie: rollDie(6),
+                    actionDie,
                     challengeDice: [rollDie(10), rollDie(10)]
                 }
             }

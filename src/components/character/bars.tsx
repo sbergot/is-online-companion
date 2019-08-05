@@ -2,6 +2,7 @@ import * as React from "react";
 import { TrackProgress } from "../../contracts/challenge";
 import { Lens } from "../../services/functors";
 import { SmallPrimaryButton, SmallDangerButton } from "../controls";
+import { ClassProp } from "../../contracts/component";
 
 function Ticks({t}: {t: number}) {
     const boxClasses = `
@@ -63,23 +64,28 @@ export function ResourceMeter({ minVal, maxVal, lens: { state:level, setState:se
     return <div className="flex flex-row flex-wrap">
         {range(minVal, maxVal).map(v => {
             const slotClass = [
-                `w-10 h-10 mr-1 mt-1 py-1 hover:shadow
-                 border border-gray-500
-                 text-center text-lg
-                 cursor-pointer`,
                 v <= level ? "bg-gray-400" : "bg-gray-200",
             ].join(" ")
-            return <div key={v} className={slotClass} onClick={() => setLevel(() => v)}>{v}</div>
+            return <Slot key={v} className={slotClass} level={v} onClick={() => setLevel(() => v)} />
         })}
     </div>
 }
 
-function range(minVal: number, maxVal: number): number[] {
-    const result = [];
-    for (var i = minVal; i <= maxVal; i++) {
-        result.push(i);
-    }
-    return result;
+export interface SlotProps extends ClassProp {
+    level: number;
+    onClick(): void;
+}
+
+export function Slot({ level, onClick, className }: SlotProps) {
+    const slotClass = [
+        `w-10 h-10 mr-1 mt-1 py-1 hover:shadow
+         border border-gray-500
+         text-center text-lg
+         cursor-pointer`,
+         className || "",
+    ].join(" ")
+    return <div className={slotClass} onClick={onClick}>{level}</div>
+
 }
 
 export interface MomentumMeterProps extends ResourceMeterProps {
@@ -88,9 +94,34 @@ export interface MomentumMeterProps extends ResourceMeterProps {
 }
 
 export function MomentumMeter({ minVal, maxVal, reset, tempMax, lens }: MomentumMeterProps) {
+    const current = lens.state;
     return <>
-        <ResourceMeter minVal={minVal} maxVal={maxVal} lens={lens} />
+        <div className="flex flex-row flex-wrap">
+            {range(minVal, -1).map(value => {
+                const slotClass = [
+                    value >= current ? "bg-red-200" : "bg-gray-200",
+                ].join(" ")
+                return <Slot key={value} className={slotClass} level={value} onClick={() => lens.setState(() => value)} />
+            })}
+            {range(0, tempMax).map(value => {
+                const slotClass = [
+                    value <= current ? "bg-gray-400" : "bg-gray-200",
+                ].join(" ")
+                return <Slot key={value} className={slotClass} level={value} onClick={() => lens.setState(() => value)} />
+            })}
+            {range(tempMax + 1, 10).map(v => {
+                return <Slot key={v} className="bg-blue-200" level={v} onClick={() => {}} />
+            })}
+        </div>
         <span className="mr-2">reset: {reset}</span>
         <span>max: {tempMax}</span>
     </>
+}
+
+function range(minVal: number, maxVal: number): number[] {
+    const result = [];
+    for (var i = minVal; i <= maxVal; i++) {
+        result.push(i);
+    }
+    return result;
 }
