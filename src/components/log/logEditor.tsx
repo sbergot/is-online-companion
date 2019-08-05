@@ -137,7 +137,7 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
                 value={rollType as StatusKey}
                 onSelect={onStatusSelect} />
             <Select className="mr-2"
-                options={[0, 1, 2].map(b => ({ name: b.toString(), value: b.toString() }))}
+                options={[0, 1, 2, 3, 4, 5].map(b => ({ name: b.toString(), value: b.toString() }))}
                 value={bonus.toString()}
                 onSelect={(b) => setBonus(parseInt(b))} />
         </div>

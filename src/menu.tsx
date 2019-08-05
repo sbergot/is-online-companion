@@ -52,7 +52,7 @@ function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignK
 function Credits() {
     return <>
         <h1 className="text-xl font-bold">Ironsworn online companion</h1>
-        <p>Ironsworn is an rpg by <span className="font-semibold whitespace-no-wrap">Shaw Tomkin</span></p>
+        <p>Ironsworn is an rpg by <span className="font-semibold whitespace-no-wrap">Shawn Tomkin</span></p>
         <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
             <img
                 style={{width: "6em"}}

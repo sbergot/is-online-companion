@@ -44,7 +44,7 @@ export function CharacterSelection({ match, history }: RouteComponentProps<Campa
 function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => void }) {
     const dataService = DataServiceContainer.useContainer();
     const {state: character, zoom} = useLens(makeDefaultCharacter())
-    const statOptions = [0, 1, 2, 3].map(i => ({ name: i.toString(), value: i }));
+    const statOptions = [0, 1, 2, 3, 4, 5].map(i => ({ name: i.toString(), value: i }));
     const statLens = zoom("stats");
     const {state: name, setState: setName} = zoom("name");
 
