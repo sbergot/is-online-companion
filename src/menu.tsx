@@ -10,17 +10,18 @@ function MenuTitle({ children }: { children: React.ReactText[] }) {
     </p>
 }
 
-function CampaignMenu({ match }: RouteComponentProps<routes.CampaignKeyParam>) {
+function CampaignMenu({ match, location }: RouteComponentProps<routes.CampaignKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey } = match.params;
     const campaign = dataService.campaigns.lens.state[campaignKey];
+    const { pathname } = location;
     return campaign ? <>
         <MenuTitle>
             campaign > {campaign.data.name}
         </MenuTitle>
-        <InlineLink to={routes.campaignSelectionRoute}>
+        <NavigationLink current={pathname} to={routes.campaignSelectionRoute}>
             campaign selection
-        </InlineLink>
+        </NavigationLink>
     </> : null
 }
 
@@ -29,8 +30,7 @@ function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignK
     const { campaignKey, characterKey } = match.params;
     const character = dataService.characters.lens.state[characterKey];
     const { pathname } = location;
-    const currentClass = "text-red-600";
-    return <>
+    return <div className="flex flex-col">
         <MenuTitle>
             character > {character.data.name}
         </MenuTitle>
@@ -46,13 +46,18 @@ function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignK
         <NavigationLink current={pathname} to={routes.tracksRoute.to({ campaignKey, characterKey })}>
             tracks
         </NavigationLink>
-    </>
+    </div>
 }
 
 function Credits() {
     return <>
         <h1 className="text-xl font-bold">Ironsworn online companion</h1>
-        <p>a game by <span className="font-semibold">Shawn Tomkin</span></p>
+        <p>Ironsworn is an rpg by <span className="font-semibold whitespace-no-wrap">Shaw Tomkin</span></p>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+            <img
+                style={{width: "6em"}}
+                src="https://static.wixstatic.com/media/4db827_0676c4f610b540fa886a79dd36f4d801~mv2.png/v1/fill/w_250,h_95,al_c,q_80/4db827_0676c4f610b540fa886a79dd36f4d801~mv2.webp" />
+        </a>
         <a className="text-gray-600 hover:text-red-600" href="https://www.ironswornrpg.com">
             www.ironswornrpg.com
         </a>
@@ -60,7 +65,7 @@ function Credits() {
 }
 
 export function Menu() {
-    return <nav className="bg-gray-300 p-3 flex flex-col w-full max-w-xs">
+    return <nav className="w-full bg-gray-300 p-3" style={{maxWidth: "15rem"}}>
         <Credits />
         <Route path={routes.campaignRoute.template} component={CampaignMenu} />
         <Route path="/campaign/:campaignKey/character/:characterKey" component={CharacterMenu} />

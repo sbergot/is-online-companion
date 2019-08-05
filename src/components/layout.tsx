@@ -28,13 +28,13 @@ export function SubSection({ title, children, className }: SectionProps) {
 }
 
 export function MainPanel({ children }: ChildrenProp) {
-    return <div className="max-w-4xl w-full pl-4 max-h-screen overflow-y-auto pb-2">
+    return <div className="max-w-4xl w-full max-h-screen overflow-y-auto pl-4 pb-2">
         {children}
     </div>
 }
 
 export function ActionPanel({ children }: ChildrenProp) {
-    return <div className="p-4 w-full max-w-xs">
+    return <div className="w-full p-4"  style={{maxWidth: "15rem"}}>
         {children}
     </div>
 }
