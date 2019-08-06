@@ -1,8 +1,9 @@
 import * as React from "react";
 import { AnyLogBlock, LogType, UserInputLog, DiceRollLog, RollType } from "../../contracts/log";
-import { SmallPrimaryButton, Select } from "../controls";
+import { SmallPrimaryButton } from "../buttons";
 import { StatKey, StatusKey } from "../../contracts/character";
 import { DataServiceContainer } from "../../containers/dataService";
+import { Select } from "../controls";
 
 interface EditorProps<T extends AnyLogBlock> {
     onLog(block: T): void;
@@ -13,16 +14,16 @@ interface LogBlockEditorProps extends EditorProps<AnyLogBlock> {
 }
 
 export function LogBlockEditor({ onLog, logBlok }: LogBlockEditorProps) {
-    switch (logBlok.type) {
+    switch (logBlok.key) {
         case "UserInput":
             return <UserInputEditor
                 onLog={onLog}
-                characterKey={logBlok.characterKey}
-                initialText={logBlok.payload.text} />;
+                characterKey={logBlok.value.characterKey}
+                initialText={logBlok.value.text} />;
         case "DiceRoll":
             return <DiceRollEditor
                 onLog={onLog}
-                characterKey={logBlok.characterKey} />
+                characterKey={logBlok.value.characterKey} />
         default:
             return null;
     }
@@ -54,9 +55,8 @@ function UserInputEditor({ onLog, characterKey, initialText }: UserInputEditorPr
     function onClick() {
         if (!input) { return; }
             onLog({
-                type: "UserInput",
-                characterKey: characterKey,
-                payload: { text: input }
+                key: "UserInput",
+                value: { characterKey, text: input }
             });
         setinput("");
     }
@@ -112,9 +112,9 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
             actionDie = 0;
         }
         onLog({
-            type: "DiceRoll",
-            characterKey,
-            payload: {
+            key: "DiceRoll",
+            value: {
+                characterKey,
                 rollType,
                 rollTypeStat: rollTypeStat,
                 bonus,

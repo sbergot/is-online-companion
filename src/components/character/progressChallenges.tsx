@@ -4,11 +4,12 @@ import { KeyMap, KeyEntry } from "../../contracts/persistence";
 import { ProgressChallenge, Rank, ChallengeType } from "../../contracts/challenge";
 import { SubSection, Selectable } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
-import { SmallPrimaryButton, Label, TextInput, SmallSecondaryButton, Select, SmallDangerButton } from "../controls";
+import { Label, TextInput, Select } from "../controls";
 import { LensProps, useLens, Lens, Zoom } from "../../services/functors";
 import { TrackMeter } from "./bars";
 import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, challengeResources } from "../../services/progressChallenges";
 import { SetState } from "@staltz/use-profunctor-state";
+import { SmallPrimaryButton, SmallSecondaryButton, SmallDangerButton } from "../buttons";
 
 interface ChallengeProps<T extends ChallengeType> {
     type: T;

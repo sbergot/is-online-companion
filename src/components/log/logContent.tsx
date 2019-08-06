@@ -14,7 +14,7 @@ interface LogBlockProps {
 
 export function LogBlock({ entry, onSelect, selected }: LogBlockProps) {
     const dataService = DataServiceContainer.useContainer();
-    const character = dataService.characters.lens.state[entry.data.characterKey];
+    const character = dataService.characters.lens.state[entry.data.value.characterKey];
     return <Selectable selected={selected} onClick={() => onSelect(entry)}>
         <InnerLogBlock entry={entry} character={character.data} />
     </Selectable>
@@ -36,7 +36,7 @@ export function InnerLogBlock({ entry, character }: InnerLogBlockProps) {
 }
 
 function LogBlockContent({ log }: { log: AnyLogBlock }) {
-    switch (log.type) {
+    switch (log.key) {
         case "UserInput":
             return <UserInputLogBlock block={log} />;
         case "DiceRoll":
@@ -47,7 +47,7 @@ function LogBlockContent({ log }: { log: AnyLogBlock }) {
 }
 
 function UserInputLogBlock({ block }: { block: UserInputLog }) {
-    return <p className="whitespace-pre-wrap" >{block.payload.text}</p>
+    return <p className="whitespace-pre-wrap" >{block.value.text}</p>
 }
 
 function getActionScore(challenge: ChallengeRoll): number {
@@ -71,7 +71,7 @@ function getResult(challenge: ChallengeRoll): string {
 }
 
 function DiceRollLogBlock({ block }: { block: DiceRollLog }) {
-    const challenge = block.payload;
+    const challenge = block.value;
     const challengeBonusDisplay = challenge.bonus ? " + " + challenge.bonus : ""
     return <>
         <p>roll + {challenge.rollType}{challengeBonusDisplay}</p>

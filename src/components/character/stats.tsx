@@ -1,20 +1,45 @@
 import * as React from "react";
 
-import { Stats } from "../../contracts/character";
+import { Stats, StatKey } from "../../contracts/character";
+import { Selectable } from "../layout";
 
-export function Stat({ title, level }: { title: string, level: number }) {
-    return <div className="flex flex-col border border-gray-500 mr-4 w-16">
-        <span className="text-2xl text-center">{level}</span>
-        <span className="text-center">{title}</span>
-    </div>
+interface StatProps {
+    title: string;
+    level: number;
+    onClick(): void;
+    selected: boolean;
 }
 
-export function StatsBoxes({ stats }: { stats: Stats }) {
+function Stat({ title, level, onClick, selected }: StatProps) {
+    return <Selectable onClick={onClick} selected={selected} >
+        <div className="flex flex-col w-16">
+            <span className="text-2xl text-center">{level}</span>
+            <span className="text-center">{title}</span>
+        </div>
+    </Selectable> 
+}
+
+interface StatsBoxesProps {
+    stats: Stats;
+    selectedStat: StatKey | null;
+    onSelectStat(stat: StatKey | null): void;
+}
+
+export function StatsBoxes({ stats, selectedStat, onSelectStat }: StatsBoxesProps) {
+    function toggleStat(key: StatKey) {
+        return () => onSelectStat(selectedStat == key ? null : key);
+    }
+    const statsKeys: StatKey[] = ["edge", "heart", "iron", "shadow", "wits"];
     return <div className="flex flex-row">
-        <Stat title="edge" level={stats.edge} />
-        <Stat title="heart" level={stats.heart} />
-        <Stat title="iron" level={stats.iron} />
-        <Stat title="shadow" level={stats.shadow} />
-        <Stat title="wits" level={stats.wits} />
+        {statsKeys.map(k => {
+            return <div className="mr-2">
+                <Stat
+                    key={k}
+                    title={k}
+                    level={stats[k]}
+                    onClick={toggleStat(k)}
+                    selected={selectedStat == k} />
+            </div>
+        })}
     </div>
 }

@@ -1,18 +1,18 @@
+* feedback
+** TODO update stat action
+
 * index
 contains narrative objects (places, NPCs, objects)
-contains rules elements (moves, assets, regions)
+contains rules elements (moves, assets, regions, foes)
 user should be able to reference index elements in the log
 ** TODO referentials import from is android companion
-
-* menus
-** TODO place resources & momentum in the left bar?
-** TODO show/hide toggle
+** TODO browse index
+** TODO create/edit/remove narrative objects
+** TODO direct link to index object
+** TODO reference an index object in the log
 
 * progress challenges
 ** TODO add action to hide finished challenge
-
-* code organization
-** TODO split app & persistence (& controls?)
 
 * images
 add images to campaigns & character

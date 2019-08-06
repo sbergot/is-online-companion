@@ -62,7 +62,7 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
     }
 
     function editStart(entry: StreamEntry<AnyLogBlock>) {
-        setLogType(entry.data.type);
+        setLogType(entry.data.key);
         setSelectedEdited(true);
     }
 

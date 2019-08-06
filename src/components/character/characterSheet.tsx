@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Character, Status, Debilities } from "../../contracts/character";
+import { Character, Status, Debilities, StatKey } from "../../contracts/character";
 import { TrackProgress, ProgressChallenge } from "../../contracts/challenge";
 import { CheckBox } from "../controls";
 import { StatsBoxes } from "./stats";
@@ -8,17 +8,28 @@ import { Section, SubSection } from "../layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 import { Lens } from "../../services/functors";
 import { Challenge } from "./progressChallenges";
-import { KeyEntry } from "../../contracts/persistence";
 import { getMomentumMeta } from "../../services/characterHelpers";
+import { CharacterSheetSelection } from "../../contracts/variant";
+import { KeyEntry } from "../../contracts/persistence";
+import { nullVariant } from "../../services/variantHelpers";
 
 export interface CharacterSheetProps {
     lens: Lens<Character>;
-    selectedVowLens: Lens<KeyEntry<ProgressChallenge<"vow">> | null>;
+    selectionLens: Lens<CharacterSheetSelection>;
 }
 
-export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
+export function CharacterSheet({lens, selectionLens}: CharacterSheetProps) {
     const {state: character, zoom} = lens;
     const momentumMeta = getMomentumMeta(character);
+    const selectedObj = selectionLens.state;
+    const selectedStat = selectedObj.key === "stat" ? selectedObj.value.stat : null;
+    function onSelectStat(statKey: StatKey | null) {
+        selectionLens.setState(() => statKey != null ? {key: "stat", value: { stat: statKey }} : nullVariant);
+    }
+    const selectedVow = selectedObj.key == "vow" ? selectedObj.value.key : undefined
+    function onSelectVow(entry: KeyEntry<ProgressChallenge<"vow">> | null) {
+        selectionLens.setState(() => entry != null ? {key: "vow", value: entry} : nullVariant);
+    } 
     return <>
         <Section title="Character">
             <SubSection>
@@ -28,7 +39,10 @@ export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
                 </span>
             </SubSection>
             <SubSection>
-                <StatsBoxes stats={character.stats} />
+                <StatsBoxes
+                    selectedStat={selectedStat}
+                    stats={character.stats}
+                    onSelectStat={onSelectStat}/>
             </SubSection>
         </Section>
         <Section title="Resources">
@@ -50,8 +64,8 @@ export function CharacterSheet({lens, selectedVowLens}: CharacterSheetProps) {
             <Challenge
                 lens={zoom("vows")}
                 type="vow"
-                onSelect={(entry) => selectedVowLens.setState(() => entry)}
-                selectedKey={selectedVowLens.state ? selectedVowLens.state.key : undefined} />
+                onSelect={onSelectVow}
+                selectedKey={selectedVow} />
         </Section>
         <Section title="Debilities">
             <Debilities lens={zoom("debilities")} />

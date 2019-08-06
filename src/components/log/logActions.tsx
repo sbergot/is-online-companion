@@ -3,13 +3,13 @@ import { StreamEntry } from "../../contracts/persistence";
 import { AnyLogBlock, DiceRollLog } from "../../contracts/log";
 import { StreamHook } from "../../contracts/dataservice";
 import { InnerLogBlock } from "./logContent";
-import { SmallPrimaryButton, SmallDangerButton } from "../controls";
+import { SmallPrimaryButton, SmallDangerButton } from "../buttons";
 import { Character } from "../../contracts/character";
 import { Lens } from "../../services/functors";
 import { getMomentumMeta } from "../../services/characterHelpers";
 
 function isDiceRollEntry(entry: StreamEntry<AnyLogBlock>): entry is StreamEntry<DiceRollLog> {
-    return entry.data.type === "DiceRoll";
+    return entry.data.key === "DiceRoll";
 }
 
 interface LogBlockActionsProps {
@@ -29,9 +29,9 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
     function burnMomentum(diceRoll: StreamEntry<DiceRollLog>) {
         setMomentum(() => getMomentumMeta(character).reset);
         const newDiceRoll = diceRoll;
-        const currentChallenges = diceRoll.data.payload.roll.challengeDice
+        const currentChallenges = diceRoll.data.value.roll.challengeDice
         const newChallenges = currentChallenges.map(v => v < currentMomentum ? 0 : v) as [number, number];
-        newDiceRoll.data.payload.roll.challengeDice = newChallenges;
+        newDiceRoll.data.value.roll.challengeDice = newChallenges;
         logSource.edit(newDiceRoll);
     }
 

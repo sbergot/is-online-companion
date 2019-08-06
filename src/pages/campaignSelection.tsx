@@ -4,10 +4,11 @@ import { History } from "history";
 
 import { Section, MainPanel } from "../components/layout";
 import { CampaignServiceContainer } from "../containers/campaign";
-import { EntryItem, Label, TextInput, PrimaryButton } from "../components/controls";
+import { EntryItem, Label, TextInput } from "../components/controls";
 import { Campaign } from "../contracts/campaign";
 import { KeyEntry } from "../contracts/persistence";
 import { campaignRoute } from "../services/routes";
+import { PrimaryButton } from "../components/buttons";
 
 export function CampaignSelection({ history }: { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();

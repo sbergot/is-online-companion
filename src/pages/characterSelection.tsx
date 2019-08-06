@@ -2,7 +2,7 @@ import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { Section, MainPanel } from "../components/layout";
-import { Select, Label, TextInput, PrimaryButton, EntryItem } from "../components/controls";
+import { Select, Label, TextInput, EntryItem } from "../components/controls";
 import { CampaignServiceContainer } from "../containers/campaign";
 import { DataServiceContainer } from "../containers/dataService";
 import { Character } from "../contracts/character";
@@ -10,6 +10,7 @@ import { KeyEntry } from "../contracts/persistence";
 import { characterSheetRoute, CampaignKeyParam } from "../services/routes";
 import { useLens } from "../services/functors";
 import { makeDefaultCharacter } from "../services/characterHelpers";
+import { PrimaryButton } from "../components/buttons";
 
 export function CharacterSelection({ match, history }: RouteComponentProps<CampaignKeyParam>) {
     const campaignService = CampaignServiceContainer.useContainer();

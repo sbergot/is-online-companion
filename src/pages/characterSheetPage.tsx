@@ -9,23 +9,29 @@ import { KeyEntry } from "../contracts/persistence";
 import { ProgressChallenge, ChallengeType } from "../contracts/challenge";
 import { useLens, Zoom, Lens } from "../services/functors";
 import { ChallengeActions } from "../components/character/progressChallenges";
+import { CharacterSheetSelection } from "../contracts/variant";
+import { nullVariant } from "../services/variantHelpers";
+import { Select, Label } from "../components/controls";
 
 export function CharacterSheetPage({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { characterKey } = match.params;
     const charactersSource = dataService.characters;
     const charLens = charactersSource.getEntryLens(characterKey).zoom("data");
-    const selectedVowLens = useLens<KeyEntry<ProgressChallenge<"vow">> | null>(null);
-    const selectedVow = selectedVowLens.state;
+    const statsLens = charLens.zoom('stats');
+    const selectedLens = useLens<CharacterSheetSelection>(nullVariant);
+    const selectedObj = selectedLens.state;
+    const selectedVow = selectedObj.key != "vow" ? null : selectedObj.value; 
+    const selectedStat = selectedObj.key != "stat" ? null : selectedObj.value;
 
     return <>
         <MainPanel>
             <div className="pr-2">
-                <CharacterSheet lens={charLens} selectedVowLens={selectedVowLens}/>
+                <CharacterSheet lens={charLens} selectionLens={selectedLens}/>
             </div>
         </MainPanel>
         <ActionPanel>
-        {selectedVow != null ? <Zoom
+            {selectedVow != null ? <Zoom
                 parentLens={charLens}
                 zoomTo="vows">
                 {sublens  => {
@@ -33,7 +39,21 @@ export function CharacterSheetPage({ match }: RouteComponentProps<CampaignKeyPar
                     return <ChallengeActions key="challengeActions" lens={selectedLens} />
                 }}
             </Zoom>  : null}
-
+            {selectedStat != null ?
+                <Zoom parentLens={statsLens} zoomTo={selectedStat.stat} >
+                    {sublens => {
+                        const statOptions = [0, 1, 2, 3, 4, 5].map(i => ({ name: i.toString(), value: i }));
+                        return <>
+                            <Label>{selectedStat.stat}</Label>
+                            <Select
+                                options={statOptions}
+                                value={sublens.state}
+                                onSelect={(v) => sublens.setState(() => v)}
+                            />
+                        </>
+                    }}
+                </Zoom>
+            : null}
         </ActionPanel>
     </>;
 }

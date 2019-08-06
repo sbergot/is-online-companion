@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TrackProgress } from "../../contracts/challenge";
 import { Lens } from "../../services/functors";
-import { SmallPrimaryButton, SmallDangerButton } from "../controls";
+import { SmallPrimaryButton, SmallDangerButton } from "../buttons";
 import { ClassProp } from "../../contracts/component";
 
 function Ticks({t}: {t: number}) {
