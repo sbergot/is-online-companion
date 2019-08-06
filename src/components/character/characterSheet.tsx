@@ -31,13 +31,10 @@ export function CharacterSheet({lens, selectionLens}: CharacterSheetProps) {
         selectionLens.setState(() => entry != null ? {key: "vow", value: entry} : nullVariant);
     } 
     return <>
-        <Section title="Character">
-            <SubSection>
-                <span>{character.name}</span>
-                <span className="ml-8">
-                    experience: {character.experience}
-                </span>
-            </SubSection>
+        <Section title={character.name}>
+            <span className="">
+                experience: {character.experience}
+            </span>
             <SubSection>
                 <StatsBoxes
                     selectedStat={selectedStat}
@@ -45,29 +42,30 @@ export function CharacterSheet({lens, selectionLens}: CharacterSheetProps) {
                     onSelectStat={onSelectStat}/>
             </SubSection>
         </Section>
-        <Section title="Resources">
-            <SubSection title="momentum">
-                <MomentumMeter
-                    minVal={-6}
-                    maxVal={10}
-                    reset={momentumMeta.reset}
-                    tempMax={momentumMeta.max}
-                    lens={zoom("momentum").zoom("level")}
-                />
-            </SubSection>
-            <SubSection title="resources">
+        <Section className="mt-4">
+            <span className="text-xl">momentum</span>
+            <MomentumMeter
+                minVal={-6}
+                maxVal={10}
+                reset={momentumMeta.reset}
+                tempMax={momentumMeta.max}
+                lens={zoom("momentum").zoom("level")}
+            />
+            <div className="mt-2">
                 <Status lens={zoom("status")} />
-            </SubSection>
+            </div>
         </Section>
-        <Section title="Tracks">
+        <Section className="mt-4">
             <Bonds lens={zoom("bonds")} />
-            <Challenge
-                lens={zoom("vows")}
-                type="vow"
-                onSelect={onSelectVow}
-                selectedKey={selectedVow} />
+            <div className="mt-2">
+                <Challenge
+                    lens={zoom("vows")}
+                    type="vow"
+                    onSelect={onSelectVow}
+                    selectedKey={selectedVow} />
+            </div>
         </Section>
-        <Section title="Debilities">
+        <Section title="Debilities"  className="mt-4">
             <Debilities lens={zoom("debilities")} />
         </Section>
     </>
@@ -79,7 +77,7 @@ function Status({lens: { state:resources, zoom }}: { lens: Lens<Status> }) {
             const tkey = key as keyof typeof resources;
             const subLens = zoom(tkey);
             return <div className="mr-2" key={key}>
-                <span className="text-lg">{key}</span>
+                <span className="text-xl">{key}</span>
                 <ResourceMeter minVal={0} maxVal={5} lens={subLens} />
             </div>
         })}
@@ -87,8 +85,8 @@ function Status({lens: { state:resources, zoom }}: { lens: Lens<Status> }) {
 }
 
 function Bonds({lens}: {lens: Lens<TrackProgress>}) {
-    return <SubSection title="Bonds">
-        <div className="px-2 max-w-xl">
+    return <SubSection title="bonds">
+        <div className="px-2 max-w-xl mt-2">
             <TrackMeter lens={lens} progressStep={1} finished={false} />
         </div>
     </SubSection>

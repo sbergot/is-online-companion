@@ -22,7 +22,7 @@ export function Challenge<T extends ChallengeType>({ lens, type, onSelect, selec
     const [formVisible, setFormVisible] = React.useState(false);
     const { state: challenges } = lens;
 
-    return <SubSection className="flex flex-col max-w-xl" title={type}>
+    return <SubSection className="flex flex-col max-w-xl" title={type + "s"}>
         {Object.values(challenges).map(v => {
             return <Selectable
                 key={v.key}

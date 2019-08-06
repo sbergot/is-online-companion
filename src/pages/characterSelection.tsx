@@ -29,11 +29,11 @@ export function CharacterSelection({ match, history }: RouteComponentProps<Campa
     return <MainPanel>
         <Section title="Character selection">
             <div className="flex">
-                <div className="flex-grow mr-4">
+                <div className="w-1/2 p-2">
                     Select a character...
                 <CharacterPicker characters={characters} onSelected={onCharacterSelected} />
                 </div>
-                <div className="flex-grow">
+                <div className="w-1/2 p-2">
                     ... or create a new one.
                 <CharacterForm onCreated={onCharacterSelected} />
                 </div>
@@ -57,9 +57,9 @@ function CharacterForm({ onCreated }: { onCreated: (c: KeyEntry<Character>) => v
 
     return <div>
         <div className="my-2">
-            <Label>Name</Label>
             <TextInput
                 value={name}
+                placeHolder="name"
                 onChange={(name) => setName(() => name)}
             />
             <div className="flex flex-wrap justify-around my-2">

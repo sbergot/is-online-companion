@@ -64,7 +64,7 @@ export function ResourceMeter({ minVal, maxVal, lens: { state:level, setState:se
     return <div className="flex flex-row flex-wrap">
         {range(minVal, maxVal).map(v => {
             const slotClass = [
-                v <= level ? "bg-gray-400" : "bg-gray-200",
+                v <= level ? "bg-gray-200" : "",
             ].join(" ")
             return <Slot key={v} className={slotClass} level={v} onClick={() => setLevel(() => v)} />
         })}
@@ -79,7 +79,7 @@ export interface SlotProps extends ClassProp {
 export function Slot({ level, onClick, className }: SlotProps) {
     const slotClass = [
         `w-10 h-10 mr-1 mt-1 py-1 hover:shadow
-         border border-gray-500
+         border border-gray-200 rounded
          text-center text-lg
          cursor-pointer`,
          className || "",
@@ -99,13 +99,13 @@ export function MomentumMeter({ minVal, maxVal, reset, tempMax, lens }: Momentum
         <div className="flex flex-row flex-wrap">
             {range(minVal, -1).map(value => {
                 const slotClass = [
-                    value >= current ? "bg-red-200" : "bg-gray-200",
+                    value >= current ? "bg-red-200" : "",
                 ].join(" ")
                 return <Slot key={value} className={slotClass} level={value} onClick={() => lens.setState(() => value)} />
             })}
             {range(0, tempMax).map(value => {
                 const slotClass = [
-                    value <= current ? "bg-gray-400" : "bg-gray-200",
+                    value <= current ? "bg-gray-200" : "",
                 ].join(" ")
                 return <Slot key={value} className={slotClass} level={value} onClick={() => lens.setState(() => value)} />
             })}

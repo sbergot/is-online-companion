@@ -12,6 +12,7 @@ import { PrimaryButton } from "../components/buttons";
 
 export function CampaignSelection({ history }: { history: History }) {
     const campaignService = CampaignServiceContainer.useContainer();
+    const campaigns = Object.values(campaignService.campaigns);
     function onClick(c: KeyEntry<Campaign>) {
         history.push(campaignRoute.to({campaignKey: c.key}));
     }
@@ -19,16 +20,19 @@ export function CampaignSelection({ history }: { history: History }) {
     return <MainPanel>
         <Section title="Campaign selection">
             <div className="flex">
-                <div className="flex-grow p-4">
+                <div className="w-1/2 p-2">
                     Select a campaign...
-                    {Object.values(campaignService.campaigns).map((c) => {
+                    {campaigns.length > 0 ? campaigns.map((c) => {
                         const route = campaignRoute.to({campaignKey: c.key});
                         return <Link to={route} key={c.key}>
                             <EntryItem entry={c} />
                         </Link>
-                    })}
+                    }) : 
+                    <div className="w-full p-8 border-dashed border-2 text-center text-gray-500 border-gray-500">
+                        Nothing to select
+                    </div>}
                 </div>
-                <div className="flex-grow p-4">
+                <div className="w-1/2 p-2">
                     ... or create a new one.
                     <CampaignForm onSubmit={(c) => onClick(c)} />
                 </div>

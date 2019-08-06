@@ -58,7 +58,13 @@ export function NavigationLink({to, children, className, current}: NavigationLin
     </InlineLink>
 }
 
-export function TextInput({ value, onChange }: { value: string, onChange: (s: string) => void }) {
+interface TextInputProps {
+    value: string;
+    placeHolder?: string;
+    onChange(s: string): void
+}
+
+export function TextInput({ value, onChange, placeHolder }: TextInputProps) {
     const classes = `
     shadow border rounded
     w-full py-2 px-3 my-2
@@ -69,6 +75,7 @@ export function TextInput({ value, onChange }: { value: string, onChange: (s: st
         type="text"
         onChange={(e) => onChange(e.target.value)}
         value={value}
+        placeholder={placeHolder}
         className={classes}/>
 }
 

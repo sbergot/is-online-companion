@@ -32,9 +32,8 @@ export function StatsBoxes({ stats, selectedStat, onSelectStat }: StatsBoxesProp
     const statsKeys: StatKey[] = ["edge", "heart", "iron", "shadow", "wits"];
     return <div className="flex flex-row">
         {statsKeys.map(k => {
-            return <div className="mr-2">
+            return <div key={k} className="mr-2">
                 <Stat
-                    key={k}
                     title={k}
                     level={stats[k]}
                     onClick={toggleStat(k)}

@@ -9,7 +9,7 @@ import { CombatAndTravel } from "./pages/combatAndTravel";
 
 export function Layout() {
     return <Router>
-        <div className="min-h-screen min-w-screen flex">
+        <div className="min-h-screen min-w-screen flex text-gray-700">
             <Menu />
             <Switch>
                 <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
