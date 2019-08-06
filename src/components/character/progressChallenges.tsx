@@ -10,6 +10,8 @@ import { TrackMeter } from "./bars";
 import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, challengeResources } from "../../services/progressChallenges";
 import { SetState } from "@staltz/use-profunctor-state";
 import { SmallPrimaryButton, SmallSecondaryButton, SmallDangerButton } from "../buttons";
+import { ProgressRollResult } from "../../contracts/rolls";
+import { getResult, progressRoll } from "../../services/rolls";
 
 interface ChallengeProps<T extends ChallengeType> {
     type: T;
@@ -110,6 +112,7 @@ export interface ChallengeActionsProps {
 }
 
 export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
+    const [rollResult, setRollResult] = React.useState<ProgressRollResult | null>(null);
     const { state: challenge, setState: setChallenge } = lens;
     const { setState: setProgress } = lens.zoom("track");
     const buttonClasses = [
@@ -125,6 +128,10 @@ export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
         }
     }
 
+    function rollProgress() {
+        setRollResult(progressRoll(challenge.track));
+    }
+
     return <>
         <ChallengeDescription challenge={challenge} />
         <div className={buttonClasses}>
@@ -137,7 +144,10 @@ export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
                 </SmallDangerButton>
             </div>
             <div>
-                <SmallPrimaryButton className="mr-2" onClick={onSuccessClick}>
+                <SmallPrimaryButton className="mr-2" onClick={rollProgress}>
+                    Roll progress
+                </SmallPrimaryButton>
+                <SmallPrimaryButton className="mr-2 mt-2" onClick={onSuccessClick}>
                     Success
                 </SmallPrimaryButton>
                 <SmallDangerButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
@@ -147,6 +157,17 @@ export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
                     Abandon
                 </SmallDangerButton>
             </div>
+            {rollResult != null && <div className="mt-4">
+                <p className="font-semibold">Progress roll result:</p>
+                <p>
+                    {rollResult.track}
+                    <span className="font-semibold mx-2">vs</span>
+                    {rollResult.challengeDice[0]} & {rollResult.challengeDice[1]}
+                </p>
+                <p className="font-semibold">
+                    {getResult(rollResult.track, rollResult.challengeDice)}
+                </p>
+            </div>}
         </div>
     </>
 }

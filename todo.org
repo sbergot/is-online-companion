@@ -1,5 +1,11 @@
-* feedback
-** TODO update stat action
+* versioned update!!
+
+* progress challenges
+** TODO progress roll action
+*** DONE action available when track is selected
+*** TODO should push a new type of log automatically
+** TODO hide finished toggle
+on by default
 
 * index
 contains narrative objects (places, NPCs, objects)
@@ -11,8 +17,8 @@ user should be able to reference index elements in the log
 ** TODO direct link to index object
 ** TODO reference an index object in the log
 
-* progress challenges
-** TODO add action to hide finished challenge
+* oracle rolls
+could be like https://eamonnmurray.gitlab.io/ironsworn-web/
 
 * images
 add images to campaigns & character

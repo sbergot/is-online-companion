@@ -1,10 +1,10 @@
 import * as React from "react";
-import { AnyLogBlock, UserInputLog, DiceRollLog, ChallengeRoll } from "../../contracts/log";
+import { AnyLogBlock, UserInputLog, DiceRollLog } from "../../contracts/log";
 import { StreamEntry } from "../../contracts/persistence";
 import { DataServiceContainer } from "../../containers/dataService";
 import { Character } from "../../contracts/character";
 import { Selectable } from "../layout";
-
+import { getResult, getActionScore } from "../../services/rolls";
 
 interface LogBlockProps {
     entry: StreamEntry<AnyLogBlock>;
@@ -28,7 +28,7 @@ interface InnerLogBlockProps {
 export function InnerLogBlock({ entry, character }: InnerLogBlockProps) {
     return <>
         <div className="text-sm text-gray-600 w-full flex justify-between">
-            <span>{character.name}</span>
+            <span className="mr-1">{character.name}</span>
             <span>{entry.createdAt.toLocaleString("en")}</span>
         </div>
         <LogBlockContent log={entry.data} />
@@ -50,39 +50,21 @@ function UserInputLogBlock({ block }: { block: UserInputLog }) {
     return <p className="whitespace-pre-wrap" >{block.value.text}</p>
 }
 
-function getActionScore(challenge: ChallengeRoll): number {
-    return challenge.roll.actionDie + challenge.rollTypeStat + challenge.bonus;
-}
-
-function getResult(challenge: ChallengeRoll): string {
-    const actionScore = getActionScore(challenge);
-    const success = challenge.roll.challengeDice.filter(cd => cd < actionScore).length;
-    switch(success) {
-        case 0:
-            return "miss";
-        case 1:
-            return "weak hit";
-        case 2:
-            return "strong hit";
-        default:
-            return "impossible";
-    }
-
-}
-
 function DiceRollLogBlock({ block }: { block: DiceRollLog }) {
     const challenge = block.value;
-    const challengeBonusDisplay = challenge.bonus ? " + " + challenge.bonus : ""
+    const result = challenge.result;
+    const challengeBonusDisplay = result.bonus ? " + " + result.bonus : ""
+    const score = getActionScore(result);
     return <>
-        <p>roll + {challenge.rollType}{challengeBonusDisplay}</p>
+        <p>roll + {challenge.type}{challengeBonusDisplay}</p>
         <p>
-            {challenge.roll.actionDie} + {challenge.rollTypeStat}{challengeBonusDisplay}
-             = {getActionScore(challenge)}
-            <span className="font-semibold mx-2">vs</span>{" "}
-            {challenge.roll.challengeDice[0]} & {challenge.roll.challengeDice[1]}
+            {result.actionDie} + {result.stat}{challengeBonusDisplay}
+             = {score}
+            <span className="font-semibold mx-2">vs</span>
+            {result.challengeDice[0]} & {result.challengeDice[1]}
         </p>
         <p className="font-semibold">
-            {getResult(challenge)}
+            {getResult(score, result.challengeDice)}
         </p>
     </>
 }

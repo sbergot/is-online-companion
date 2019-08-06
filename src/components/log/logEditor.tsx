@@ -1,9 +1,11 @@
 import * as React from "react";
-import { AnyLogBlock, LogType, UserInputLog, DiceRollLog, RollType } from "../../contracts/log";
+import { AnyLogBlock, LogType, UserInputLog, DiceRollLog } from "../../contracts/log";
 import { SmallPrimaryButton } from "../buttons";
 import { StatKey, StatusKey } from "../../contracts/character";
 import { DataServiceContainer } from "../../containers/dataService";
 import { Select } from "../controls";
+import { ChallengeRollType } from "../../contracts/rolls";
+import { challengeRoll } from "../../services/rolls";
 
 interface EditorProps<T extends AnyLogBlock> {
     onLog(block: T): void;
@@ -81,16 +83,12 @@ interface DiceRollEditorProps extends EditorProps<DiceRollLog> {
 const statsRollTypes: StatKey[] = [ "edge", "heart", "iron", "shadow", "wits" ];
 const statusRollTypes: StatusKey[] = [ "health", "spirit", "supply" ];
 
-function rollDie(i: number) {
-    return Math.floor(Math.random() * i) + 1
-}
-
 function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
     const dataService = DataServiceContainer.useContainer();
     const character = dataService.characters.lens.state[characterKey];
-    const [rollType, setRollType] = React.useState<RollType>("edge");
-    const [bonus, setBonus] = React.useState(0);
+    const [rollType, setRollType] = React.useState<ChallengeRollType>("edge");
     const [rollTypeStat, setRollTypeStat] = React.useState(getStat("edge"));
+    const [bonus, setBonus] = React.useState(0);
 
     function getStat(statKey: StatKey) { return character.data.stats[statKey]; }
     function getStatus(statusKey: StatusKey) { return character.data.status[statusKey]; }
@@ -106,22 +104,13 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
     }
 
     function onSubmit() {
-        let actionDie = rollDie(6);
         const currentMomentum = character.data.momentum.level;
-        if (currentMomentum < 0 && (-currentMomentum) === actionDie) {
-            actionDie = 0;
-        }
         onLog({
             key: "DiceRoll",
             value: {
                 characterKey,
-                rollType,
-                rollTypeStat: rollTypeStat,
-                bonus,
-                roll: {
-                    actionDie,
-                    challengeDice: [rollDie(10), rollDie(10)]
-                }
+                type: rollType,
+                result: challengeRoll(rollTypeStat, currentMomentum, bonus)
             }
         });
     }

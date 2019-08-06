@@ -7,6 +7,7 @@ import { SmallPrimaryButton, SmallDangerButton } from "../buttons";
 import { Character } from "../../contracts/character";
 import { Lens } from "../../services/functors";
 import { getMomentumMeta } from "../../services/characterHelpers";
+import { burnMomentum } from "../../services/rolls";
 
 function isDiceRollEntry(entry: StreamEntry<AnyLogBlock>): entry is StreamEntry<DiceRollLog> {
     return entry.data.key === "DiceRoll";
@@ -26,12 +27,11 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
     const setMomentum = characterLens.zoom("momentum").zoom("level").setState;
     const currentMomentum = character.momentum.level;
 
-    function burnMomentum(diceRoll: StreamEntry<DiceRollLog>) {
+    function burnMomentumAction(diceRoll: StreamEntry<DiceRollLog>) {
         setMomentum(() => getMomentumMeta(character).reset);
         const newDiceRoll = diceRoll;
-        const currentChallenges = diceRoll.data.value.roll.challengeDice
-        const newChallenges = currentChallenges.map(v => v < currentMomentum ? 0 : v) as [number, number];
-        newDiceRoll.data.value.roll.challengeDice = newChallenges;
+        const newResult = burnMomentum(diceRoll.data.value.result, currentMomentum);
+        newDiceRoll.data.value.result = newResult;
         logSource.edit(newDiceRoll);
     }
 
@@ -44,7 +44,7 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
                 edit
             </SmallPrimaryButton>
             {character.momentum.level > 0 && isDiceRollEntry(selected) ?
-                <SmallPrimaryButton className="mt-2" onClick={() => burnMomentum(selected)} >
+                <SmallPrimaryButton className="mt-2" onClick={() => burnMomentumAction(selected)} >
                     burn momentum ({currentMomentum})
                 </SmallPrimaryButton> :
             null}

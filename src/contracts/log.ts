@@ -1,5 +1,5 @@
-import { StatusKey, StatKey } from "./character";
 import { Variant } from "./variant";
+import { ChallengeRollResult, ChallengeRollType } from "./rolls";
 
 export type LogType = "UserInput" | "DiceRoll";
 
@@ -12,16 +12,9 @@ interface UserInput extends BaseLog {
 }
 export type UserInputLog = Variant<"UserInput", UserInput>;
 
-export type RollType = StatusKey | StatKey;
-export interface ChallengeDice {
-    actionDie: number;
-    challengeDice: [number, number];
-}
 export interface ChallengeRoll extends BaseLog {
-    rollType: RollType;
-    rollTypeStat: number;
-    bonus: number;
-    roll: ChallengeDice;
+    type: ChallengeRollType;
+    result: ChallengeRollResult;
 }
 export type DiceRollLog = Variant<"DiceRoll", ChallengeRoll>;
 
