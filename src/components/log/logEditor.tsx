@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AnyLogBlock, LogType, UserInputLog, DiceRollLog } from "../../contracts/log";
+import { AnyLogBlock, LogType, UserInputLog, ChallengeRollLog } from "../../contracts/log";
 import { SmallPrimaryButton } from "../buttons";
 import { StatKey, StatusKey } from "../../contracts/character";
 import { DataServiceContainer } from "../../containers/dataService";
@@ -22,8 +22,8 @@ export function LogBlockEditor({ onLog, logBlok }: LogBlockEditorProps) {
                 onLog={onLog}
                 characterKey={logBlok.value.characterKey}
                 initialText={logBlok.value.text} />;
-        case "DiceRoll":
-            return <DiceRollEditor
+        case "ChallengeRoll":
+            return <ChallengeRollEditor
                 onLog={onLog}
                 characterKey={logBlok.value.characterKey} />
         default:
@@ -40,8 +40,8 @@ export function NewLogBlockEditor({ onLog, logType, characterKey }: NewLogBlockE
     switch (logType) {
         case "UserInput":
             return <UserInputEditor onLog={onLog} characterKey={characterKey} />;
-        case "DiceRoll":
-            return <DiceRollEditor onLog={onLog} characterKey={characterKey} />
+        case "ChallengeRoll":
+            return <ChallengeRollEditor onLog={onLog} characterKey={characterKey} />
         default:
             return null;
     }
@@ -76,14 +76,14 @@ function UserInputEditor({ onLog, characterKey, initialText }: UserInputEditorPr
     </div>
 }
 
-interface DiceRollEditorProps extends EditorProps<DiceRollLog> {
+interface ChallengeRollEditorProps extends EditorProps<ChallengeRollLog> {
     characterKey: string;
 }
 
 const statsRollTypes: StatKey[] = [ "edge", "heart", "iron", "shadow", "wits" ];
 const statusRollTypes: StatusKey[] = [ "health", "spirit", "supply" ];
 
-function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
+function ChallengeRollEditor({ characterKey, onLog }: ChallengeRollEditorProps) {
     const dataService = DataServiceContainer.useContainer();
     const character = dataService.characters.lens.state[characterKey];
     const [rollType, setRollType] = React.useState<ChallengeRollType>("edge");
@@ -106,7 +106,7 @@ function DiceRollEditor({ characterKey, onLog }: DiceRollEditorProps) {
     function onSubmit() {
         const currentMomentum = character.data.momentum.level;
         onLog({
-            key: "DiceRoll",
+            key: "ChallengeRoll",
             value: {
                 characterKey,
                 type: rollType,

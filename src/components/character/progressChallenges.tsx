@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { KeyMap, KeyEntry } from "../../contracts/persistence";
+import { KeyMap, KeyEntry, StreamEntry } from "../../contracts/persistence";
 import { ProgressChallenge, Rank, ChallengeType } from "../../contracts/challenge";
 import { SubSection, Selectable } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
@@ -12,6 +12,8 @@ import { SetState } from "@staltz/use-profunctor-state";
 import { SmallPrimaryButton, SmallSecondaryButton, SmallDangerButton } from "../buttons";
 import { ProgressRollResult } from "../../contracts/rolls";
 import { getResult, progressRoll } from "../../services/rolls";
+import { ProgressRollLogBlock } from "../log/logContent";
+import { ProgressRoll, ProgressRollLog } from "../../contracts/log";
 
 interface ChallengeProps<T extends ChallengeType> {
     type: T;
@@ -108,13 +110,15 @@ function RankSelector({ lens: { state: value, setState: setRank } }: LensProps<R
 
 export interface ChallengeActionsProps {
     lens: Lens<ProgressChallenge<ChallengeType>>
+    characterKey: string;
     setExp?: SetState<number>;
+    onPushProgressRoll(roll: ProgressRollLog): void;
 }
 
-export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
-    const [rollResult, setRollResult] = React.useState<ProgressRollResult | null>(null);
-    const { state: challenge, setState: setChallenge } = lens;
-    const { setState: setProgress } = lens.zoom("track");
+export function ChallengeActions({lens: challengeLens, setExp, characterKey, onPushProgressRoll}: ChallengeActionsProps) {
+    const [rollResult, setRollResult] = React.useState<ProgressRoll | null>(null);
+    const { state: challenge, setState: setChallenge } = challengeLens;
+    const { setState: setProgress } = challengeLens.zoom("track");
     const buttonClasses = [
         "mt-2",
         challenge.finished ? "hidden" : ""
@@ -129,7 +133,14 @@ export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
     }
 
     function rollProgress() {
-        setRollResult(progressRoll(challenge.track));
+        const roll ={
+            type: challenge.type,
+            characterKey,
+            challenge: challenge,
+            result: progressRoll(challenge.track)
+        };
+        setRollResult(roll);
+        onPushProgressRoll({ key: "ProgressRoll", value: roll });
     }
 
     return <>
@@ -159,14 +170,7 @@ export function ChallengeActions({lens, setExp}: ChallengeActionsProps) {
             </div>
             {rollResult != null && <div className="mt-4">
                 <p className="font-semibold">Progress roll result:</p>
-                <p>
-                    {rollResult.track}
-                    <span className="font-semibold mx-2">vs</span>
-                    {rollResult.challengeDice[0]} & {rollResult.challengeDice[1]}
-                </p>
-                <p className="font-semibold">
-                    {getResult(rollResult.track, rollResult.challengeDice)}
-                </p>
+                <ProgressRollLogBlock block={rollResult} />
             </div>}
         </div>
     </>

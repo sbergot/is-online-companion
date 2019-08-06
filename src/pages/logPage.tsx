@@ -12,7 +12,7 @@ import { NewLogBlockEditor, LogBlockEditor } from "../components/log/logEditor";
 import { getLogTypeDescription } from "../services/logHelpers";
 import { LogBlockActions } from "../components/log/logActions";
 
-const allLogTypes: LogType[] = ["UserInput", "DiceRoll"];
+const allEditorLogTypes: LogType[] = ["UserInput", "ChallengeRoll"];
 
 export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
@@ -89,7 +89,7 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
                     })}
                 </div>
                 <Select
-                    options={allLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
+                    options={allEditorLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
                     value={logType}
                     onSelect={selectLogType} />
                 <div className="h-40 pt-2">

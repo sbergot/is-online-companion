@@ -10,7 +10,8 @@ import { Lens, Zoom } from "../services/functors";
 
 export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
-    const { campaignKey } = match.params;
+    const { campaignKey, characterKey } = match.params;
+    const logSource = dataService.logs(campaignKey);
     const campaignLens = dataService.campaigns.getEntryLens(campaignKey).zoom("data");
     const [selected, setSelected] = React.useState<KeyEntry<ProgressChallenge<"combat" | "travel">> | null>(null);
 
@@ -33,7 +34,11 @@ export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam 
                 zoomTo={selected.data.type == "combat" ? "combats" : "travels"}>
                 {sublens  => {
                     const selectedLens = sublens.zoom(selected.key).zoom("data") as Lens<ProgressChallenge<ChallengeType>>;
-                    return <ChallengeActions key="challengeActions" lens={selectedLens} />
+                    return <ChallengeActions
+                        key="challengeActions"
+                        lens={selectedLens}
+                        characterKey={characterKey}
+                        onPushProgressRoll={logSource.pushNew}/>
                 }}
             </Zoom>  : null}
         </ActionPanel>

@@ -1,13 +1,14 @@
 import { Variant } from "./variant";
-import { ChallengeRollResult, ChallengeRollType } from "./rolls";
+import { ChallengeRollResult, ChallengeRollType, ProgressRollResult } from "./rolls";
+import { ChallengeType, ProgressChallenge } from "./challenge";
 
-export type LogType = "UserInput" | "DiceRoll";
+export type LogType = "UserInput" | "ChallengeRoll" | "ProgressRoll";
 
 interface BaseLog {
     characterKey: string;
 }
 
-interface UserInput extends BaseLog {
+export interface UserInput extends BaseLog {
     text: string;
 }
 export type UserInputLog = Variant<"UserInput", UserInput>;
@@ -16,6 +17,12 @@ export interface ChallengeRoll extends BaseLog {
     type: ChallengeRollType;
     result: ChallengeRollResult;
 }
-export type DiceRollLog = Variant<"DiceRoll", ChallengeRoll>;
+export type ChallengeRollLog = Variant<"ChallengeRoll", ChallengeRoll>;
 
-export type AnyLogBlock = UserInputLog | DiceRollLog;
+export interface ProgressRoll extends BaseLog {
+    challenge: ProgressChallenge<ChallengeType>;
+    result: ProgressRollResult;
+}
+export type ProgressRollLog = Variant<"ProgressRoll", ProgressRoll>;
+
+export type AnyLogBlock = UserInputLog | ChallengeRollLog | ProgressRollLog;

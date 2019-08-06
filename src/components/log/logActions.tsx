@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StreamEntry } from "../../contracts/persistence";
-import { AnyLogBlock, DiceRollLog } from "../../contracts/log";
+import { AnyLogBlock, ChallengeRollLog } from "../../contracts/log";
 import { StreamHook } from "../../contracts/dataservice";
 import { InnerLogBlock } from "./logContent";
 import { SmallPrimaryButton, SmallDangerButton } from "../buttons";
@@ -9,8 +9,8 @@ import { Lens } from "../../services/functors";
 import { getMomentumMeta } from "../../services/characterHelpers";
 import { burnMomentum } from "../../services/rolls";
 
-function isDiceRollEntry(entry: StreamEntry<AnyLogBlock>): entry is StreamEntry<DiceRollLog> {
-    return entry.data.key === "DiceRoll";
+function isChallengeRollEntry(entry: StreamEntry<AnyLogBlock>): entry is StreamEntry<ChallengeRollLog> {
+    return entry.data.key === "ChallengeRoll";
 }
 
 interface LogBlockActionsProps {
@@ -27,12 +27,12 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
     const setMomentum = characterLens.zoom("momentum").zoom("level").setState;
     const currentMomentum = character.momentum.level;
 
-    function burnMomentumAction(diceRoll: StreamEntry<DiceRollLog>) {
+    function burnMomentumAction(challengeRoll: StreamEntry<ChallengeRollLog>) {
         setMomentum(() => getMomentumMeta(character).reset);
-        const newDiceRoll = diceRoll;
-        const newResult = burnMomentum(diceRoll.data.value.result, currentMomentum);
-        newDiceRoll.data.value.result = newResult;
-        logSource.edit(newDiceRoll);
+        const newChallengeRoll = challengeRoll;
+        const newResult = burnMomentum(challengeRoll.data.value.result, currentMomentum);
+        newChallengeRoll.data.value.result = newResult;
+        logSource.edit(newChallengeRoll);
     }
 
     return <>
@@ -43,7 +43,7 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
                 onClick={() => onEdit(selected)}>
                 edit
             </SmallPrimaryButton>
-            {character.momentum.level > 0 && isDiceRollEntry(selected) ?
+            {character.momentum.level > 0 && isChallengeRollEntry(selected) ?
                 <SmallPrimaryButton className="mt-2" onClick={() => burnMomentumAction(selected)} >
                     burn momentum ({currentMomentum})
                 </SmallPrimaryButton> :

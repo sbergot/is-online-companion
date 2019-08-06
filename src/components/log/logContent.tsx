@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AnyLogBlock, UserInputLog, DiceRollLog } from "../../contracts/log";
+import { AnyLogBlock, UserInputLog, ChallengeRollLog, ProgressRollLog, UserInput, ChallengeRoll, ProgressRoll } from "../../contracts/log";
 import { StreamEntry } from "../../contracts/persistence";
 import { DataServiceContainer } from "../../containers/dataService";
 import { Character } from "../../contracts/character";
@@ -38,25 +38,26 @@ export function InnerLogBlock({ entry, character }: InnerLogBlockProps) {
 function LogBlockContent({ log }: { log: AnyLogBlock }) {
     switch (log.key) {
         case "UserInput":
-            return <UserInputLogBlock block={log} />;
-        case "DiceRoll":
-            return <DiceRollLogBlock block={log} />;
+            return <UserInputLogBlock block={log.value} />;
+        case "ChallengeRoll":
+            return <ChallengeRollLogBlock block={log.value} />;
+        case "ProgressRoll":
+            return <ProgressRollLogBlock block={log.value} />
         default:
             return null;
     }
 }
 
-function UserInputLogBlock({ block }: { block: UserInputLog }) {
-    return <p className="whitespace-pre-wrap" >{block.value.text}</p>
+function UserInputLogBlock({ block }: { block: UserInput }) {
+    return <p className="whitespace-pre-wrap" >{block.text}</p>
 }
 
-function DiceRollLogBlock({ block }: { block: DiceRollLog }) {
-    const challenge = block.value;
-    const result = challenge.result;
+function ChallengeRollLogBlock({ block }: { block: ChallengeRoll }) {
+    const result = block.result;
     const challengeBonusDisplay = result.bonus ? " + " + result.bonus : ""
     const score = getActionScore(result);
     return <>
-        <p>roll + {challenge.type}{challengeBonusDisplay}</p>
+        <p>roll + {block.type}{challengeBonusDisplay}</p>
         <p>
             {result.actionDie} + {result.stat}{challengeBonusDisplay}
              = {score}
@@ -69,3 +70,19 @@ function DiceRollLogBlock({ block }: { block: DiceRollLog }) {
     </>
 }
 
+export function ProgressRollLogBlock({ block }: { block: ProgressRoll }) {
+    const challenge = block.challenge
+    const result = block.result;
+    return <>
+        <p>Progress roll for {challenge.type} challenge</p>
+        <p>{challenge.description}</p>
+        <p>
+            {result.track}
+            <span className="font-semibold mx-2">vs</span>
+            {result.challengeDice[0]} & {result.challengeDice[1]}
+        </p>
+        <p className="font-semibold">
+            {getResult(result.track, result.challengeDice)}
+        </p>
+    </>
+}

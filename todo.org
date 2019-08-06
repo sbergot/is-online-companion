@@ -1,11 +1,15 @@
 * versioned update!!
 
 * progress challenges
-** TODO progress roll action
-*** DONE action available when track is selected
-*** TODO should push a new type of log automatically
 ** TODO hide finished toggle
 on by default
+
+* TODO about page
+repo
+issue link
+* TODO error page
+issue link
+export save?
 
 * index
 contains narrative objects (places, NPCs, objects)
@@ -16,6 +20,8 @@ user should be able to reference index elements in the log
 ** TODO create/edit/remove narrative objects
 ** TODO direct link to index object
 ** TODO reference an index object in the log
+
+* aggregate consecutive user inputs?
 
 * oracle rolls
 could be like https://eamonnmurray.gitlab.io/ironsworn-web/

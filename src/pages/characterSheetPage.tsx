@@ -15,7 +15,8 @@ import { Select, Label } from "../components/controls";
 
 export function CharacterSheetPage({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
-    const { characterKey } = match.params;
+    const { characterKey, campaignKey } = match.params;
+    const logSource = dataService.logs(campaignKey);
     const charactersSource = dataService.characters;
     const charLens = charactersSource.getEntryLens(characterKey).zoom("data");
     const statsLens = charLens.zoom('stats');
@@ -36,7 +37,11 @@ export function CharacterSheetPage({ match }: RouteComponentProps<CampaignKeyPar
                 zoomTo="vows">
                 {sublens  => {
                     const selectedLens = sublens.zoom(selectedVow.key).zoom("data") as Lens<ProgressChallenge<ChallengeType>>;
-                    return <ChallengeActions key="challengeActions" lens={selectedLens} />
+                    return <ChallengeActions
+                        key="challengeActions"
+                        lens={selectedLens}
+                        characterKey={characterKey}
+                        onPushProgressRoll={logSource.pushNew}/>
                 }}
             </Zoom>  : null}
             {selectedStat != null ?
