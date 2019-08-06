@@ -50,3 +50,5 @@ export const tracksRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = creat
 );
 
 export const campaignSelectionRoute = "/campaign/selection";
+
+export const aboutRoute = "/about";

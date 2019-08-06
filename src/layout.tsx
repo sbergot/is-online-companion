@@ -5,6 +5,7 @@ import * as routes from "./services/routes";
 import { Menu } from "./menu";
 import { CampaignSelection, CharacterSelection, CharacterSheetPage, LogPage, CharacterAutoSelection } from "./pages";
 import { CombatAndTravel } from "./pages/combatAndTravel";
+import { AboutPage } from "./pages/aboutPage";
 
 
 export function Layout() {
@@ -18,6 +19,7 @@ export function Layout() {
                 <Route exact path={routes.logRoute.template} component={LogPage} />
                 <Route exact path={routes.characterSheetRoute.template} component={CharacterSheetPage} />
                 <Route exact path={routes.tracksRoute.template} component={CombatAndTravel} />
+                <Route exact path={routes.aboutRoute} component={AboutPage} />
                 <Route exact path="" component={CampaignSelection} />
             </Switch>
         </div>

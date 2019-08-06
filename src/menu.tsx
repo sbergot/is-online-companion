@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteComponentProps, Route } from "react-router";
+import { RouteComponentProps, Route, withRouter } from "react-router";
 import { DataServiceContainer } from "./containers/dataService";
 import { InlineLink, NavigationLink } from "./components/controls";
 import * as routes from "./services/routes";
@@ -49,9 +49,13 @@ function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignK
     </div>
 }
 
-function Credits() {
-    return <>
-        <h1 className="text-xl font-bold">Ironsworn online companion</h1>
+function Credits({pathname}: {pathname: string}) {
+    return <div>
+        <h1 className="text-xl font-bold">
+            <NavigationLink current={pathname} to={""}>
+                Ironsworn online companion
+            </NavigationLink>
+        </h1>
         <p>Ironsworn is an rpg by <span className="font-semibold whitespace-no-wrap">Shawn Tomkin</span></p>
         <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
             <img
@@ -61,13 +65,19 @@ function Credits() {
         <a className="text-gray-600 hover:text-red-600" href="https://www.ironswornrpg.com">
             www.ironswornrpg.com
         </a>
-    </>
+    </div>
 }
 
-export function Menu() {
+function MenuInner({ location }: RouteComponentProps<routes.CampaignKeyParam>) {
+    const { pathname } = location;
     return <nav className="w-full bg-gray-200 p-3" style={{maxWidth: "15rem"}}>
-        <Credits />
+        <Credits pathname={pathname} />
+        <NavigationLink current={pathname} to={routes.aboutRoute}>
+            about
+        </NavigationLink>
         <Route path={routes.campaignRoute.template} component={CampaignMenu} />
         <Route path="/campaign/:campaignKey/character/:characterKey" component={CharacterMenu} />
     </nav>
 }
+
+export const Menu = withRouter(MenuInner)
