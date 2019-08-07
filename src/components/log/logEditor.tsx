@@ -1,135 +1,225 @@
 import * as React from "react";
-import { AnyLogBlock, LogType, UserInputLog, ChallengeRollLog } from "../../contracts/log";
+import { AnyLogBlock, LogType, UserInputLog, ChallengeRollLog, ChallengeRoll } from "../../contracts/log";
 import { SmallPrimaryButton } from "../buttons";
-import { StatKey, StatusKey } from "../../contracts/character";
+import { StatKey, StatusKey, Character } from "../../contracts/character";
 import { DataServiceContainer } from "../../containers/dataService";
 import { Select } from "../controls";
-import { ChallengeRollType } from "../../contracts/rolls";
+import { ChallengeRollType, ChallengeRollResult } from "../../contracts/rolls";
 import { challengeRoll } from "../../services/rolls";
+import { getLogTypeDescription } from "../../services/logHelpers";
+import { useLens, Lens } from "../../services/functors";
+import { ChallengeType } from "../../contracts/challenge";
+import { KeyEntry } from "../../contracts/persistence";
+
+const allEditorLogTypes: LogType[] = ["UserInput", "ChallengeRoll"];
 
 interface EditorProps<T extends AnyLogBlock> {
     onLog(block: T): void;
 }
 
+function getUserInputLens(characterKey: string, text: string): Lens<UserInputLog> {
+    return useLens<UserInputLog>({key: "UserInput", value: {characterKey, text}});
+}
+
+interface ChallengeRollParams {
+    type: ChallengeRollType;
+    bonus: number;
+    stat: number;
+}
+
+function getChallengeRollLens(characterKey: string, params: ChallengeRollParams): Lens<ChallengeRollLog> {
+    const {type, bonus, stat} = params;
+    return useLens<ChallengeRollLog>({key: "ChallengeRoll", value: {
+        characterKey,
+        type,
+        result: {
+            actionDie: 0,
+            bonus,
+            challengeDice: [0, 0],
+            stat
+        }
+    }})
+}
+
 interface LogBlockEditorProps extends EditorProps<AnyLogBlock> {
     logBlok: AnyLogBlock;
+    character: KeyEntry<Character>;
 }
 
-export function LogBlockEditor({ onLog, logBlok }: LogBlockEditorProps) {
-    switch (logBlok.key) {
-        case "UserInput":
-            return <UserInputEditor
-                onLog={onLog}
-                characterKey={logBlok.value.characterKey}
-                initialText={logBlok.value.text} />;
-        case "ChallengeRoll":
-            return <ChallengeRollEditor
-                onLog={onLog}
-                characterKey={logBlok.value.characterKey} />
-        default:
-            return null;
-    }
-}
+export function LogBlockEditor({ onLog, logBlok, character }: LogBlockEditorProps) {
+    const characterKey = character.key;
+    const userInputLens = getUserInputLens(characterKey, logBlok.key == "UserInput" ? logBlok.value.text : "");
+    const challengeRollLogLens = getChallengeRollLens(
+        characterKey,
+        logBlok.key == "ChallengeRoll" ?
+            { type: logBlok.value.type, bonus: logBlok.value.result.bonus, stat: logBlok.value.result.stat } :
+            {type: "edge", bonus: 0, stat: 0}
+    );
+    const logType = logBlok.key;
 
-interface NewLogBlockEditorProps extends EditorProps<AnyLogBlock> {
-    logType: LogType;
-    characterKey: string;
-}
-
-export function NewLogBlockEditor({ onLog, logType, characterKey }: NewLogBlockEditorProps) {
-    switch (logType) {
-        case "UserInput":
-            return <UserInputEditor onLog={onLog} characterKey={characterKey} />;
-        case "ChallengeRoll":
-            return <ChallengeRollEditor onLog={onLog} characterKey={characterKey} />
-        default:
-            return null;
-    }
-}
-
-interface UserInputEditorProps extends EditorProps<UserInputLog> {
-    characterKey: string;
-    initialText?: string;
-}
-
-function UserInputEditor({ onLog, characterKey, initialText }: UserInputEditorProps) {
-    const [input, setinput] = React.useState(initialText || "");
-    function onClick() {
-        if (!input) { return; }
-            onLog({
-                key: "UserInput",
-                value: { characterKey, text: input }
-            });
-        setinput("");
+    function roll(): ChallengeRoll {
+        const currentMomentum = character.data.momentum.level;
+        const {type, result: {stat, bonus}} = challengeRollLogLens.state.value;
+        return {
+            characterKey,
+            type,
+            result: challengeRoll(stat, currentMomentum, bonus)
+        };
     }
 
-    return <div className="h-full flex flex-col items-start">
-        <div className="flex-grow">
-            <textarea className="resize-none border"
-                value={input}
-                onChange={(e) => setinput(e.target.value)}
-                rows={4}
-                cols={70}
-            />
+    function onSave() {
+        switch (logType) {
+            case "ChallengeRoll":
+                onLog({key: "ChallengeRoll", value: roll()});
+                break;
+            case "UserInput":
+                onLog(userInputLens.state);
+                break;
+        }
+    }
+
+
+    return <div className="flex min-h-full">
+        <div className="w-4/6">
+            <AnyLogBlockEditor
+                userInputLens={userInputLens}
+                challengeRollLogLens={challengeRollLogLens}
+                logType={logType}
+                character={character}/>
         </div>
-        <SmallPrimaryButton onClick={onClick}>Log</SmallPrimaryButton>
+        <div className="w-2/6">
+            <SmallPrimaryButton onClick={onSave}>Save</SmallPrimaryButton>
+        </div>
     </div>
 }
 
-interface ChallengeRollEditorProps extends EditorProps<ChallengeRollLog> {
-    characterKey: string;
+interface NewLogBlockEditorProps extends EditorProps<AnyLogBlock> {
+    character: KeyEntry<Character>;
+}
+
+export function NewLogBlockEditor({ onLog, character }: NewLogBlockEditorProps) {
+    const [logType, setLogType] = React.useState<LogType>("UserInput");
+    const characterKey = character.key;
+    const userInputLens = getUserInputLens(characterKey, "")
+    const textLens = userInputLens.zoom("value").zoom("text");
+    const challengeRollLogLens = getChallengeRollLens(characterKey, { type: "edge", bonus: 0, stat: 0 });
+
+    function roll(): ChallengeRoll {
+        const currentMomentum = character.data.momentum.level;
+        const { type, result: { stat, bonus } } = challengeRollLogLens.state.value;
+        return {
+            characterKey,
+            type,
+            result: challengeRoll(stat, currentMomentum, bonus)
+        };
+    }
+
+    function onSave() {
+        switch (logType) {
+            case "ChallengeRoll":
+                onLog({ key: "ChallengeRoll", value: roll() });
+                break;
+            case "UserInput":
+                onLog(userInputLens.state);
+                textLens.setState(() => "");
+                break;
+        }
+    }
+
+    return <div className="flex min-h-full">
+        <div className="w-4/6">
+            <AnyLogBlockEditor
+                userInputLens={userInputLens}
+                challengeRollLogLens={challengeRollLogLens}
+                logType={logType}
+                character={character} />
+        </div>
+        <div className="w-2/6">
+            <Select
+                options={allEditorLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
+                value={logType}
+                onSelect={setLogType} />
+            <SmallPrimaryButton className="mt-2" onClick={onSave}>
+                Log
+            </SmallPrimaryButton>
+        </div>
+    </div>
+}
+
+interface AnyLogBlockEditorProps {
+    logType: LogType;
+    userInputLens: Lens<UserInputLog>;
+    challengeRollLogLens: Lens<ChallengeRollLog>;
+    character: KeyEntry<Character>;
+}
+
+export function AnyLogBlockEditor({userInputLens, challengeRollLogLens, logType, character}: AnyLogBlockEditorProps) {
+    switch (logType) {
+        case "UserInput":
+            return <UserInputEditor userInputLens={userInputLens} />;
+        case "ChallengeRoll":
+            return <ChallengeRollEditor challengeRollLogLens={challengeRollLogLens} character={character} />
+        default:
+            return null;
+    }
+}
+
+interface UserInputEditorProps {
+    userInputLens: Lens<UserInputLog>;
+}
+
+function UserInputEditor({ userInputLens }: UserInputEditorProps) {
+    const textLens = userInputLens.zoom("value").zoom("text");
+    function setText(t: string) {
+        textLens.setState(() => t);
+    }
+    return <textarea className="resize-none border"
+        value={textLens.state}
+        onChange={(e) => setText(e.target.value)}
+        rows={4}
+        cols={70}
+    />
+}
+
+interface ChallengeRollEditorProps {
+    challengeRollLogLens: Lens<ChallengeRollLog>;
+    character: KeyEntry<Character>;
 }
 
 const statsRollTypes: StatKey[] = [ "edge", "heart", "iron", "shadow", "wits" ];
 const statusRollTypes: StatusKey[] = [ "health", "spirit", "supply" ];
 
-function ChallengeRollEditor({ characterKey, onLog }: ChallengeRollEditorProps) {
-    const dataService = DataServiceContainer.useContainer();
-    const character = dataService.characters.lens.state[characterKey];
-    const [rollType, setRollType] = React.useState<ChallengeRollType>("edge");
-    const [rollTypeStat, setRollTypeStat] = React.useState(getStat("edge"));
-    const [bonus, setBonus] = React.useState(0);
-
+function ChallengeRollEditor({ character, challengeRollLogLens }: ChallengeRollEditorProps) {
+    const valueLens = challengeRollLogLens.zoom("value");
+    const resultLens = valueLens.zoom("result");
+    const rollTypeStatLens = resultLens.zoom("stat");
+    const bonusLens = resultLens.zoom("bonus");
+    const rollTypeLens = valueLens.zoom("type");
     function getStat(statKey: StatKey) { return character.data.stats[statKey]; }
     function getStatus(statusKey: StatusKey) { return character.data.status[statusKey]; }
 
     function onStatSelect(statKey: StatKey) {
-        setRollTypeStat(getStat(statKey));
-        setRollType(statKey);
+        rollTypeStatLens.setState(() => getStat(statKey));
+        rollTypeLens.setState(() => statKey);
     }
 
     function onStatusSelect(statusKey: StatusKey) {
-        setRollTypeStat(getStatus(statusKey));
-        setRollType(statusKey);
+        rollTypeStatLens.setState(() => getStatus(statusKey));
+        rollTypeLens.setState(() => statusKey);
     }
 
-    function onSubmit() {
-        const currentMomentum = character.data.momentum.level;
-        onLog({
-            key: "ChallengeRoll",
-            value: {
-                characterKey,
-                type: rollType,
-                result: challengeRoll(rollTypeStat, currentMomentum, bonus)
-            }
-        });
-    }
-
-    return <div className="h-full flex flex-col items-start">
-        <div className="flex flex-wrap flex-grow content-around mb-2">
-            <Select className="mr-2"
-                options={statsRollTypes.map(rt => ({ name: `${rt} (${getStat(rt)})`, value: rt }))}
-                value={rollType as StatKey}
-                onSelect={onStatSelect} />
-            <Select className="mr-2"
-                options={statusRollTypes.map(rt => ({ name: `${rt} (${getStatus(rt)})`, value: rt }))}
-                value={rollType as StatusKey}
-                onSelect={onStatusSelect} />
-            <Select className="mr-2"
-                options={[0, 1, 2, 3, 4, 5].map(b => ({ name: b.toString(), value: b.toString() }))}
-                value={bonus.toString()}
-                onSelect={(b) => setBonus(parseInt(b))} />
-        </div>
-        <SmallPrimaryButton onClick={onSubmit}>Log</SmallPrimaryButton>
+    return <div className="flex flex-wrap flex-grow content-around mb-2">
+        <Select className="mb-2"
+            options={statsRollTypes.map(rt => ({ name: `${rt} (${getStat(rt)})`, value: rt }))}
+            value={rollTypeLens.state as StatKey}
+            onSelect={onStatSelect} />
+        <Select className="mr-2"
+            options={statusRollTypes.map(rt => ({ name: `${rt} (${getStatus(rt)})`, value: rt }))}
+            value={rollTypeLens.state as StatusKey}
+            onSelect={onStatusSelect} />
+        <Select
+            options={[0, 1, 2, 3, 4, 5].map(b => ({ name: b.toString(), value: b.toString() }))}
+            value={bonusLens.state.toString()}
+            onSelect={(b) => bonusLens.setState(() => parseInt(b))} />
     </div>
 }

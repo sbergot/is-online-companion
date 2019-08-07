@@ -6,13 +6,10 @@ import { StreamEntry } from "../contracts/persistence";
 import { DataServiceContainer } from "../containers/dataService";
 import { CampaignKeyParam, CharacterKeyParam } from "../services/routes";
 import { Section, MainPanel, ActionPanel } from "../components/layout";
-import { Select } from "../components/controls";
 import { LogBlock } from "../components/log/logContent";
 import { NewLogBlockEditor, LogBlockEditor } from "../components/log/logEditor";
-import { getLogTypeDescription } from "../services/logHelpers";
 import { LogBlockActions } from "../components/log/logActions";
 
-const allEditorLogTypes: LogType[] = ["UserInput", "ChallengeRoll"];
 
 export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
@@ -20,17 +17,18 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
     const logSource = dataService.logs(campaignKey);
     const logs = logSource.values;
     const logView = React.useRef<HTMLDivElement>(null);
-    const [logType, setLogType] = React.useState<LogType>("UserInput");
     const [selected, setSelected] = React.useState<StreamEntry<AnyLogBlock> | null>(null);
     const [selectedEdited, setSelectedEdited] = React.useState(false);
-    const characterLens = dataService.characters.getEntryLens(characterKey).zoom('data');
+    const characterEntryLens = dataService.characters.getEntryLens(characterKey);
+    const characterLens = characterEntryLens.zoom('data');
+    const character = characterEntryLens.state;
 
     React.useEffect(() => {
         if (logView.current) {
             const div = logView.current;
             div.scrollTop = div.scrollHeight;
         }
-    }, [logs, logType])
+    })
 
     function escapeSelection() {
         setSelected(null);
@@ -46,10 +44,6 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
         }
     }
 
-    function selectLogType(logType: LogType) {
-        escapeSelection();
-        setLogType(logType);
-    }
 
     function saveNewLog(block: AnyLogBlock) {
         logSource.pushNew(block);
@@ -61,8 +55,7 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
         escapeSelection();
     }
 
-    function editStart(entry: StreamEntry<AnyLogBlock>) {
-        setLogType(entry.data.key);
+    function editStart() {
         setSelectedEdited(true);
     }
 
@@ -77,8 +70,8 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
 
     return <>
         <MainPanel>
-            <Section className="flex flex-col justify-between h-full" title="Log">
-                <div className="h-64 overflow-y-auto flex-grow mb-2 pr-2" ref={logView} >
+            <Section className="flex flex-col h-full" title="Log">
+                <div className="flex-grow overflow-y-auto mb-2 pr-2" ref={logView} >
                     {logs.map(l => {
                         return <LogBlock
                             key={l.key}
@@ -88,19 +81,15 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
                         />
                     })}
                 </div>
-                <Select
-                    options={allEditorLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
-                    value={logType}
-                    onSelect={selectLogType} />
-                <div className="h-40 pt-2">
+                <div className="h-32 pt-2">
                     {selected != null && selectedEdited ?
                         <LogBlockEditor
                             onLog={(newBlock) => editSave(selected, newBlock)}
-                            logBlok={selected.data} /> :
+                            logBlok={selected.data}
+                            character={character} /> :
                         <NewLogBlockEditor
                             onLog={saveNewLog}
-                            characterKey={characterKey}
-                            logType={logType} />}
+                            character={character} />}
                 </div>
             </Section>
         </MainPanel>
