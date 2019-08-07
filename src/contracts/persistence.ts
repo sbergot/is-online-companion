@@ -20,12 +20,18 @@ export interface StreamEntry<T> extends KeyEntry<T> {
     page: number;
 }
 
+export interface StreamEntryRef {
+    key: string;
+    page: number;
+}
+
 export interface IStreamSource<T> {
     pushNew(value: T): StreamEntry<T>;
     getEntries(page?: number): StreamEntry<T>[];
     edit(entry: StreamEntry<T>): StreamEntry<T>;
     remove(entry: StreamEntry<T>): boolean;
     canRemove(entry: StreamEntry<T>): boolean;
+    find(ref: StreamEntryRef): StreamEntry<unknown>;
     onUpdate(cb: () => void): void;
     unRegister(cb: () => void): void;
 }

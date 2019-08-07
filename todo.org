@@ -1,15 +1,17 @@
 * versioned update!!
 
 * progress challenges
+** TODO link challenge to last progress log and display it in the action panel
 ** TODO hide finished toggle
 on by default
 
-* TODO about page
-repo
-issue link
-* TODO error page
-issue link
-export save?
+* log page layout
+** TODO move editor selection & editor buttons on the right to gain vertical space
+
+* backup/restore
+** TODO provide a way to backup/restore from/to a file
+
+--------- v0.2.0 -----------
 
 * index
 contains narrative objects (places, NPCs, objects)
@@ -21,6 +23,7 @@ user should be able to reference index elements in the log
 ** TODO direct link to index object
 ** TODO reference an index object in the log
 
+
 * aggregate consecutive user inputs?
 
 * oracle rolls
@@ -31,9 +34,6 @@ add images to campaigns & character
 store them in indexed db (using idb-keyval)
 serve them with object url
 https://hacks.mozilla.org/2012/02/storing-images-and-files-in-indexeddb/
-
-* backup/restore
-provide a way to backup/restore from/to a file
 
 * online storage
 look into google app engine storage datastore

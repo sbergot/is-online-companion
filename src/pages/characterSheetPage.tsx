@@ -41,7 +41,7 @@ export function CharacterSheetPage({ match }: RouteComponentProps<CampaignKeyPar
                         key="challengeActions"
                         lens={selectedLens}
                         characterKey={characterKey}
-                        onPushProgressRoll={logSource.pushNew}/>
+                        logSource={logSource}/>
                 }}
             </Zoom>  : null}
             {selectedStat != null ?

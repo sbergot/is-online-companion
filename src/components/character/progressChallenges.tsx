@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { KeyMap, KeyEntry, StreamEntry } from "../../contracts/persistence";
+import { KeyMap, KeyEntry } from "../../contracts/persistence";
 import { ProgressChallenge, Rank, ChallengeType } from "../../contracts/challenge";
 import { SubSection, Selectable } from "../layout";
 import { newEntry } from "../../services/persistence/shared";
@@ -10,10 +10,10 @@ import { TrackMeter } from "./bars";
 import { newChallenge, finishChallenge, failChallenge, allRanks, rankStats, challengeResources } from "../../services/progressChallenges";
 import { SetState } from "@staltz/use-profunctor-state";
 import { SmallPrimaryButton, SmallSecondaryButton, SmallDangerButton } from "../buttons";
-import { ProgressRollResult } from "../../contracts/rolls";
-import { getResult, progressRoll } from "../../services/rolls";
+import { progressRoll } from "../../services/rolls";
 import { ProgressRollLogBlock } from "../log/logContent";
-import { ProgressRoll, ProgressRollLog } from "../../contracts/log";
+import { ProgressRoll, ProgressRollLog, AnyLogBlock } from "../../contracts/log";
+import { StreamHook } from "../../contracts/dataservice";
 
 interface ChallengeProps<T extends ChallengeType> {
     type: T;
@@ -112,13 +112,14 @@ export interface ChallengeActionsProps {
     lens: Lens<ProgressChallenge<ChallengeType>>
     characterKey: string;
     setExp?: SetState<number>;
-    onPushProgressRoll(roll: ProgressRollLog): void;
+    logSource: StreamHook<AnyLogBlock>;
 }
 
-export function ChallengeActions({lens: challengeLens, setExp, characterKey, onPushProgressRoll}: ChallengeActionsProps) {
-    const [rollResult, setRollResult] = React.useState<ProgressRoll | null>(null);
+export function ChallengeActions({lens: challengeLens, setExp, characterKey, logSource}: ChallengeActionsProps) {
     const { state: challenge, setState: setChallenge } = challengeLens;
     const { setState: setProgress } = challengeLens.zoom("track");
+    const { state: challengeRollRef, setState: setChallengeRollRef } = challengeLens.zoom("rollReference");
+    const challengeRoll = challengeRollRef ? logSource.find(challengeRollRef) : null;
     const buttonClasses = [
         "mt-2",
         challenge.finished ? "hidden" : ""
@@ -139,8 +140,8 @@ export function ChallengeActions({lens: challengeLens, setExp, characterKey, onP
             challenge: challenge,
             result: progressRoll(challenge.track)
         };
-        setRollResult(roll);
-        onPushProgressRoll({ key: "ProgressRoll", value: roll });
+        const entry = logSource.pushNew({ key: "ProgressRoll", value: roll });
+        setChallengeRollRef(() => ({page: entry.page, key: entry.key}));
     }
 
     return <>
@@ -168,9 +169,9 @@ export function ChallengeActions({lens: challengeLens, setExp, characterKey, onP
                     Abandon
                 </SmallDangerButton>
             </div>
-            {rollResult != null && <div className="mt-4">
+            {challengeRoll != null && <div className="mt-4">
                 <p className="font-semibold">Progress roll result:</p>
-                <ProgressRollLogBlock block={rollResult} />
+                <ProgressRollLogBlock block={(challengeRoll.data as ProgressRollLog).value} />
             </div>}
         </div>
     </>

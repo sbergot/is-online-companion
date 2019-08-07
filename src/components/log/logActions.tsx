@@ -26,6 +26,7 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
     const character = characterLens.state;
     const setMomentum = characterLens.zoom("momentum").zoom("level").setState;
     const currentMomentum = character.momentum.level;
+    const hasEdit = selected.data.key !== "ProgressRoll";
 
     function burnMomentumAction(challengeRoll: StreamEntry<ChallengeRollLog>) {
         setMomentum(() => getMomentumMeta(character).reset);
@@ -38,11 +39,11 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
     return <>
         <InnerLogBlock entry={selected} character={character} />
         <div className="pt-2">
-            <SmallPrimaryButton
+            {hasEdit && <SmallPrimaryButton
                 className="mr-2"
                 onClick={() => onEdit(selected)}>
                 edit
-            </SmallPrimaryButton>
+            </SmallPrimaryButton>}
             {character.momentum.level > 0 && isChallengeRollEntry(selected) ?
                 <SmallPrimaryButton className="mt-2" onClick={() => burnMomentumAction(selected)} >
                     burn momentum ({currentMomentum})

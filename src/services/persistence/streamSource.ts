@@ -1,4 +1,4 @@
-import { IStreamSource, StreamEntry } from "../../contracts/persistence";
+import { IStreamSource, StreamEntry, StreamEntryRef } from "../../contracts/persistence";
 import { newEntry } from "./shared";
 import { reviver, replacer } from "./serialization";
 import { KeyValueStore } from "./storage";
@@ -66,7 +66,7 @@ export class StreamSource<T> implements IStreamSource<T> {
         return this.getPage(realPage);
     }
 
-    findIdx(entries: StreamEntry<T>[], entry: StreamEntry<T>) {
+    findIdxFromEntry(entries: StreamEntry<T>[], entry: StreamEntryRef) {
         const idx = entries.findIndex(e => e.key === entry.key);
         if (idx < 0) {
             throw new Error(`entry not found in page ${entry.page} for key ${entry.key}`);
@@ -76,7 +76,7 @@ export class StreamSource<T> implements IStreamSource<T> {
 
     edit(entry: StreamEntry<T>): StreamEntry<T> {
         const entries = this.getPage(entry.page);
-        const idx = this.findIdx(entries, entry);
+        const idx = this.findIdxFromEntry(entries, entry);
         const newEntry = {...entry, lastModified: new Date()};
         const newEntries = [...entries];
         newEntries[idx] = newEntry;
@@ -87,7 +87,7 @@ export class StreamSource<T> implements IStreamSource<T> {
     remove(entry: StreamEntry<T>): boolean {
         if (!this.canRemove(entry)) { return false; }
         const entries = this.getEntries();
-        const idx = this.findIdx(entries, entry);
+        const idx = this.findIdxFromEntry(entries, entry);
         entries.splice(idx, 1);
         return true;
     }
@@ -95,7 +95,13 @@ export class StreamSource<T> implements IStreamSource<T> {
     canRemove(entry: StreamEntry<T>): boolean {
         return this.getMetadata().currentPage === entry.page;
     }
-    
+
+    find(ref: StreamEntryRef): StreamEntry<unknown> {
+        const entries = this.getEntries(ref.page);
+        const idx = this.findIdxFromEntry(entries, ref);
+        return entries[idx];
+    }
+
     onUpdate(cb: () => void): void {
         this.storage.onUpdate(cb);
     }

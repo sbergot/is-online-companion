@@ -1,3 +1,5 @@
+import { StreamEntryRef } from "./persistence";
+
 export type TrackProgress = number;
 
 export type Rank = "troublesome" | "dangerous" | "formidable" | "extreme" | "epic";
@@ -10,4 +12,5 @@ export interface ProgressChallenge<T extends ChallengeType> {
     rank: Rank;
     track: TrackProgress;
     finished: boolean;
+    rollReference?: StreamEntryRef; 
 }

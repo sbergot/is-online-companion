@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps, Route, withRouter } from "react-router";
 import { DataServiceContainer } from "./containers/dataService";
-import { InlineLink, NavigationLink } from "./components/controls";
+import { NavigationLink } from "./components/controls";
 import * as routes from "./services/routes";
 
 function MenuTitle({ children }: { children: React.ReactText[] }) {
@@ -16,11 +16,11 @@ function CampaignMenu({ match, location }: RouteComponentProps<routes.CampaignKe
     const campaign = dataService.campaigns.lens.state[campaignKey];
     const { pathname } = location;
     return campaign ? <>
-        <MenuTitle>
+            <MenuTitle>
             campaign > {campaign.data.name}
         </MenuTitle>
-        <NavigationLink current={pathname} to={routes.campaignSelectionRoute}>
-            campaign selection
+        <NavigationLink current={pathname} to={routes.characterSelectionRoute.to({ campaignKey })}>
+            character selection
         </NavigationLink>
     </> : null
 }
@@ -34,9 +34,6 @@ function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignK
         <MenuTitle>
             character > {character.data.name}
         </MenuTitle>
-        <NavigationLink current={pathname} to={routes.characterSelectionRoute.to({ campaignKey })}>
-            character selection
-        </NavigationLink>
         <NavigationLink current={pathname} to={routes.characterSheetRoute.to({ campaignKey, characterKey })}>
             character sheet
         </NavigationLink>
@@ -70,10 +67,13 @@ function Credits({pathname}: {pathname: string}) {
 
 function MenuInner({ location }: RouteComponentProps<routes.CampaignKeyParam>) {
     const { pathname } = location;
-    return <nav className="w-full bg-gray-200 p-3" style={{maxWidth: "15rem"}}>
+    return <nav className="flex flex-col w-full bg-gray-200 p-3" style={{maxWidth: "15rem"}}>
         <Credits pathname={pathname} />
         <NavigationLink current={pathname} to={routes.aboutRoute}>
-            about
+            about this website
+        </NavigationLink>
+        <NavigationLink current={pathname} to={routes.campaignSelectionRoute}>
+            campaign selection
         </NavigationLink>
         <Route path={routes.campaignRoute.template} component={CampaignMenu} />
         <Route path="/campaign/:campaignKey/character/:characterKey" component={CharacterMenu} />

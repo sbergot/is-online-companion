@@ -1,9 +1,8 @@
-import { KeyMap, KeyEntry, StreamEntry } from "./persistence";
+import { KeyMap, KeyEntry, StreamEntry, StreamEntryRef } from "./persistence";
 import { Campaign } from "./campaign";
 import { Character } from "./character";
 import { AnyLogBlock } from "./log";
 import { Lens } from "../services/functors";
-import { ProgressChallenge } from "./challenge";
 
 export interface KeyMapHook<T> {
     lens: Lens<KeyMap<T>>;
@@ -18,6 +17,7 @@ export interface StreamHook<T> {
     edit(entry: StreamEntry<T>): StreamEntry<T>;
     remove(entry: StreamEntry<T>): boolean;
     canRemove(entry: StreamEntry<T>): boolean;
+    find(ref: StreamEntryRef): StreamEntry<unknown>;
 }
 
 export interface DataService {

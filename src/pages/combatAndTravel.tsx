@@ -38,7 +38,7 @@ export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam 
                         key="challengeActions"
                         lens={selectedLens}
                         characterKey={characterKey}
-                        onPushProgressRoll={logSource.pushNew}/>
+                        logSource={logSource}/>
                 }}
             </Zoom>  : null}
         </ActionPanel>
