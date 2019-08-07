@@ -1,10 +1,5 @@
 * versioned update!!
 
-* progress challenges
-** TODO link challenge to last progress log and display it in the action panel
-** TODO hide finished toggle
-on by default
-
 * log page layout
 ** TODO move editor selection & editor buttons on the right to gain vertical space
 

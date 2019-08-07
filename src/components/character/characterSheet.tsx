@@ -7,7 +7,7 @@ import { StatsBoxes } from "./stats";
 import { Section, SubSection } from "../layout";
 import { MomentumMeter, ResourceMeter, TrackMeter } from "./bars";
 import { Lens } from "../../services/functors";
-import { Challenge } from "./progressChallenges";
+import { Challenge } from "../progressChallenge/progressChallenges";
 import { getMomentumMeta } from "../../services/characterHelpers";
 import { CharacterSheetSelection } from "../../contracts/variant";
 import { KeyEntry } from "../../contracts/persistence";
