@@ -1,10 +1,10 @@
 * versioned update!!
 
-* log page layout
-** TODO move editor selection & editor buttons on the right to gain vertical space
-
 * backup/restore
 ** TODO provide a way to backup/restore from/to a file
+in new configuration page
+
+* TODO delete track action
 
 --------- v0.2.0 -----------
 

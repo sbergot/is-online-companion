@@ -2,7 +2,7 @@ import * as React from "react";
 import { ProgressChallenge, ChallengeType } from "../../contracts/challenge";
 import { StreamHook } from "../../contracts/dataservice";
 import { AnyLogBlock, ProgressRollLog } from "../../contracts/log";
-import { rankStats, finishChallenge, failChallenge } from "../../services/progressChallenges";
+import { rankStats, finishChallenge, failChallenge, deleteChallenge } from "../../services/progressChallenges";
 import { progressRoll } from "../../services/rolls";
 import { SmallPrimaryButton, SmallDangerButton } from "../buttons";
 import { ProgressRollLogBlock } from "../log/logContent";
@@ -68,6 +68,9 @@ export function ChallengeActions({lens: challengeLens, setExp, characterKey, log
                 </SmallDangerButton>
                 <SmallDangerButton className="mt-2" onClick={() => setChallenge(finishChallenge)}>
                     Abandon
+                </SmallDangerButton>
+                <SmallDangerButton className="mt-2" onClick={() => setChallenge(deleteChallenge)}>
+                    Delete
                 </SmallDangerButton>
             </div>
         </div> : null}

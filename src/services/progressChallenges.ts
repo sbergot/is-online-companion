@@ -37,7 +37,7 @@ export const rankStats: Record<Rank, RankStats> = {
 }
 
 export function newChallenge<T extends ChallengeType>(description: string, rank: Rank, type: T): ProgressChallenge<T> {
-    return { description, rank, track: 0, finished: false, type };
+    return { description, rank, track: 0, finished: false, deleted: false, type };
 }
 
 export function finishChallenge<T extends ChallengeType>(challenge: ProgressChallenge<T>): ProgressChallenge<T> {
@@ -46,6 +46,10 @@ export function finishChallenge<T extends ChallengeType>(challenge: ProgressChal
 
 export function failChallenge<T extends ChallengeType>(challenge: ProgressChallenge<T>): ProgressChallenge<T> {
     return {...challenge, track: Math.min(challenge.track, 4), rank: rankStats[challenge.rank].next};
+}
+
+export function deleteChallenge<T extends ChallengeType>(challenge: ProgressChallenge<T>): ProgressChallenge<T> {
+    return {...challenge, deleted: true};
 }
 
 interface ChallengeResource {

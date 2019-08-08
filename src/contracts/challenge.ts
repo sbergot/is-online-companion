@@ -12,5 +12,6 @@ export interface ProgressChallenge<T extends ChallengeType> {
     rank: Rank;
     track: TrackProgress;
     finished: boolean;
-    rollReference?: StreamEntryRef; 
+    deleted: boolean;
+    rollReference?: StreamEntryRef;
 }

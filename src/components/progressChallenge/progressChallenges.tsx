@@ -23,7 +23,7 @@ export function Challenge<T extends ChallengeType>({ lens, type, onSelect, selec
 
     return <SubSection className="flex flex-col max-w-xl" title={type + "s"}>
         {Object.values(challenges).map(v => {
-            return (showFinished || !v.data.finished) ? <Selectable
+            return (showFinished || !v.data.finished) && !v.data.deleted ? <Selectable
                 key={v.key}
                 onClick={() => v.key == selectedKey ? onSelect(null) : onSelect(v)}
                 selected={selectedKey != null && selectedKey == v.key}>
