@@ -21,20 +21,24 @@ export class LocalStorage implements KeyValueStore {
         this.path = window.location.pathname;
     }
 
-    getKey(subKey: string) {
+    getFullKey(subKey: string) {
         return `${this.path}-${subKey}`
     }
 
+    getSubKey(fullKey: string) {
+        return fullKey.substr(this.path.length + 1)
+    }
+
     set(key: string, value: string): void {
-        localStorage.setItem(this.getKey(key), value);
+        localStorage.setItem(this.getFullKey(key), value);
     }
     
     get(key: string): string | null {
-        return localStorage.getItem(this.getKey(key));
+        return localStorage.getItem(this.getFullKey(key));
     }
 
     remove(key: string): void {
-        localStorage.removeItem(this.getKey(key));
+        localStorage.removeItem(this.getFullKey(key));
     }
 
     getKeys(): string[] {
@@ -42,7 +46,7 @@ export class LocalStorage implements KeyValueStore {
         for (var i = 0, len = localStorage.length; i < len; ++i) {
             const key = localStorage.key(i)!;
             if (key.startsWith(this.path)) {
-                keys.push(key.substr(0, this.path.length));
+                keys.push(this.getSubKey(key));
             }
         }
         return keys;
