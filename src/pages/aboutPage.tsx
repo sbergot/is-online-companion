@@ -1,10 +1,13 @@
 import * as React from "react";
 import { MainPanel, Section } from "../components/layout";
+import { Configuration } from "../components/configuration";
+import { version } from "../version";
 
 export function AboutPage() {
     return <MainPanel>
         <Section title="About Ironsworn online companion">
             <p>Ironsworn online companion is developped by Simon Bergot</p>
+            <p>Version {version}</p>
             <p className="mt-4">
                 Source code is available under MIT license here:
             </p>
@@ -18,5 +21,9 @@ export function AboutPage() {
                 https://github.com/sbergot/is-online-companion/issues
             </a>
         </Section>
+        <Section className="my-2" title="Backup & restore">
+            <Configuration />
+        </Section>
     </MainPanel>
 }
+

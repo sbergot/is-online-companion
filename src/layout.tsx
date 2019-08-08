@@ -7,9 +7,14 @@ import { CampaignSelection, CharacterSelection, CharacterSheetPage, LogPage, Cha
 import { CombatAndTravel } from "./pages/combatAndTravel";
 import { AboutPage } from "./pages/aboutPage";
 import { ErrorBoundary } from "./ErrorPage";
+import { setCurrentVersion, useMetadata } from "./services/applicationMetadata";
 
 
 export function Layout() {
+    const metaDataLens = useMetadata();
+    React.useEffect(() => {
+        metaDataLens.setState(setCurrentVersion);
+    }, []);
     return <ErrorBoundary>
         <Router>
             <div className="min-h-screen min-w-screen flex text-gray-700">

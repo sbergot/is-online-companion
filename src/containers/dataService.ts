@@ -5,6 +5,7 @@ import { KeyMapSource } from "../services/persistence/keyMapSource";
 import { StreamSource } from "../services/persistence/streamSource";
 import { LocalStorage } from "../services/persistence/storage";
 import { wrapKeyMap, wrapStream } from "../services/persistence/hookWraps";
+import { useMemo } from "react";
 
 function useDataService(): DataService {
     const storage = new LocalStorage();
@@ -12,7 +13,12 @@ function useDataService(): DataService {
     return {
         campaigns: wrapKeyMap(new KeyMapSource(storage, "campaigns")),
         characters: wrapKeyMap(new KeyMapSource(storage, "characters")),
-        logs: (campaignName: string) => wrapStream(new StreamSource(storage, 'logs', campaignName, 30))
+        metaData: wrapKeyMap(new KeyMapSource(storage, "metadata")),
+        logs: (campaignName: string) => {
+            return useMemo(
+                () => wrapStream(new StreamSource(storage, 'logs', campaignName, 30)),
+                [campaignName]);
+        }
     }
 }
 

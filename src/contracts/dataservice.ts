@@ -3,6 +3,7 @@ import { Campaign } from "./campaign";
 import { Character } from "./character";
 import { AnyLogBlock } from "./log";
 import { Lens } from "../services/functors";
+import { ApplicationMetadata } from "../services/applicationMetadata";
 
 export interface KeyMapHook<T> {
     lens: Lens<KeyMap<T>>;
@@ -23,5 +24,6 @@ export interface StreamHook<T> {
 export interface DataService {
     campaigns: KeyMapHook<Campaign>;
     characters: KeyMapHook<Character>;
+    metaData: KeyMapHook<ApplicationMetadata>;
     logs: (campaignName: string) => StreamHook<AnyLogBlock>;
 }

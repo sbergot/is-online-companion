@@ -4,8 +4,6 @@
 ** TODO provide a way to backup/restore from/to a file
 in new configuration page
 
-* TODO delete track action
-
 --------- v0.2.0 -----------
 
 * index
