@@ -1,13 +1,16 @@
 import * as React from "react";
-import { readFile, restoreLocalStorage, download, backupLocalStorage } from "../services/persistence/backup";
+import { BackupManager } from "../services/persistence/backup";
 import { PrimaryButton, DangerButton } from "./buttons";
 import { useMetadata } from "../services/applicationMetadata";
+import { LocalStorage } from "../services/persistence/storage";
 
 interface RestoreResult {
     success: boolean;
     filename: string;
     error?: Error;
 }
+
+const backupManger = new BackupManager(new LocalStorage());
 
 export function Configuration() {
     const metaDataLens = useMetadata();
@@ -17,9 +20,9 @@ export function Configuration() {
 
     async function restore(file: File) {
         setRestoreResult(null);
-        const content = await readFile(file);
+        const content = await backupManger.readFile(file);
         try {
-            restoreLocalStorage(content);
+            backupManger.restoreLocalStorage(content);
             metaDataLens.setState(m => ({...m, lastRestore: new Date()}));
         } catch (e) {
             setRestoreResult({
@@ -41,7 +44,7 @@ export function Configuration() {
     }
 
     function backup() {
-        download('ironsworn_backup.json', backupLocalStorage());
+        backupManger.download('ironsworn_backup.json', backupManger.backupLocalStorage());
         metaDataLens.setState(m => ({...m, lastBackup: new Date()}));
     }
 

@@ -1,6 +1,9 @@
 export interface KeyValueStore {
     set(key: string, value: string): void;
     get(key: string): string | null;
+    remove(key: string): void;
+    getKeys(): string[];
+    clear(): void;
     onUpdate(cb: () => void): void;
     unRegister(cb: () => void): void;
 }
@@ -12,12 +15,43 @@ window.addEventListener("storage", () => {
 });
 
 export class LocalStorage implements KeyValueStore {
+    private path: string;
+
+    constructor() {
+        this.path = window.location.pathname;
+    }
+
+    getKey(subKey: string) {
+        return `${this.path}-${subKey}`
+    }
+
     set(key: string, value: string): void {
-        localStorage[key] = value;
+        localStorage.setItem(this.getKey(key), value);
     }
     
     get(key: string): string | null {
-        return localStorage[key];
+        return localStorage.getItem(this.getKey(key));
+    }
+
+    remove(key: string): void {
+        localStorage.removeItem(this.getKey(key));
+    }
+
+    getKeys(): string[] {
+        const keys = [];
+        for (var i = 0, len = localStorage.length; i < len; ++i) {
+            const key = localStorage.key(i)!;
+            if (key.startsWith(this.path)) {
+                keys.push(key.substr(0, this.path.length));
+            }
+        }
+        return keys;
+    }
+
+    clear() {
+        this.getKeys().map(k => {
+            this.remove(k);
+        })
     }
 
     onUpdate(cb: () => void) {

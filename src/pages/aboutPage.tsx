@@ -20,6 +20,11 @@ export function AboutPage() {
             <a href="https://github.com/sbergot/is-online-companion/issues" className="text-blue-700">
                 https://github.com/sbergot/is-online-companion/issues
             </a>
+            <p className="mt-4">
+            <a href="../versions" className="text-blue-700">
+                List of versions
+            </a>
+            </p>
         </Section>
         <Section className="my-2" title="Backup & restore">
             <Configuration />

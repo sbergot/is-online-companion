@@ -22,8 +22,7 @@ export function useMetadata(): Lens<ApplicationMetadata> {
     let key: string;
     const allKeys = Object.keys(metaDataLens.state);
     if (allKeys.length == 0) {
-        const entry = dataService.metaData.saveNew(initMetadata());
-        key = entry.key;
+        throw new Error("metadata not found");
     } else {
         key = allKeys[0];
     }

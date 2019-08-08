@@ -15,9 +15,7 @@ function useDataService(): DataService {
         characters: wrapKeyMap(new KeyMapSource(storage, "characters")),
         metaData: wrapKeyMap(new KeyMapSource(storage, "metadata")),
         logs: (campaignName: string) => {
-            return useMemo(
-                () => wrapStream(new StreamSource(storage, 'logs', campaignName, 30)),
-                [campaignName]);
+            return wrapStream(new StreamSource(storage, 'logs', campaignName, 30));
         }
     }
 }
