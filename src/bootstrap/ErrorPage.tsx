@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Section, MainPanel } from "./components/layout";
+import { Section, MainPanel } from "../components/layout";
 
 interface ErrorBoundaryProps { children: React.ReactNode }
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MainPanel, Section } from "../components/layout";
 import { Configuration } from "../components/configuration";
-import { version } from "../version";
+import { version } from "../bootstrap/version";
 
 export function AboutPage() {
     return <MainPanel>

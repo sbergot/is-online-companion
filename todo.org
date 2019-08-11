@@ -1,10 +1,8 @@
-* versioned update!!
+* TODO 12 px default font size
+* TODO aggregate inputs
+* TODO log/roll submit button
 
-* backup/restore
-** TODO provide a way to backup/restore from/to a file
-in new configuration page
-
---------- v0.2.0 -----------
+* TODO basic note system
 
 * index
 contains narrative objects (places, NPCs, objects)
@@ -16,11 +14,13 @@ user should be able to reference index elements in the log
 ** TODO direct link to index object
 ** TODO reference an index object in the log
 
-
 * aggregate consecutive user inputs?
 
 * oracle rolls
 could be like https://eamonnmurray.gitlab.io/ironsworn-web/
+
+* @ mentions in input editor
+see ckeditor or summernote
 
 * images
 add images to campaigns & character

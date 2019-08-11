@@ -1,8 +1,8 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { Layout } from "./layout";
-import { Providers } from "./providers";
-import { appStart } from "./appStart";
+import { Layout } from "./bootstrap/layout";
+import { Providers } from "./bootstrap/providers";
+import { appStart } from "./bootstrap/appStart";
 
 appStart().then(() => {
     render(

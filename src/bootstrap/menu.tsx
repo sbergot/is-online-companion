@@ -1,8 +1,8 @@
 import * as React from "react";
 import { RouteComponentProps, Route, withRouter } from "react-router";
-import { DataServiceContainer } from "./containers/dataService";
-import { NavigationLink } from "./components/controls";
-import * as routes from "./services/routes";
+import { DataServiceContainer } from "../containers/dataService";
+import { NavigationLink } from "../components/controls";
+import * as routes from "../services/routes";
 
 function MenuTitle({ children }: { children: React.ReactText[] }) {
     return <p className="text-lg mt-2 mb-1">

@@ -1,4 +1,4 @@
-import { version } from "../version";
+import { version } from "../bootstrap/version";
 import { Lens } from "./functors";
 import { DataServiceContainer } from "../containers/dataService";
 
