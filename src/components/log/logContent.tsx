@@ -27,7 +27,7 @@ interface InnerLogBlockProps {
 
 export function InnerLogBlock({ entry, character }: InnerLogBlockProps) {
     return <>
-        <div className="text-sm text-gray-600 w-full flex justify-between">
+        <div className="text-gray-600 w-full flex justify-between">
             <span className="mr-1">{character.name}</span>
             <span>{entry.createdAt.toLocaleString("en")}</span>
         </div>

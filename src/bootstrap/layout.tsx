@@ -17,7 +17,7 @@ export function Layout() {
     }, []);
     return <ErrorBoundary>
         <Router>
-            <div className="container min-h-screen min-w-screen flex text-gray-700">
+            <div className="container min-h-screen min-w-screen flex text-gray-700 text-sm">
                 <Menu />
                 <Switch>
                     <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />

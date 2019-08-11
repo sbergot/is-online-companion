@@ -44,9 +44,15 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
         }
     }
 
-
     function saveNewLog(block: AnyLogBlock) {
-        logSource.pushNew(block);
+        const lastBlock = logSource.values[logSource.values.length-1];
+        if (block.key == "UserInput" && lastBlock.data.key == "UserInput") {
+            const lastText = lastBlock.data.value.text;
+            lastBlock.data.value.text = `${lastText}\n${block.value.text}`
+            logSource.edit(lastBlock);
+        } else {
+            logSource.pushNew(block);
+        }
         escapeSelection();
     }
 

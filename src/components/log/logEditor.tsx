@@ -78,7 +78,6 @@ export function LogBlockEditor({ onLog, logBlok, character }: LogBlockEditorProp
         }
     }
 
-
     return <div className="flex min-h-full">
         <div className="w-4/6">
             <AnyLogBlockEditor
@@ -139,11 +138,20 @@ export function NewLogBlockEditor({ onLog, character }: NewLogBlockEditorProps) 
                 options={allEditorLogTypes.map(lt => ({ name: getLogTypeDescription(lt), value: lt }))}
                 value={logType}
                 onSelect={setLogType} />
-            <SmallPrimaryButton className="mt-2" onClick={onSave}>
-                Log
-            </SmallPrimaryButton>
+            <SubmitLog onClick={onSave} logType={logType} />
         </div>
     </div>
+}
+
+interface SubmitLogProps {
+    logType: LogType;
+    onClick(): void;
+}
+
+function SubmitLog({logType, onClick}: SubmitLogProps) {
+    return <SmallPrimaryButton className="mt-2" onClick={onClick}>
+        {logType == "UserInput" ? "log" : "roll"}
+    </SmallPrimaryButton>
 }
 
 interface AnyLogBlockEditorProps {
@@ -176,7 +184,7 @@ function UserInputEditor({ userInputLens }: UserInputEditorProps) {
     return <textarea className="resize-none border"
         value={textLens.state}
         onChange={(e) => setText(e.target.value)}
-        rows={4}
+        rows={5}
         cols={70}
     />
 }
