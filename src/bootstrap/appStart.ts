@@ -4,7 +4,7 @@ import { initMetadata } from "../services/applicationMetadata";
 
 export async function appStart() {
     registerMetadata();
-    registerWorker();
+    // registerWorker();
 }
 
 function registerWorker() {

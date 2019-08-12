@@ -131,7 +131,8 @@ export function NewLogBlockEditor({ onLog, character }: NewLogBlockEditorProps) 
                 userInputLens={userInputLens}
                 challengeRollLogLens={challengeRollLogLens}
                 logType={logType}
-                character={character} />
+                character={character}
+                onSubmit={onSave} />
         </div>
         <div className="w-2/6">
             <Select
@@ -159,12 +160,13 @@ interface AnyLogBlockEditorProps {
     userInputLens: Lens<UserInputLog>;
     challengeRollLogLens: Lens<ChallengeRollLog>;
     character: KeyEntry<Character>;
+    onSubmit?(): void;
 }
 
-export function AnyLogBlockEditor({userInputLens, challengeRollLogLens, logType, character}: AnyLogBlockEditorProps) {
+export function AnyLogBlockEditor({userInputLens, challengeRollLogLens, logType, character, onSubmit}: AnyLogBlockEditorProps) {
     switch (logType) {
         case "UserInput":
-            return <UserInputEditor userInputLens={userInputLens} />;
+            return <UserInputEditor userInputLens={userInputLens} onSubmit={onSubmit} />;
         case "ChallengeRoll":
             return <ChallengeRollEditor challengeRollLogLens={challengeRollLogLens} character={character} />
         default:
@@ -174,16 +176,26 @@ export function AnyLogBlockEditor({userInputLens, challengeRollLogLens, logType,
 
 interface UserInputEditorProps {
     userInputLens: Lens<UserInputLog>;
+    onSubmit?(): void;
 }
 
-function UserInputEditor({ userInputLens }: UserInputEditorProps) {
+function UserInputEditor({ userInputLens, onSubmit }: UserInputEditorProps) {
     const textLens = userInputLens.zoom("value").zoom("text");
     function setText(t: string) {
         textLens.setState(() => t);
     }
+
+    function onKeyDown(e: React.KeyboardEvent) {
+        if (e.key == "Enter" && !e.shiftKey && onSubmit) {
+            onSubmit();
+            e.preventDefault();
+        }
+    }
+
     return <textarea className="resize-none border"
         value={textLens.state}
         onChange={(e) => setText(e.target.value)}
+        onKeyPress={onKeyDown}
         rows={5}
         cols={70}
     />

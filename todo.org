@@ -1,6 +1,5 @@
-* TODO 12 px default font size
-* TODO aggregate inputs
-* TODO log/roll submit button
+* TODO submit user input on enter key press
+use https://www.npmjs.com/package/react-hotkeys
 
 * TODO basic note system
 
