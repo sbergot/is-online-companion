@@ -1,4 +1,4 @@
-import { KeyEntry } from './persistence';
+import { KeyEntry } from '../framework/contracts';
 import { ProgressChallenge, ChallengeType } from './challenge';
 import { Character } from './character';
 

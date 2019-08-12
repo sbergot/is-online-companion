@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const version = 'v1::';
 
@@ -22,59 +22,53 @@ const version = 'v1::';
 //   );
 // });
 
-self.addEventListener("fetch", function(event) {
-  if (event.request.method !== 'GET') {
-    return;
-  }
-  event.respondWith(
-    caches
-      .match(event.request)
-      .then(function(cached) {
-        var networked = fetch(event.request)
-          .then(fetchedFromNetwork, unableToResolve)
-          .catch(unableToResolve);
+self.addEventListener('fetch', function(event) {
+    if (event.request.method !== 'GET') {
+        return;
+    }
+    event.respondWith(
+        caches.match(event.request).then(function(cached) {
+            var networked = fetch(event.request)
+                .then(fetchedFromNetwork, unableToResolve)
+                .catch(unableToResolve);
 
-        return cached || networked;
+            return cached || networked;
 
-        function fetchedFromNetwork(response) {
-          var cacheCopy = response.clone();
+            function fetchedFromNetwork(response) {
+                var cacheCopy = response.clone();
 
-          caches
-            .open(version + 'pages')
-            .then(function add(cache) {
-              return cache.put(event.request, cacheCopy);
-            });
+                caches.open(version + 'pages').then(function add(cache) {
+                    return cache.put(event.request, cacheCopy);
+                });
 
-          return response;
-        }
+                return response;
+            }
 
-        function unableToResolve () {
-          return new Response('<h1>Service Unavailable</h1>', {
-            status: 503,
-            statusText: 'Service Unavailable',
-            headers: new Headers({
-              'Content-Type': 'text/html'
-            })
-          });
-        }
-      })
-  );
+            function unableToResolve() {
+                return new Response('<h1>Service Unavailable</h1>', {
+                    status: 503,
+                    statusText: 'Service Unavailable',
+                    headers: new Headers({
+                        'Content-Type': 'text/html',
+                    }),
+                });
+            }
+        }),
+    );
 });
 
-self.addEventListener("activate", function(event) {
-  event.waitUntil(
-    caches
-      .keys()
-      .then(function (keys) {
-        return Promise.all(
-          keys
-            .filter(function (key) {
-              return !key.startsWith(version);
-            })
-            .map(function (key) {
-              return caches.delete(key);
-            })
-        );
-      })
-  );
+self.addEventListener('activate', function(event) {
+    event.waitUntil(
+        caches.keys().then(function(keys) {
+            return Promise.all(
+                keys
+                    .filter(function(key) {
+                        return !key.startsWith(version);
+                    })
+                    .map(function(key) {
+                        return caches.delete(key);
+                    }),
+            );
+        }),
+    );
 });

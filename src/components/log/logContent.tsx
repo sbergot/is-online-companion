@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AnyLogBlock, UserInput, ChallengeRoll, ProgressRoll } from '../../contracts/log';
-import { StreamEntry } from '../../contracts/persistence';
+import { StreamEntry } from '../../framework/contracts';
 import { DataServiceContainer } from '../../containers/dataService';
 import { Character } from '../../contracts/character';
 import { Selectable } from '../layout';

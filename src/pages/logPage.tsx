@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { AnyLogBlock } from '../contracts/log';
-import { StreamEntry } from '../contracts/persistence';
+import { StreamEntry } from '../framework/contracts';
 import { DataServiceContainer } from '../containers/dataService';
 import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
 import { Section, MainPanel, ActionPanel } from '../components/layout';

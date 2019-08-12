@@ -1,5 +1,5 @@
 import { version } from '../bootstrap/version';
-import { Lens } from '../framework/contracts/functors';
+import { Lens } from '../framework/contracts';
 import { DataServiceContainer } from '../containers/dataService';
 import { ApplicationMetadata } from '../contracts/applicationMetadata';
 

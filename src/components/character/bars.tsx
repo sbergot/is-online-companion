@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TrackProgress } from '../../contracts/challenge';
-import { Lens } from '../../framework/contracts/functors';
+import { Lens } from '../../framework/contracts';
 import { SmallPrimaryButton, SmallDangerButton } from '../buttons';
 import { ClassProp } from '../../contracts/component';
 

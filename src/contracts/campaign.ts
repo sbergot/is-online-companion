@@ -1,4 +1,4 @@
-import { KeyMap } from './persistence';
+import { KeyMap } from '../framework/contracts';
 import { ProgressChallenge } from './challenge';
 
 export interface Campaign {

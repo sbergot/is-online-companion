@@ -6,7 +6,7 @@ import { Select, Label, TextInput, EntryItem } from '../components/controls';
 import { CampaignServiceContainer } from '../containers/campaign';
 import { DataServiceContainer } from '../containers/dataService';
 import { Character } from '../contracts/character';
-import { KeyEntry } from '../contracts/persistence';
+import { KeyEntry } from '../framework/contracts';
 import { characterSheetRoute } from '../services/routes';
 import { CampaignKeyParam } from '../contracts/routes';
 import { useLens } from '../framework/functors';

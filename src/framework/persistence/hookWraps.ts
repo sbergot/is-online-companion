@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { KeyMapSource, KeyEntry, StreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
+import { KeyMapSource, KeyEntry, StreamSource, StreamEntry, StreamEntryRef } from '../contracts';
 import { KeyMapHook, StreamHook } from '../contracts/hooks';
 import { useLens } from '../functors';
 

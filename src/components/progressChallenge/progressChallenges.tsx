@@ -1,11 +1,10 @@
 import * as React from 'react';
 
-import { KeyMap, KeyEntry } from '../../contracts/persistence';
+import { KeyMap, KeyEntry, Lens } from '../../framework/contracts';
 import { ProgressChallenge, ChallengeType } from '../../contracts/challenge';
 import { SubSection, Selectable } from '../layout';
 import { newEntry } from '../../framework/persistence/shared';
 import { Zoom } from '../../framework/functors';
-import { Lens } from '../../framework/contracts/functors';
 import { challengeResources } from '../../services/progressChallenges';
 import { SmallPrimaryButton } from '../buttons';
 import { ProgressTrack, ChallengeForm } from './challengeControls';

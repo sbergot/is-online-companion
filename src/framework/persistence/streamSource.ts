@@ -1,7 +1,6 @@
-import { StreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
 import { newEntry } from './shared';
 import { reviver, replacer } from './serialization';
-import { KeyValueStore } from '../contracts/persistence';
+import { KeyValueStore, StreamSource, StreamEntry, StreamEntryRef } from '../contracts';
 
 interface StreamMetadata {
     currentPage: number;

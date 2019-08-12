@@ -1,4 +1,4 @@
-import { StreamEntryRef } from './persistence';
+import { StreamEntryRef } from '../framework/contracts';
 
 export type TrackProgress = number;
 

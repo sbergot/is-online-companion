@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { StreamEntry } from '../../contracts/persistence';
+import { StreamEntry, StreamHook, Lens } from '../../framework/contracts';
 import { AnyLogBlock, ChallengeRollLog } from '../../contracts/log';
-import { StreamHook } from '../../framework/contracts/hooks';
 import { InnerLogBlock } from './logContent';
 import { SmallPrimaryButton, SmallDangerButton } from '../buttons';
 import { Character } from '../../contracts/character';
-import { Lens } from '../../framework/contracts/functors';
 import { getMomentumMeta } from '../../services/characterHelpers';
 import { burnMomentum } from '../../services/rolls';
 

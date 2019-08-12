@@ -7,7 +7,7 @@ import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
 import { MainPanel, ActionPanel } from '../components/layout';
 import { ProgressChallenge, ChallengeType } from '../contracts/challenge';
 import { useLens, Zoom } from '../framework/functors';
-import { Lens } from '../framework/contracts/functors';
+import { Lens } from '../framework/contracts';
 import { CharacterSheetSelection } from '../contracts/variant';
 import { nullVariant } from '../services/variantHelpers';
 import { Select, Label } from '../components/controls';

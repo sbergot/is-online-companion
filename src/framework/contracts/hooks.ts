@@ -1,5 +1,5 @@
 import { Lens } from './functors';
-import { KeyMap, KeyEntry, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
+import { KeyMap, KeyEntry, StreamEntry, StreamEntryRef } from './persistence';
 
 export interface KeyMapHook<T> {
     lens: Lens<KeyMap<T>>;

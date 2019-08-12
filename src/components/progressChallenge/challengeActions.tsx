@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { ProgressChallenge, ChallengeType } from '../../contracts/challenge';
-import { StreamHook } from '../../framework/contracts/hooks';
+import { StreamHook, Lens } from '../../framework/contracts';
 import { AnyLogBlock, ProgressRollLog } from '../../contracts/log';
 import { rankStats, finishChallenge, failChallenge, deleteChallenge } from '../../services/progressChallenges';
 import { progressRoll } from '../../services/rolls';
 import { SmallPrimaryButton, SmallDangerButton } from '../buttons';
 import { ProgressRollLogBlock } from '../log/logContent';
-import { Lens } from '../../framework/contracts/functors';
 import { SetState } from '@staltz/use-profunctor-state';
 import { ChallengeDescription } from './challengeControls';
 

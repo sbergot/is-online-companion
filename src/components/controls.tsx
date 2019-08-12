@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { KeyEntry } from '../contracts/persistence';
+import { KeyEntry, LensProps } from '../framework/contracts';
 import { Link } from 'react-router-dom';
-import { LensProps } from '../framework/contracts/functors';
 import { ChildrenProp, ClassProp } from '../contracts/component';
 
 interface CheckBoxProps extends LensProps<boolean> {
