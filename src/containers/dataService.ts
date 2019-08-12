@@ -1,10 +1,10 @@
 import { createContainer } from 'unstated-next';
 
 import { DataService } from '../contracts/dataservice';
-import { KeyMapSourceImpl } from '../services/persistence/keyMapSource';
-import { StreamSourceImpl } from '../services/persistence/streamSource';
-import { LocalStorage } from '../services/persistence/storage';
-import { wrapKeyMap, wrapStream } from '../services/persistence/hookWraps';
+import { KeyMapSourceImpl } from '../framework/persistence/keyMapSource';
+import { StreamSourceImpl } from '../framework/persistence/streamSource';
+import { LocalStorage } from '../framework/persistence/storage';
+import { wrapKeyMap, wrapStream } from '../framework/persistence/hookWraps';
 
 function useDataService(): DataService {
     const storage = new LocalStorage();

@@ -1,4 +1,4 @@
-import { Character, Debilities } from '../contracts/character';
+import { Character, Debilities, MomentumMeta } from '../contracts/character';
 
 export function makeDefaultCharacter(): Character {
     return {
@@ -47,11 +47,6 @@ function countTrueMembers(obj: object): number {
 
 function countDebilities(deb: Debilities): number {
     return countTrueMembers(deb.banes) + countTrueMembers(deb.burdens) + countTrueMembers(deb.conditions);
-}
-
-export interface MomentumMeta {
-    reset: number;
-    max: number;
 }
 
 export function getMomentumMeta(character: Character): MomentumMeta {

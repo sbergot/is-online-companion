@@ -6,14 +6,14 @@ import { CheckBox } from '../controls';
 import { StatsBoxes } from './stats';
 import { Section, SubSection } from '../layout';
 import { MomentumMeter, ResourceMeter, TrackMeter } from './bars';
-import { Lens } from '../../services/functors';
+import { Lens } from '../../framework/contracts/functors';
 import { Challenge } from '../progressChallenge/progressChallenges';
 import { getMomentumMeta } from '../../services/characterHelpers';
 import { CharacterSheetSelection } from '../../contracts/variant';
 import { KeyEntry } from '../../contracts/persistence';
 import { nullVariant } from '../../services/variantHelpers';
 
-export interface CharacterSheetProps {
+interface CharacterSheetProps {
     lens: Lens<Character>;
     selectionLens: Lens<CharacterSheetSelection>;
 }

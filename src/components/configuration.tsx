@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BackupManager } from '../services/persistence/backup';
+import { BackupManager } from '../framework/persistence/backup';
 import { PrimaryButton, DangerButton } from './buttons';
 import { useMetadata } from '../services/applicationMetadata';
-import { LocalStorage } from '../services/persistence/storage';
+import { LocalStorage } from '../framework/persistence/storage';
 
 interface RestoreResult {
     success: boolean;

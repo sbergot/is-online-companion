@@ -1,18 +1,8 @@
-import useProfunctorState, { Getter, Setter, ProfunctorState, SetState } from '@staltz/use-profunctor-state';
+import useProfunctorState, { Getter, Setter, ProfunctorState } from '@staltz/use-profunctor-state';
+import { Lens } from './contracts/functors';
 
 function zoom<T, K extends keyof T>(functor: ProfunctorState<T>, key: K) {
     return functor.promap(parent => parent[key], (child, parent) => ({ ...parent, [key]: child }));
-}
-
-export interface Lens<T> {
-    state: T;
-    setState: SetState<T>;
-    promap<S>(get: Getter<T, S>, set: Setter<T, S>): Lens<S>;
-    zoom<K extends keyof T>(key: K): Lens<T[K]>;
-}
-
-export interface LensProps<T> {
-    lens: Lens<T>;
 }
 
 function wrapFunctor<T>(functor: ProfunctorState<T>): Lens<T> {
@@ -34,7 +24,7 @@ export function useLens<T>(initialState: T): Lens<T> {
     return wrapFunctor(useProfunctorState(initialState));
 }
 
-export interface ZoomProps<T, K extends keyof T> {
+interface ZoomProps<T, K extends keyof T> {
     children: (subLens: Lens<T[K]>) => JSX.Element;
     parentLens: Lens<T>;
     zoomTo: K;

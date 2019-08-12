@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TrackProgress } from '../../contracts/challenge';
-import { Lens } from '../../services/functors';
+import { Lens } from '../../framework/contracts/functors';
 import { SmallPrimaryButton, SmallDangerButton } from '../buttons';
 import { ClassProp } from '../../contracts/component';
 
@@ -28,7 +28,7 @@ function Ticks({ t }: { t: number }) {
     );
 }
 
-export interface TrackMeterProps {
+interface TrackMeterProps {
     lens: Lens<TrackProgress>;
     progressStep: number;
     finished: boolean;
@@ -67,7 +67,7 @@ export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
     );
 }
 
-export interface ResourceMeterProps {
+interface ResourceMeterProps {
     lens: Lens<number>;
     minVal: number;
     maxVal: number;
@@ -84,7 +84,7 @@ export function ResourceMeter({ minVal, maxVal, lens: { state: level, setState: 
     );
 }
 
-export interface SlotProps extends ClassProp {
+interface SlotProps extends ClassProp {
     level: number;
     onClick(): void;
 }
@@ -104,7 +104,7 @@ export function Slot({ level, onClick, className }: SlotProps) {
     );
 }
 
-export interface MomentumMeterProps extends ResourceMeterProps {
+interface MomentumMeterProps extends ResourceMeterProps {
     reset: number;
     tempMax: number;
 }

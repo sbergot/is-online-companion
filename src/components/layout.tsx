@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ChildrenProp } from '../contracts/component';
 
-export interface SectionProps {
+interface SectionProps {
     title?: string;
     className?: string;
     children: React.ReactNode;
@@ -39,7 +39,7 @@ export function ActionPanel({ children }: ChildrenProp) {
     );
 }
 
-export interface SelectableProps extends ChildrenProp {
+interface SelectableProps extends ChildrenProp {
     selected?: boolean;
     onClick?: () => void;
 }

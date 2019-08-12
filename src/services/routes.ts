@@ -1,3 +1,5 @@
+import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
+
 type RouteTemplateInput<T> = {
     [P in keyof T]: null;
 };
@@ -16,14 +18,6 @@ function createRouteDef<T>(to: (p: T) => string, input: RouteTemplateInput<T>): 
         template: to((result as unknown) as T),
         to,
     };
-}
-
-export interface CampaignKeyParam {
-    campaignKey: string;
-}
-
-export interface CharacterKeyParam {
-    characterKey: string;
 }
 
 export const campaignRoute: RouteDef<CampaignKeyParam> = createRouteDef(

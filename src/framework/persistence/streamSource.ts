@@ -1,9 +1,9 @@
 import { StreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
 import { newEntry } from './shared';
 import { reviver, replacer } from './serialization';
-import { KeyValueStore } from './storage';
+import { KeyValueStore } from '../contracts/persistence';
 
-interface Metadata {
+interface StreamMetadata {
     currentPage: number;
 }
 
@@ -27,11 +27,11 @@ export class StreamSourceImpl<T> implements StreamSource<T> {
         this.storage.set(this.getPageKey(i), JSON.stringify(entries, replacer));
     }
 
-    saveMetadata(metadata: Metadata) {
+    saveMetadata(metadata: StreamMetadata) {
         this.storage.set(this.getRootKey(), JSON.stringify(metadata));
     }
 
-    getMetadata(): Metadata {
+    getMetadata(): StreamMetadata {
         const metadataRaw = this.storage.get(this.getRootKey());
         if (!metadataRaw) {
             const metadata = { currentPage: 0 };

@@ -6,7 +6,8 @@ import { Select } from '../controls';
 import { ChallengeRollType } from '../../contracts/rolls';
 import { challengeRoll } from '../../services/rolls';
 import { getLogTypeDescription } from '../../services/logHelpers';
-import { useLens, Lens } from '../../services/functors';
+import { Lens } from '../../framework/contracts/functors';
+import { useLens } from '../../framework/functors';
 import { KeyEntry } from '../../contracts/persistence';
 
 const allEditorLogTypes: LogType[] = ['UserInput', 'ChallengeRoll'];

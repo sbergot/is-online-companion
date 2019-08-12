@@ -3,12 +3,13 @@ import { RouteComponentProps, Route, withRouter } from 'react-router';
 import { DataServiceContainer } from '../containers/dataService';
 import { NavigationLink } from '../components/controls';
 import * as routes from '../services/routes';
+import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
 
 function MenuTitle({ children }: { children: React.ReactText[] }) {
     return <p className="text-lg mt-2 mb-1">{children}</p>;
 }
 
-function CampaignMenu({ match, location }: RouteComponentProps<routes.CampaignKeyParam>) {
+function CampaignMenu({ match, location }: RouteComponentProps<CampaignKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey } = match.params;
     const campaign = dataService.campaigns.lens.state[campaignKey];
@@ -23,7 +24,7 @@ function CampaignMenu({ match, location }: RouteComponentProps<routes.CampaignKe
     ) : null;
 }
 
-function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignKeyParam & routes.CharacterKeyParam>) {
+function CharacterMenu({ match, location }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
     const { campaignKey, characterKey } = match.params;
     const character = dataService.characters.lens.state[characterKey];
@@ -68,7 +69,7 @@ function Credits({ pathname }: { pathname: string }) {
     );
 }
 
-function MenuInner({ location }: RouteComponentProps<routes.CampaignKeyParam>) {
+function MenuInner({ location }: RouteComponentProps<CampaignKeyParam>) {
     const { pathname } = location;
     return (
         <nav className="flex flex-col w-full bg-gray-200 p-3" style={{ maxWidth: '15rem' }}>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { KeyMapSource, KeyEntry, StreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
-import { KeyMapHook, StreamHook } from '../../contracts/dataservice';
+import { KeyMapHook, StreamHook } from '../contracts/hooks';
 import { useLens } from '../functors';
 
 export function wrapKeyMap<T>(source: KeyMapSource<T>): KeyMapHook<T> {

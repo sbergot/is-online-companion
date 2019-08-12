@@ -61,3 +61,8 @@ export type StatKey = keyof Stats;
 export interface Asset {
     name: string;
 }
+
+export interface MomentumMeta {
+    reset: number;
+    max: number;
+}

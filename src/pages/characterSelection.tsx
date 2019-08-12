@@ -7,8 +7,9 @@ import { CampaignServiceContainer } from '../containers/campaign';
 import { DataServiceContainer } from '../containers/dataService';
 import { Character } from '../contracts/character';
 import { KeyEntry } from '../contracts/persistence';
-import { characterSheetRoute, CampaignKeyParam } from '../services/routes';
-import { useLens } from '../services/functors';
+import { characterSheetRoute } from '../services/routes';
+import { CampaignKeyParam } from '../contracts/routes';
+import { useLens } from '../framework/functors';
 import { makeDefaultCharacter } from '../services/characterHelpers';
 import { PrimaryButton } from '../components/buttons';
 

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { CampaignKeyParam, CharacterKeyParam } from '../services/routes';
+import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
 import { DataServiceContainer } from '../containers/dataService';
 import { Challenge } from '../components/progressChallenge/progressChallenges';
 import { ChallengeActions } from '../components/progressChallenge/challengeActions';
 import { MainPanel, ActionPanel } from '../components/layout';
 import { KeyEntry } from '../contracts/persistence';
 import { ProgressChallenge, ChallengeType } from '../contracts/challenge';
-import { Lens, Zoom } from '../services/functors';
+import { Zoom } from '../framework/functors';
+import { Lens } from '../framework/contracts/functors';
 
 export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();

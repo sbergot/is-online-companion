@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { AnyLogBlock } from '../contracts/log';
 import { StreamEntry } from '../contracts/persistence';
 import { DataServiceContainer } from '../containers/dataService';
-import { CampaignKeyParam, CharacterKeyParam } from '../services/routes';
+import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
 import { Section, MainPanel, ActionPanel } from '../components/layout';
 import { LogBlock } from '../components/log/logContent';
 import { NewLogBlockEditor, LogBlockEditor } from '../components/log/logEditor';

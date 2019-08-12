@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { KeyEntry } from '../contracts/persistence';
 import { Link } from 'react-router-dom';
-import { LensProps } from '../services/functors';
+import { LensProps } from '../framework/contracts/functors';
 import { ChildrenProp, ClassProp } from '../contracts/component';
 
-export interface CheckBoxProps extends LensProps<boolean> {
+interface CheckBoxProps extends LensProps<boolean> {
     title: string;
 }
 
@@ -18,7 +18,7 @@ export function CheckBox({ title, lens: { state: checked, setState } }: CheckBox
     );
 }
 
-export interface EntryItemProps {
+interface EntryItemProps {
     entry: KeyEntry<{ name: string }>;
 }
 
@@ -91,7 +91,7 @@ export function Label({ children }: ChildrenProp) {
     return <label className={classes}>{children}</label>;
 }
 
-export interface SelectProps<T> {
+interface SelectProps<T> {
     options: {
         name: string;
         value: T;

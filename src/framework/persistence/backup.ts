@@ -1,4 +1,4 @@
-import { KeyValueStore } from './storage';
+import { KeyValueStore } from '../contracts/persistence';
 
 export class BackupManager {
     constructor(private storage: KeyValueStore) {}

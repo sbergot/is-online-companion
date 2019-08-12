@@ -1,5 +1,5 @@
-import { LocalStorage } from '../services/persistence/storage';
-import { KeyMapSourceImpl } from '../services/persistence/keyMapSource';
+import { LocalStorage } from '../framework/persistence/storage';
+import { KeyMapSourceImpl } from '../framework/persistence/keyMapSource';
 import { initMetadata } from '../services/applicationMetadata';
 
 function registerWorker() {

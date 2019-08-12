@@ -1,12 +1,7 @@
 import { version } from '../bootstrap/version';
-import { Lens } from './functors';
+import { Lens } from '../framework/contracts/functors';
 import { DataServiceContainer } from '../containers/dataService';
-
-export interface ApplicationMetadata {
-    version: string;
-    lastBackup: Date | null;
-    lastRestore: Date | null;
-}
+import { ApplicationMetadata } from '../contracts/applicationMetadata';
 
 export function initMetadata(): ApplicationMetadata {
     return { version: version, lastBackup: null, lastRestore: null };

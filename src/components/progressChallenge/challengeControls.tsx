@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ProgressChallenge, ChallengeType, Rank } from '../../contracts/challenge';
-import { Lens, useLens, LensProps } from '../../services/functors';
+import { Lens, LensProps } from '../../framework/contracts/functors';
+import { useLens } from '../../framework/functors';
 import { KeyEntry } from '../../contracts/persistence';
 import { TrackMeter } from '../character/bars';
 import { rankStats, newChallenge, allRanks } from '../../services/progressChallenges';
