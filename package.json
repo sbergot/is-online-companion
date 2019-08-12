@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@staltz/use-profunctor-state": "^1.2.0",
+    "loglevel": "^1.6.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
@@ -21,11 +22,11 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.4",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "copy-webpack-plugin": "^5.0.3",
     "cssnano": "^4.1.10",
     "eslint": "^6.1.0",
@@ -37,8 +38,8 @@
     "tailwindcss": "^1.1.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
-    "webpack-cli": "^3.3.6",
     "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   }
 }

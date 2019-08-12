@@ -1,3 +1,10 @@
+# 0.3.0
+
+- reduce default font size to ~12px
+- aggregate consecutive user input logs
+- log user input with return key
+- code quality tooling
+
 # 0.2.2
 
 - fix a bug in the backup feature

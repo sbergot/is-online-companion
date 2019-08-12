@@ -1,20 +1,26 @@
+import { getLogger, setDefaultLevel } from 'loglevel';
 import { LocalStorage } from '../framework/persistence/storage';
 import { KeyMapSourceImpl } from '../framework/persistence/keyMapSource';
-import { initMetadata } from '../services/applicationMetadata';
+import { initMetadata, getFirstKey } from '../services/applicationMetadata';
+import { ApplicationMetadata } from '../contracts/applicationMetadata';
+
+const logger = getLogger('appStart');
+
+function unregisterWorker() {
+    logger.info('uninstall offline worker');
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for (let registration of registrations) {
+            registration.unregister();
+        }
+    });
+}
 
 function registerWorker() {
     if ('serviceWorker' in navigator) {
-        console.log('CLIENT: service worker registration in progress.');
-        navigator.serviceWorker.register('worker.js').then(
-            function() {
-                console.log('CLIENT: service worker registration complete.');
-            },
-            function() {
-                console.log('CLIENT: service worker registration failure.');
-            },
-        );
+        logger.info('install offline worker');
+        navigator.serviceWorker.register('worker.js');
     } else {
-        console.log('CLIENT: service worker is not supported.');
+        logger.warn('service worker is not supported.');
     }
 }
 
@@ -27,9 +33,21 @@ function registerMetadata() {
     }
 }
 
+function getMetadata(): ApplicationMetadata {
+    const storage = new LocalStorage();
+    const source = new KeyMapSourceImpl<ApplicationMetadata>(storage, 'metadata');
+    const entries = source.loadAll();
+    const key = getFirstKey(entries);
+    return key ? entries[key].data : initMetadata();
+}
+
 export async function appStart() {
+    setDefaultLevel('trace');
+    const metaData = getMetadata();
     registerMetadata();
-    if (1 + 1 < 1) {
+    if (metaData.offlineMode) {
         registerWorker();
+    } else {
+        unregisterWorker();
     }
 }

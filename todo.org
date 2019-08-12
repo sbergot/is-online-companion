@@ -1,7 +1,3 @@
-* TODO architecture sanity check
-eslint
-check dep graph
-
 * TODO basic note system
 
 * index
@@ -13,8 +9,6 @@ user should be able to reference index elements in the log
 ** TODO create/edit/remove narrative objects
 ** TODO direct link to index object
 ** TODO reference an index object in the log
-
-* aggregate consecutive user inputs?
 
 * oracle rolls
 could be like https://eamonnmurray.gitlab.io/ironsworn-web/
@@ -34,5 +28,3 @@ look into cognito for user management
 look into firebase for everything
 
 * map integration (diplay locations stored in index)
-
-* add sass + custom tailwind build

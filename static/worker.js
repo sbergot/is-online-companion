@@ -2,32 +2,14 @@
 
 const version = 'v1::';
 
-// const offlineFundamentals = [
-//   '',
-//   'main.bundle.js',
-//   'tailwindcss.min.css'
-// ];
+const cachename = version + 'pages';
 
-// self.addEventListener("install", function(event) {
-//   console.log('WORKER: install event in progress.');
-//   event.waitUntil(
-//     caches
-//       .open(version + 'fundamentals')
-//       .then(function(cache) {
-//         return cache.addAll(offlineFundamentals);
-//       })
-//       .then(function() {
-//         console.log('WORKER: install completed');
-//       })
-//   );
-// });
-
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function (event) {
     if (event.request.method !== 'GET') {
         return;
     }
     event.respondWith(
-        caches.match(event.request).then(function(cached) {
+        caches.match(event.request).then(function (cached) {
             var networked = fetch(event.request)
                 .then(fetchedFromNetwork, unableToResolve)
                 .catch(unableToResolve);
@@ -38,6 +20,7 @@ self.addEventListener('fetch', function(event) {
                 var cacheCopy = response.clone();
 
                 caches.open(version + 'pages').then(function add(cache) {
+                    console.log("updating " + event.request.url);
                     return cache.put(event.request, cacheCopy);
                 });
 
@@ -57,15 +40,15 @@ self.addEventListener('fetch', function(event) {
     );
 });
 
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', function (event) {
     event.waitUntil(
-        caches.keys().then(function(keys) {
+        caches.keys().then(function (keys) {
             return Promise.all(
                 keys
-                    .filter(function(key) {
+                    .filter(function (key) {
                         return !key.startsWith(version);
                     })
-                    .map(function(key) {
+                    .map(function (key) {
                         return caches.delete(key);
                     }),
             );

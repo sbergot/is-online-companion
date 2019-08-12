@@ -6,7 +6,7 @@ import { version } from '../bootstrap/version';
 export function AboutPage() {
     return (
         <MainPanel>
-            <Section title="About Ironsworn online companion">
+            <Section title="About Ironsworn online companion test">
                 <p>Ironsworn online companion is developped by Simon Bergot</p>
                 <p>Version {version}</p>
                 <p className="mt-4">Source code is available under MIT license here:</p>
@@ -23,9 +23,7 @@ export function AboutPage() {
                     </a>
                 </p>
             </Section>
-            <Section className="my-2" title="Backup & restore">
-                <Configuration />
-            </Section>
+            <Configuration />
         </MainPanel>
     );
 }
