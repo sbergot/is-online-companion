@@ -1,4 +1,4 @@
-import { IStreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
+import { StreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
 import { newEntry } from './shared';
 import { reviver, replacer } from './serialization';
 import { KeyValueStore } from './storage';
@@ -7,7 +7,7 @@ interface Metadata {
     currentPage: number;
 }
 
-export class StreamSource<T> implements IStreamSource<T> {
+export class StreamSourceImpl<T> implements StreamSource<T> {
     constructor(
         private storage: KeyValueStore,
         private name: string,

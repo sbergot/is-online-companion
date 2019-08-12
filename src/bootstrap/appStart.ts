@@ -1,11 +1,6 @@
 import { LocalStorage } from '../services/persistence/storage';
-import { KeyMapSource } from '../services/persistence/keyMapSource';
+import { KeyMapSourceImpl } from '../services/persistence/keyMapSource';
 import { initMetadata } from '../services/applicationMetadata';
-
-export async function appStart() {
-    registerMetadata();
-    // registerWorker();
-}
 
 function registerWorker() {
     if ('serviceWorker' in navigator) {
@@ -25,9 +20,16 @@ function registerWorker() {
 
 function registerMetadata() {
     const storage = new LocalStorage();
-    const source = new KeyMapSource(storage, 'metadata');
+    const source = new KeyMapSourceImpl(storage, 'metadata');
     const allKeys = Object.keys(source.loadAll());
     if (allKeys.length == 0) {
         source.saveNew(initMetadata());
+    }
+}
+
+export async function appStart() {
+    registerMetadata();
+    if (1 + 1 < 1) {
+        registerWorker();
     }
 }

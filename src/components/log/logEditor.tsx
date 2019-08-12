@@ -2,13 +2,11 @@ import * as React from 'react';
 import { AnyLogBlock, LogType, UserInputLog, ChallengeRollLog, ChallengeRoll } from '../../contracts/log';
 import { SmallPrimaryButton } from '../buttons';
 import { StatKey, StatusKey, Character } from '../../contracts/character';
-import { DataServiceContainer } from '../../containers/dataService';
 import { Select } from '../controls';
-import { ChallengeRollType, ChallengeRollResult } from '../../contracts/rolls';
+import { ChallengeRollType } from '../../contracts/rolls';
 import { challengeRoll } from '../../services/rolls';
 import { getLogTypeDescription } from '../../services/logHelpers';
 import { useLens, Lens } from '../../services/functors';
-import { ChallengeType } from '../../contracts/challenge';
 import { KeyEntry } from '../../contracts/persistence';
 
 const allEditorLogTypes: LogType[] = ['UserInput', 'ChallengeRoll'];

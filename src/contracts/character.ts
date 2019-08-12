@@ -1,5 +1,5 @@
 import { KeyMap } from './persistence';
-import { TrackProgress, Rank, ProgressChallenge } from './challenge';
+import { TrackProgress, ProgressChallenge } from './challenge';
 
 export interface Character {
     name: string;

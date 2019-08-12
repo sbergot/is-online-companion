@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { AnyLogBlock, LogType } from '../contracts/log';
+import { AnyLogBlock } from '../contracts/log';
 import { StreamEntry } from '../contracts/persistence';
 import { DataServiceContainer } from '../containers/dataService';
 import { CampaignKeyParam, CharacterKeyParam } from '../services/routes';

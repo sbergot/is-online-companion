@@ -1,4 +1,4 @@
-import { LocalStorage, KeyValueStore } from './storage';
+import { KeyValueStore } from './storage';
 
 export class BackupManager {
     constructor(private storage: KeyValueStore) {}
@@ -20,9 +20,9 @@ export class BackupManager {
     }
 
     readFile(file: File): Promise<string> {
-        return new Promise((resolve, reject) => {
+        return new Promise(resolve => {
             const reader = new FileReader();
-            reader.onload = e => {
+            reader.onload = () => {
                 const content = reader.result as string;
                 resolve(content);
             };

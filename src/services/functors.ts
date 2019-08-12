@@ -1,4 +1,3 @@
-import * as React from 'react';
 import useProfunctorState, { Getter, Setter, ProfunctorState, SetState } from '@staltz/use-profunctor-state';
 
 function zoom<T, K extends keyof T>(functor: ProfunctorState<T>, key: K) {

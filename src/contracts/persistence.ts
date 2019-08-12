@@ -5,7 +5,7 @@ export interface KeyEntry<T> {
     data: T;
 }
 
-export interface IKeyMapSource<T> {
+export interface KeyMapSource<T> {
     loadAll(): KeyMap<T>;
     saveAll(entries: KeyMap<T>): void;
     saveNew(data: T): KeyEntry<T>;
@@ -25,7 +25,7 @@ export interface StreamEntryRef {
     page: number;
 }
 
-export interface IStreamSource<T> {
+export interface StreamSource<T> {
     pushNew(value: T): StreamEntry<T>;
     getEntries(page?: number): StreamEntry<T>[];
     edit(entry: StreamEntry<T>): StreamEntry<T>;

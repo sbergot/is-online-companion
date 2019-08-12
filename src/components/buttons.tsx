@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ChildrenProp, ClassProp } from '../contracts/component';
 
 interface ButtonProps extends ChildrenProp, ClassProp {
-    onClick: (e: React.SyntheticEvent<any>) => void;
+    onClick: (e: React.SyntheticEvent<unknown>) => void;
 }
 
 export function SmallPrimaryButton({ onClick, children, className }: ButtonProps) {

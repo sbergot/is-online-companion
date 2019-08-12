@@ -15,7 +15,7 @@ function CampaignMenu({ match, location }: RouteComponentProps<routes.CampaignKe
     const { pathname } = location;
     return campaign ? (
         <>
-            <MenuTitle>campaign > {campaign.data.name}</MenuTitle>
+            <MenuTitle>campaign &gt; {campaign.data.name}</MenuTitle>
             <NavigationLink current={pathname} to={routes.characterSelectionRoute.to({ campaignKey })}>
                 character selection
             </NavigationLink>
@@ -30,7 +30,7 @@ function CharacterMenu({ match, location }: RouteComponentProps<routes.CampaignK
     const { pathname } = location;
     return (
         <div className="flex flex-col">
-            <MenuTitle>character > {character.data.name}</MenuTitle>
+            <MenuTitle>character &gt; {character.data.name}</MenuTitle>
             <NavigationLink current={pathname} to={routes.characterSheetRoute.to({ campaignKey, characterKey })}>
                 character sheet
             </NavigationLink>

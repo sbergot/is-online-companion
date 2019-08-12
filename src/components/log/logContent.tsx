@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-    AnyLogBlock,
-    UserInputLog,
-    ChallengeRollLog,
-    ProgressRollLog,
-    UserInput,
-    ChallengeRoll,
-    ProgressRoll,
-} from '../../contracts/log';
+import { AnyLogBlock, UserInput, ChallengeRoll, ProgressRoll } from '../../contracts/log';
 import { StreamEntry } from '../../contracts/persistence';
 import { DataServiceContainer } from '../../containers/dataService';
 import { Character } from '../../contracts/character';

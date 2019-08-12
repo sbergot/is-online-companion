@@ -9,7 +9,8 @@
     "build:style": "postcss css/style.css -o static/style.css",
     "build": "webpack -p",
     "watch": "webpack -d --watch",
-    "start:dev": "webpack-dev-server"
+    "start:dev": "webpack-dev-server",
+    "lintAll": "eslint src/**/*"
   },
   "dependencies": {
     "@staltz/use-profunctor-state": "^1.2.0",

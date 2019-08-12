@@ -1,9 +1,9 @@
-import { KeyEntry, KeyMap, IKeyMapSource } from '../../contracts/persistence';
+import { KeyEntry, KeyMap, KeyMapSource } from '../../contracts/persistence';
 import { newEntry } from './shared';
 import { reviver, replacer } from './serialization';
 import { KeyValueStore } from './storage';
 
-export class KeyMapSource<T> implements IKeyMapSource<T> {
+export class KeyMapSourceImpl<T> implements KeyMapSource<T> {
     constructor(private storage: KeyValueStore, private key: string) {}
 
     loadAll(): KeyMap<T> {

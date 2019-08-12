@@ -80,7 +80,7 @@ function RestoreResult({ result }: { result: RestoreResult }) {
     return (
         <>
             {result.success ? (
-                <p>Successfully restored data from "{result.filename}"</p>
+                <p>Successfully restored data from &quot;{result.filename}&quot;</p>
             ) : (
                 <p>Error while restoring data</p>
             )}

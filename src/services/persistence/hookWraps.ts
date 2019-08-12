@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { IKeyMapSource, KeyEntry, IStreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
+import { KeyMapSource, KeyEntry, StreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
 import { KeyMapHook, StreamHook } from '../../contracts/dataservice';
 import { useLens } from '../functors';
 
-export function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
+export function wrapKeyMap<T>(source: KeyMapSource<T>): KeyMapHook<T> {
     const lens = useLens(source.loadAll());
     useEffect(() => {
         function refresh() {
@@ -25,7 +25,7 @@ export function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
 
     const savingLens = lens.promap(
         state => state,
-        (newState, _) => {
+        newState => {
             source.saveAll(newState);
             return newState;
         },
@@ -51,7 +51,7 @@ export function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
     };
 }
 
-export function wrapStream<T>(stream: IStreamSource<T>): StreamHook<T> {
+export function wrapStream<T>(stream: StreamSource<T>): StreamHook<T> {
     function getLast2Pages() {
         return [...stream.getEntries(1), ...stream.getEntries(0)];
     }

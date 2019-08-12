@@ -4,6 +4,14 @@ import { Lens } from '../../services/functors';
 import { SmallPrimaryButton, SmallDangerButton } from '../buttons';
 import { ClassProp } from '../../contracts/component';
 
+function range(minVal: number, maxVal: number): number[] {
+    const result = [];
+    for (var i = minVal; i <= maxVal; i++) {
+        result.push(i);
+    }
+    return result;
+}
+
 function Ticks({ t }: { t: number }) {
     const boxClasses = `
         w-8 h-8 mr-1 p-1
@@ -33,7 +41,7 @@ export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
     const rest = capped % 4;
     const buttonClasses = ['ml-2', finished ? 'hidden' : ''].join(' ');
 
-    function setProgress(e: React.SyntheticEvent<any>, step: number) {
+    function setProgress(e: React.SyntheticEvent<unknown>, step: number) {
         e.stopPropagation();
         setState(p => p + step);
     }
@@ -128,7 +136,7 @@ export function MomentumMeter({ minVal, maxVal, reset, tempMax, lens }: Momentum
                         />
                     );
                 })}
-                {range(tempMax + 1, 10).map(v => {
+                {range(tempMax + 1, maxVal).map(v => {
                     return <Slot key={v} className="bg-blue-200" level={v} onClick={() => {}} />;
                 })}
             </div>
@@ -136,12 +144,4 @@ export function MomentumMeter({ minVal, maxVal, reset, tempMax, lens }: Momentum
             <span>max: {tempMax}</span>
         </>
     );
-}
-
-function range(minVal: number, maxVal: number): number[] {
-    const result = [];
-    for (var i = minVal; i <= maxVal; i++) {
-        result.push(i);
-    }
-    return result;
 }
