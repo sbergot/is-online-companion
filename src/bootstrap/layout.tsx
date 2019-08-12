@@ -3,9 +3,15 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import * as routes from '../services/routes';
 import { Menu } from './menu';
-import { CampaignSelection, CharacterSelection, CharacterSheetPage, LogPage, CharacterAutoSelection } from '../pages';
-import { CombatAndTravel } from '../pages/combatAndTravel';
-import { AboutPage } from '../pages/aboutPage';
+import {
+    CampaignSelection,
+    CharacterSelection,
+    CharacterSheetPage,
+    LogPage,
+    CharacterAutoSelection,
+    AboutPage,
+    CombatAndTravel,
+} from '../pages';
 import { ErrorBoundary } from './ErrorPage';
 import { setCurrentVersion, useMetadata } from '../services/applicationMetadata';
 

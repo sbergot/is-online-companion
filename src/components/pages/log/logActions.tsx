@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { StreamEntry, StreamHook, Lens } from '../../framework/contracts';
-import { AnyLogBlock, ChallengeRollLog } from '../../contracts/log';
-import { InnerLogBlock } from './logContent';
-import { SmallPrimaryButton, SmallDangerButton } from '../buttons';
-import { Character } from '../../contracts/character';
-import { getMomentumMeta } from '../../services/characterHelpers';
-import { burnMomentum } from '../../services/rolls';
+import { StreamEntry, StreamHook, Lens } from '../../../framework/contracts';
+import { AnyLogBlock, ChallengeRollLog } from '../../../contracts/log';
+import { InnerLogBlock } from '../../logContent';
+import { SmallPrimaryButton, SmallDangerButton } from '../../buttons';
+import { Character } from '../../../contracts/character';
+import { getMomentumMeta } from '../../../services/characterHelpers';
+import { burnMomentum } from '../../../services/rolls';
 
 function isChallengeRollEntry(entry: StreamEntry<AnyLogBlock>): entry is StreamEntry<ChallengeRollLog> {
     return entry.data.key === 'ChallengeRoll';

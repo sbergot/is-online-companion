@@ -1,14 +1,14 @@
 import * as React from 'react';
-
 import { RouteComponentProps } from 'react-router-dom';
-import { CharacterSheet } from '../components/character/characterSheet';
-import { DataServiceContainer } from '../containers/dataService';
+
 import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
+import { CharacterSheetSelection } from '../contracts/variant';
+import { Lens } from '../framework/contracts';
+import { CharacterSheet } from '../components/pages/character/characterSheet';
+import { DataServiceContainer } from '../containers/dataService';
 import { MainPanel, ActionPanel } from '../components/layout';
 import { ProgressChallenge, ChallengeType } from '../contracts/challenge';
 import { useLens, Zoom } from '../framework/functors';
-import { Lens } from '../framework/contracts';
-import { CharacterSheetSelection } from '../contracts/variant';
 import { nullVariant } from '../services/variantHelpers';
 import { Select, Label } from '../components/controls';
 import { ChallengeActions } from '../components/progressChallenge/challengeActions';

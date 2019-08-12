@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { Stats, StatKey } from '../../contracts/character';
-import { Selectable } from '../layout';
+import { Stats, StatKey } from '../../../contracts/character';
+import { Selectable } from '../../layout';
 
 interface StatProps {
     title: string;

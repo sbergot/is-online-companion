@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { AnyLogBlock, LogType, UserInputLog, ChallengeRollLog, ChallengeRoll } from '../../contracts/log';
-import { SmallPrimaryButton } from '../buttons';
-import { StatKey, StatusKey, Character } from '../../contracts/character';
-import { Select } from '../controls';
-import { ChallengeRollType } from '../../contracts/rolls';
-import { challengeRoll } from '../../services/rolls';
-import { getLogTypeDescription } from '../../services/logHelpers';
-import { useLens } from '../../framework/functors';
-import { KeyEntry, Lens } from '../../framework/contracts';
+import { AnyLogBlock, LogType, UserInputLog, ChallengeRollLog, ChallengeRoll } from '../../../contracts/log';
+import { SmallPrimaryButton } from '../../buttons';
+import { StatKey, StatusKey, Character } from '../../../contracts/character';
+import { Select } from '../../controls';
+import { ChallengeRollType } from '../../../contracts/rolls';
+import { challengeRoll } from '../../../services/rolls';
+import { getLogTypeDescription } from '../../../services/logHelpers';
+import { useLens } from '../../../framework/functors';
+import { KeyEntry, Lens } from '../../../framework/contracts';
 
 const allEditorLogTypes: LogType[] = ['UserInput', 'ChallengeRoll'];
 

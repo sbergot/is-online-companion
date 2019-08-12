@@ -2,9 +2,8 @@ import * as React from 'react';
 import { ProgressChallenge, ChallengeType, Rank } from '../../contracts/challenge';
 import { Lens, LensProps, KeyEntry } from '../../framework/contracts';
 import { useLens } from '../../framework/functors';
-import { TrackMeter } from '../character/bars';
 import { rankStats, newChallenge, allRanks } from '../../services/progressChallenges';
-import { Label, TextInput, Select } from '../controls';
+import { Label, TextInput, Select, TrackMeter } from '../controls';
 import { SmallPrimaryButton, SmallSecondaryButton } from '../buttons';
 
 export function ChallengeDescription({ challenge }: { challenge: ProgressChallenge<ChallengeType> }) {

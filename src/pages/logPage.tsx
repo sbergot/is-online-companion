@@ -6,9 +6,9 @@ import { StreamEntry } from '../framework/contracts';
 import { DataServiceContainer } from '../containers/dataService';
 import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
 import { Section, MainPanel, ActionPanel } from '../components/layout';
-import { LogBlock } from '../components/log/logContent';
-import { NewLogBlockEditor, LogBlockEditor } from '../components/log/logEditor';
-import { LogBlockActions } from '../components/log/logActions';
+import { LogBlock } from '../components/logContent';
+import { NewLogBlockEditor, LogBlockEditor } from '../components/pages/log/logEditor';
+import { LogBlockActions } from '../components/pages/log/logActions';
 
 export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & CharacterKeyParam>) {
     const dataService = DataServiceContainer.useContainer();

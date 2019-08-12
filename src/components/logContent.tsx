@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { AnyLogBlock, UserInput, ChallengeRoll, ProgressRoll } from '../../contracts/log';
-import { StreamEntry } from '../../framework/contracts';
-import { DataServiceContainer } from '../../containers/dataService';
-import { Character } from '../../contracts/character';
-import { Selectable } from '../layout';
-import { getResult, getActionScore } from '../../services/rolls';
+import { AnyLogBlock, UserInput, ChallengeRoll, ProgressRoll } from '../contracts/log';
+import { StreamEntry } from '../framework/contracts';
+import { DataServiceContainer } from '../containers/dataService';
+import { Character } from '../contracts/character';
+import { Selectable } from './layout';
+import { getResult, getActionScore } from '../services/rolls';
 
 interface LogBlockProps {
     entry: StreamEntry<AnyLogBlock>;

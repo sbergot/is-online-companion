@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { History } from 'history';
 
-import { Section, MainPanel } from '../components/layout';
-import { CampaignServiceContainer } from '../containers/campaign';
-import { EntryItem, Label, TextInput } from '../components/controls';
 import { Campaign } from '../contracts/campaign';
 import { KeyEntry } from '../framework/contracts';
+import { CampaignServiceContainer } from '../containers/campaign';
+import { Section, MainPanel } from '../components/layout';
+import { EntryItem, Label, TextInput } from '../components/controls';
 import { campaignRoute } from '../services/routes';
 import { PrimaryButton } from '../components/buttons';
 

@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-import { Character, Status, Debilities, StatKey } from '../../contracts/character';
-import { TrackProgress, ProgressChallenge } from '../../contracts/challenge';
-import { CheckBox } from '../controls';
+import { Character, Status, Debilities, StatKey } from '../../../contracts/character';
+import { TrackProgress, ProgressChallenge } from '../../../contracts/challenge';
+import { CheckBox, TrackMeter } from '../../controls';
 import { StatsBoxes } from './stats';
-import { Section, SubSection } from '../layout';
-import { MomentumMeter, ResourceMeter, TrackMeter } from './bars';
-import { Challenge } from '../progressChallenge/progressChallenges';
-import { getMomentumMeta } from '../../services/characterHelpers';
-import { CharacterSheetSelection } from '../../contracts/variant';
-import { KeyEntry, Lens } from '../../framework/contracts';
-import { nullVariant } from '../../services/variantHelpers';
+import { Section, SubSection } from '../../layout';
+import { MomentumMeter, ResourceMeter } from './bars';
+import { Challenge } from '../../progressChallenge/progressChallenges';
+import { getMomentumMeta } from '../../../services/characterHelpers';
+import { CharacterSheetSelection } from '../../../contracts/variant';
+import { KeyEntry, Lens } from '../../../framework/contracts';
+import { nullVariant } from '../../../services/variantHelpers';
 
 interface CharacterSheetProps {
     lens: Lens<Character>;

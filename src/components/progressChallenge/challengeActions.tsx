@@ -5,7 +5,7 @@ import { AnyLogBlock, ProgressRollLog } from '../../contracts/log';
 import { rankStats, finishChallenge, failChallenge, deleteChallenge } from '../../services/progressChallenges';
 import { progressRoll } from '../../services/rolls';
 import { SmallPrimaryButton, SmallDangerButton } from '../buttons';
-import { ProgressRollLogBlock } from '../log/logContent';
+import { ProgressRollLogBlock } from '../logContent';
 import { SetState } from '@staltz/use-profunctor-state';
 import { ChallengeDescription } from './challengeControls';
 
