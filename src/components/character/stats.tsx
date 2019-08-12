@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Stats, StatKey } from "../../contracts/character";
-import { Selectable } from "../layout";
+import { Stats, StatKey } from '../../contracts/character';
+import { Selectable } from '../layout';
 
 interface StatProps {
     title: string;
@@ -11,12 +11,14 @@ interface StatProps {
 }
 
 function Stat({ title, level, onClick, selected }: StatProps) {
-    return <Selectable onClick={onClick} selected={selected} >
-        <div className="flex flex-col w-16">
-            <span className="text-2xl text-center">{level}</span>
-            <span className="text-center">{title}</span>
-        </div>
-    </Selectable> 
+    return (
+        <Selectable onClick={onClick} selected={selected}>
+            <div className="flex flex-col w-16">
+                <span className="text-2xl text-center">{level}</span>
+                <span className="text-center">{title}</span>
+            </div>
+        </Selectable>
+    );
 }
 
 interface StatsBoxesProps {
@@ -29,16 +31,16 @@ export function StatsBoxes({ stats, selectedStat, onSelectStat }: StatsBoxesProp
     function toggleStat(key: StatKey) {
         return () => onSelectStat(selectedStat == key ? null : key);
     }
-    const statsKeys: StatKey[] = ["edge", "heart", "iron", "shadow", "wits"];
-    return <div className="flex flex-row">
-        {statsKeys.map(k => {
-            return <div key={k} className="mr-2">
-                <Stat
-                    title={k}
-                    level={stats[k]}
-                    onClick={toggleStat(k)}
-                    selected={selectedStat == k} />
-            </div>
-        })}
-    </div>
+    const statsKeys: StatKey[] = ['edge', 'heart', 'iron', 'shadow', 'wits'];
+    return (
+        <div className="flex flex-row">
+            {statsKeys.map(k => {
+                return (
+                    <div key={k} className="mr-2">
+                        <Stat title={k} level={stats[k]} onClick={toggleStat(k)} selected={selectedStat == k} />
+                    </div>
+                );
+            })}
+        </div>
+    );
 }

@@ -1,5 +1,5 @@
-export { CharacterAutoSelection } from "./characterAutoSelectionPage";
-export { CharacterSheetPage } from "./characterSheetPage";
-export { CharacterSelection } from "./characterSelection";
-export { LogPage } from "./logPage";
-export { CampaignSelection } from "./campaignSelection";
+export { CharacterAutoSelection } from './characterAutoSelectionPage';
+export { CharacterSheetPage } from './characterSheetPage';
+export { CharacterSelection } from './characterSelection';
+export { LogPage } from './logPage';
+export { CampaignSelection } from './campaignSelection';

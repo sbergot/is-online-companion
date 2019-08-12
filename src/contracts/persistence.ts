@@ -1,8 +1,8 @@
 export interface KeyEntry<T> {
-    createdAt: Date,
-    lastModified: Date,
-    key: string,
-    data: T
+    createdAt: Date;
+    lastModified: Date;
+    key: string;
+    data: T;
 }
 
 export interface IKeyMapSource<T> {

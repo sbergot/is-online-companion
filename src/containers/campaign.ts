@@ -1,15 +1,15 @@
-import { createContainer } from "unstated-next";
+import { createContainer } from 'unstated-next';
 
-import { Campaign } from "../contracts/campaign";
-import { DataServiceContainer } from "./dataService";
+import { Campaign } from '../contracts/campaign';
+import { DataServiceContainer } from './dataService';
 
 function createCampaign(name: string): Campaign {
     return {
         name,
         characters: new Set(),
         combats: {},
-        travels: {}
-    }
+        travels: {},
+    };
 }
 
 function useCampaignService() {
@@ -32,12 +32,11 @@ function useCampaignService() {
                 data: {
                     ...oldCampaign.data,
                     lastUsedCharacter: characterKey,
-                    characters: newcharacters
-                }
+                    characters: newcharacters,
+                },
             });
-    
-        }
-    }
+        },
+    };
 }
 
 export const CampaignServiceContainer = createContainer(useCampaignService);

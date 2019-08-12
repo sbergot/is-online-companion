@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { IKeyMapSource, KeyEntry, IStreamSource, StreamEntry, StreamEntryRef } from "../../contracts/persistence";
-import { KeyMapHook, StreamHook } from "../../contracts/dataservice";
-import { useLens } from "../functors";
+import { IKeyMapSource, KeyEntry, IStreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
+import { KeyMapHook, StreamHook } from '../../contracts/dataservice';
+import { useLens } from '../functors';
 
 export function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
     const lens = useLens(source.loadAll());
@@ -10,17 +10,17 @@ export function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
         function refresh() {
             lens.setState(() => {
                 const data = source.loadAll();
-                return data
+                return data;
             });
         }
         source.onUpdate(refresh);
         return () => {
             source.unRegister(refresh);
-        }
-    })
+        };
+    });
 
     function registerEntry(entry: KeyEntry<T>) {
-        lens.setState((values) => ({...values, [entry.key]: entry}));
+        lens.setState(values => ({ ...values, [entry.key]: entry }));
     }
 
     const savingLens = lens.promap(
@@ -28,7 +28,7 @@ export function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
         (newState, _) => {
             source.saveAll(newState);
             return newState;
-        }
+        },
     );
 
     function getEntryLens(key: string) {
@@ -47,8 +47,8 @@ export function wrapKeyMap<T>(source: IKeyMapSource<T>): KeyMapHook<T> {
             const newEntry = source.save(entry);
             registerEntry(newEntry);
             return newEntry;
-        }
-    }
+        },
+    };
 }
 
 export function wrapStream<T>(stream: IStreamSource<T>): StreamHook<T> {
@@ -57,12 +57,14 @@ export function wrapStream<T>(stream: IStreamSource<T>): StreamHook<T> {
     }
     const [streamState, setStreamState] = useState<StreamEntry<T>[]>(getLast2Pages());
     useEffect(() => {
-        function refresh() { setStreamState(getLast2Pages()); }
+        function refresh() {
+            setStreamState(getLast2Pages());
+        }
         stream.onUpdate(refresh);
         return () => {
             stream.unRegister(refresh);
-        }
-    })
+        };
+    });
 
     return {
         values: streamState,
@@ -82,7 +84,9 @@ export function wrapStream<T>(stream: IStreamSource<T>): StreamHook<T> {
             return newEntry;
         },
         remove(entry: StreamEntry<T>): boolean {
-            if (!stream.canRemove(entry)) { return false; }
+            if (!stream.canRemove(entry)) {
+                return false;
+            }
             stream.remove(entry);
             const idx = streamState.findIndex(v => v.key === entry.key);
             if (idx >= 0) {
@@ -97,6 +101,6 @@ export function wrapStream<T>(stream: IStreamSource<T>): StreamHook<T> {
         },
         find(ref: StreamEntryRef): StreamEntry<unknown> {
             return stream.find(ref);
-        }
-    }
+        },
+    };
 }

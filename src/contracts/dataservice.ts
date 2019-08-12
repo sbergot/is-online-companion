@@ -1,9 +1,9 @@
-import { KeyMap, KeyEntry, StreamEntry, StreamEntryRef } from "./persistence";
-import { Campaign } from "./campaign";
-import { Character } from "./character";
-import { AnyLogBlock } from "./log";
-import { Lens } from "../services/functors";
-import { ApplicationMetadata } from "../services/applicationMetadata";
+import { KeyMap, KeyEntry, StreamEntry, StreamEntryRef } from './persistence';
+import { Campaign } from './campaign';
+import { Character } from './character';
+import { AnyLogBlock } from './log';
+import { Lens } from '../services/functors';
+import { ApplicationMetadata } from '../services/applicationMetadata';
 
 export interface KeyMapHook<T> {
     lens: Lens<KeyMap<T>>;

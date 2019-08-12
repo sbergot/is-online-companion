@@ -1,14 +1,14 @@
-import { KeyEntry } from "./persistence";
-import { ProgressChallenge, ChallengeType } from "./challenge";
-import { Character } from "./character";
+import { KeyEntry } from './persistence';
+import { ProgressChallenge, ChallengeType } from './challenge';
+import { Character } from './character';
 
 export interface Variant<K extends string, T> {
-    key: K,
-    value: T
+    key: K;
+    value: T;
 }
 
-export type NullVariant = Variant<"null", null>;
+export type NullVariant = Variant<'null', null>;
 
-export type ChallengeSelection<K extends ChallengeType> = Variant<K, KeyEntry<ProgressChallenge<K>>>
-export type StatSelection = Variant<"stat", { stat: keyof Character["stats"] }>
-export type CharacterSheetSelection = ChallengeSelection<"vow"> | StatSelection | NullVariant;
+export type ChallengeSelection<K extends ChallengeType> = Variant<K, KeyEntry<ProgressChallenge<K>>>;
+export type StatSelection = Variant<'stat', { stat: keyof Character['stats'] }>;
+export type CharacterSheetSelection = ChallengeSelection<'vow'> | StatSelection | NullVariant;

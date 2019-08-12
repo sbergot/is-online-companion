@@ -10,7 +10,7 @@ export interface KeyValueStore {
 
 const registered: Function[] = [];
 
-window.addEventListener("storage", () => {
+window.addEventListener('storage', () => {
     registered.forEach(cb => cb());
 });
 
@@ -22,17 +22,17 @@ export class LocalStorage implements KeyValueStore {
     }
 
     getFullKey(subKey: string) {
-        return `${this.path}-${subKey}`
+        return `${this.path}-${subKey}`;
     }
 
     getSubKey(fullKey: string) {
-        return fullKey.substr(this.path.length + 1)
+        return fullKey.substr(this.path.length + 1);
     }
 
     set(key: string, value: string): void {
         localStorage.setItem(this.getFullKey(key), value);
     }
-    
+
     get(key: string): string | null {
         return localStorage.getItem(this.getFullKey(key));
     }
@@ -55,7 +55,7 @@ export class LocalStorage implements KeyValueStore {
     clear() {
         this.getKeys().map(k => {
             this.remove(k);
-        })
+        });
     }
 
     onUpdate(cb: () => void) {
@@ -63,7 +63,9 @@ export class LocalStorage implements KeyValueStore {
     }
 
     unRegister(cb: () => void): void {
-        const idx = registered.findIndex((e) => e===cb);
-        if (idx >= 0) { registered.splice(idx, 1); }
+        const idx = registered.findIndex(e => e === cb);
+        if (idx >= 0) {
+            registered.splice(idx, 1);
+        }
     }
 }

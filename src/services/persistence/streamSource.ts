@@ -1,7 +1,7 @@
-import { IStreamSource, StreamEntry, StreamEntryRef } from "../../contracts/persistence";
-import { newEntry } from "./shared";
-import { reviver, replacer } from "./serialization";
-import { KeyValueStore } from "./storage";
+import { IStreamSource, StreamEntry, StreamEntryRef } from '../../contracts/persistence';
+import { newEntry } from './shared';
+import { reviver, replacer } from './serialization';
+import { KeyValueStore } from './storage';
 
 interface Metadata {
     currentPage: number;
@@ -12,11 +12,16 @@ export class StreamSource<T> implements IStreamSource<T> {
         private storage: KeyValueStore,
         private name: string,
         private campaignName: string,
-        private pageSize: number) {}
+        private pageSize: number,
+    ) {}
 
-    getRootKey() { return `${this.name}-${this.campaignName}`; }
+    getRootKey() {
+        return `${this.name}-${this.campaignName}`;
+    }
 
-    getPageKey(i: number) { return `${this.getRootKey()}-page-${i}`; }
+    getPageKey(i: number) {
+        return `${this.getRootKey()}-page-${i}`;
+    }
 
     savePage(i: number, entries: StreamEntry<T>[]): void {
         this.storage.set(this.getPageKey(i), JSON.stringify(entries, replacer));
@@ -47,16 +52,16 @@ export class StreamSource<T> implements IStreamSource<T> {
         const pageIdx = this.getMetadata().currentPage;
         const currentPage = this.getPage(pageIdx);
         if (currentPage.length < this.pageSize) {
-            const streamEntry = {...entry, page: pageIdx};
+            const streamEntry = { ...entry, page: pageIdx };
             const newCurrentPage = [...currentPage, streamEntry];
             this.savePage(pageIdx, newCurrentPage);
             return streamEntry;
         } else {
-            const newPageIdx = pageIdx + 1
-            const streamEntry = {...entry, page: newPageIdx};
+            const newPageIdx = pageIdx + 1;
+            const streamEntry = { ...entry, page: newPageIdx };
             const newCurrentPage = [streamEntry];
             this.savePage(newPageIdx, newCurrentPage);
-            this.saveMetadata({ currentPage: newPageIdx })
+            this.saveMetadata({ currentPage: newPageIdx });
             return streamEntry;
         }
     }
@@ -77,7 +82,7 @@ export class StreamSource<T> implements IStreamSource<T> {
     edit(entry: StreamEntry<T>): StreamEntry<T> {
         const entries = this.getPage(entry.page);
         const idx = this.findIdxFromEntry(entries, entry);
-        const newEntry = {...entry, lastModified: new Date()};
+        const newEntry = { ...entry, lastModified: new Date() };
         const newEntries = [...entries];
         newEntries[idx] = newEntry;
         this.savePage(entry.page, newEntries);
@@ -85,7 +90,9 @@ export class StreamSource<T> implements IStreamSource<T> {
     }
 
     remove(entry: StreamEntry<T>): boolean {
-        if (!this.canRemove(entry)) { return false; }
+        if (!this.canRemove(entry)) {
+            return false;
+        }
         const entries = this.getEntries();
         const idx = this.findIdxFromEntry(entries, entry);
         entries.splice(idx, 1);
@@ -105,7 +112,7 @@ export class StreamSource<T> implements IStreamSource<T> {
     onUpdate(cb: () => void): void {
         this.storage.onUpdate(cb);
     }
-    
+
     unRegister(cb: () => void): void {
         this.storage.unRegister(cb);
     }

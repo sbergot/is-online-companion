@@ -1,4 +1,4 @@
-import { StatusKey, StatKey } from "./character";
+import { StatusKey, StatKey } from './character';
 
 export type ChallengeRollType = StatusKey | StatKey;
 

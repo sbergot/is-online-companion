@@ -1,9 +1,9 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { Section, MainPanel } from "../components/layout";
-import { CampaignServiceContainer } from "../containers/campaign";
-import { RouteComponentProps } from "react-router-dom";
-import { characterSheetRoute, characterSelectionRoute, CampaignKeyParam } from "../services/routes";
+import { Section, MainPanel } from '../components/layout';
+import { CampaignServiceContainer } from '../containers/campaign';
+import { RouteComponentProps } from 'react-router-dom';
+import { characterSheetRoute, characterSelectionRoute, CampaignKeyParam } from '../services/routes';
 
 export function CharacterAutoSelection({ match, history }: RouteComponentProps<CampaignKeyParam>) {
     const campaignService = CampaignServiceContainer.useContainer();
@@ -13,14 +13,14 @@ export function CharacterAutoSelection({ match, history }: RouteComponentProps<C
     const initialCharacter = campaign.lastUsedCharacter;
 
     if (initialCharacter) {
-        history.push(characterSheetRoute.to({ campaignKey, characterKey: initialCharacter }))
+        history.push(characterSheetRoute.to({ campaignKey, characterKey: initialCharacter }));
     } else {
         history.push(characterSelectionRoute.to({ campaignKey }));
     }
 
-    return <MainPanel>
-        <Section title="Campaign">
-            {campaign.name}
-        </Section>
-    </MainPanel>;
+    return (
+        <MainPanel>
+            <Section title="Campaign">{campaign.name}</Section>
+        </MainPanel>
+    );
 }

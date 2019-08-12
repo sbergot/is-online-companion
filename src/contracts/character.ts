@@ -1,5 +1,5 @@
-import { KeyMap } from "./persistence";
-import { TrackProgress, Rank, ProgressChallenge } from "./challenge";
+import { KeyMap } from './persistence';
+import { TrackProgress, Rank, ProgressChallenge } from './challenge';
 
 export interface Character {
     name: string;
@@ -9,7 +9,7 @@ export interface Character {
     experience: number;
     debilities: Debilities;
     bonds: TrackProgress;
-    vows: KeyMap<ProgressChallenge<"vow">>;
+    vows: KeyMap<ProgressChallenge<'vow'>>;
     assets: Asset[];
 }
 

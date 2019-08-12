@@ -1,6 +1,6 @@
-import { version } from "../bootstrap/version";
-import { Lens } from "./functors";
-import { DataServiceContainer } from "../containers/dataService";
+import { version } from '../bootstrap/version';
+import { Lens } from './functors';
+import { DataServiceContainer } from '../containers/dataService';
 
 export interface ApplicationMetadata {
     version: string;
@@ -13,7 +13,7 @@ export function initMetadata(): ApplicationMetadata {
 }
 
 export function setCurrentVersion(inp: ApplicationMetadata): ApplicationMetadata {
-    return {...inp, version};
+    return { ...inp, version };
 }
 
 export function useMetadata(): Lens<ApplicationMetadata> {
@@ -22,9 +22,9 @@ export function useMetadata(): Lens<ApplicationMetadata> {
     let key: string;
     const allKeys = Object.keys(metaDataLens.state);
     if (allKeys.length == 0) {
-        throw new Error("metadata not found");
+        throw new Error('metadata not found');
     } else {
         key = allKeys[0];
     }
-    return dataService.metaData.getEntryLens(key).zoom("data");
+    return dataService.metaData.getEntryLens(key).zoom('data');
 }

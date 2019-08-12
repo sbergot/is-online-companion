@@ -1,14 +1,14 @@
-import { KeyEntry, KeyMap, IKeyMapSource } from "../../contracts/persistence";
-import { newEntry } from "./shared";
-import { reviver, replacer } from "./serialization";
-import { KeyValueStore } from "./storage";
+import { KeyEntry, KeyMap, IKeyMapSource } from '../../contracts/persistence';
+import { newEntry } from './shared';
+import { reviver, replacer } from './serialization';
+import { KeyValueStore } from './storage';
 
 export class KeyMapSource<T> implements IKeyMapSource<T> {
     constructor(private storage: KeyValueStore, private key: string) {}
 
     loadAll(): KeyMap<T> {
         const rawData = this.storage.get(this.key);
-        const values: KeyMap<T> =  rawData ? JSON.parse(rawData, reviver) : {};
+        const values: KeyMap<T> = rawData ? JSON.parse(rawData, reviver) : {};
         return values;
     }
 
@@ -23,7 +23,7 @@ export class KeyMapSource<T> implements IKeyMapSource<T> {
     }
 
     save(entry: KeyEntry<T>): KeyEntry<T> {
-        return this.innerSave({...entry, lastModified: new Date()});
+        return this.innerSave({ ...entry, lastModified: new Date() });
     }
 
     innerSaveAll(entries: Record<string, KeyEntry<T>>) {

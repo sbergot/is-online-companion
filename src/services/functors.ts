@@ -1,10 +1,8 @@
-import * as React from "react";
-import useProfunctorState, { Getter, Setter, ProfunctorState, SetState } from "@staltz/use-profunctor-state";
+import * as React from 'react';
+import useProfunctorState, { Getter, Setter, ProfunctorState, SetState } from '@staltz/use-profunctor-state';
 
 function zoom<T, K extends keyof T>(functor: ProfunctorState<T>, key: K) {
-    return functor.promap(
-        (parent) => parent[key],
-        (child, parent) => ({...parent, [key]: child}));
+    return functor.promap(parent => parent[key], (child, parent) => ({ ...parent, [key]: child }));
 }
 
 export interface Lens<T> {
@@ -26,11 +24,11 @@ function wrapFunctor<T>(functor: ProfunctorState<T>): Lens<T> {
         promap: function wrappedPromap<S>(get: Getter<T, S>, set: Setter<T, S>): Lens<S> {
             return wrapFunctor(promap.bind(functor)(get, set));
         },
-        zoom: (key) => {
+        zoom: key => {
             const subFunctor = zoom(functor, key);
             return wrapFunctor(subFunctor);
-        }
-    }
+        },
+    };
 }
 
 export function useLens<T>(initialState: T): Lens<T> {
@@ -38,11 +36,11 @@ export function useLens<T>(initialState: T): Lens<T> {
 }
 
 export interface ZoomProps<T, K extends keyof T> {
-    children: (subLens: Lens<T[K]>) => JSX.Element
+    children: (subLens: Lens<T[K]>) => JSX.Element;
     parentLens: Lens<T>;
     zoomTo: K;
 }
 
-export function Zoom<T, K extends keyof T>({children, parentLens, zoomTo}: ZoomProps<T, K>) {
+export function Zoom<T, K extends keyof T>({ children, parentLens, zoomTo }: ZoomProps<T, K>) {
     return children(parentLens.zoom(zoomTo));
 }

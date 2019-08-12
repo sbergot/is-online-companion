@@ -1,5 +1,6 @@
-* TODO submit user input on enter key press
-use https://www.npmjs.com/package/react-hotkeys
+* TODO architecture sanity check
+eslint
+check dep graph
 
 * TODO basic note system
 
