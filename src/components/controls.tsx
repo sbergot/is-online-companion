@@ -54,7 +54,7 @@ interface NavigationLinkProps extends InlineLinkProps {
 }
 
 export function NavigationLink({ to, children, className, current }: NavigationLinkProps) {
-    const classes = [to === current ? 'text-red-600' : '', className || ''].join(' ');
+    const classes = [to === current ? 'link-active' : '', className || ''].join(' ');
     return (
         <InlineLink to={to} className={classes}>
             {children}

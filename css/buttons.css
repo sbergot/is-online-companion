@@ -15,11 +15,11 @@
 }
 
 .btn-primary {
-    @apply bg-blue-800 text-white;
+    @apply bg-green-800 text-white;
 }
 
 .btn-primary:hover {
-    @apply bg-blue-900;
+    @apply bg-green-900;
 }
 
 .btn-danger {

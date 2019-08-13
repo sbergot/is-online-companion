@@ -47,8 +47,8 @@ function CharacterMenu({ match, location }: RouteComponentProps<CampaignKeyParam
 
 function Credits({ pathname }: { pathname: string }) {
     return (
-        <div>
-            <h1 className="text-xl font-display">
+        <div className="border-b mb-2 pb-1">
+            <h1 className="text-xl font-bold font-display">
                 <NavigationLink current={pathname} to={''}>
                     Ironsworn online companion
                 </NavigationLink>
@@ -72,7 +72,7 @@ function Credits({ pathname }: { pathname: string }) {
 function MenuInner({ location }: RouteComponentProps<CampaignKeyParam>) {
     const { pathname } = location;
     return (
-        <nav className="flex flex-col w-full bg-gray-200 p-3" style={{ maxWidth: '15rem' }}>
+        <nav className="flex flex-col w-full bg-green-800 text-gray-200 p-3" style={{ maxWidth: '15rem' }}>
             <Credits pathname={pathname} />
             <NavigationLink current={pathname} to={routes.aboutRoute}>
                 about this website

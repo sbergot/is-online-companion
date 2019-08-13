@@ -5,3 +5,11 @@
 .subtitle {
     @apply text-lg font-display capitalize;
 }
+
+.link {
+    @apply text-gray-200;
+}
+
+.link:hover, .link-active {
+    @apply underline;
+}

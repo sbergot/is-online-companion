@@ -14,8 +14,8 @@ function Stat({ title, level, onClick, selected }: StatProps) {
     return (
         <Selectable onClick={onClick} selected={selected}>
             <div className="flex flex-col w-16">
-                <span className="text-2xl text-center">{level}</span>
-                <span className="text-center">{title}</span>
+                <span className="text-3xl leading-tight text-center">{level}</span>
+                <span className="text-base text-center">{title}</span>
             </div>
         </Selectable>
     );

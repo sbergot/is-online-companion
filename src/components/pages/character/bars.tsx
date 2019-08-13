@@ -27,9 +27,9 @@ interface SlotProps extends ClassProp {
 
 export function Slot({ level, onClick, className }: SlotProps) {
     const slotClass = [
-        `w-10 h-10 mr-1 mt-1 py-1 hover:shadow
+        `w-8 h-8 mr-1 mt-1 py-1 hover:shadow
          border border-gray-200 rounded
-         text-center text-lg
+         text-center text-base leading-tight
          cursor-pointer`,
         className || '',
     ].join(' ');

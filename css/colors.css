@@ -1,5 +1,5 @@
 .color-primary {
-    @apply bg-blue-800 text-white;
+    @apply bg-green-800 text-white;
 }
 
 .color-secondary {
@@ -8,12 +8,4 @@
 
 .color-danger {
     @apply bg-red-800 text-white;
-}
-
-.link {
-    @apply text-gray-600;
-}
-
-.link:hover {
-    @apply text-red-600;
 }
