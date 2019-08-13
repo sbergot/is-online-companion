@@ -1,6 +1,11 @@
 module.exports = {
   theme: {
-    extend: {}
+  extend: {
+      fontFamily: {
+        'display': ['Metamorphous'],
+        'body': ['Merriweather'],
+      },
+    }
   },
   variants: {},
   plugins: []

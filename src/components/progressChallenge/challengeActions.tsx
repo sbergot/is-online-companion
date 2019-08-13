@@ -47,7 +47,7 @@ export function ChallengeActions({ lens: challengeLens, setExp, characterKey, lo
             <ChallengeDescription challenge={challenge} />
             {!challenge.finished ? (
                 <div className={buttonClasses}>
-                    <div className="mb-2">
+                    <div className="">
                         <SmallPrimaryButton className="mr-2" onClick={() => setProgress(p => p + progressStep)}>
                             Progress
                         </SmallPrimaryButton>
@@ -65,7 +65,7 @@ export function ChallengeActions({ lens: challengeLens, setExp, characterKey, lo
                         <SmallDangerButton className="mr-2" onClick={() => setChallenge(failChallenge)}>
                             Failure
                         </SmallDangerButton>
-                        <SmallDangerButton className="mt-2" onClick={() => setChallenge(finishChallenge)}>
+                        <SmallDangerButton className="mt-2 mr-2" onClick={() => setChallenge(finishChallenge)}>
                             Abandon
                         </SmallDangerButton>
                         <SmallDangerButton className="mt-2" onClick={() => setChallenge(deleteChallenge)}>

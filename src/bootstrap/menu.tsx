@@ -6,7 +6,7 @@ import * as routes from '../services/routes';
 import { CampaignKeyParam, CharacterKeyParam } from '../contracts/routes';
 
 function MenuTitle({ children }: { children: React.ReactText[] }) {
-    return <p className="text-lg mt-2 mb-1">{children}</p>;
+    return <p className="subtitle mt-2 mb-1">{children}</p>;
 }
 
 function CampaignMenu({ match, location }: RouteComponentProps<CampaignKeyParam>) {
@@ -48,7 +48,7 @@ function CharacterMenu({ match, location }: RouteComponentProps<CampaignKeyParam
 function Credits({ pathname }: { pathname: string }) {
     return (
         <div>
-            <h1 className="text-xl font-bold">
+            <h1 className="text-xl font-display">
                 <NavigationLink current={pathname} to={''}>
                     Ironsworn online companion
                 </NavigationLink>
@@ -62,7 +62,7 @@ function Credits({ pathname }: { pathname: string }) {
                     src="https://static.wixstatic.com/media/4db827_0676c4f610b540fa886a79dd36f4d801~mv2.png/v1/fill/w_250,h_95,al_c,q_80/4db827_0676c4f610b540fa886a79dd36f4d801~mv2.webp"
                 />
             </a>
-            <a className="text-gray-600 hover:text-red-600" href="https://www.ironswornrpg.com">
+            <a className="link" href="https://www.ironswornrpg.com">
                 www.ironswornrpg.com
             </a>
         </div>

@@ -1,0 +1,7 @@
+.title {
+    @apply text-2xl font-display capitalize;
+}
+
+.subtitle {
+    @apply text-lg font-display capitalize;
+}

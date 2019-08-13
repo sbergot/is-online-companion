@@ -10,10 +10,11 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
 
 module.exports = {
     plugins: [
-        require('tailwindcss'),
-        require('cssnano')({
-            preset: 'default',
-        }),
-        purgecss
+        require('postcss-import'),
+        require('tailwindcss')('tailwind.config.js'),
+        // require('cssnano')({
+        //     preset: 'default',
+        // }),
+        // purgecss
     ]
 }

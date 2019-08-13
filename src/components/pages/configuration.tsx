@@ -58,7 +58,7 @@ export function Configuration() {
                     <CheckBox title="offline mode" lens={offlineLens} />
                 </div>
                 <SubSection className="my-2" title="Backup & restore">
-                    <p className="my-2 p-2 rounded bg-red-500 text-white">
+                    <p className="my-2 p-2 rounded color-danger">
                         Warning: clicking on the restore button will delete all the existing data on this device
                     </p>
                     <input
@@ -92,8 +92,8 @@ function RestoreResult({ result }: { result: RestoreResult }) {
             {result.success ? (
                 <p>Successfully restored data from &quot;{result.filename}&quot;</p>
             ) : (
-                    <p>Error while restoring data</p>
-                )}
+                <p>Error while restoring data</p>
+            )}
             {result.error && <p>{result.error.toString()}</p>}
         </>
     );

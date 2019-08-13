@@ -36,7 +36,7 @@ export function Challenge<T extends ChallengeType>({ lens, type, onSelect, selec
                     </Selectable>
                 ) : null;
             })}
-            <div className="mt-2">
+            <div className="mt-1">
                 {formVisible ? (
                     <ChallengeForm
                         onSubmit={challenge => {

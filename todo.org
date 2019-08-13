@@ -1,4 +1,12 @@
+* TODO new theme
+darker primary & danger color
+smaller radius for rounded
+another font (ringbearer for titles / aniron for the rest)
+
 * TODO basic note system
+
+* TODO oracle rolls
+could be like https://eamonnmurray.gitlab.io/ironsworn-web/
 
 * index
 contains narrative objects (places, NPCs, objects)
@@ -10,8 +18,6 @@ user should be able to reference index elements in the log
 ** TODO direct link to index object
 ** TODO reference an index object in the log
 
-* oracle rolls
-could be like https://eamonnmurray.gitlab.io/ironsworn-web/
 
 * @ mentions in input editor
 see ckeditor or summernote

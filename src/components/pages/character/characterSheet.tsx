@@ -38,7 +38,7 @@ export function CharacterSheet({ lens, selectionLens }: CharacterSheetProps) {
                 </SubSection>
             </Section>
             <Section className="mt-4">
-                <span className="text-xl">momentum</span>
+                <span className="subtitle">momentum</span>
                 <MomentumMeter
                     minVal={-6}
                     maxVal={10}
@@ -71,7 +71,7 @@ function Status({ lens: { state: resources, zoom } }: { lens: Lens<Status> }) {
                 const subLens = zoom(tkey);
                 return (
                     <div className="mr-2" key={key}>
-                        <span className="text-xl">{key}</span>
+                        <span className="subtitle">{key}</span>
                         <ResourceMeter minVal={0} maxVal={5} lens={subLens} />
                     </div>
                 );

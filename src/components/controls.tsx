@@ -26,7 +26,7 @@ interface EntryItemProps {
 
 export function EntryItem({ entry }: EntryItemProps) {
     return (
-        <div className="flex mt-2 py-2 px-4 justify-between rounded-lg border bg-gray-100 hover:shadow">
+        <div className="flex mt-2 py-2 px-4 justify-between rounded-lg border bg-gray-200 hover:shadow">
             <div className="text-xl py-2 pr-8">{entry.data.name}</div>
             <div className="text-gray-600 w-40">
                 <div>created: {entry.createdAt.toLocaleDateString('en')}</div>
@@ -41,7 +41,7 @@ interface InlineLinkProps extends ChildrenProp, ClassProp {
 }
 
 export function InlineLink({ to, children, className }: InlineLinkProps) {
-    const classes = ['text-gray-600 hover:text-red-600', className || ''].join(' ');
+    const classes = ['link', className || ''].join(' ');
     return (
         <Link to={to} className={classes}>
             {children}
@@ -109,7 +109,7 @@ export function Select<T>({ options, value, onSelect, className }: SelectProps<T
             {options.map(({ name, value: v }, idx) => {
                 const classes = [
                     'py-2 px-3 mr-px text-white',
-                    v == value ? 'bg-blue-500 hover:bg-blue-700' : 'bg-gray-500 hover:bg-gray-700',
+                    v == value ? 'btn-primary' : 'btn-secondary',
                     idx == 0 ? 'rounded-l' : '',
                     idx == options.length - 1 ? 'rounded-r' : '',
                 ].join(' ');
@@ -169,10 +169,12 @@ export function TrackMeter({ progressStep, finished, lens }: TrackMeterProps) {
                 ))}
             </div>
             <div className={buttonClasses}>
-                <SmallDangerButton className="mr-2" onClick={e => setProgress(e, -progressStep)}>
+                <SmallDangerButton className="mr-2 text-base w-8 h-8" onClick={e => setProgress(e, -progressStep)}>
                     -
                 </SmallDangerButton>
-                <SmallPrimaryButton onClick={e => setProgress(e, progressStep)}>+</SmallPrimaryButton>
+                <SmallPrimaryButton className="text-base w-8 h-8" onClick={e => setProgress(e, progressStep)}>
+                    +
+                </SmallPrimaryButton>
             </div>
         </div>
     );
