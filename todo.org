@@ -1,8 +1,3 @@
-* TODO new theme
-darker primary & danger color
-smaller radius for rounded
-another font (ringbearer for titles / aniron for the rest)
-
 * TODO basic note system
 
 * TODO oracle rolls

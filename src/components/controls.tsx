@@ -26,7 +26,7 @@ interface EntryItemProps {
 
 export function EntryItem({ entry }: EntryItemProps) {
     return (
-        <div className="flex mt-2 py-2 px-4 justify-between rounded-lg border bg-gray-200 hover:shadow">
+        <div className="flex mt-2 py-2 px-4 justify-between rounded-sm border bg-gray-200 hover:shadow">
             <div className="text-xl py-2 pr-8">{entry.data.name}</div>
             <div className="text-gray-600 w-40">
                 <div>created: {entry.createdAt.toLocaleDateString('en')}</div>
@@ -70,7 +70,7 @@ interface TextInputProps {
 
 export function TextInput({ value, onChange, placeHolder }: TextInputProps) {
     const classes = `
-    shadow border rounded
+    shadow border rounded-sm
     w-full py-2 px-3 my-2
     text-gray-700 leading-tight
     focus:outline-none focus:shadow-outline
@@ -110,8 +110,8 @@ export function Select<T>({ options, value, onSelect, className }: SelectProps<T
                 const classes = [
                     'py-2 px-3 mr-px text-white',
                     v == value ? 'btn-primary' : 'btn-secondary',
-                    idx == 0 ? 'rounded-l' : '',
-                    idx == options.length - 1 ? 'rounded-r' : '',
+                    idx == 0 ? 'rounded-l-sm' : '',
+                    idx == options.length - 1 ? 'rounded-r-sm' : '',
                 ].join(' ');
                 return (
                     <button key={name} onClick={() => onSelect(v)} className={classes}>

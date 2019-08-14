@@ -3,9 +3,13 @@
 }
 
 .color-secondary {
-    @apply bg-gray-500;
+    @apply bg-gray-500 text-white;
 }
 
 .color-danger {
     @apply bg-red-800 text-white;
+}
+
+.disabled {
+    @apply bg-gray-700 text-white cursor-not-allowed;
 }

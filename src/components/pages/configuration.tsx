@@ -58,7 +58,7 @@ export function Configuration() {
                     <CheckBox title="offline mode" lens={offlineLens} />
                 </div>
                 <SubSection className="my-2" title="Backup & restore">
-                    <p className="my-2 p-2 rounded color-danger">
+                    <p className="my-2 p-2 rounded-sm color-danger">
                         Warning: clicking on the restore button will delete all the existing data on this device
                     </p>
                     <input

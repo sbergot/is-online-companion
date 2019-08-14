@@ -46,7 +46,7 @@ interface SelectableProps extends ChildrenProp {
 
 export function Selectable({ children, selected, onClick }: SelectableProps) {
     const classes = [
-        'border border-gray-200 rounded p-2 mt-2 cursor-pointer hover:shadow',
+        'border border-gray-200 rounded-sm p-2 mt-2 cursor-pointer hover:shadow',
         selected || false ? 'bg-gray-200' : '',
     ].join(' ');
     return (
