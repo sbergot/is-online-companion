@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { CampaignKeyParam } from '../contracts/routes';
 import { DataServiceContainer } from '../containers/dataService';
-import { MainPanel, ActionPanel, SubSection } from '../components/layout';
+import { MainPanel, ActionPanel } from '../components/layout';
 import { Note } from '../contracts/note';
 import { NewNoteForm, NoteList, EditNoteForm, NoteActions } from '../components/pages/notes/notes';
 import { KeyEntry } from '../framework/contracts';

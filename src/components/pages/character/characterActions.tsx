@@ -27,7 +27,7 @@ export function CharacterActions({ charLens, logSource, selectedLens, characterK
                 <Zoom parentLens={charLens} zoomTo="vows">
                     {sublens => {
                         const selectedLens = sublens.zoom(selectedVow.key).zoom('data') as Lens<
-                            ProgressChallenge<ChallengeType>
+                        ProgressChallenge<ChallengeType>
                         >;
                         return (
                             <ChallengeActions
