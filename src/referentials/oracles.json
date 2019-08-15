@@ -366,129 +366,120 @@
   "Settlement Name": {
     "description": "Divine the name of a settlement",
     "options": null,
-    "random-event": [
-      [
-        15,
-        {
-          "description": "A feature of the landscape. Envision what it is. What makes it unusual or distinctive?",
-          "options": null,
-          "random-event": {
-            "10": "Highmount",
-            "20": "Brackwater",
-            "30": "Frostwood",
-            "40": "Redcrest",
-            "50": "Grimtree",
-            "60": "Stoneford",
-            "70": "Deepwater",
-            "80": "Whitefall",
-            "90": "Graycliff",
-            "100": "Three Rivers"
-          }
-        },
-        30,
-        {
-          "description": "A man made edifice. What is it? Why is it important to this settlement's history?",
-          "options": null,
-          "random-event": {
-            "10": "Whitebridge",
-            "20": "Lonefort",
-            "30": "Highcairn",
-            "40": "Redhall",
-            "50": "Darkwell",
-            "60": "Timberwall",
-            "70": "Stonetower",
-            "80": "Thornhall",
-            "90": "Cinderhome",
-            "100": "Fallowfield"
-          }
-        },
-        45,
-        {
-          "description": "A creature. Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
-          "options": null,
-          "random-event": {
-            "10": "Ravencliff",
-            "20": "Bearmark",
-            "30": "Wolfcrag",
-            "40": "Eaglesprite",
-            "50": "Wyvern's Rest",
-            "60": "Boarwood",
-            "70": "Foxhollow",
-            "80": "Elderwatch",
-            "90": "Elkfield",
-            "100": "Dragonshadow"
-          }
-        },
-        60,
-        {
-          "description": "A historical event. What happened here? What place or practice commemorates this event?",
-          "options": null,
-          "random-event": {
-            "10": "Swordbreak",
-            "20": "Fool's Fall",
-            "30": "Firstmeet",
-            "40": "Brokenhelm",
-            "50": "Mournhaunt",
-            "60": "Olgar's Stand",
-            "70": "Lostwater",
-            "80": "Rojirra's Lament",
-            "90": "Lastmarch",
-            "100": "Rockfall"
-          }
-        },
-        75,
-        {
-          "description": "A word in an Old World language. What culture is represented by this word. What does it translate to?",
-          "options": null,
-          "random-event": {
-            "10": "Abon",
-            "20": "Daveza",
-            "30": "Damula",
-            "40": "Essus",
-            "50": "Sina",
-            "60": "Kazeera",
-            "70": "Khazu",
-            "80": "Sova",
-            "90": "Nabuma",
-            "100": "Tiza"
-          }
-        },
-        90,
-        {
-          "description": "A season or environmental aspect. What influence does the weather have on this settlement?",
-          "options": null,
-          "random-event": {
-            "10": "Winterhome",
-            "20": "Windhaven",
-            "30": "Stormrest",
-            "40": "Bleakfrost",
-            "50": "Springtide",
-            "60": "Duskmoor",
-            "70": "Frostcrag",
-            "80": "Springbrook",
-            "90": "Icebreak",
-            "100": "Summersong"
-          }
-        },
-        100,
-        {
-          "description": "Something else...",
-          "options": null,
-          "random-event": {
-            "10": "A trade good (Ironhome)",
-            "20": "An Old World city (New Arkesh)",
-            "30": "A founder or famous settler (Kei's Hall)",
-            "40": "A god (Elisora",
-            "50": "A historical item (Blackhelm)",
-            "60": "A firstborn race (Elfbrook)",
-            "70": "An elvish word or name (Nessana)",
-            "80": "A mythic belief or event (Ghostwalk)",
-            "90": "A positive term (Hope)",
-            "100": "A negative term (Forsaken)"
-          }
+    "random-event": {
+      "15": {
+        "description": "A feature of the landscape. Envision what it is. What makes it unusual or distinctive?",
+        "options": null,
+        "random-event": {
+          "10": "Highmount",
+          "20": "Brackwater",
+          "30": "Frostwood",
+          "40": "Redcrest",
+          "50": "Grimtree",
+          "60": "Stoneford",
+          "70": "Deepwater",
+          "80": "Whitefall",
+          "90": "Graycliff",
+          "100": "Three Rivers"
         }
-      ]
-    ]
+      },
+      "30": {
+        "description": "A man made edifice. What is it? Why is it important to this settlement's history?",
+        "options": null,
+        "random-event": {
+          "10": "Whitebridge",
+          "20": "Lonefort",
+          "30": "Highcairn",
+          "40": "Redhall",
+          "50": "Darkwell",
+          "60": "Timberwall",
+          "70": "Stonetower",
+          "80": "Thornhall",
+          "90": "Cinderhome",
+          "100": "Fallowfield"
+        }
+      },
+      "45": {
+        "description": "A creature. Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
+        "options": null,
+        "random-event": {
+          "10": "Ravencliff",
+          "20": "Bearmark",
+          "30": "Wolfcrag",
+          "40": "Eaglesprite",
+          "50": "Wyvern's Rest",
+          "60": "Boarwood",
+          "70": "Foxhollow",
+          "80": "Elderwatch",
+          "90": "Elkfield",
+          "100": "Dragonshadow"
+        }
+      },
+      "60": {
+        "description": "A historical event. What happened here? What place or practice commemorates this event?",
+        "options": null,
+        "random-event": {
+          "10": "Swordbreak",
+          "20": "Fool's Fall",
+          "30": "Firstmeet",
+          "40": "Brokenhelm",
+          "50": "Mournhaunt",
+          "60": "Olgar's Stand",
+          "70": "Lostwater",
+          "80": "Rojirra's Lament",
+          "90": "Lastmarch",
+          "100": "Rockfall"
+        }
+      },
+      "75": {
+        "description": "A word in an Old World language. What culture is represented by this word. What does it translate to?",
+        "options": null,
+        "random-event": {
+          "10": "Abon",
+          "20": "Daveza",
+          "30": "Damula",
+          "40": "Essus",
+          "50": "Sina",
+          "60": "Kazeera",
+          "70": "Khazu",
+          "80": "Sova",
+          "90": "Nabuma",
+          "100": "Tiza"
+        }
+      },
+      "90": {
+        "description": "A season or environmental aspect. What influence does the weather have on this settlement?",
+        "options": null,
+        "random-event": {
+          "10": "Winterhome",
+          "20": "Windhaven",
+          "30": "Stormrest",
+          "40": "Bleakfrost",
+          "50": "Springtide",
+          "60": "Duskmoor",
+          "70": "Frostcrag",
+          "80": "Springbrook",
+          "90": "Icebreak",
+          "100": "Summersong"
+        }
+      },
+      "100": {
+        "description": "Something else...",
+        "options": null,
+        "random-event": {
+          "10": "A trade good (Ironhome)",
+          "20": "An Old World city (New Arkesh)",
+          "30": "A founder or famous settler (Kei's Hall)",
+          "40": "A god (Elisora",
+          "50": "A historical item (Blackhelm)",
+          "60": "A firstborn race (Elfbrook)",
+          "70": "An elvish word or name (Nessana)",
+          "80": "A mythic belief or event (Ghostwalk)",
+          "90": "A positive term (Hope)",
+          "100": "A negative term (Forsaken)"
+        }
+      }
+    }
   },
   "Quick Settlement Name Generator": {
     "description": "Quickly divine the name of a settlement.",
