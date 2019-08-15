@@ -28,7 +28,10 @@ function transform(obj) {
     if (typeof obj == "object" && obj != null) {
         const res = {}
         Object.keys(obj).map(k => {
-            res[k] = transform(obj[k]);
+            const value = obj[k];
+            if (value != null) {
+                res[k] = transform(obj[k]);
+            }
         })
         return res;
     }
@@ -41,6 +44,6 @@ function transform(obj) {
     const fname = "./" + name + ".json";
     const obj = require(fname);
     fs.writeFile(fname, JSON.stringify(transform(obj), null, 2), () => {
-        console.log("done");
+        console.log("done for " + name);
     });
 });

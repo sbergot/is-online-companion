@@ -260,8 +260,7 @@
           "options": {
             "Prepare": "Add +2.",
             "Expend": "On a hit, take or give an additional +1 health."
-          },
-          "random-event": null
+          }
         }
       },
       {
@@ -316,7 +315,6 @@
         "enabled": false,
         "result": {
           "description": "When you stand with your ally as they make a progress move, envision how you support them.",
-          "options": null,
           "random-event": {
             "10": "Your ally may replace one of their challenge dice with a 1.",
             "20": "Your ally may replace one of their challenge dice with a 2.",
@@ -352,8 +350,7 @@
             "Bloodwood": "Iron / Health",
             "Ghostwood": "Shadow / Spirit",
             "Whisperwood": "Wits /Spirit"
-          },
-          "random-event": null
+          }
         }
       },
       {
@@ -455,8 +452,7 @@
           "options": {
             "Power a ritual": "When you or an ally make a ritual move, reroll any dice (one time only).",
             "Prove your worth": "When you Sojourn, reroll any dice (one time only)."
-          },
-          "random-event": null
+          }
         }
       }
     ]
@@ -670,8 +666,7 @@
           "options": {
             "Strike quickly": "Add +2 and take +1 momentum on a hit.",
             "Take aim": "Inflict +2 harm on a hit."
-          },
-          "random-event": null
+          }
         }
       },
       {
@@ -709,8 +704,7 @@
           "options": {
             "Add...": "... +2",
             "Take...": "... +2 momentum on a hit."
-          },
-          "random-event": null
+          }
         }
       }
     ]
@@ -728,8 +722,7 @@
           "options": {
             "Lightly armoured": "When you Endure Harm in a fight, add +1 and take +1 momentum on a hit.",
             "Geared for war:": "Mark encumbered. When you Endure Harm in a fight, add +2 and take +1 momentum on a hit."
-          },
-          "random-event": null
+          }
         }
       },
       {
@@ -801,8 +794,7 @@
           "options": {
             "Iron": "Strike now, and add +1.",
             "Edge": "Take +1 momentum"
-          },
-          "random-event": null
+          }
         }
       },
       {
@@ -837,8 +829,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Pay Tribute",
             "move-type": "normal",
@@ -846,7 +836,6 @@
             "results": {
               "Strong Hit": {
                 "description": "Inflict +1d6 harm (one time only) when you Strike or Clash.",
-                "options": null,
                 "random-event": {
                   "16": "1 Harm",
                   "33": "2 Harm",
@@ -858,7 +847,6 @@
               },
               "Weak Hit": {
                 "description": "Inflict +1d6 harm (one time only) when you Strike or Clash. This death weighs on you; Endure Stress (2 stress).",
-                "options": null,
                 "random-event": {
                   "16": "1 Harm",
                   "33": "2 Harm",
@@ -906,8 +894,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Summon crows",
             "move-type": "normal",
@@ -925,8 +911,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Summon crows for guidance",
             "move-type": "normal",
@@ -955,8 +939,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Enchant pelt",
             "move-type": "normal",
@@ -974,8 +956,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Enchant beast pelt",
             "move-type": "normal",
@@ -1004,8 +984,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Commune with the dead",
             "move-type": "normal",
@@ -1023,8 +1001,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Commune with the long-dead",
             "move-type": "normal",
@@ -1053,8 +1029,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Read the runes",
             "move-type": "normal",
@@ -1072,8 +1046,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Read the future",
             "move-type": "normal",
@@ -1102,8 +1074,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Sing a keen",
             "move-type": "normal",
@@ -1121,8 +1091,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Sing a frightening keen",
             "move-type": "normal",
@@ -1151,8 +1119,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "See the flames",
             "move-type": "normal",
@@ -1165,8 +1131,7 @@
                   "Your blood": "Endure Harm (2 harm).",
                   "A precious thing": "Endure Stress (2 stress).",
                   "Provisions": "Suffer -2 supply."
-                },
-                "random-event": null
+                }
               },
               "Miss": {
                 "description": "The flames are hungry; choose one to sacrifice.",
@@ -1174,8 +1139,7 @@
                   "Your blood": "Endure Harm (2 harm).",
                   "A precious thing": "Endure Stress (2 stress).",
                   "Provisions": "Suffer -2 supply."
-                },
-                "random-event": null
+                }
               }
             }
           }
@@ -1186,8 +1150,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "See the past",
             "move-type": "normal",
@@ -1200,8 +1162,7 @@
                   "Your blood": "Endure Harm (2 harm).",
                   "A precious thing": "Endure Stress (2 stress).",
                   "Provisions": "Suffer -2 supply."
-                },
-                "random-event": null
+                }
               },
               "Miss": {
                 "description": "The flames are hungry; choose one to sacrifice.",
@@ -1209,8 +1170,7 @@
                   "Your blood": "Endure Harm (2 harm).",
                   "A precious thing": "Endure Stress (2 stress).",
                   "Provisions": "Suffer -2 supply."
-                },
-                "random-event": null
+                }
               }
             }
           }
@@ -1232,8 +1192,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Cloak with shadows",
             "move-type": "normal",
@@ -1251,8 +1209,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Cloak/Travel with shadows",
             "move-type": "normal",
@@ -1281,8 +1237,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Whisper to the wind",
             "move-type": "normal",
@@ -1300,8 +1254,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Speak to the wind",
             "move-type": "normal",
@@ -1330,8 +1282,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Bond with your totem",
             "move-type": "normal",
@@ -1349,8 +1299,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "See through your totem",
             "move-type": "normal",
@@ -1379,8 +1327,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Paint yourself in blood",
             "move-type": "normal",
@@ -1398,8 +1344,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Paint a warmask",
             "move-type": "normal",
@@ -1428,8 +1372,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Draw a circle",
             "move-type": "normal",
@@ -1441,8 +1383,7 @@
                   "Alert": "When a foe first crosses the boundary, take +1 momentum.",
                   "Inflict": "When you first inflict harm against a foe within the boundary, inflict +1 harm.",
                   "Trap": "Your ward is 'likely' (Ask the Oracle) to trap a foe within the boundary."
-                },
-                "random-event": null
+                }
               },
               "Weak Hit": {
                 "description": "Choose one.",
@@ -1450,8 +1391,7 @@
                   "Alert": "When a foe first crosses the boundary, take +1 momentum.",
                   "Inflict": "When you first inflict harm against a foe within the boundary, inflict +1 harm.",
                   "Trap": "Your ward is 'likely' (Ask the Oracle) to trap a foe within the boundary."
-                },
-                "random-event": null
+                }
               },
               "Miss": "It's in vain."
             }
@@ -1463,8 +1403,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Draw a strong circle",
             "move-type": "normal",
@@ -1476,8 +1414,7 @@
                   "Alert": "When a foe first crosses the boundary, take +2 momentum.",
                   "Inflict": "When you first inflict harm against a foe within the boundary, inflict +2 harm.",
                   "Trap": "Your ward is 'almost certain' (Ask the Oracle) to trap a foe within the boundary."
-                },
-                "random-event": null
+                }
               },
               "Weak Hit": {
                 "description": "Choose one.",
@@ -1485,8 +1422,7 @@
                   "Alert": "When a foe first crosses the boundary, take +2 momentum.",
                   "Inflict": "When you first inflict harm against a foe within the boundary, inflict +2 harm.",
                   "Trap": "Your ward is 'almost certain' (Ask the Oracle) to trap a foe within the boundary."
-                },
-                "random-event": null
+                }
               },
               "Miss": "It's in vain."
             }
@@ -1539,8 +1475,6 @@
         "enabled": true,
         "result": {
           "description": "When your supply is reduced to 0, suffer any remaining -supply as -momentum. Then,...",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Scrape by",
             "move-type": "normal",
@@ -1574,8 +1508,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Establish false identity",
             "move-type": "normal",
@@ -1662,8 +1594,7 @@
             "The wind is at your back": "Mark one extra unit of progress.",
             "Find safe anchor": "Make Camp now and reroll any dice.",
             "Reap bounty": "Resupply now and reroll any dice."
-          },
-          "random-event": null
+          }
         }
       },
       {
@@ -1704,8 +1635,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Create a simulacrum",
             "move-type": "normal",
@@ -1739,8 +1668,6 @@
         "enabled": true,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Make a specific charm",
             "move-type": "normal",
@@ -1758,8 +1685,6 @@
         "enabled": false,
         "result": {
           "description": "You may",
-          "options": null,
-          "random-event": null,
           "move": {
             "name": "Make a universal charm",
             "move-type": "normal",

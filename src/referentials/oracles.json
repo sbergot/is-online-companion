@@ -1,7 +1,6 @@
 {
   "Action": {
     "description": "Divine the action",
-    "options": null,
     "random-event": {
       "1": "Scheme",
       "2": "Clash",
@@ -107,7 +106,6 @@
   },
   "Theme": {
     "description": "Divine the theme",
-    "options": null,
     "random-event": {
       "1": "Risk",
       "2": "Ability",
@@ -213,7 +211,6 @@
   },
   "Region": {
     "description": "Divine the region",
-    "options": null,
     "random-event": {
       "12": "Barrier Islands",
       "24": "Ragged Coast",
@@ -229,7 +226,6 @@
   },
   "Location": {
     "description": "Divine the location",
-    "options": null,
     "random-event": {
       "1": "Hideout",
       "2": "Ruin",
@@ -286,7 +282,6 @@
   },
   "Coastal Waters Location": {
     "description": "Divine a coastal waters location",
-    "options": null,
     "random-event": {
       "1": "Fleet",
       "2": "Sargassum",
@@ -309,7 +304,6 @@
   },
   "Location Descriptor": {
     "description": "Divine a descriptor for your location",
-    "options": null,
     "random-event": {
       "2": "High",
       "4": "Remote",
@@ -365,11 +359,9 @@
   },
   "Settlement Name": {
     "description": "Divine the name of a settlement",
-    "options": null,
     "random-event": {
       "15": {
         "description": "A feature of the landscape. Envision what it is. What makes it unusual or distinctive?",
-        "options": null,
         "random-event": {
           "10": "Highmount",
           "20": "Brackwater",
@@ -385,7 +377,6 @@
       },
       "30": {
         "description": "A man made edifice. What is it? Why is it important to this settlement's history?",
-        "options": null,
         "random-event": {
           "10": "Whitebridge",
           "20": "Lonefort",
@@ -401,7 +392,6 @@
       },
       "45": {
         "description": "A creature. Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
-        "options": null,
         "random-event": {
           "10": "Ravencliff",
           "20": "Bearmark",
@@ -417,7 +407,6 @@
       },
       "60": {
         "description": "A historical event. What happened here? What place or practice commemorates this event?",
-        "options": null,
         "random-event": {
           "10": "Swordbreak",
           "20": "Fool's Fall",
@@ -433,7 +422,6 @@
       },
       "75": {
         "description": "A word in an Old World language. What culture is represented by this word. What does it translate to?",
-        "options": null,
         "random-event": {
           "10": "Abon",
           "20": "Daveza",
@@ -449,7 +437,6 @@
       },
       "90": {
         "description": "A season or environmental aspect. What influence does the weather have on this settlement?",
-        "options": null,
         "random-event": {
           "10": "Winterhome",
           "20": "Windhaven",
@@ -465,7 +452,6 @@
       },
       "100": {
         "description": "Something else...",
-        "options": null,
         "random-event": {
           "10": "A trade good (Ironhome)",
           "20": "An Old World city (New Arkesh)",
@@ -486,7 +472,6 @@
     "options": {
       "Prefix": {
         "description": "Divine the prefix",
-        "options": null,
         "random-event": {
           "4": "Bleak-",
           "8": "Green-",
@@ -517,7 +502,6 @@
       },
       "Suffix": {
         "description": "Divine the suffix",
-        "options": null,
         "random-event": {
           "4": "-moor",
           "8": "-ford",
@@ -550,7 +534,6 @@
   },
   "Settlement Trouble": {
     "description": "Divine the settlement trouble",
-    "options": null,
     "random-event": {
       "2": "Outsiders rejected",
       "4": "Dangerous discovery",
@@ -602,7 +585,6 @@
   },
   "Character Role": {
     "description": "Divine the role of a character.",
-    "options": null,
     "random-event": {
       "2": "Criminal",
       "4": "Healer",
@@ -638,7 +620,6 @@
   },
   "Character Goal": {
     "description": "Divine the characters goal.",
-    "options": null,
     "random-event": {
       "3": "Obtain an object",
       "6": "Make an agreement",
@@ -677,7 +658,6 @@
   },
   "Character Descriptor": {
     "description": "Divine a character descriptor.",
-    "options": null,
     "random-event": {
       "1": "Stoic",
       "2": "Attractive",
@@ -786,7 +766,6 @@
     "options": {
       "Ironlander names": {
         "description": "... name for an ironlander.",
-        "options": null,
         "random-event": {
           "1": "Solana",
           "2": "Keelan",
@@ -892,7 +871,6 @@
       },
       "Ironlander names (II)": {
         "description": "... a name for an ironlander.",
-        "options": null,
         "random-event": {
           "1": "Segura",
           "2": "Gethin",
@@ -998,7 +976,6 @@
       },
       "Elf names": {
         "description": "... a name for an elf.",
-        "options": null,
         "random-event": {
           "2": "Arsula",
           "4": "Naidita",
@@ -1054,7 +1031,6 @@
       },
       "Giants": {
         "description": "... a name for a giant.",
-        "options": null,
         "random-event": {
           "4": "Chony",
           "8": "Banda",
@@ -1085,7 +1061,6 @@
       },
       "Varou": {
         "description": "... a name for a varou.",
-        "options": null,
         "random-event": {
           "4": "Vata",
           "8": "Zora",
@@ -1116,7 +1091,6 @@
       },
       "Trolls": {
         "description": "... a name for a troll.",
-        "options": null,
         "random-event": {
           "4": "Ratlle",
           "8": "Scratch",
@@ -1145,12 +1119,10 @@
           "100": "Herk"
         }
       }
-    },
-    "random-event": null
+    }
   },
   "Combat Action": {
     "description": "Divine a combat action.",
-    "options": null,
     "random-event": {
       "3": "Compel a surrender",
       "6": "Coordinate with allies",
@@ -1174,7 +1146,6 @@
   },
   "Mystic Backlash": {
     "description": "Divine a mystic backlash.",
-    "options": null,
     "random-event": {
       "4": "Your ritual has the opposite effect",
       "8": "You are sapped of strength",
@@ -1205,7 +1176,6 @@
   },
   "Major Plot Twist": {
     "description": "Divine a major plot twist",
-    "options": null,
     "random-event": {
       "5": "It was all a diversion",
       "10": "A dark secret is revealed",
@@ -1231,7 +1201,6 @@
   },
   "Challenge Rank": {
     "description": "Divine the rank of a challenge",
-    "options": null,
     "random-event": {
       "20": "Troublesome",
       "55": "Dangerous",
