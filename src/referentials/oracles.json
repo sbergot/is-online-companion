@@ -496,214 +496,64 @@
       "Prefix": {
         "description": "Divine the prefix",
         "options": null,
-        "random-event": [
-          [
-            4,
-            "Bleak-"
-          ],
-          [
-            8,
-            "Green-"
-          ],
-          [
-            12,
-            "Wolf-"
-          ],
-          [
-            16,
-            "Raven-"
-          ],
-          [
-            20,
-            "Gray-"
-          ],
-          [
-            24,
-            "Red-"
-          ],
-          [
-            28,
-            "Axe-"
-          ],
-          [
-            32,
-            "Great-"
-          ],
-          [
-            36,
-            "Wood-"
-          ],
-          [
-            40,
-            "Low-"
-          ],
-          [
-            44,
-            "White-"
-          ],
-          [
-            48,
-            "Storm-"
-          ],
-          [
-            52,
-            "Black-"
-          ],
-          [
-            56,
-            "Mourn-"
-          ],
-          [
-            60,
-            "New-"
-          ],
-          [
-            64,
-            "Stone-"
-          ],
-          [
-            68,
-            "Grim-"
-          ],
-          [
-            72,
-            "Lost-"
-          ],
-          [
-            76,
-            "High-"
-          ],
-          [
-            80,
-            "Rock-"
-          ],
-          [
-            84,
-            "Shield-"
-          ],
-          [
-            88,
-            "Sword-"
-          ],
-          [
-            92,
-            "Frost-"
-          ],
-          [
-            96,
-            "Thorn-"
-          ],
-          [
-            100,
-            "Long-"
-          ]
-        ]
+        "random-event": {
+          "4": "Bleak-",
+          "8": "Green-",
+          "12": "Wolf-",
+          "16": "Raven-",
+          "20": "Gray-",
+          "24": "Red-",
+          "28": "Axe-",
+          "32": "Great-",
+          "36": "Wood-",
+          "40": "Low-",
+          "44": "White-",
+          "48": "Storm-",
+          "52": "Black-",
+          "56": "Mourn-",
+          "60": "New-",
+          "64": "Stone-",
+          "68": "Grim-",
+          "72": "Lost-",
+          "76": "High-",
+          "80": "Rock-",
+          "84": "Shield-",
+          "88": "Sword-",
+          "92": "Frost-",
+          "96": "Thorn-",
+          "100": "Long-"
+        }
       },
       "Suffix": {
         "description": "Divine the suffix",
         "options": null,
-        "random-event": [
-          [
-            4,
-            "-moor"
-          ],
-          [
-            8,
-            "-ford"
-          ],
-          [
-            12,
-            "-crag"
-          ],
-          [
-            16,
-            "-watch"
-          ],
-          [
-            20,
-            "-hope"
-          ],
-          [
-            24,
-            "-wood"
-          ],
-          [
-            28,
-            "-ridge"
-          ],
-          [
-            32,
-            "-stone"
-          ],
-          [
-            36,
-            "-haven"
-          ],
-          [
-            40,
-            "-fall(s)"
-          ],
-          [
-            44,
-            "-river"
-          ],
-          [
-            48,
-            "-field"
-          ],
-          [
-            52,
-            "-hill"
-          ],
-          [
-            56,
-            "-bridge"
-          ],
-          [
-            60,
-            "-mark"
-          ],
-          [
-            64,
-            "-cairn"
-          ],
-          [
-            68,
-            "-land"
-          ],
-          [
-            72,
-            "-hall"
-          ],
-          [
-            76,
-            "-mount"
-          ],
-          [
-            80,
-            "-rock"
-          ],
-          [
-            84,
-            "-brook"
-          ],
-          [
-            88,
-            "-barrow"
-          ],
-          [
-            92,
-            "-stead"
-          ],
-          [
-            96,
-            "-home"
-          ],
-          [
-            100,
-            "-wick"
-          ]
-        ]
+        "random-event": {
+          "4": "-moor",
+          "8": "-ford",
+          "12": "-crag",
+          "16": "-watch",
+          "20": "-hope",
+          "24": "-wood",
+          "28": "-ridge",
+          "32": "-stone",
+          "36": "-haven",
+          "40": "-fall(s)",
+          "44": "-river",
+          "48": "-field",
+          "52": "-hill",
+          "56": "-bridge",
+          "60": "-mark",
+          "64": "-cairn",
+          "68": "-land",
+          "72": "-hall",
+          "76": "-mount",
+          "80": "-rock",
+          "84": "-brook",
+          "88": "-barrow",
+          "92": "-stead",
+          "96": "-home",
+          "100": "-wick"
+        }
       }
     }
   },
@@ -946,1338 +796,363 @@
       "Ironlander names": {
         "description": "... name for an ironlander.",
         "options": null,
-        "random-event": [
-          [
-            1,
-            "Solana"
-          ],
-          [
-            2,
-            "Keelan"
-          ],
-          [
-            3,
-            "Cadigan"
-          ],
-          [
-            4,
-            "Sola"
-          ],
-          [
-            5,
-            "Kodroth"
-          ],
-          [
-            6,
-            "Kione"
-          ],
-          [
-            7,
-            "Katja"
-          ],
-          [
-            8,
-            "Tio"
-          ],
-          [
-            9,
-            "Artiga"
-          ],
-          [
-            10,
-            "Eos"
-          ],
-          [
-            11,
-            "Bastien"
-          ],
-          [
-            12,
-            "Elli"
-          ],
-          [
-            13,
-            "Maura"
-          ],
-          [
-            14,
-            "Haleema"
-          ],
-          [
-            15,
-            "Abella"
-          ],
-          [
-            16,
-            "Morter"
-          ],
-          [
-            17,
-            "Wulan"
-          ],
-          [
-            18,
-            "Mai"
-          ],
-          [
-            19,
-            "Farina"
-          ],
-          [
-            20,
-            "Pearce"
-          ],
-          [
-            21,
-            "Wynne"
-          ],
-          [
-            22,
-            "Haf"
-          ],
-          [
-            23,
-            "Aeddon"
-          ],
-          [
-            24,
-            "Khinara"
-          ],
-          [
-            25,
-            "Milla"
-          ],
-          [
-            26,
-            "Nakata"
-          ],
-          [
-            27,
-            "Kynan"
-          ],
-          [
-            28,
-            "Kiah"
-          ],
-          [
-            29,
-            "Jaggar"
-          ],
-          [
-            30,
-            "Beca"
-          ],
-          [
-            31,
-            "Ikram"
-          ],
-          [
-            32,
-            "Melia"
-          ],
-          [
-            33,
-            "Sidan"
-          ],
-          [
-            34,
-            "Deshi"
-          ],
-          [
-            35,
-            "Tessa"
-          ],
-          [
-            36,
-            "Sibila"
-          ],
-          [
-            37,
-            "Morien"
-          ],
-          [
-            38,
-            "Mona"
-          ],
-          [
-            39,
-            "Padma"
-          ],
-          [
-            40,
-            "Avella"
-          ],
-          [
-            41,
-            "Naila"
-          ],
-          [
-            42,
-            "Lio"
-          ],
-          [
-            43,
-            "Cera"
-          ],
-          [
-            44,
-            "Ithela"
-          ],
-          [
-            45,
-            "Zhan"
-          ],
-          [
-            46,
-            "Kaivan"
-          ],
-          [
-            47,
-            "Valeri"
-          ],
-          [
-            48,
-            "Hirsham"
-          ],
-          [
-            49,
-            "Pemba"
-          ],
-          [
-            50,
-            "Edda"
-          ],
-          [
-            51,
-            "Lestara"
-          ],
-          [
-            52,
-            "Lago"
-          ],
-          [
-            53,
-            "Elstan"
-          ],
-          [
-            54,
-            "Saskia"
-          ],
-          [
-            55,
-            "Kabeera"
-          ],
-          [
-            56,
-            "Caldas"
-          ],
-          [
-            57,
-            "Nisus"
-          ],
-          [
-            58,
-            "Serene"
-          ],
-          [
-            59,
-            "Chenda"
-          ],
-          [
-            60,
-            "Themon"
-          ],
-          [
-            61,
-            "Erin"
-          ],
-          [
-            62,
-            "Alban"
-          ],
-          [
-            63,
-            "Parcell"
-          ],
-          [
-            64,
-            "Jelma"
-          ],
-          [
-            65,
-            "Willa"
-          ],
-          [
-            66,
-            "Nadira"
-          ],
-          [
-            67,
-            "Gwen"
-          ],
-          [
-            68,
-            "Amara"
-          ],
-          [
-            69,
-            "Masias"
-          ],
-          [
-            70,
-            "Kanno"
-          ],
-          [
-            71,
-            "Razeena"
-          ],
-          [
-            72,
-            "Mira"
-          ],
-          [
-            73,
-            "Perella"
-          ],
-          [
-            74,
-            "Myrick"
-          ],
-          [
-            75,
-            "Qamar"
-          ],
-          [
-            76,
-            "Kormak"
-          ],
-          [
-            77,
-            "Zura"
-          ],
-          [
-            78,
-            "Zanita"
-          ],
-          [
-            79,
-            "Brynn"
-          ],
-          [
-            80,
-            "Tegan"
-          ],
-          [
-            81,
-            "Pendry"
-          ],
-          [
-            82,
-            "Quinn"
-          ],
-          [
-            83,
-            "Fanir"
-          ],
-          [
-            84,
-            "Glain"
-          ],
-          [
-            85,
-            "Emelyn"
-          ],
-          [
-            86,
-            "Kendi"
-          ],
-          [
-            87,
-            "Althus"
-          ],
-          [
-            88,
-            "Leela"
-          ],
-          [
-            89,
-            "Ishana"
-          ],
-          [
-            90,
-            "Flint"
-          ],
-          [
-            91,
-            "Delkash"
-          ],
-          [
-            92,
-            "Nia"
-          ],
-          [
-            93,
-            "Nan"
-          ],
-          [
-            94,
-            "Keeara"
-          ],
-          [
-            95,
-            "Katania"
-          ],
-          [
-            96,
-            "Morell"
-          ],
-          [
-            97,
-            "Temir"
-          ],
-          [
-            98,
-            "Bas"
-          ],
-          [
-            99,
-            "Sabine"
-          ],
-          [
-            100,
-            "Tallus"
-          ]
-        ]
+        "random-event": {
+          "1": "Solana",
+          "2": "Keelan",
+          "3": "Cadigan",
+          "4": "Sola",
+          "5": "Kodroth",
+          "6": "Kione",
+          "7": "Katja",
+          "8": "Tio",
+          "9": "Artiga",
+          "10": "Eos",
+          "11": "Bastien",
+          "12": "Elli",
+          "13": "Maura",
+          "14": "Haleema",
+          "15": "Abella",
+          "16": "Morter",
+          "17": "Wulan",
+          "18": "Mai",
+          "19": "Farina",
+          "20": "Pearce",
+          "21": "Wynne",
+          "22": "Haf",
+          "23": "Aeddon",
+          "24": "Khinara",
+          "25": "Milla",
+          "26": "Nakata",
+          "27": "Kynan",
+          "28": "Kiah",
+          "29": "Jaggar",
+          "30": "Beca",
+          "31": "Ikram",
+          "32": "Melia",
+          "33": "Sidan",
+          "34": "Deshi",
+          "35": "Tessa",
+          "36": "Sibila",
+          "37": "Morien",
+          "38": "Mona",
+          "39": "Padma",
+          "40": "Avella",
+          "41": "Naila",
+          "42": "Lio",
+          "43": "Cera",
+          "44": "Ithela",
+          "45": "Zhan",
+          "46": "Kaivan",
+          "47": "Valeri",
+          "48": "Hirsham",
+          "49": "Pemba",
+          "50": "Edda",
+          "51": "Lestara",
+          "52": "Lago",
+          "53": "Elstan",
+          "54": "Saskia",
+          "55": "Kabeera",
+          "56": "Caldas",
+          "57": "Nisus",
+          "58": "Serene",
+          "59": "Chenda",
+          "60": "Themon",
+          "61": "Erin",
+          "62": "Alban",
+          "63": "Parcell",
+          "64": "Jelma",
+          "65": "Willa",
+          "66": "Nadira",
+          "67": "Gwen",
+          "68": "Amara",
+          "69": "Masias",
+          "70": "Kanno",
+          "71": "Razeena",
+          "72": "Mira",
+          "73": "Perella",
+          "74": "Myrick",
+          "75": "Qamar",
+          "76": "Kormak",
+          "77": "Zura",
+          "78": "Zanita",
+          "79": "Brynn",
+          "80": "Tegan",
+          "81": "Pendry",
+          "82": "Quinn",
+          "83": "Fanir",
+          "84": "Glain",
+          "85": "Emelyn",
+          "86": "Kendi",
+          "87": "Althus",
+          "88": "Leela",
+          "89": "Ishana",
+          "90": "Flint",
+          "91": "Delkash",
+          "92": "Nia",
+          "93": "Nan",
+          "94": "Keeara",
+          "95": "Katania",
+          "96": "Morell",
+          "97": "Temir",
+          "98": "Bas",
+          "99": "Sabine",
+          "100": "Tallus"
+        }
       },
       "Ironlander names (II)": {
         "description": "... a name for an ironlander.",
         "options": null,
-        "random-event": [
-          [
-            1,
-            "Segura"
-          ],
-          [
-            2,
-            "Gethin"
-          ],
-          [
-            3,
-            "Bataar"
-          ],
-          [
-            4,
-            "Basira"
-          ],
-          [
-            5,
-            "Joa"
-          ],
-          [
-            6,
-            "Glynn"
-          ],
-          [
-            7,
-            "Toran"
-          ],
-          [
-            8,
-            "Arasen"
-          ],
-          [
-            9,
-            "Kuron"
-          ],
-          [
-            10,
-            "Griff"
-          ],
-          [
-            11,
-            "Owena"
-          ],
-          [
-            12,
-            "Adda"
-          ],
-          [
-            13,
-            "Euros"
-          ],
-          [
-            14,
-            "Kova"
-          ],
-          [
-            15,
-            "Kara"
-          ],
-          [
-            16,
-            "Morgan"
-          ],
-          [
-            17,
-            "Nanda"
-          ],
-          [
-            18,
-            "Tamara"
-          ],
-          [
-            19,
-            "Asha"
-          ],
-          [
-            20,
-            "Delos"
-          ],
-          [
-            21,
-            "Torgan"
-          ],
-          [
-            22,
-            "Makari"
-          ],
-          [
-            23,
-            "Selva"
-          ],
-          [
-            24,
-            "Kimura"
-          ],
-          [
-            25,
-            "Rhian"
-          ],
-          [
-            26,
-            "Tristan"
-          ],
-          [
-            27,
-            "Siorra"
-          ],
-          [
-            28,
-            "Sayer"
-          ],
-          [
-            29,
-            "Cortina"
-          ],
-          [
-            30,
-            "Vesna"
-          ],
-          [
-            31,
-            "Kataka"
-          ],
-          [
-            32,
-            "Keyshia"
-          ],
-          [
-            33,
-            "Mila"
-          ],
-          [
-            34,
-            "Lili"
-          ],
-          [
-            35,
-            "Vigo"
-          ],
-          [
-            36,
-            "Sadia"
-          ],
-          [
-            37,
-            "Malik"
-          ],
-          [
-            38,
-            "Dag"
-          ],
-          [
-            39,
-            "Kuno"
-          ],
-          [
-            40,
-            "Reva"
-          ],
-          [
-            41,
-            "Kai"
-          ],
-          [
-            42,
-            "Kalina"
-          ],
-          [
-            43,
-            "Jihan"
-          ],
-          [
-            44,
-            "Hennion"
-          ],
-          [
-            45,
-            "Abram"
-          ],
-          [
-            46,
-            "Aida"
-          ],
-          [
-            47,
-            "Myrtle"
-          ],
-          [
-            48,
-            "Nekun"
-          ],
-          [
-            49,
-            "Menna"
-          ],
-          [
-            50,
-            "Tahir"
-          ],
-          [
-            51,
-            "Sarria"
-          ],
-          [
-            52,
-            "Nakura"
-          ],
-          [
-            53,
-            "Akiya"
-          ],
-          [
-            54,
-            "Talan"
-          ],
-          [
-            55,
-            "Mattick"
-          ],
-          [
-            56,
-            "Okoth"
-          ],
-          [
-            57,
-            "Khulan"
-          ],
-          [
-            58,
-            "Verena"
-          ],
-          [
-            59,
-            "Beltran"
-          ],
-          [
-            60,
-            "Del"
-          ],
-          [
-            61,
-            "Ranna"
-          ],
-          [
-            62,
-            "Alina"
-          ],
-          [
-            63,
-            "Muna"
-          ],
-          [
-            64,
-            "Mura"
-          ],
-          [
-            65,
-            "Torrens"
-          ],
-          [
-            66,
-            "Yuda"
-          ],
-          [
-            67,
-            "Nazmi"
-          ],
-          [
-            68,
-            "Ghalen"
-          ],
-          [
-            69,
-            "Sarda"
-          ],
-          [
-            70,
-            "Shona"
-          ],
-          [
-            71,
-            "Kalidas"
-          ],
-          [
-            72,
-            "Wena"
-          ],
-          [
-            73,
-            "Sendra"
-          ],
-          [
-            74,
-            "Kori"
-          ],
-          [
-            75,
-            "Setara"
-          ],
-          [
-            76,
-            "Lucia"
-          ],
-          [
-            77,
-            "Maya"
-          ],
-          [
-            78,
-            "Reema"
-          ],
-          [
-            79,
-            "Yorath"
-          ],
-          [
-            80,
-            "Rhoddri"
-          ],
-          [
-            81,
-            "Shekhar"
-          ],
-          [
-            82,
-            "Servan"
-          ],
-          [
-            83,
-            "Reese"
-          ],
-          [
-            84,
-            "Kendrick"
-          ],
-          [
-            85,
-            "Indirra"
-          ],
-          [
-            86,
-            "Giliana"
-          ],
-          [
-            87,
-            "Jebran"
-          ],
-          [
-            88,
-            "Kotama"
-          ],
-          [
-            89,
-            "Fara"
-          ],
-          [
-            90,
-            "Katrin"
-          ],
-          [
-            91,
-            "Namba"
-          ],
-          [
-            92,
-            "Lona"
-          ],
-          [
-            93,
-            "Taylah"
-          ],
-          [
-            94,
-            "Kato"
-          ],
-          [
-            95,
-            "Esra"
-          ],
-          [
-            96,
-            "Eleri"
-          ],
-          [
-            97,
-            "Irsia"
-          ],
-          [
-            98,
-            "Kayu"
-          ],
-          [
-            99,
-            "Bevan"
-          ],
-          [
-            100,
-            "Chandra"
-          ]
-        ]
+        "random-event": {
+          "1": "Segura",
+          "2": "Gethin",
+          "3": "Bataar",
+          "4": "Basira",
+          "5": "Joa",
+          "6": "Glynn",
+          "7": "Toran",
+          "8": "Arasen",
+          "9": "Kuron",
+          "10": "Griff",
+          "11": "Owena",
+          "12": "Adda",
+          "13": "Euros",
+          "14": "Kova",
+          "15": "Kara",
+          "16": "Morgan",
+          "17": "Nanda",
+          "18": "Tamara",
+          "19": "Asha",
+          "20": "Delos",
+          "21": "Torgan",
+          "22": "Makari",
+          "23": "Selva",
+          "24": "Kimura",
+          "25": "Rhian",
+          "26": "Tristan",
+          "27": "Siorra",
+          "28": "Sayer",
+          "29": "Cortina",
+          "30": "Vesna",
+          "31": "Kataka",
+          "32": "Keyshia",
+          "33": "Mila",
+          "34": "Lili",
+          "35": "Vigo",
+          "36": "Sadia",
+          "37": "Malik",
+          "38": "Dag",
+          "39": "Kuno",
+          "40": "Reva",
+          "41": "Kai",
+          "42": "Kalina",
+          "43": "Jihan",
+          "44": "Hennion",
+          "45": "Abram",
+          "46": "Aida",
+          "47": "Myrtle",
+          "48": "Nekun",
+          "49": "Menna",
+          "50": "Tahir",
+          "51": "Sarria",
+          "52": "Nakura",
+          "53": "Akiya",
+          "54": "Talan",
+          "55": "Mattick",
+          "56": "Okoth",
+          "57": "Khulan",
+          "58": "Verena",
+          "59": "Beltran",
+          "60": "Del",
+          "61": "Ranna",
+          "62": "Alina",
+          "63": "Muna",
+          "64": "Mura",
+          "65": "Torrens",
+          "66": "Yuda",
+          "67": "Nazmi",
+          "68": "Ghalen",
+          "69": "Sarda",
+          "70": "Shona",
+          "71": "Kalidas",
+          "72": "Wena",
+          "73": "Sendra",
+          "74": "Kori",
+          "75": "Setara",
+          "76": "Lucia",
+          "77": "Maya",
+          "78": "Reema",
+          "79": "Yorath",
+          "80": "Rhoddri",
+          "81": "Shekhar",
+          "82": "Servan",
+          "83": "Reese",
+          "84": "Kendrick",
+          "85": "Indirra",
+          "86": "Giliana",
+          "87": "Jebran",
+          "88": "Kotama",
+          "89": "Fara",
+          "90": "Katrin",
+          "91": "Namba",
+          "92": "Lona",
+          "93": "Taylah",
+          "94": "Kato",
+          "95": "Esra",
+          "96": "Eleri",
+          "97": "Irsia",
+          "98": "Kayu",
+          "99": "Bevan",
+          "100": "Chandra"
+        }
       },
       "Elf names": {
         "description": "... a name for an elf.",
         "options": null,
-        "random-event": [
-          [
-            2,
-            "Arsula"
-          ],
-          [
-            4,
-            "Naidita"
-          ],
-          [
-            6,
-            "Belesunna"
-          ],
-          [
-            8,
-            "Vidarna"
-          ],
-          [
-            10,
-            "Ninsunu"
-          ],
-          [
-            12,
-            "Balathu"
-          ],
-          [
-            14,
-            "Dorosi"
-          ],
-          [
-            16,
-            "Gezera"
-          ],
-          [
-            18,
-            "Zursan"
-          ],
-          [
-            20,
-            "Seleeku"
-          ],
-          [
-            22,
-            "Utamara"
-          ],
-          [
-            24,
-            "Nebakay"
-          ],
-          [
-            26,
-            "Dismashk"
-          ],
-          [
-            28,
-            "Mitunu"
-          ],
-          [
-            30,
-            "Atani"
-          ],
-          [
-            32,
-            "Kinzura"
-          ],
-          [
-            34,
-            "Sumula"
-          ],
-          [
-            36,
-            "Ukames"
-          ],
-          [
-            38,
-            "Ahmeshki"
-          ],
-          [
-            40,
-            "Ilsit"
-          ],
-          [
-            42,
-            "Mayatanay"
-          ],
-          [
-            44,
-            "Etana"
-          ],
-          [
-            46,
-            "Gamanna"
-          ],
-          [
-            48,
-            "Nessana"
-          ],
-          [
-            50,
-            "Uralar"
-          ],
-          [
-            52,
-            "Tishetu"
-          ],
-          [
-            54,
-            "Leucia"
-          ],
-          [
-            56,
-            "Sutahe"
-          ],
-          [
-            58,
-            "Dotani"
-          ],
-          [
-            60,
-            "Uktannu"
-          ],
-          [
-            62,
-            "Retenay"
-          ],
-          [
-            64,
-            "Kendalanu"
-          ],
-          [
-            66,
-            "Tahuta"
-          ],
-          [
-            68,
-            "Mattissa"
-          ],
-          [
-            70,
-            "Anatu"
-          ],
-          [
-            72,
-            "Aralu"
-          ],
-          [
-            74,
-            "Arakhi"
-          ],
-          [
-            76,
-            "Ibrahem"
-          ],
-          [
-            78,
-            "Sinosu"
-          ],
-          [
-            80,
-            "Jemshida"
-          ],
-          [
-            82,
-            "Visapni"
-          ],
-          [
-            84,
-            "Hullata"
-          ],
-          [
-            86,
-            "Sidura"
-          ],
-          [
-            88,
-            "Kerihu"
-          ],
-          [
-            90,
-            "Ereshki"
-          ],
-          [
-            92,
-            "Cybela"
-          ],
-          [
-            94,
-            "Anunna"
-          ],
-          [
-            96,
-            "Otani"
-          ],
-          [
-            98,
-            "Ditani"
-          ],
-          [
-            100,
-            "Faraza"
-          ]
-        ]
+        "random-event": {
+          "2": "Arsula",
+          "4": "Naidita",
+          "6": "Belesunna",
+          "8": "Vidarna",
+          "10": "Ninsunu",
+          "12": "Balathu",
+          "14": "Dorosi",
+          "16": "Gezera",
+          "18": "Zursan",
+          "20": "Seleeku",
+          "22": "Utamara",
+          "24": "Nebakay",
+          "26": "Dismashk",
+          "28": "Mitunu",
+          "30": "Atani",
+          "32": "Kinzura",
+          "34": "Sumula",
+          "36": "Ukames",
+          "38": "Ahmeshki",
+          "40": "Ilsit",
+          "42": "Mayatanay",
+          "44": "Etana",
+          "46": "Gamanna",
+          "48": "Nessana",
+          "50": "Uralar",
+          "52": "Tishetu",
+          "54": "Leucia",
+          "56": "Sutahe",
+          "58": "Dotani",
+          "60": "Uktannu",
+          "62": "Retenay",
+          "64": "Kendalanu",
+          "66": "Tahuta",
+          "68": "Mattissa",
+          "70": "Anatu",
+          "72": "Aralu",
+          "74": "Arakhi",
+          "76": "Ibrahem",
+          "78": "Sinosu",
+          "80": "Jemshida",
+          "82": "Visapni",
+          "84": "Hullata",
+          "86": "Sidura",
+          "88": "Kerihu",
+          "90": "Ereshki",
+          "92": "Cybela",
+          "94": "Anunna",
+          "96": "Otani",
+          "98": "Ditani",
+          "100": "Faraza"
+        }
       },
       "Giants": {
         "description": "... a name for a giant.",
         "options": null,
-        "random-event": [
-          [
-            4,
-            "Chony"
-          ],
-          [
-            8,
-            "Banda"
-          ],
-          [
-            12,
-            "Jochu"
-          ],
-          [
-            16,
-            "Kira"
-          ],
-          [
-            20,
-            "Khatir"
-          ],
-          [
-            24,
-            "Chaidu"
-          ],
-          [
-            28,
-            "Atan"
-          ],
-          [
-            32,
-            "Buandu"
-          ],
-          [
-            36,
-            "Javyn"
-          ],
-          [
-            40,
-            "Khashin"
-          ],
-          [
-            44,
-            "Bayara"
-          ],
-          [
-            48,
-            "Temura"
-          ],
-          [
-            52,
-            "Kidha"
-          ],
-          [
-            56,
-            "Kathos"
-          ],
-          [
-            60,
-            "Tanua"
-          ],
-          [
-            64,
-            "Bashtu"
-          ],
-          [
-            68,
-            "Jaran"
-          ],
-          [
-            72,
-            "Othos"
-          ],
-          [
-            76,
-            "Khutan"
-          ],
-          [
-            80,
-            "Otaan"
-          ],
-          [
-            84,
-            "Martu"
-          ],
-          [
-            88,
-            "Baku"
-          ],
-          [
-            92,
-            "Tuban"
-          ],
-          [
-            96,
-            "Qudan"
-          ],
-          [
-            100,
-            "Denua"
-          ]
-        ]
+        "random-event": {
+          "4": "Chony",
+          "8": "Banda",
+          "12": "Jochu",
+          "16": "Kira",
+          "20": "Khatir",
+          "24": "Chaidu",
+          "28": "Atan",
+          "32": "Buandu",
+          "36": "Javyn",
+          "40": "Khashin",
+          "44": "Bayara",
+          "48": "Temura",
+          "52": "Kidha",
+          "56": "Kathos",
+          "60": "Tanua",
+          "64": "Bashtu",
+          "68": "Jaran",
+          "72": "Othos",
+          "76": "Khutan",
+          "80": "Otaan",
+          "84": "Martu",
+          "88": "Baku",
+          "92": "Tuban",
+          "96": "Qudan",
+          "100": "Denua"
+        }
       },
       "Varou": {
         "description": "... a name for a varou.",
         "options": null,
-        "random-event": [
-          [
-            4,
-            "Vata"
-          ],
-          [
-            8,
-            "Zora"
-          ],
-          [
-            12,
-            "Jasna"
-          ],
-          [
-            16,
-            "Charna"
-          ],
-          [
-            20,
-            "Tana"
-          ],
-          [
-            24,
-            "Soveen"
-          ],
-          [
-            28,
-            "Radka"
-          ],
-          [
-            32,
-            "Zlata"
-          ],
-          [
-            36,
-            "Leesla"
-          ],
-          [
-            40,
-            "Byna"
-          ],
-          [
-            44,
-            "Meeka"
-          ],
-          [
-            48,
-            "Iskra"
-          ],
-          [
-            52,
-            "Jarek"
-          ],
-          [
-            56,
-            "Darva"
-          ],
-          [
-            60,
-            "Neda"
-          ],
-          [
-            64,
-            "Keha"
-          ],
-          [
-            68,
-            "Zhivka"
-          ],
-          [
-            72,
-            "Kvata"
-          ],
-          [
-            76,
-            "Staysa"
-          ],
-          [
-            80,
-            "Evka"
-          ],
-          [
-            84,
-            "Vuksha"
-          ],
-          [
-            88,
-            "Muko"
-          ],
-          [
-            92,
-            "Dreko"
-          ],
-          [
-            96,
-            "Aleko"
-          ],
-          [
-            100,
-            "Vojan"
-          ]
-        ]
+        "random-event": {
+          "4": "Vata",
+          "8": "Zora",
+          "12": "Jasna",
+          "16": "Charna",
+          "20": "Tana",
+          "24": "Soveen",
+          "28": "Radka",
+          "32": "Zlata",
+          "36": "Leesla",
+          "40": "Byna",
+          "44": "Meeka",
+          "48": "Iskra",
+          "52": "Jarek",
+          "56": "Darva",
+          "60": "Neda",
+          "64": "Keha",
+          "68": "Zhivka",
+          "72": "Kvata",
+          "76": "Staysa",
+          "80": "Evka",
+          "84": "Vuksha",
+          "88": "Muko",
+          "92": "Dreko",
+          "96": "Aleko",
+          "100": "Vojan"
+        }
       },
       "Trolls": {
         "description": "... a name for a troll.",
         "options": null,
-        "random-event": [
-          [
-            4,
-            "Ratlle"
-          ],
-          [
-            8,
-            "Scratch"
-          ],
-          [
-            12,
-            "Wallow"
-          ],
-          [
-            16,
-            "Groak"
-          ],
-          [
-            20,
-            "Gimble"
-          ],
-          [
-            24,
-            "Scar"
-          ],
-          [
-            28,
-            "Cratch"
-          ],
-          [
-            32,
-            "Creech"
-          ],
-          [
-            36,
-            "Shush"
-          ],
-          [
-            40,
-            "Glush"
-          ],
-          [
-            44,
-            "Slar"
-          ],
-          [
-            48,
-            "Gnash"
-          ],
-          [
-            52,
-            "Stoad"
-          ],
-          [
-            56,
-            "Grig"
-          ],
-          [
-            60,
-            "Bleat"
-          ],
-          [
-            64,
-            "Chortle"
-          ],
-          [
-            68,
-            "Cluck"
-          ],
-          [
-            72,
-            "Slith"
-          ],
-          [
-            76,
-            "Mongo"
-          ],
-          [
-            80,
-            "Creak"
-          ],
-          [
-            84,
-            "Burble"
-          ],
-          [
-            88,
-            "Vrusk"
-          ],
-          [
-            92,
-            "Snuffle"
-          ],
-          [
-            96,
-            "Leech"
-          ],
-          [
-            100,
-            "Herk"
-          ]
-        ]
+        "random-event": {
+          "4": "Ratlle",
+          "8": "Scratch",
+          "12": "Wallow",
+          "16": "Groak",
+          "20": "Gimble",
+          "24": "Scar",
+          "28": "Cratch",
+          "32": "Creech",
+          "36": "Shush",
+          "40": "Glush",
+          "44": "Slar",
+          "48": "Gnash",
+          "52": "Stoad",
+          "56": "Grig",
+          "60": "Bleat",
+          "64": "Chortle",
+          "68": "Cluck",
+          "72": "Slith",
+          "76": "Mongo",
+          "80": "Creak",
+          "84": "Burble",
+          "88": "Vrusk",
+          "92": "Snuffle",
+          "96": "Leech",
+          "100": "Herk"
+        }
       }
     },
     "random-event": null

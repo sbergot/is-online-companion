@@ -786,108 +786,57 @@
           "Draw a conclusion": "Decide the answer based on the most interesting and obvious result.",
           "Ask yes/no": {
             "description": "Ask a yes/no question. Decide the odds of a 'yes', and roll.",
-            "options": [
-              [
-                "Almost Certain",
-                {
-                  "description": "Almost Certain.",
-                  "options": null,
-                  "random-event": [
-                    [
-                      10,
-                      "No"
-                    ],
-                    [
-                      100,
-                      "Yes"
-                    ]
-                  ]
+            "options": {
+              "Almost Certain": {
+                "description": "Almost Certain.",
+                "options": null,
+                "random-event": {
+                  "10": "No",
+                  "100": "Yes"
                 }
-              ],
-              [
-                "Likely",
-                {
-                  "description": "Likely.",
-                  "options": null,
-                  "random-event": [
-                    [
-                      25,
-                      "No"
-                    ],
-                    [
-                      100,
-                      "Yes"
-                    ]
-                  ]
+              },
+              "Likely": {
+                "description": "Likely.",
+                "options": null,
+                "random-event": {
+                  "25": "No",
+                  "100": "Yes"
                 }
-              ],
-              [
-                "50/50",
-                {
-                  "description": "50/50.",
-                  "options": null,
-                  "random-event": [
-                    [
-                      50,
-                      "No"
-                    ],
-                    [
-                      100,
-                      "Yes"
-                    ]
-                  ]
+              },
+              "50/50": {
+                "description": "50/50.",
+                "options": null,
+                "random-event": {
+                  "50": "No",
+                  "100": "Yes"
                 }
-              ],
-              [
-                "Unlikely",
-                {
-                  "description": "Unlikely.",
-                  "options": null,
-                  "random-event": [
-                    [
-                      75,
-                      "No"
-                    ],
-                    [
-                      100,
-                      "Yes"
-                    ]
-                  ]
+              },
+              "Unlikely": {
+                "description": "Unlikely.",
+                "options": null,
+                "random-event": {
+                  "75": "No",
+                  "100": "Yes"
                 }
-              ],
-              [
-                "Small Chance",
-                {
-                  "description": "Small Chance.",
-                  "options": null,
-                  "random-event": [
-                    [
-                      90,
-                      "No"
-                    ],
-                    [
-                      100,
-                      "Yes"
-                    ]
-                  ]
+              },
+              "Small Chance": {
+                "description": "Small Chance.",
+                "options": null,
+                "random-event": {
+                  "90": "No",
+                  "100": "Yes"
                 }
-              ]
-            ],
+              }
+            },
             "random-event": null
           },
           "Pick two": {
             "description": "Pick two: Envision two options, the first being 'likely' and roll to see which one happens.",
             "options": null,
-            "random-event": [
-              [
-                25,
-                "First option."
-              ],
-              [
-                100,
-                "The other option."
-              ]
-            ]
+            "random-event": {
+              "25": "First option.",
+              "100": "The other option."
+            }
           },
           "Spark an idea": "Brainstorm or use a random prompt."
         },

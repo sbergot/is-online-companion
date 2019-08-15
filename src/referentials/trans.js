@@ -16,7 +16,7 @@ function transform(obj) {
     if (isAssociativeArray(obj)) {
         const res = {};
         obj.map(e => {
-            res[e[0]] = e[1];
+            res[e[0]] = transform(e[1]);
         });
         return res;
     }
