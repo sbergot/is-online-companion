@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AnyLogBlock, LogType, UserInputLog, ChallengeRollLog, ChallengeRoll } from '../../../contracts/log';
 import { SmallPrimaryButton } from '../../buttons';
 import { StatKey, StatusKey, Character } from '../../../contracts/character';
-import { Select } from '../../controls';
+import { Select, TextArea } from '../../controls';
 import { ChallengeRollType } from '../../../contracts/rolls';
 import { challengeRoll } from '../../../services/rolls';
 import { getLogTypeDescription } from '../../../services/logHelpers';
@@ -215,11 +215,10 @@ function UserInputEditor({ userInputLens, onSubmit }: UserInputEditorProps) {
     }
 
     return (
-        <textarea
-            className="resize-none border"
+        <TextArea 
             value={textLens.state}
-            onChange={e => setText(e.target.value)}
-            onKeyPress={onKeyDown}
+            onChange={setText}
+            onKeyDown={onKeyDown}
             rows={5}
             cols={70}
         />

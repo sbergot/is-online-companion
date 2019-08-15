@@ -38,7 +38,7 @@ export function CombatAndTravel({ match }: RouteComponentProps<CampaignKeyParam 
                     <Zoom parentLens={campaignLens} zoomTo={selected.data.type == 'combat' ? 'combats' : 'travels'}>
                         {sublens => {
                             const selectedLens = sublens.zoom(selected.key).zoom('data') as Lens<
-                                ProgressChallenge<ChallengeType>
+                            ProgressChallenge<ChallengeType>
                             >;
                             return (
                                 <ChallengeActions

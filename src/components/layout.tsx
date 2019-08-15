@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChildrenProp } from '../contracts/component';
+import { ChildrenProp, ClassProp } from '../contracts/component';
 
 interface SectionProps {
     title?: string;
@@ -33,21 +33,22 @@ export function MainPanel({ children }: ChildrenProp) {
 
 export function ActionPanel({ children }: ChildrenProp) {
     return (
-        <div className="pl-4 pt-4 max-w-2xl w-full" style={{ maxWidth: '15rem' }}>
+        <div className="pl-4 pt-4 w-full" style={{ maxWidth: '15rem' }}>
             {children}
         </div>
     );
 }
 
-interface SelectableProps extends ChildrenProp {
+interface SelectableProps extends ChildrenProp, ClassProp {
     selected?: boolean;
     onClick?: () => void;
 }
 
-export function Selectable({ children, selected, onClick }: SelectableProps) {
+export function Selectable({ children, selected, onClick, className }: SelectableProps) {
     const classes = [
         'border border-gray-200 rounded-sm p-2 mt-2 cursor-pointer hover:shadow',
         selected || false ? 'bg-gray-200' : '',
+        className || '',
     ].join(' ');
     return (
         <div className={classes} onClick={onClick}>

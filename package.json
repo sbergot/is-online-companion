@@ -7,6 +7,7 @@
   "scripts": {
     "build:base": "postcss css/base.css -o static/base.css --config postcss-base-config",
     "build:style": "postcss css/style.css -o static/style.css",
+    "build:style-debug": "postcss css/style.css -o static/style.css --config postcss-base-config",
     "build": "webpack -p",
     "watch": "webpack -d --watch",
     "start:dev": "webpack-dev-server",

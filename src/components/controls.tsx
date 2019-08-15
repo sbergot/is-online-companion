@@ -86,6 +86,27 @@ export function TextInput({ value, onChange, placeHolder }: TextInputProps) {
     );
 }
 
+interface TextAreaProps {
+    value: string;
+    onChange(s: string): void;
+    onKeyDown?(e: React.KeyboardEvent): void;
+    rows: number;
+    cols: number;
+}
+
+export function TextArea({ value, onChange, rows, cols, onKeyDown }: TextAreaProps) {
+    return <div>
+        <textarea
+            className="resize-none border"
+            value={value}
+            onChange={e => onChange(e.target.value)}
+            rows={rows}
+            cols={cols}
+            onKeyPress={onKeyDown ? onKeyDown : undefined}
+        />
+    </div>
+}
+
 export function Label({ children }: ChildrenProp) {
     const classes = `
     block text-gray-700 font-bold mb-2
