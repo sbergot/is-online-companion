@@ -45,6 +45,11 @@ export const tracksRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = creat
     { campaignKey: null, characterKey: null },
 );
 
+export const notesRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteDef(
+    ({ campaignKey, characterKey }) => `/campaign/${campaignKey}/character/${characterKey}/notes`,
+    { campaignKey: null, characterKey: null },
+);
+
 export const campaignSelectionRoute = '/campaign/selection';
 
 export const aboutRoute = '/about';

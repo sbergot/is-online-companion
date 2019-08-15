@@ -48,6 +48,13 @@ export function wrapKeyMap<T>(source: KeyMapSource<T>): KeyMapHook<T> {
             registerEntry(newEntry);
             return newEntry;
         },
+        remove(entry: KeyEntry<T>) {
+            source.remove(entry);
+            lens.setState(entries => {
+                delete entries[entry.key];
+                return entries;
+            })
+        }
     };
 }
 

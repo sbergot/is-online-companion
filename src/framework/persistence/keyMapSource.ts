@@ -36,6 +36,12 @@ export class KeyMapSourceImpl<T> implements KeyMapSource<T> {
         return entry;
     }
 
+    remove(entry: KeyEntry<T>) {
+        const allEntries = this.loadAll();
+        delete allEntries[entry.key];
+        this.innerSaveAll(allEntries);
+    }
+
     onUpdate(cb: () => void): void {
         this.storage.onUpdate(cb);
     }

@@ -11,6 +11,7 @@ import {
     CharacterAutoSelection,
     AboutPage,
     CombatAndTravel,
+    NotesPage,
 } from '../pages';
 import { ErrorBoundary } from './ErrorPage';
 import { setCurrentVersion, useMetadata } from '../services/applicationMetadata';
@@ -23,12 +24,13 @@ export function Layout() {
     return (
         <ErrorBoundary>
             <Router>
-                <div className="container min-h-screen min-w-screen flex text-gray-700 text-xs font-body">
+                <div className="min-h-screen min-w-screen flex text-gray-700 text-xs font-body">
                     <Menu />
                     <Switch>
                         <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
                         <Route exact path={routes.campaignRoute.template} component={CharacterAutoSelection} />
                         <Route exact path={routes.characterSelectionRoute.template} component={CharacterSelection} />
+                        <Route exact path={routes.notesRoute.template} component={NotesPage} />
                         <Route exact path={routes.logRoute.template} component={LogPage} />
                         <Route exact path={routes.characterSheetRoute.template} component={CharacterSheetPage} />
                         <Route exact path={routes.tracksRoute.template} component={CombatAndTravel} />

@@ -13,6 +13,7 @@ function useDataService(): DataService {
         campaigns: wrapKeyMap(new KeyMapSourceImpl(storage, 'campaigns')),
         characters: wrapKeyMap(new KeyMapSourceImpl(storage, 'characters')),
         metaData: wrapKeyMap(new KeyMapSourceImpl(storage, 'metadata')),
+        notes: wrapKeyMap(new KeyMapSourceImpl(storage, 'notes')),
         logs: (campaignName: string) => {
             return wrapStream(new StreamSourceImpl(storage, 'logs', campaignName, 30));
         },

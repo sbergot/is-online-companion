@@ -20,6 +20,7 @@ export interface KeyMapSource<T> {
     saveAll(entries: KeyMap<T>): void;
     saveNew(data: T): KeyEntry<T>;
     save(entry: KeyEntry<T>): KeyEntry<T>;
+    remove(entry: KeyEntry<T>): void;
     onUpdate(cb: () => void): void;
     unRegister(cb: () => void): void;
 }

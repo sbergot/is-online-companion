@@ -6,6 +6,7 @@ export interface KeyMapHook<T> {
     getEntryLens(key: string): Lens<KeyEntry<T>>;
     saveNew(data: T): KeyEntry<T>;
     save(entry: KeyEntry<T>): KeyEntry<T>;
+    remove(entry: KeyEntry<T>): void;
 }
 
 export interface StreamHook<T> {
