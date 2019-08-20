@@ -13,8 +13,8 @@ type Mode = Variant<"display", {selected: KeyEntry<Note> | null}> |
 Variant<"new"> |
 Variant<"edit", {entry: KeyEntry<Note>}>
 
-const defaultMode: Mode = {key: "display", value: {selected: null}};
-const newMode: Mode = { key: "new", value: null };
+const defaultMode: Mode = {type: "display", value: {selected: null}};
+const newMode: Mode = { type: "new", value: null };
 
 export function NotesPage({ }: RouteComponentProps<CampaignKeyParam>) {
     const dataService = DataServiceContainer.useContainer();
@@ -32,7 +32,7 @@ export function NotesPage({ }: RouteComponentProps<CampaignKeyParam>) {
     }
 
     function onEditNote(entry: KeyEntry<Note>) {
-        setMode({ key: "edit", value: {entry} });
+        setMode({ type: "edit", value: {entry} });
     }
 
     function onEditSaveNote(entry: KeyEntry<Note>) {
@@ -40,17 +40,17 @@ export function NotesPage({ }: RouteComponentProps<CampaignKeyParam>) {
         setMode(defaultMode);
     }
 
-    const selected = mode.key == "display" ? mode.value.selected : null;
+    const selected = mode.type == "display" ? mode.value.selected : null;
 
     return (
         <>
             <MainPanel>
                 {(() => {
-                    switch (mode.key) {
+                    switch (mode.type) {
                         case 'display':
                             return <NoteList
                                 onNew={() => setMode(newMode)}
-                                setSelected={n => setMode({ key: "display", value: {selected: n} })}
+                                setSelected={n => setMode({ type: "display", value: {selected: n} })}
                                 notes={Object.values(noteLens.state)}
                                 selected={mode.value.selected} />;
                         case 'edit':

@@ -5,4 +5,5 @@ export { LogPage } from './logPage';
 export { CampaignSelection } from './campaignSelectionPage';
 export { AboutPage } from './aboutPage';
 export { CombatAndTravel } from './combatAndTravelPage';
-export { NotesPage } from './notesPage'
+export { NotesPage } from './notesPage';
+export { OraclesPage } from './oraclesPage';

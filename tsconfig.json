@@ -11,6 +11,8 @@
       "es2017",
       "dom"
     ],
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*"

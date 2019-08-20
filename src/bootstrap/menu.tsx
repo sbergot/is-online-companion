@@ -80,6 +80,9 @@ function MenuInner({ location }: RouteComponentProps<CampaignKeyParam>) {
             <NavigationLink current={pathname} to={routes.aboutRoute}>
                 about this website
             </NavigationLink>
+            <NavigationLink current={pathname} to={routes.oraclesRoute}>
+                oracles
+            </NavigationLink>
             <NavigationLink current={pathname} to={routes.campaignSelectionRoute}>
                 campaign selection
             </NavigationLink>

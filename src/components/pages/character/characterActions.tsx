@@ -18,8 +18,8 @@ interface CharacterActionsProps {
 export function CharacterActions({ charLens, logSource, selectedLens, characterKey }: CharacterActionsProps) {
     const statsLens = charLens.zoom('stats');
     const selectedObj = selectedLens.state;
-    const selectedVow = selectedObj.key != 'vow' ? null : selectedObj.value;
-    const selectedStat = selectedObj.key != 'stat' ? null : selectedObj.value;
+    const selectedVow = selectedObj.type != 'vow' ? null : selectedObj.value;
+    const selectedStat = selectedObj.type != 'stat' ? null : selectedObj.value;
 
     return (
         <>

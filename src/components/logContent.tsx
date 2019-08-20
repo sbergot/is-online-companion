@@ -40,7 +40,7 @@ export function InnerLogBlock({ entry, character }: InnerLogBlockProps) {
 }
 
 function LogBlockContent({ log }: { log: AnyLogBlock }) {
-    switch (log.key) {
+    switch (log.type) {
         case 'UserInput':
             return <UserInputLogBlock block={log.value} />;
         case 'ChallengeRoll':

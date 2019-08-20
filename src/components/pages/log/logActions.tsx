@@ -8,7 +8,7 @@ import { getMomentumMeta } from '../../../services/characterHelpers';
 import { burnMomentum } from '../../../services/rolls';
 
 function isChallengeRollEntry(entry: StreamEntry<AnyLogBlock>): entry is StreamEntry<ChallengeRollLog> {
-    return entry.data.key === 'ChallengeRoll';
+    return entry.data.type === 'ChallengeRoll';
 }
 
 interface LogBlockActionsProps {
@@ -24,7 +24,7 @@ export function LogBlockActions({ selected, logSource, onRemove, onEdit, charact
     const character = characterLens.state;
     const setMomentum = characterLens.zoom('momentum').zoom('level').setState;
     const currentMomentum = character.momentum.level;
-    const hasEdit = selected.data.key !== 'ProgressRoll';
+    const hasEdit = selected.data.type !== 'ProgressRoll';
 
     function burnMomentumAction(challengeRoll: StreamEntry<ChallengeRollLog>) {
         setMomentum(() => getMomentumMeta(character).reset);

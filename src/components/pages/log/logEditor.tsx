@@ -16,7 +16,7 @@ interface EditorProps<T extends AnyLogBlock> {
 }
 
 function getUserInputLens(characterKey: string, text: string): Lens<UserInputLog> {
-    return useLens<UserInputLog>({ key: 'UserInput', value: { characterKey, text } });
+    return useLens<UserInputLog>({ type: 'UserInput', value: { characterKey, text } });
 }
 
 interface ChallengeRollParams {
@@ -28,7 +28,7 @@ interface ChallengeRollParams {
 function getChallengeRollLens(characterKey: string, params: ChallengeRollParams): Lens<ChallengeRollLog> {
     const { type, bonus, stat } = params;
     return useLens<ChallengeRollLog>({
-        key: 'ChallengeRoll',
+        type: 'ChallengeRoll',
         value: {
             characterKey,
             type,
@@ -49,14 +49,14 @@ interface LogBlockEditorProps extends EditorProps<AnyLogBlock> {
 
 export function LogBlockEditor({ onLog, logBlok, character }: LogBlockEditorProps) {
     const characterKey = character.key;
-    const userInputLens = getUserInputLens(characterKey, logBlok.key == 'UserInput' ? logBlok.value.text : '');
+    const userInputLens = getUserInputLens(characterKey, logBlok.type == 'UserInput' ? logBlok.value.text : '');
     const challengeRollLogLens = getChallengeRollLens(
         characterKey,
-        logBlok.key == 'ChallengeRoll'
+        logBlok.type == 'ChallengeRoll'
             ? { type: logBlok.value.type, bonus: logBlok.value.result.bonus, stat: logBlok.value.result.stat }
             : { type: 'edge', bonus: 0, stat: 0 },
     );
-    const logType = logBlok.key;
+    const logType = logBlok.type;
 
     function roll(): ChallengeRoll {
         const currentMomentum = character.data.momentum.level;
@@ -74,7 +74,7 @@ export function LogBlockEditor({ onLog, logBlok, character }: LogBlockEditorProp
     function onSave() {
         switch (logType) {
             case 'ChallengeRoll':
-                onLog({ key: 'ChallengeRoll', value: roll() });
+                onLog({ type: 'ChallengeRoll', value: roll() });
                 break;
             case 'UserInput':
                 onLog(userInputLens.state);
@@ -126,7 +126,7 @@ export function NewLogBlockEditor({ onLog, character }: NewLogBlockEditorProps) 
     function onSave() {
         switch (logType) {
             case 'ChallengeRoll':
-                onLog({ key: 'ChallengeRoll', value: roll() });
+                onLog({ type: 'ChallengeRoll', value: roll() });
                 break;
             case 'UserInput':
                 onLog(userInputLens.state);

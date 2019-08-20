@@ -38,7 +38,7 @@ export function ChallengeActions({ lens: challengeLens, setExp, characterKey, lo
             challenge: challenge,
             result: progressRoll(challenge.track),
         };
-        const entry = logSource.pushNew({ key: 'ProgressRoll', value: roll });
+        const entry = logSource.pushNew({ type: 'ProgressRoll', value: roll });
         setChallengeRollRef(() => ({ page: entry.page, key: entry.key }));
     }
 

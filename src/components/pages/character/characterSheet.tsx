@@ -21,13 +21,13 @@ export function CharacterSheet({ lens, selectionLens }: CharacterSheetProps) {
     const { state: character, zoom } = lens;
     const momentumMeta = getMomentumMeta(character);
     const selectedObj = selectionLens.state;
-    const selectedStat = selectedObj.key === 'stat' ? selectedObj.value.stat : null;
+    const selectedStat = selectedObj.type === 'stat' ? selectedObj.value.stat : null;
     function onSelectStat(statKey: StatKey | null) {
-        selectionLens.setState(() => (statKey != null ? { key: 'stat', value: { stat: statKey } } : nullVariant));
+        selectionLens.setState(() => (statKey != null ? { type: 'stat', value: { stat: statKey } } : nullVariant));
     }
-    const selectedVow = selectedObj.key == 'vow' ? selectedObj.value.key : undefined;
+    const selectedVow = selectedObj.type == 'vow' ? selectedObj.value.key : undefined;
     function onSelectVow(entry: KeyEntry<ProgressChallenge<'vow'>> | null) {
-        selectionLens.setState(() => (entry != null ? { key: 'vow', value: entry } : nullVariant));
+        selectionLens.setState(() => (entry != null ? { type: 'vow', value: entry } : nullVariant));
     }
     return (
         <>

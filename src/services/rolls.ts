@@ -1,4 +1,5 @@
 import { ChallengeRollResult, ProgressRollResult, ChallengeDice } from '../contracts/rolls';
+import { SimpleOracle } from '../contracts/referential';
 
 function rollDie(i: number) {
     return Math.floor(Math.random() * i) + 1;
@@ -49,4 +50,12 @@ export function progressRoll(track: number): ProgressRollResult {
         track: Math.floor(track / 4),
         challengeDice: [rollDie(10), rollDie(10)],
     };
+}
+
+export function rollOracle(oracle: SimpleOracle): string {
+    const table = oracle["random-event"];
+    const die = rollDie(100);
+    const limits = Object.keys(table).map(n => Number(n)).sort((a, b) => a-b);
+    const match = limits.find(l => l >= die) || 100;
+    return table[match.toString()];
 }

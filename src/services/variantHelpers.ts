@@ -1,3 +1,3 @@
 import { NullVariant } from '../contracts/variant';
 
-export const nullVariant: NullVariant = { key: 'null', value: null };
+export const nullVariant: NullVariant = { type: 'null', value: null };

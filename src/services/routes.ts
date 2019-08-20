@@ -53,3 +53,5 @@ export const notesRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = create
 export const campaignSelectionRoute = '/campaign/selection';
 
 export const aboutRoute = '/about';
+
+export const oraclesRoute = '/oracles';

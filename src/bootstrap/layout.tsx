@@ -12,6 +12,7 @@ import {
     AboutPage,
     CombatAndTravel,
     NotesPage,
+    OraclesPage,
 } from '../pages';
 import { ErrorBoundary } from './ErrorPage';
 import { setCurrentVersion, useMetadata } from '../services/applicationMetadata';
@@ -35,6 +36,7 @@ export function Layout() {
                         <Route exact path={routes.characterSheetRoute.template} component={CharacterSheetPage} />
                         <Route exact path={routes.tracksRoute.template} component={CombatAndTravel} />
                         <Route exact path={routes.aboutRoute} component={AboutPage} />
+                        <Route exact path={routes.oraclesRoute} component={OraclesPage} />
                         <Route exact path="" component={CampaignSelection} />
                     </Switch>
                 </div>

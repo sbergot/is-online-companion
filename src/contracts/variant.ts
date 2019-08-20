@@ -3,7 +3,7 @@ import { ProgressChallenge, ChallengeType } from './challenge';
 import { Character } from './character';
 
 export interface Variant<K extends string, T = null> {
-    key: K;
+    type: K;
     value: T;
 }
 
