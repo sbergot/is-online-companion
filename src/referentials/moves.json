@@ -421,23 +421,28 @@
       },
       "Miss": {
         "description": "Also suffer -1 momentum. If you are at 0 health, you must mark wounded or maimed (if currently unmarked) or roll on the following table.",
-        "random-event": {
-          "10": {
+        "random-event": [
+          {
+            "upper": 10,
             "description": "The harm is mortal. Face Death."
           },
-          "20": {
+          {
+            "upper": 20,
             "description": "You are dying. You need to Heal within an hour or two, or Face Death."
           },
-          "35": {
+          {
+            "upper": 35,
             "description": "You are unconscious and out of action. If left alone, you come back to your senses in an hour or two. If you are are vulnerable to a foe not inclined to show mercy, Face Death."
           },
-          "50": {
+          {
+            "upper": 50,
             "description": "You are reeling and fighting to stay conscious. If you engage in any vigorous activity (such as running or fighting) before taking a breather for a few minutes, roll on this table again (before resolving the other move)."
           },
-          "100": {
+          {
+            "upper": 100,
             "description": "You are battered but still standing."
           }
-        }
+        ]
       }
     }
   },
@@ -494,12 +499,24 @@
       },
       "Miss": {
         "description": "Also suffer -1 momentum. If you are at spirit 0, you must mark shaken or corrupted (if currently unmarked) or roll on the following table.",
-        "random-event": {
-          "10": "You are overwhelmed. Face Desolation.",
-          "25": "You give up. Forsake Your Vow (if possible, one relevant to your current crisis.",
-          "50": "You give in to fear or compulsion, and act against your better instincts.",
-          "100": "You persevere."
-        }
+        "random-event": [
+          {
+            "upper": 10,
+            "description": "You are overwhelmed. Face Desolation."
+          },
+          {
+            "upper": 25,
+            "description": "You give up. Forsake Your Vow (if possible, one relevant to your current crisis."
+          },
+          {
+            "upper": 50,
+            "description": "You give in to fear or compulsion, and act against your better instincts."
+          },
+          {
+            "upper": 100,
+            "description": "You persevere."
+          }
+        ]
       }
     }
   },
@@ -609,24 +626,72 @@
           "Ask yes/no": "Envision two negative outcomes. Rate one as likely, and Ask the Oracle using the yes/no table. On a yes, make that outcome happen. Otherwise make it the other.",
           "Random": "Roll on the following table."
         },
-        "random-event": {
-          "2": "Roll again and apply that result but make it worse. If you roll this result yet again, think of something dreadful that changes the course of your quest (Ask the Oracle if unsure) and make it happen.",
-          "5": "A person or community you trusted loses faith in you, or acts against you.",
-          "9": "A person or community you care about is exposed to danger.",
-          "16": "You are separated from something or someone.",
-          "23": "Your action has an unintended effect.",
-          "32": "Something of value is lost destroyed.",
-          "41": "The current situation worsens.",
-          "50": "A new danger or foe is revealed.",
-          "59": "It causes delay or puts you at a disadvantage.",
-          "68": "It is harmful.",
-          "77": "It is stressful.",
-          "85": "A surprising development complicates your quest.",
-          "90": "It wastes resources.",
-          "94": "It forces you to act against your best intentions.",
-          "98": "A friend, companion, or ally is put in harm's way (or you are, if alone).",
-          "100": "Roll twice more on this table. Both results occur. If they are the same result, make it worse."
-        }
+        "random-event": [
+          {
+            "upper": 2,
+            "description": "Roll again and apply that result but make it worse. If you roll this result yet again, think of something dreadful that changes the course of your quest (Ask the Oracle if unsure) and make it happen."
+          },
+          {
+            "upper": 5,
+            "description": "A person or community you trusted loses faith in you, or acts against you."
+          },
+          {
+            "upper": 9,
+            "description": "A person or community you care about is exposed to danger."
+          },
+          {
+            "upper": 16,
+            "description": "You are separated from something or someone."
+          },
+          {
+            "upper": 23,
+            "description": "Your action has an unintended effect."
+          },
+          {
+            "upper": 32,
+            "description": "Something of value is lost destroyed."
+          },
+          {
+            "upper": 41,
+            "description": "The current situation worsens."
+          },
+          {
+            "upper": 50,
+            "description": "A new danger or foe is revealed."
+          },
+          {
+            "upper": 59,
+            "description": "It causes delay or puts you at a disadvantage."
+          },
+          {
+            "upper": 68,
+            "description": "It is harmful."
+          },
+          {
+            "upper": 77,
+            "description": "It is stressful."
+          },
+          {
+            "upper": 85,
+            "description": "A surprising development complicates your quest."
+          },
+          {
+            "upper": 90,
+            "description": "It wastes resources."
+          },
+          {
+            "upper": 94,
+            "description": "It forces you to act against your best intentions."
+          },
+          {
+            "upper": 98,
+            "description": "A friend, companion, or ally is put in harm's way (or you are, if alone)."
+          },
+          {
+            "upper": 100,
+            "description": "Roll twice more on this table. Both results occur. If they are the same result, make it worse."
+          }
+        ]
       }
     }
   },
@@ -644,47 +709,83 @@
             "options": {
               "Almost Certain": {
                 "description": "Almost Certain.",
-                "random-event": {
-                  "10": "No",
-                  "100": "Yes"
-                }
+                "random-event": [
+                  {
+                    "upper": 10,
+                    "description": "No"
+                  },
+                  {
+                    "upper": 100,
+                    "description": "Yes"
+                  }
+                ]
               },
               "Likely": {
                 "description": "Likely.",
-                "random-event": {
-                  "25": "No",
-                  "100": "Yes"
-                }
+                "random-event": [
+                  {
+                    "upper": 25,
+                    "description": "No"
+                  },
+                  {
+                    "upper": 100,
+                    "description": "Yes"
+                  }
+                ]
               },
               "50/50": {
                 "description": "50/50.",
-                "random-event": {
-                  "50": "No",
-                  "100": "Yes"
-                }
+                "random-event": [
+                  {
+                    "upper": 50,
+                    "description": "No"
+                  },
+                  {
+                    "upper": 100,
+                    "description": "Yes"
+                  }
+                ]
               },
               "Unlikely": {
                 "description": "Unlikely.",
-                "random-event": {
-                  "75": "No",
-                  "100": "Yes"
-                }
+                "random-event": [
+                  {
+                    "upper": 75,
+                    "description": "No"
+                  },
+                  {
+                    "upper": 100,
+                    "description": "Yes"
+                  }
+                ]
               },
               "Small Chance": {
                 "description": "Small Chance.",
-                "random-event": {
-                  "90": "No",
-                  "100": "Yes"
-                }
+                "random-event": [
+                  {
+                    "upper": 90,
+                    "description": "No"
+                  },
+                  {
+                    "upper": 100,
+                    "description": "Yes"
+                  }
+                ]
               }
             }
           },
           "Pick two": {
             "description": "Pick two: Envision two options, the first being 'likely' and roll to see which one happens.",
-            "random-event": {
-              "25": "First option.",
-              "100": "The other option."
-            }
+            "random-event": [
+              {
+                "upper": 25,
+                "description": "First option."
+              },
+              {
+                "upper": 100,
+                "description": "The other option."
+              }
+            ]
           },
           "Spark an idea": "Brainstorm or use a random prompt."
         }

@@ -29,8 +29,13 @@ function transform(obj) {
         const res = {}
         Object.keys(obj).map(k => {
             const value = obj[k];
-            if (value != null) {
-                res[k] = transform(obj[k]);
+            if (value == null) {
+                return;
+            }
+            if (k == "random-event") {
+                res[k] = listity_random_events(value);
+            } else {
+                res[k] = transform(value);
             }
         })
         return res;
@@ -39,11 +44,57 @@ function transform(obj) {
     return obj;
 }
 
-["assets", "foes", "moves", "oracles", "regions", "world"].forEach(name => {
-    console.log("processing " + name);
+function listity_random_events(obj) {
+    return Object.keys(obj).map(k => {
+        const value = obj[k];
+        if (typeof value == "string") {
+            return {
+                upper: Number(k),
+                description: value
+            }
+        } else {
+            return {
+                upper: Number(k),
+                ...transform(obj[k]),
+            }
+        }
+    })
+}
+
+function listify(obj) {
+    return Object.keys(obj).map(k => ({
+        name: k,
+        ...obj[k],
+    }))
+}
+
+function apply(name, cb) {
+    console.log(`applying ${cb.name} for ${name}`);
     const fname = "./" + name + ".json";
     const obj = require(fname);
-    fs.writeFile(fname, JSON.stringify(transform(obj), null, 2), () => {
-        console.log("done for " + name);
+    return new Promise((resolve, reject) => {
+        let newObj;
+        try {
+            newObj = cb(obj);
+        } catch (e) {
+            reject(e);
+        }
+        fs.writeFile(fname, JSON.stringify(newObj, null, 2), (err) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            console.log(`done applying ${cb.name} for ${name}`);
+            resolve();
+        });
     });
+}
+
+// ["assets", "foes", "moves", "oracles", "regions", "world"].forEach(name => {
+//     apply(name, transform);
+// });
+
+["oracles", "regions"].forEach(name => {
+    apply(name, listify).catch(console.error);
 });
+

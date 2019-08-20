@@ -315,18 +315,48 @@
         "enabled": false,
         "result": {
           "description": "When you stand with your ally as they make a progress move, envision how you support them.",
-          "random-event": {
-            "10": "Your ally may replace one of their challenge dice with a 1.",
-            "20": "Your ally may replace one of their challenge dice with a 2.",
-            "30": "Your ally may replace one of their challenge dice with a 3.",
-            "40": "Your ally may replace one of their challenge dice with a 4.",
-            "50": "Your ally may replace one of their challenge dice with a 5.",
-            "60": "Your ally may replace one of their challenge dice with a 6.",
-            "70": "Your ally may replace one of their challenge dice with a 7.",
-            "80": "Your ally may replace one of their challenge dice with a 8.",
-            "90": "Your ally may replace one of their challenge dice with a 9.",
-            "100": "Envision how you inadvertently undermine their action. Your ally must replace their lowest challenge die with a 10."
-          }
+          "random-event": [
+            {
+              "upper": 10,
+              "description": "Your ally may replace one of their challenge dice with a 1."
+            },
+            {
+              "upper": 20,
+              "description": "Your ally may replace one of their challenge dice with a 2."
+            },
+            {
+              "upper": 30,
+              "description": "Your ally may replace one of their challenge dice with a 3."
+            },
+            {
+              "upper": 40,
+              "description": "Your ally may replace one of their challenge dice with a 4."
+            },
+            {
+              "upper": 50,
+              "description": "Your ally may replace one of their challenge dice with a 5."
+            },
+            {
+              "upper": 60,
+              "description": "Your ally may replace one of their challenge dice with a 6."
+            },
+            {
+              "upper": 70,
+              "description": "Your ally may replace one of their challenge dice with a 7."
+            },
+            {
+              "upper": 80,
+              "description": "Your ally may replace one of their challenge dice with a 8."
+            },
+            {
+              "upper": 90,
+              "description": "Your ally may replace one of their challenge dice with a 9."
+            },
+            {
+              "upper": 100,
+              "description": "Envision how you inadvertently undermine their action. Your ally must replace their lowest challenge die with a 10."
+            }
+          ]
         }
       }
     ]
@@ -836,25 +866,61 @@
             "results": {
               "Strong Hit": {
                 "description": "Inflict +1d6 harm (one time only) when you Strike or Clash.",
-                "random-event": {
-                  "16": "1 Harm",
-                  "33": "2 Harm",
-                  "50": "3 Harm",
-                  "67": "4 Harm",
-                  "84": "5 Harm",
-                  "100": "6 Harm"
-                }
+                "random-event": [
+                  {
+                    "upper": 16,
+                    "description": "1 Harm"
+                  },
+                  {
+                    "upper": 33,
+                    "description": "2 Harm"
+                  },
+                  {
+                    "upper": 50,
+                    "description": "3 Harm"
+                  },
+                  {
+                    "upper": 67,
+                    "description": "4 Harm"
+                  },
+                  {
+                    "upper": 84,
+                    "description": "5 Harm"
+                  },
+                  {
+                    "upper": 100,
+                    "description": "6 Harm"
+                  }
+                ]
               },
               "Weak Hit": {
                 "description": "Inflict +1d6 harm (one time only) when you Strike or Clash. This death weighs on you; Endure Stress (2 stress).",
-                "random-event": {
-                  "16": "1 Harm",
-                  "33": "2 Harm",
-                  "50": "3 Harm",
-                  "67": "4 Harm",
-                  "84": "5 Harm",
-                  "100": "6 Harm"
-                }
+                "random-event": [
+                  {
+                    "upper": 16,
+                    "description": "1 Harm"
+                  },
+                  {
+                    "upper": 33,
+                    "description": "2 Harm"
+                  },
+                  {
+                    "upper": 50,
+                    "description": "3 Harm"
+                  },
+                  {
+                    "upper": 67,
+                    "description": "4 Harm"
+                  },
+                  {
+                    "upper": 84,
+                    "description": "5 Harm"
+                  },
+                  {
+                    "upper": 100,
+                    "description": "6 Harm"
+                  }
+                ]
               },
               "Miss": "This death weighs on you; Endure Stress (2 stress)"
             }
