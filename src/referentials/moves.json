@@ -9,12 +9,24 @@
       },
       "Weak Hit": {
         "description": "You succeed but face a troublesome cost. Choose one.",
-        "options": {
-          "You are delayed...": "... , lose advantage or face a new danger: Suffer -1 momentum.",
-          "You are tired or hurt.": "Endure Harm (1 Harm).",
-          "You are dispirited or afraid": "Endure Stress (1 Stress).",
-          "You sacrifice resources": "Suffer -1 supply."
-        }
+        "options": [
+          {
+            "name": "You are delayed...",
+            "description": "... , lose advantage or face a new danger: Suffer -1 momentum."
+          },
+          {
+            "name": "You are tired or hurt.",
+            "description": "Endure Harm (1 Harm)."
+          },
+          {
+            "name": "You are dispirited or afraid",
+            "description": "Endure Stress (1 Stress)."
+          },
+          {
+            "name": "You sacrifice resources",
+            "description": "Suffer -1 supply."
+          }
+        ]
       },
       "Miss": {
         "description": "You fail or your progress is undermined by a dramatic and costly turn of events. Pay the Price."
@@ -28,10 +40,16 @@
     "results": {
       "Strong Hit": {
         "description": "You gain advantage. Choose one.",
-        "options": {
-          "Take control": "Make another move now (not a progress move); when you do, add +1.",
-          "Prepare to act": "Take +2 momentum."
-        }
+        "options": [
+          {
+            "name": "Take control",
+            "description": "Make another move now (not a progress move); when you do, add +1."
+          },
+          {
+            "name": "Prepare to act",
+            "description": "Take +2 momentum."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "Your advantage is short-lived. Take +1 momentum."
@@ -67,10 +85,16 @@
       },
       "Weak Hit": {
         "description": "Your care is helpful. If you (or the ally under your care) have the wounded condition, you may clear it. Then, take or give up to +2 health. Choose one.",
-        "options": {
-          "Expend supplies": "Suffer -1 supply.",
-          "Use time": "Suffer -1 momentum."
-        }
+        "options": [
+          {
+            "name": "Expend supplies",
+            "description": "Suffer -1 supply."
+          },
+          {
+            "name": "Use time",
+            "description": "Suffer -1 momentum."
+          }
+        ]
       },
       "Miss": {
         "description": "Your aid is ineffective. Pay the Price."
@@ -100,23 +124,53 @@
     "results": {
       "Strong Hit": {
         "description": "Your and your allies may choose two.",
-        "options": {
-          "Recuperate": "Take +1 health for you and any companions.",
-          "Partake": "Suffer -1 supply and take +1 health for you and any companions.",
-          "Relax": "Take +1 spirit.",
-          "Focus": "Take +1 momentum.",
-          "Prepare": "When you break camp, add +1 if you Undertake a Journey."
-        }
+        "options": [
+          {
+            "name": "Recuperate",
+            "description": "Take +1 health for you and any companions."
+          },
+          {
+            "name": "Partake",
+            "description": "Suffer -1 supply and take +1 health for you and any companions."
+          },
+          {
+            "name": "Relax",
+            "description": "Take +1 spirit."
+          },
+          {
+            "name": "Focus",
+            "description": "Take +1 momentum."
+          },
+          {
+            "name": "Prepare",
+            "description": "When you break camp, add +1 if you Undertake a Journey."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "Your and your allies may choose one.",
-        "options": {
-          "Recuperate": "Take +1 health for you and any companions.",
-          "Partake": "Suffer -1 supply and take +1 health for you and any companions.",
-          "Relax": "Take +1 spirit.",
-          "Focus": "Take +1 momentum.",
-          "Prepare": "When you break camp, add +1 if you Undertake a Journey."
-        }
+        "options": [
+          {
+            "name": "Recuperate",
+            "description": "Take +1 health for you and any companions."
+          },
+          {
+            "name": "Partake",
+            "description": "Suffer -1 supply and take +1 health for you and any companions."
+          },
+          {
+            "name": "Relax",
+            "description": "Take +1 spirit."
+          },
+          {
+            "name": "Focus",
+            "description": "Take +1 momentum."
+          },
+          {
+            "name": "Prepare",
+            "description": "When you break camp, add +1 if you Undertake a Journey."
+          }
+        ]
       },
       "Miss": {
         "description": "You take no comfort. Pay the Price."
@@ -130,10 +184,16 @@
     "results": {
       "Strong Hit": {
         "description": "You reach a waypoint. If the waypoint is unknown to you, envision it (Ask the Oracle if unsure). Then, choose one.",
-        "options": {
-          "You make good use of your resources": "Mark progress.",
-          "You move at speed": "Mark progress and take +1 momentum, but suffer -1 supply."
-        }
+        "options": [
+          {
+            "name": "You make good use of your resources",
+            "description": "Mark progress."
+          },
+          {
+            "name": "You move at speed",
+            "description": "Mark progress and take +1 momentum, but suffer -1 supply."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "You reach a waypoint and mark progress, but suffer -1 supply."
@@ -150,10 +210,16 @@
     "results": {
       "Strong Hit": {
         "description": "The situation at your destination favours you. Choose one.",
-        "options": {
-          "Act": "Make another move now (not a progress move), and add +1.",
-          "Prepare": "Take +1 momentum."
-        }
+        "options": [
+          {
+            "name": "Act",
+            "description": "Make another move now (not a progress move), and add +1."
+          },
+          {
+            "name": "Prepare",
+            "description": "Take +1 momentum."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "Your arrive, but face an unforeseen hazard or complication. Envision what you find (Ask the oracle if unsure)."
@@ -186,29 +252,77 @@
     "results": {
       "Strong Hit": {
         "description": "You and your allies may each choose two from within the categories below. If you share a bond, choose one more.",
-        "options": {
-          "Mend": "Clear a wounded debility and take +1 health.",
-          "Hearten": "Clear a shaken debility and take +1 spirit.",
-          "Equip": "Clear an unprepared debility and take +1 supply.",
-          "Recuperate": "Take +2 health for yourself and any companions.",
-          "Consort": "Take +2 spirit.",
-          "Provision": "Take +2 supply.",
-          "Plan": "Take +2 momentum.",
-          "Provide Aid": "Take a quest: Envision what this community needs, or what trouble it is facing (Ask the Oracle, if unsure). If you chose to help, Swear an Iron Vow and add +1."
-        }
+        "options": [
+          {
+            "name": "Mend",
+            "description": "Clear a wounded debility and take +1 health."
+          },
+          {
+            "name": "Hearten",
+            "description": "Clear a shaken debility and take +1 spirit."
+          },
+          {
+            "name": "Equip",
+            "description": "Clear an unprepared debility and take +1 supply."
+          },
+          {
+            "name": "Recuperate",
+            "description": "Take +2 health for yourself and any companions."
+          },
+          {
+            "name": "Consort",
+            "description": "Take +2 spirit."
+          },
+          {
+            "name": "Provision",
+            "description": "Take +2 supply."
+          },
+          {
+            "name": "Plan",
+            "description": "Take +2 momentum."
+          },
+          {
+            "name": "Provide Aid",
+            "description": "Take a quest: Envision what this community needs, or what trouble it is facing (Ask the Oracle, if unsure). If you chose to help, Swear an Iron Vow and add +1."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "You and your allies may each choose one from within the categories below. If you share a bond, choose one more.",
-        "options": {
-          "Mend": "Clear a wounded debility and take +1 health.",
-          "Hearten": "Clear a shaken debility and take +1 spirit.",
-          "Equip": "Clear an unprepared debility and take +1 supply.",
-          "Recuperate": "Take +2 health for yourself and any companions.",
-          "Consort": "Take +2 spirit.",
-          "Provision": "Take +2 supply.",
-          "Plan": "Take +2 momentum.",
-          "Provide Aid": "Take a quest: Envision what this community needs, or what trouble it is facing (Ask the Oracle, if unsure). If you chose to help, Swear an Iron Vow and add +1."
-        }
+        "options": [
+          {
+            "name": "Mend",
+            "description": "Clear a wounded debility and take +1 health."
+          },
+          {
+            "name": "Hearten",
+            "description": "Clear a shaken debility and take +1 spirit."
+          },
+          {
+            "name": "Equip",
+            "description": "Clear an unprepared debility and take +1 supply."
+          },
+          {
+            "name": "Recuperate",
+            "description": "Take +2 health for yourself and any companions."
+          },
+          {
+            "name": "Consort",
+            "description": "Take +2 spirit."
+          },
+          {
+            "name": "Provision",
+            "description": "Take +2 supply."
+          },
+          {
+            "name": "Plan",
+            "description": "Take +2 momentum."
+          },
+          {
+            "name": "Provide Aid",
+            "description": "Take a quest: Envision what this community needs, or what trouble it is facing (Ask the Oracle, if unsure). If you chose to help, Swear an Iron Vow and add +1."
+          }
+        ]
       },
       "Miss": {
         "description": "You find no help here. Pay the Price."
@@ -222,23 +336,53 @@
     "results": {
       "Strong Hit": {
         "description": "Take +1 momentum. You may also choose up to three boasts and take +1 momentum for each.",
-        "options": {
-          "Grant first strike": "Your foe has initiative.",
-          "Bare yourself": "Take no benefit of armour or shield; your foe's harm is +1.",
-          "Hold no iron": "Take no benefit of weapons; your harm is 1.",
-          "Bloody yourself": "Endure harm (1 harm).",
-          "To the death": "One way or another, this fight must end with death."
-        }
+        "options": [
+          {
+            "name": "Grant first strike",
+            "description": "Your foe has initiative."
+          },
+          {
+            "name": "Bare yourself",
+            "description": "Take no benefit of armour or shield; your foe's harm is +1."
+          },
+          {
+            "name": "Hold no iron",
+            "description": "Take no benefit of weapons; your harm is 1."
+          },
+          {
+            "name": "Bloody yourself",
+            "description": "Endure harm (1 harm)."
+          },
+          {
+            "name": "To the death",
+            "description": "One way or another, this fight must end with death."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "You may choose one boast in exchange for +1 momentum.",
-        "options": {
-          "Grant first strike": "Your foe has initiative.",
-          "Bare yourself": "Take no benefit of armour or shield; your foe's harm is +1.",
-          "Hold no iron": "Take no benefit of weapons; your harm is 1.",
-          "Bloody yourself": "Endure harm (1 harm).",
-          "To the death": "One way or another, this fight must end with death."
-        }
+        "options": [
+          {
+            "name": "Grant first strike",
+            "description": "Your foe has initiative."
+          },
+          {
+            "name": "Bare yourself",
+            "description": "Take no benefit of armour or shield; your foe's harm is +1."
+          },
+          {
+            "name": "Hold no iron",
+            "description": "Take no benefit of weapons; your harm is 1."
+          },
+          {
+            "name": "Bloody yourself",
+            "description": "Endure harm (1 harm)."
+          },
+          {
+            "name": "To the death",
+            "description": "One way or another, this fight must end with death."
+          }
+        ]
       },
       "Miss": {
         "description": "You begin the duel at a disadvantage. Your foe has initiative. Pay the Price."
@@ -252,10 +396,16 @@
     "results": {
       "Strong Hit": {
         "description": "Make note of the bond, mark a tick on your bond progress track, and choose one.",
-        "options": {
-          "Cheer up": "Take +1 spirit.",
-          "Invigorate": "Take +2 momentum."
-        }
+        "options": [
+          {
+            "name": "Cheer up",
+            "description": "Take +1 spirit."
+          },
+          {
+            "name": "Invigorate",
+            "description": "Take +2 momentum."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "They ask something more of you first. Envision what it is (Ask the Oracle, if unsure), do it (or Swear an Iron Vow) and mark the bond. Make note of the bond, mark a tick on your bond progress track, and choose one. If you decline or fail, Pay the Price."
@@ -272,10 +422,16 @@
     "results": {
       "Strong Hit": {
         "description": "This test has strengthened your bond. Choose one.",
-        "options": {
-          "Cheer up": "Take +1 spirit.",
-          "Invigorate": "Take +2 momentum."
-        }
+        "options": [
+          {
+            "name": "Cheer up",
+            "description": "Take +1 spirit."
+          },
+          {
+            "name": "Invigorate",
+            "description": "Take +2 momentum."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "Your bond is fragile and you must prove your loyalty. Envision what they ask of you (Ask the Oracle, if unsure), and do it (or Swear an Iron Vow). If you decline or fail, clear the bond and Pay the Price."
@@ -316,10 +472,16 @@
       },
       "Weak Hit": {
         "description": "You choose one.",
-        "options": {
-          "Bolster your position": "Take +2 momentum.",
-          "Prepare to act": "Take initiative."
-        }
+        "options": [
+          {
+            "name": "Bolster your position",
+            "description": "Take +2 momentum."
+          },
+          {
+            "name": "Prepare to act",
+            "description": "Take initiative."
+          }
+        ]
       },
       "Miss": {
         "description": "Combat begins with you at a disadvantage. Pay the Price. Your foe has initiative."
@@ -349,10 +511,16 @@
     "results": {
       "Strong Hit": {
         "description": "Inflict your harm and choose one. You have the initiative.",
-        "options": {
-          "Bolster your position": "Take +1 momentum",
-          "Find an opening": "Inflict +1 harm."
-        }
+        "options": [
+          {
+            "name": "Bolster your position",
+            "description": "Take +1 momentum"
+          },
+          {
+            "name": "Find an opening",
+            "description": "Inflict +1 harm."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "Inflict your harm, but then Pay the Price. Your foe has initiative."
@@ -374,14 +542,32 @@
       },
       "Weak Hit": {
         "description": "This foe is no longer in this fight. They are killed, out of action, flee, or surrender as appropriate to the situation and your intent (Ask the Oracle if unsure). Choose one.",
-        "options": {
-          "It's worse than you thought": "Endure Harm:",
-          "You are overcome": "Endure Stress.",
-          "Your victory is short-lived": "A new danger or foe appears, or an existing danger worsens.",
-          "You suffer collateral damage": "Something of value is lost or broken, or someone must pay an important cost.",
-          "You'll pay for it": "An objective falls out of reach.",
-          "Others won't forget": "You are marked for vengeance."
-        }
+        "options": [
+          {
+            "name": "It's worse than you thought",
+            "description": "Endure Harm:"
+          },
+          {
+            "name": "You are overcome",
+            "description": "Endure Stress."
+          },
+          {
+            "name": "Your victory is short-lived",
+            "description": "A new danger or foe appears, or an existing danger worsens."
+          },
+          {
+            "name": "You suffer collateral damage",
+            "description": "Something of value is lost or broken, or someone must pay an important cost."
+          },
+          {
+            "name": "You'll pay for it",
+            "description": "An objective falls out of reach."
+          },
+          {
+            "name": "Others won't forget",
+            "description": "You are marked for vengeance."
+          }
+        ]
       },
       "Miss": {
         "description": "You have lost this fight. Pay the Price"
@@ -411,10 +597,16 @@
     "results": {
       "Strong Hit": {
         "description": "Choose one.",
-        "options": {
-          "Shake it off": "If your health is greater than 0, suffer -1 momentum in exchange for +1 health.",
-          "Embrace the pain": "Take +1 momentum."
-        }
+        "options": [
+          {
+            "name": "Shake it off",
+            "description": "If your health is greater than 0, suffer -1 momentum in exchange for +1 health."
+          },
+          {
+            "name": "Embrace the pain",
+            "description": "Take +1 momentum."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "You press on."
@@ -456,10 +648,16 @@
       },
       "Weak Hit": {
         "description": "Choose one.",
-        "options": {
-          "You die ...": "... but not before making a noble sacrifice. Envision your final moment.",
-          "Death desires something of you ...": "... in exchange for lift. Envision what it wants (Ask the Oracle if unsure), and Swear an Iron Vow (formidable or extreme) to complete that quest. If you fail to score a hit when you swear an Iron Vow, or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing that quest."
-        }
+        "options": [
+          {
+            "name": "You die ...",
+            "description": "... but not before making a noble sacrifice. Envision your final moment."
+          },
+          {
+            "name": "Death desires something of you ...",
+            "description": "... in exchange for lift. Envision what it wants (Ask the Oracle if unsure), and Swear an Iron Vow (formidable or extreme) to complete that quest. If you fail to score a hit when you swear an Iron Vow, or refuse the quest, you are dead. Otherwise, you return to the mortal world and are now cursed. You may only clear the cursed debility by completing that quest."
+          }
+        ]
       },
       "Miss": {
         "description": "You are dead."
@@ -489,10 +687,16 @@
     "results": {
       "Strong Hit": {
         "description": "Choose one.",
-        "options": {
-          "Shake it off": "If your spirit is greater than 0, suffer -1 momentum in exchange for +1 spirit.",
-          "Embrace the darkness": "Take +1 momentum."
-        }
+        "options": [
+          {
+            "name": "Shake it off",
+            "description": "If your spirit is greater than 0, suffer -1 momentum in exchange for +1 spirit."
+          },
+          {
+            "name": "Embrace the darkness",
+            "description": "Take +1 momentum."
+          }
+        ]
       },
       "Weak Hit": {
         "description": "You press on."
@@ -530,10 +734,16 @@
       },
       "Weak Hit": {
         "description": "Choose one.",
-        "options": {
-          "Your spirit or your sanity breaks ...": "... but not before you make a noble sacrifice. Envision your final moments.",
-          "You see a vision ...": "of dreaded moment coming to pass. Envision that dark future (Ask the Oracle if unsure), and Swear an Iron Vow (formidable or extreme) to prevent it. If you fail to score a hit when you swear an Iron Vow, or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest."
-        }
+        "options": [
+          {
+            "name": "Your spirit or your sanity breaks ...",
+            "description": "... but not before you make a noble sacrifice. Envision your final moments."
+          },
+          {
+            "name": "You see a vision ...",
+            "description": "of dreaded moment coming to pass. Envision that dark future (Ask the Oracle if unsure), and Swear an Iron Vow (formidable or extreme) to prevent it. If you fail to score a hit when you swear an Iron Vow, or refuse the quest, you are lost. Otherwise, you return to your senses and are now tormented. You may only clear the tormented debility by completing the quest."
+          }
+        ]
       },
       "Miss": {
         "description": "You succumb to horror or despair and are lost."
@@ -552,10 +762,16 @@
     "results": {
       "Other": {
         "description": "Choose one.",
-        "options": {
-          "To the last": "Exchange each additional -momentum for any combination of -health, -spirit or -supply, as appropriate to the circumstances.",
-          "Sacrifice progress": "Envision an event or discovery (Ask the Oracle if unsure), which undermines your progress in a current quest, journey or fight. Then, for each additional -momentum, clear 1 unit of progress that track per its rank."
-        }
+        "options": [
+          {
+            "name": "To the last",
+            "description": "Exchange each additional -momentum for any combination of -health, -spirit or -supply, as appropriate to the circumstances."
+          },
+          {
+            "name": "Sacrifice progress",
+            "description": "Envision an event or discovery (Ask the Oracle if unsure), which undermines your progress in a current quest, journey or fight. Then, for each additional -momentum, clear 1 unit of progress that track per its rank."
+          }
+        ]
       }
     }
   },
@@ -572,10 +788,16 @@
       },
       "Miss": {
         "description": "You face a significant obstacle before you can begin your quest. Envision what stands in your way (Ask the Oracle if unsure), and choose one.",
-        "options": {
-          "You press on": "Suffer -2 momentum, and do what you must to overcome this obstacle.",
-          "You give up": "Forsake your Vow"
-        }
+        "options": [
+          {
+            "name": "You press on",
+            "description": "Suffer -2 momentum, and do what you must to overcome this obstacle."
+          },
+          {
+            "name": "You give up",
+            "description": "Forsake your Vow"
+          }
+        ]
       }
     }
   },
@@ -597,10 +819,16 @@
       },
       "Miss": {
         "description": "Your quest is undone. Envision what happens (Ask the Oracle if unsure), and choose one.",
-        "options": {
-          "You recommit": "Clear all but one filled progress, and raise the quest's rank by one (if not already epic).",
-          "You give up": "Forsake your Vow."
-        }
+        "options": [
+          {
+            "name": "You recommit",
+            "description": "Clear all but one filled progress, and raise the quest's rank by one (if not already epic)."
+          },
+          {
+            "name": "You give up",
+            "description": "Forsake your Vow."
+          }
+        ]
       }
     }
   },
@@ -621,11 +849,20 @@
     "results": {
       "Other": {
         "description": "Choose one.",
-        "options": {
-          "Choose the obvious": "Make the most obvious negative outcome happen.",
-          "Ask yes/no": "Envision two negative outcomes. Rate one as likely, and Ask the Oracle using the yes/no table. On a yes, make that outcome happen. Otherwise make it the other.",
-          "Random": "Roll on the following table."
-        },
+        "options": [
+          {
+            "name": "Choose the obvious",
+            "description": "Make the most obvious negative outcome happen."
+          },
+          {
+            "name": "Ask yes/no",
+            "description": "Envision two negative outcomes. Rate one as likely, and Ask the Oracle using the yes/no table. On a yes, make that outcome happen. Otherwise make it the other."
+          },
+          {
+            "name": "Random",
+            "description": "Roll on the following table."
+          }
+        ],
         "random-event": [
           {
             "upper": 2,
@@ -702,12 +939,17 @@
     "results": {
       "Other": {
         "description": "You may:",
-        "options": {
-          "Draw a conclusion": "Decide the answer based on the most interesting and obvious result.",
-          "Ask yes/no": {
+        "options": [
+          {
+            "name": "Draw a conclusion",
+            "description": "Decide the answer based on the most interesting and obvious result."
+          },
+          {
+            "name": "Ask yes/no",
             "description": "Ask a yes/no question. Decide the odds of a 'yes', and roll.",
-            "options": {
-              "Almost Certain": {
+            "options": [
+              {
+                "name": "Almost Certain",
                 "description": "Almost Certain.",
                 "random-event": [
                   {
@@ -720,7 +962,8 @@
                   }
                 ]
               },
-              "Likely": {
+              {
+                "name": "Likely",
                 "description": "Likely.",
                 "random-event": [
                   {
@@ -733,7 +976,8 @@
                   }
                 ]
               },
-              "50/50": {
+              {
+                "name": "50/50",
                 "description": "50/50.",
                 "random-event": [
                   {
@@ -746,7 +990,8 @@
                   }
                 ]
               },
-              "Unlikely": {
+              {
+                "name": "Unlikely",
                 "description": "Unlikely.",
                 "random-event": [
                   {
@@ -759,7 +1004,8 @@
                   }
                 ]
               },
-              "Small Chance": {
+              {
+                "name": "Small Chance",
                 "description": "Small Chance.",
                 "random-event": [
                   {
@@ -772,9 +1018,10 @@
                   }
                 ]
               }
-            }
+            ]
           },
-          "Pick two": {
+          {
+            "name": "Pick two",
             "description": "Pick two: Envision two options, the first being 'likely' and roll to see which one happens.",
             "random-event": [
               {
@@ -787,8 +1034,11 @@
               }
             ]
           },
-          "Spark an idea": "Brainstorm or use a random prompt."
-        }
+          {
+            "name": "Spark an idea",
+            "description": "Brainstorm or use a random prompt."
+          }
+        ]
       }
     }
   }

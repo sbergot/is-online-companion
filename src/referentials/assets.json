@@ -257,10 +257,16 @@
         "enabled": true,
         "result": {
           "description": "When you attempt to Heal using herbal remedies, and you have at least +1 supply, you may choose one (decide before rolling).",
-          "options": {
-            "Prepare": "Add +2.",
-            "Expend": "On a hit, take or give an additional +1 health."
-          }
+          "options": [
+            {
+              "name": "Prepare",
+              "description": "Add +2."
+            },
+            {
+              "name": "Expend",
+              "description": "On a hit, take or give an additional +1 health."
+            }
+          ]
         }
       },
       {
@@ -375,12 +381,24 @@
         "enabled": true,
         "result": {
           "description": "Choose your mask's material. When you wear the mask and make a move which uses its stat, add +1. If you roll a 1 on your action die, suffer -1 to the associated track (in addition to any other outcome of the move).",
-          "options": {
-            "Thunderwood": "Edge / Health",
-            "Bloodwood": "Iron / Health",
-            "Ghostwood": "Shadow / Spirit",
-            "Whisperwood": "Wits /Spirit"
-          }
+          "options": [
+            {
+              "name": "Thunderwood",
+              "description": "Edge / Health"
+            },
+            {
+              "name": "Bloodwood",
+              "description": "Iron / Health"
+            },
+            {
+              "name": "Ghostwood",
+              "description": "Shadow / Spirit"
+            },
+            {
+              "name": "Whisperwood",
+              "description": "Wits /Spirit"
+            }
+          ]
         }
       },
       {
@@ -479,10 +497,16 @@
         "enabled": false,
         "result": {
           "description": "When you slay a beast or horror (at least formidable), you may take a trophy and choose one.",
-          "options": {
-            "Power a ritual": "When you or an ally make a ritual move, reroll any dice (one time only).",
-            "Prove your worth": "When you Sojourn, reroll any dice (one time only)."
-          }
+          "options": [
+            {
+              "name": "Power a ritual",
+              "description": "When you or an ally make a ritual move, reroll any dice (one time only)."
+            },
+            {
+              "name": "Prove your worth",
+              "description": "When you Sojourn, reroll any dice (one time only)."
+            }
+          ]
         }
       }
     ]
@@ -693,10 +717,16 @@
         "enabled": true,
         "result": {
           "description": "When you are in position to Strike at an unsuspecting foe, choose one (before rolling).",
-          "options": {
-            "Strike quickly": "Add +2 and take +1 momentum on a hit.",
-            "Take aim": "Inflict +2 harm on a hit."
-          }
+          "options": [
+            {
+              "name": "Strike quickly",
+              "description": "Add +2 and take +1 momentum on a hit."
+            },
+            {
+              "name": "Take aim",
+              "description": "Inflict +2 harm on a hit."
+            }
+          ]
         }
       },
       {
@@ -731,10 +761,16 @@
         "enabled": false,
         "result": {
           "description": "When you Draw the Circle, choose one (before rolling)",
-          "options": {
-            "Add...": "... +2",
-            "Take...": "... +2 momentum on a hit."
-          }
+          "options": [
+            {
+              "name": "Add...",
+              "description": "... +2"
+            },
+            {
+              "name": "Take...",
+              "description": "... +2 momentum on a hit."
+            }
+          ]
         }
       }
     ]
@@ -749,10 +785,16 @@
         "enabled": true,
         "result": {
           "description": "When you equip or adjust your armour, choose one.",
-          "options": {
-            "Lightly armoured": "When you Endure Harm in a fight, add +1 and take +1 momentum on a hit.",
-            "Geared for war:": "Mark encumbered. When you Endure Harm in a fight, add +2 and take +1 momentum on a hit."
-          }
+          "options": [
+            {
+              "name": "Lightly armoured",
+              "description": "When you Endure Harm in a fight, add +1 and take +1 momentum on a hit."
+            },
+            {
+              "name": "Geared for war:",
+              "description": "Mark encumbered. When you Endure Harm in a fight, add +2 and take +1 momentum on a hit."
+            }
+          ]
         }
       },
       {
@@ -821,10 +863,16 @@
         "enabled": true,
         "result": {
           "description": "When you Face Danger by holding a foe at bay using your spear's reach, roll +iron or +edge (your choice). If you score a strong hit, choose one.",
-          "options": {
-            "Iron": "Strike now, and add +1.",
-            "Edge": "Take +1 momentum"
-          }
+          "options": [
+            {
+              "name": "Iron",
+              "description": "Strike now, and add +1."
+            },
+            {
+              "name": "Edge",
+              "description": "Take +1 momentum"
+            }
+          ]
         }
       },
       {
@@ -1193,19 +1241,37 @@
               "Strong Hit": "You may Gather Information through observation using +shadow or +wits.",
               "Weak Hit": {
                 "description": "You may Gather Information through observation using +shadow or +wits. The flames are hungry; choose one to sacrifice.",
-                "options": {
-                  "Your blood": "Endure Harm (2 harm).",
-                  "A precious thing": "Endure Stress (2 stress).",
-                  "Provisions": "Suffer -2 supply."
-                }
+                "options": [
+                  {
+                    "name": "Your blood",
+                    "description": "Endure Harm (2 harm)."
+                  },
+                  {
+                    "name": "A precious thing",
+                    "description": "Endure Stress (2 stress)."
+                  },
+                  {
+                    "name": "Provisions",
+                    "description": "Suffer -2 supply."
+                  }
+                ]
               },
               "Miss": {
                 "description": "The flames are hungry; choose one to sacrifice.",
-                "options": {
-                  "Your blood": "Endure Harm (2 harm).",
-                  "A precious thing": "Endure Stress (2 stress).",
-                  "Provisions": "Suffer -2 supply."
-                }
+                "options": [
+                  {
+                    "name": "Your blood",
+                    "description": "Endure Harm (2 harm)."
+                  },
+                  {
+                    "name": "A precious thing",
+                    "description": "Endure Stress (2 stress)."
+                  },
+                  {
+                    "name": "Provisions",
+                    "description": "Suffer -2 supply."
+                  }
+                ]
               }
             }
           }
@@ -1224,19 +1290,37 @@
               "Strong Hit": "You may Gather Information through observation using +shadow or +wits.",
               "Weak Hit": {
                 "description": "You may Gather Information through observation using +shadow or +wits. The flames are hungry; choose one to sacrifice.",
-                "options": {
-                  "Your blood": "Endure Harm (2 harm).",
-                  "A precious thing": "Endure Stress (2 stress).",
-                  "Provisions": "Suffer -2 supply."
-                }
+                "options": [
+                  {
+                    "name": "Your blood",
+                    "description": "Endure Harm (2 harm)."
+                  },
+                  {
+                    "name": "A precious thing",
+                    "description": "Endure Stress (2 stress)."
+                  },
+                  {
+                    "name": "Provisions",
+                    "description": "Suffer -2 supply."
+                  }
+                ]
               },
               "Miss": {
                 "description": "The flames are hungry; choose one to sacrifice.",
-                "options": {
-                  "Your blood": "Endure Harm (2 harm).",
-                  "A precious thing": "Endure Stress (2 stress).",
-                  "Provisions": "Suffer -2 supply."
-                }
+                "options": [
+                  {
+                    "name": "Your blood",
+                    "description": "Endure Harm (2 harm)."
+                  },
+                  {
+                    "name": "A precious thing",
+                    "description": "Endure Stress (2 stress)."
+                  },
+                  {
+                    "name": "Provisions",
+                    "description": "Suffer -2 supply."
+                  }
+                ]
               }
             }
           }
@@ -1445,19 +1529,37 @@
             "results": {
               "Strong Hit": {
                 "description": "Choose two.",
-                "options": {
-                  "Alert": "When a foe first crosses the boundary, take +1 momentum.",
-                  "Inflict": "When you first inflict harm against a foe within the boundary, inflict +1 harm.",
-                  "Trap": "Your ward is 'likely' (Ask the Oracle) to trap a foe within the boundary."
-                }
+                "options": [
+                  {
+                    "name": "Alert",
+                    "description": "When a foe first crosses the boundary, take +1 momentum."
+                  },
+                  {
+                    "name": "Inflict",
+                    "description": "When you first inflict harm against a foe within the boundary, inflict +1 harm."
+                  },
+                  {
+                    "name": "Trap",
+                    "description": "Your ward is 'likely' (Ask the Oracle) to trap a foe within the boundary."
+                  }
+                ]
               },
               "Weak Hit": {
                 "description": "Choose one.",
-                "options": {
-                  "Alert": "When a foe first crosses the boundary, take +1 momentum.",
-                  "Inflict": "When you first inflict harm against a foe within the boundary, inflict +1 harm.",
-                  "Trap": "Your ward is 'likely' (Ask the Oracle) to trap a foe within the boundary."
-                }
+                "options": [
+                  {
+                    "name": "Alert",
+                    "description": "When a foe first crosses the boundary, take +1 momentum."
+                  },
+                  {
+                    "name": "Inflict",
+                    "description": "When you first inflict harm against a foe within the boundary, inflict +1 harm."
+                  },
+                  {
+                    "name": "Trap",
+                    "description": "Your ward is 'likely' (Ask the Oracle) to trap a foe within the boundary."
+                  }
+                ]
               },
               "Miss": "It's in vain."
             }
@@ -1476,19 +1578,37 @@
             "results": {
               "Strong Hit": {
                 "description": "Choose two.",
-                "options": {
-                  "Alert": "When a foe first crosses the boundary, take +2 momentum.",
-                  "Inflict": "When you first inflict harm against a foe within the boundary, inflict +2 harm.",
-                  "Trap": "Your ward is 'almost certain' (Ask the Oracle) to trap a foe within the boundary."
-                }
+                "options": [
+                  {
+                    "name": "Alert",
+                    "description": "When a foe first crosses the boundary, take +2 momentum."
+                  },
+                  {
+                    "name": "Inflict",
+                    "description": "When you first inflict harm against a foe within the boundary, inflict +2 harm."
+                  },
+                  {
+                    "name": "Trap",
+                    "description": "Your ward is 'almost certain' (Ask the Oracle) to trap a foe within the boundary."
+                  }
+                ]
               },
               "Weak Hit": {
                 "description": "Choose one.",
-                "options": {
-                  "Alert": "When a foe first crosses the boundary, take +2 momentum.",
-                  "Inflict": "When you first inflict harm against a foe within the boundary, inflict +2 harm.",
-                  "Trap": "Your ward is 'almost certain' (Ask the Oracle) to trap a foe within the boundary."
-                }
+                "options": [
+                  {
+                    "name": "Alert",
+                    "description": "When a foe first crosses the boundary, take +2 momentum."
+                  },
+                  {
+                    "name": "Inflict",
+                    "description": "When you first inflict harm against a foe within the boundary, inflict +2 harm."
+                  },
+                  {
+                    "name": "Trap",
+                    "description": "Your ward is 'almost certain' (Ask the Oracle) to trap a foe within the boundary."
+                  }
+                ]
               },
               "Miss": "It's in vain."
             }
@@ -1656,11 +1776,20 @@
         "enabled": false,
         "result": {
           "description": "When you Undertake a Journey by boat or ship, add +1. On a strong hit, also choose one.",
-          "options": {
-            "The wind is at your back": "Mark one extra unit of progress.",
-            "Find safe anchor": "Make Camp now and reroll any dice.",
-            "Reap bounty": "Resupply now and reroll any dice."
-          }
+          "options": [
+            {
+              "name": "The wind is at your back",
+              "description": "Mark one extra unit of progress."
+            },
+            {
+              "name": "Find safe anchor",
+              "description": "Make Camp now and reroll any dice."
+            },
+            {
+              "name": "Reap bounty",
+              "description": "Resupply now and reroll any dice."
+            }
+          ]
         }
       },
       {

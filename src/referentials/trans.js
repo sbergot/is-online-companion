@@ -32,8 +32,10 @@ function transform(obj) {
             if (value == null) {
                 return;
             }
-            if (k == "random-event") {
+            if (k == "random-event" || k == "random-oracles") {
                 res[k] = listity_random_events(value);
+            } else if (k == "options") {
+                res[k] = listify(value);
             } else {
                 res[k] = transform(value);
             }
@@ -62,10 +64,20 @@ function listity_random_events(obj) {
 }
 
 function listify(obj) {
-    return Object.keys(obj).map(k => ({
-        name: k,
-        ...obj[k],
-    }))
+    return Object.keys(obj).map(k => {
+        const value = obj[k];
+        if (typeof value == "string") {
+            return {
+                name: k,
+                description: value
+            }
+        } else {
+            return {
+                name: k,
+                ...transform(obj[k]),
+            }
+        }
+    })
 }
 
 function apply(name, cb) {
@@ -90,11 +102,11 @@ function apply(name, cb) {
     });
 }
 
-// ["assets", "foes", "moves", "oracles", "regions", "world"].forEach(name => {
-//     apply(name, transform);
-// });
-
-["oracles", "regions"].forEach(name => {
-    apply(name, listify).catch(console.error);
+["assets", "foes", "moves", "oracles", "regions", "world"].forEach(name => {
+    apply(name, transform);
 });
+
+// ["oracles", "regions"].forEach(name => {
+//     apply(name, listify).catch(console.error);
+// });
 
