@@ -1,0 +1,45 @@
+const fs = require('fs');
+const traverse = require('./traverse');
+
+function apply(name, cb) {
+    console.log(`applying ${cb.name} for ${name}`);
+    const fname = "../src/referentials/" + name + ".json";
+    const obj = require(fname);
+    return new Promise((resolve, reject) => {
+        let newObj;
+        try {
+            newObj = cb(obj);
+        } catch (e) {
+            reject(e);
+            return;
+        }
+        fs.writeFile(fname, JSON.stringify(newObj, null, 2), (err) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            console.log(`done applying ${cb.name} for ${name}`);
+            resolve();
+        });
+    });
+}
+
+function fix_variant(obj) {
+    return traverse([node => {
+        if (node.parent && node.parent.parent == null) {
+            const {name, type, value} = node.current;
+            return {
+                type,
+                value: {name, ...value}
+            }
+        }
+    }])(obj);
+}
+
+// ["assets", "foes", "moves", "oracles", "regions", "world"].forEach(name => {
+//     apply(name, transform);
+// });
+
+["oracles"].forEach(name => {
+    apply(name, fix_variant).catch(console.error);
+});

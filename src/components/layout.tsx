@@ -11,7 +11,7 @@ export function Section({ title, children, className }: SectionProps) {
     const classes = [className ? className : ''].join(' ');
     return (
         <div className={classes}>
-            {title && <h2 className="title mt-2">{title}</h2>}
+            {title && <h1 className="title mt-2">{title}</h1>}
             {children}
         </div>
     );
@@ -21,7 +21,7 @@ export function SubSection({ title, children, className }: SectionProps) {
     const classes = [className ? className : ''].join(' ');
     return (
         <div className={classes}>
-            {title && <h3 className="subtitle mt-2">{title}</h3>}
+            {title && <h2 className="subtitle mt-2">{title}</h2>}
             {children}
         </div>
     );

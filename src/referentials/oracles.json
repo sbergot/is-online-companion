@@ -1,8 +1,8 @@
 [
   {
-    "name": "Action",
     "type": "simple",
     "value": {
+      "name": "Action",
       "description": "Divine the action",
       "random-event": [
         {
@@ -409,9 +409,9 @@
     }
   },
   {
-    "name": "Theme",
     "type": "simple",
     "value": {
+      "name": "Theme",
       "description": "Divine the theme",
       "random-event": [
         {
@@ -818,9 +818,9 @@
     }
   },
   {
-    "name": "Region",
     "type": "simple",
     "value": {
+      "name": "Region",
       "description": "Divine the region",
       "random-event": [
         {
@@ -867,9 +867,9 @@
     }
   },
   {
-    "name": "Location",
     "type": "simple",
     "value": {
+      "name": "Location",
       "description": "Divine the location",
       "random-event": [
         {
@@ -1080,9 +1080,9 @@
     }
   },
   {
-    "name": "Coastal Waters Location",
     "type": "simple",
     "value": {
+      "name": "Coastal Waters Location",
       "description": "Divine a coastal waters location",
       "random-event": [
         {
@@ -1157,9 +1157,9 @@
     }
   },
   {
-    "name": "Location Descriptor",
     "type": "simple",
     "value": {
+      "name": "Location Descriptor",
       "description": "Divine a descriptor for your location",
       "random-event": [
         {
@@ -1366,13 +1366,14 @@
     }
   },
   {
-    "name": "Settlement Name",
     "type": "nested",
     "value": {
+      "name": "Settlement Name",
       "description": "Divine the name of a settlement",
       "random-oracles": [
         {
           "upper": 15,
+          "name": "A feature of the landscape",
           "description": "A feature of the landscape. Envision what it is. What makes it unusual or distinctive?",
           "random-event": [
             {
@@ -1419,6 +1420,7 @@
         },
         {
           "upper": 30,
+          "name": "A man made edifice",
           "description": "A man made edifice. What is it? Why is it important to this settlement's history?",
           "random-event": [
             {
@@ -1465,6 +1467,7 @@
         },
         {
           "upper": 45,
+          "name": "A creature",
           "description": "A creature. Why have the people of this settlement chosen this creature as their totem? How is it represented in art or rituals?",
           "random-event": [
             {
@@ -1511,6 +1514,7 @@
         },
         {
           "upper": 60,
+          "name": "A historical event",
           "description": "A historical event. What happened here? What place or practice commemorates this event?",
           "random-event": [
             {
@@ -1557,6 +1561,7 @@
         },
         {
           "upper": 75,
+          "name": "A word in an Old World language",
           "description": "A word in an Old World language. What culture is represented by this word. What does it translate to?",
           "random-event": [
             {
@@ -1603,6 +1608,7 @@
         },
         {
           "upper": 90,
+          "name": "A season or environmental aspect",
           "description": "A season or environmental aspect. What influence does the weather have on this settlement?",
           "random-event": [
             {
@@ -1649,6 +1655,7 @@
         },
         {
           "upper": 100,
+          "name": "Something else...",
           "description": "Something else...",
           "random-event": [
             {
@@ -1697,9 +1704,9 @@
     }
   },
   {
-    "name": "Quick Settlement Name Generator",
     "type": "options",
     "value": {
+      "name": "Quick Settlement Name Generator",
       "description": "Quickly divine the name of a settlement.",
       "options": [
         {
@@ -1918,9 +1925,9 @@
     }
   },
   {
-    "name": "Settlement Trouble",
     "type": "simple",
     "value": {
+      "name": "Settlement Trouble",
       "description": "Divine the settlement trouble",
       "random-event": [
         {
@@ -2111,9 +2118,9 @@
     }
   },
   {
-    "name": "Character Role",
     "type": "simple",
     "value": {
+      "name": "Character Role",
       "description": "Divine the role of a character.",
       "random-event": [
         {
@@ -2240,9 +2247,9 @@
     }
   },
   {
-    "name": "Character Goal",
     "type": "simple",
     "value": {
+      "name": "Character Goal",
       "description": "Divine the characters goal.",
       "random-event": [
         {
@@ -2381,9 +2388,9 @@
     }
   },
   {
-    "name": "Character Descriptor",
     "type": "simple",
     "value": {
+      "name": "Character Descriptor",
       "description": "Divine a character descriptor.",
       "random-event": [
         {
@@ -2790,9 +2797,9 @@
     }
   },
   {
-    "name": "Names",
     "type": "options",
     "value": {
+      "name": "Names",
       "description": "Divine ...",
       "options": [
         {
@@ -4135,9 +4142,9 @@
     }
   },
   {
-    "name": "Combat Action",
     "type": "simple",
     "value": {
+      "name": "Combat Action",
       "description": "Divine a combat action.",
       "random-event": [
         {
@@ -4216,9 +4223,9 @@
     }
   },
   {
-    "name": "Mystic Backlash",
     "type": "simple",
     "value": {
+      "name": "Mystic Backlash",
       "description": "Divine a mystic backlash.",
       "random-event": [
         {
@@ -4325,9 +4332,9 @@
     }
   },
   {
-    "name": "Major Plot Twist",
     "type": "simple",
     "value": {
+      "name": "Major Plot Twist",
       "description": "Divine a major plot twist",
       "random-event": [
         {
@@ -4414,9 +4421,9 @@
     }
   },
   {
-    "name": "Challenge Rank",
     "type": "simple",
     "value": {
+      "name": "Challenge Rank",
       "description": "Divine the rank of a challenge",
       "random-event": [
         {
