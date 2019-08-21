@@ -1,9 +1,13 @@
 # 0.3.0
 
-- reduce default font size to ~12px
-- aggregate consecutive user input logs
-- log user input with return key
-- code quality tooling
+- log page improvments
+    - aggregate consecutive user input logs
+    - log user input with return key
+- new theme
+- character sheet layout improvments
+- notes page
+- oracles page
+- offline mode (activate in about page then refresh a few times)
 
 # 0.2.2
 

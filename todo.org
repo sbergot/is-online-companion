@@ -1,5 +1,9 @@
-* TODO oracle rolls
-could be like https://eamonnmurray.gitlab.io/ironsworn-web/
+* TODO new release
+
+* rework storage
+** TODO everything under a campaign
+** TODO pregenerate hooks/sources for each campaign
+** TODO simpler source for single object (only read / write)
 
 * index
 contains narrative objects (places, NPCs, objects)
