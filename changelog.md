@@ -4,11 +4,11 @@ minor bug fixes
 
 # 0.3.0
 
-- log page improvments
+- log page improvements
     - aggregate consecutive user input logs
     - log user input with return key
 - new theme
-- character sheet layout improvments
+- character sheet layout improvements
 - notes page
 - oracles page
 - offline mode (activate in about page then refresh a few times)
