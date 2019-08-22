@@ -45,7 +45,7 @@ export function LogPage({ match }: RouteComponentProps<CampaignKeyParam & Charac
 
     function saveNewLog(block: AnyLogBlock) {
         const lastBlock = logSource.values[logSource.values.length - 1];
-        if (block.type == 'UserInput' && lastBlock.data.type == 'UserInput') {
+        if (block.type == 'UserInput' && lastBlock && lastBlock.data.type == 'UserInput') {
             const lastText = lastBlock.data.value.text;
             lastBlock.data.value.text = `${lastText}\n${block.value.text}`;
             logSource.edit(lastBlock);
