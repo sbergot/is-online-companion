@@ -55,3 +55,5 @@ export const campaignSelectionRoute = '/campaign/selection';
 export const aboutRoute = '/about';
 
 export const oraclesRoute = '/oracles';
+
+export const assetsRoute = '/assets';

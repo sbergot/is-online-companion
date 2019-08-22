@@ -3,17 +3,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import * as routes from '../services/routes';
 import { Menu } from './menu';
-import {
-    CampaignSelection,
-    CharacterSelection,
-    CharacterSheetPage,
-    LogPage,
-    CharacterAutoSelection,
-    AboutPage,
-    CombatAndTravel,
-    NotesPage,
-    OraclesPage,
-} from '../pages';
+import * as pages from '../pages';
 import { ErrorBoundary } from './ErrorPage';
 import { setCurrentVersion, useMetadata } from '../services/applicationMetadata';
 
@@ -28,16 +18,17 @@ export function Layout() {
                 <div className="min-h-screen min-w-screen flex text-gray-700 text-xs font-body">
                     <Menu />
                     <Switch>
-                        <Route exact path={routes.campaignSelectionRoute} component={CampaignSelection} />
-                        <Route exact path={routes.campaignRoute.template} component={CharacterAutoSelection} />
-                        <Route exact path={routes.characterSelectionRoute.template} component={CharacterSelection} />
-                        <Route exact path={routes.notesRoute.template} component={NotesPage} />
-                        <Route exact path={routes.logRoute.template} component={LogPage} />
-                        <Route exact path={routes.characterSheetRoute.template} component={CharacterSheetPage} />
-                        <Route exact path={routes.tracksRoute.template} component={CombatAndTravel} />
-                        <Route exact path={routes.aboutRoute} component={AboutPage} />
-                        <Route exact path={routes.oraclesRoute} component={OraclesPage} />
-                        <Route exact path="" component={CampaignSelection} />
+                        <Route exact path={routes.campaignSelectionRoute} component={pages.CampaignSelection} />
+                        <Route exact path={routes.campaignRoute.template} component={pages.CharacterAutoSelection} />
+                        <Route exact path={routes.characterSelectionRoute.template} component={pages.CharacterSelection} />
+                        <Route exact path={routes.notesRoute.template} component={pages.NotesPage} />
+                        <Route exact path={routes.logRoute.template} component={pages.LogPage} />
+                        <Route exact path={routes.characterSheetRoute.template} component={pages.CharacterSheetPage} />
+                        <Route exact path={routes.tracksRoute.template} component={pages.CombatAndTravel} />
+                        <Route exact path={routes.aboutRoute} component={pages.AboutPage} />
+                        <Route exact path={routes.oraclesRoute} component={pages.OraclesPage} />
+                        <Route exact path={routes.assetsRoute} component={pages.AssetsPage} />
+                        <Route exact path="" component={pages.CampaignSelection} />
                     </Switch>
                 </div>
             </Router>
