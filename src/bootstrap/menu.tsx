@@ -62,6 +62,7 @@ function Credits({ pathname }: { pathname: string }) {
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
                 <img
                     style={{ width: '6em' }}
+                    alt="creative commons licence Attribution-NonCommercial-ShareAlike 4.0 International"
                     src="https://static.wixstatic.com/media/4db827_0676c4f610b540fa886a79dd36f4d801~mv2.png/v1/fill/w_250,h_95,al_c,q_80/4db827_0676c4f610b540fa886a79dd36f4d801~mv2.webp"
                 />
             </a>
