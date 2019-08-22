@@ -1,5 +1,5 @@
 import { ChallengeRollResult, ProgressRollResult, ChallengeDice } from '../contracts/rolls';
-import { SimpleOracle, RandomTable } from '../contracts/referential';
+import { RandomTable } from '../contracts/oracles';
 
 function rollDie(i: number) {
     return Math.floor(Math.random() * i) + 1;
