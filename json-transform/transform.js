@@ -24,11 +24,11 @@ function apply(name, cb) {
     });
 }
 
-function fix_notes(obj) {
+function fix_result(obj) {
     return traverse([node => {
-        if (node.key == "custom-note") {
-            const [title, placeholder] = node.current;
-            return {title, placeholder}
+        if (node.key == "result" && typeof node.current == "string") {
+            const description = node.current;
+            return {description}
         }
     }])(obj);
 }
@@ -38,5 +38,5 @@ function fix_notes(obj) {
 // });
 
 ["assets"].forEach(name => {
-    apply(name, fix_notes).catch(console.error);
+    apply(name, fix_result).catch(console.error);
 });

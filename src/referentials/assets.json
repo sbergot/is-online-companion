@@ -7,17 +7,23 @@
       {
         "id": "Far-seeing",
         "enabled": false,
-        "result": "When you Undertake a Journey, or when you Resupply by hunting small game, add +1."
+        "result": {
+          "description": "When you Undertake a Journey, or when you Resupply by hunting small game, add +1."
+        }
       },
       {
         "id": "Fierce",
         "enabled": false,
-        "result": "When you Secure an Advantage +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage +edge using your hawk to harass and distract your foes, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "Vigilant",
         "enabled": false,
-        "result": "When you Face Danger +wits to detect an approaching threat, or when you Enter the Fray +wits against an ambush, add +2."
+        "result": {
+          "description": "When you Face Danger +wits to detect an approaching threat, or when you Enter the Fray +wits against an ambush, add +2."
+        }
       }
     ],
     "res-counter": {
@@ -37,17 +43,23 @@
       {
         "id": "Swift",
         "enabled": false,
-        "result": "When you Face Danger +edge using your horse's speed and grace, or when you Undertake a Journey, add +1."
+        "result": {
+          "description": "When you Face Danger +edge using your horse's speed and grace, or when you Undertake a Journey, add +1."
+        }
       },
       {
         "id": "Fearless",
         "enabled": false,
-        "result": "When you Enter the Fray or Secure an Advantage +heart by charging into combat, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Enter the Fray or Secure an Advantage +heart by charging into combat, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "Mighty",
         "enabled": false,
-        "result": "When you Strike or Clash at close range while mounted, add +1 and inflict +1 harm on a hit."
+        "result": {
+          "description": "When you Strike or Clash at close range while mounted, add +1 and inflict +1 harm on a hit."
+        }
       }
     ],
     "res-counter": {
@@ -67,17 +79,23 @@
       {
         "id": "Sharp",
         "enabled": false,
-        "result": "When you Gather Information using your hound's keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Gather Information using your hound's keen senses to track your quarry or investigate a scene, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "Ferocious",
         "enabled": false,
-        "result": "When you Strike or Clash alongside your hound and score a hit, inflict +1 harm or take +1 momentum."
+        "result": {
+          "description": "When you Strike or Clash alongside your hound and score a hit, inflict +1 harm or take +1 momentum."
+        }
       },
       {
         "id": "Loyal",
         "enabled": false,
-        "result": "When you Endure Stress in the company of your hound, add +1."
+        "result": {
+          "description": "When you Endure Stress in the company of your hound, add +1."
+        }
       }
     ],
     "res-counter": {
@@ -97,17 +115,23 @@
       {
         "id": "Sly",
         "enabled": false,
-        "result": "When you Secure an Advantage or Face Danger +shadow using your raven to perform trickery (such as creating a distraction or stealing a small object) add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage or Face Danger +shadow using your raven to perform trickery (such as creating a distraction or stealing a small object) add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "Knowing",
         "enabled": false,
-        "result": "When you Face Death, add +2 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Face Death, add +2 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "Diligent",
         "enabled": false,
-        "result": "When your raven carries messages for you, you may Secure an Advantage, Gather Information or Compel from a distance."
+        "result": {
+          "description": "When your raven carries messages for you, you may Secure an Advantage, Gather Information or Compel from a distance."
+        }
       }
     ],
     "res-counter": {
@@ -127,17 +151,23 @@
       {
         "id": "Insatiable",
         "enabled": false,
-        "result": "When you Undertake a Journey and score a hit, you may suffer -1 supply in exchange for +1 momentum."
+        "result": {
+          "description": "When you Undertake a Journey and score a hit, you may suffer -1 supply in exchange for +1 momentum."
+        }
       },
       {
         "id": "Indomitable",
         "enabled": false,
-        "result": "When you make the Companion Endure Harm move for your wyvern, add +2 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you make the Companion Endure Harm move for your wyvern, add +2 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "Savage",
         "enabled": false,
-        "result": "When you Strike by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit."
+        "result": {
+          "description": "When you Strike by commanding your wyvern to attack, roll +heart. Your wyvern inflicts 3 harm on a hit."
+        }
       }
     ],
     "res-counter": {
@@ -157,17 +187,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Sojourn or Make Camp in the company of your banner-kin, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Sojourn or Make Camp in the company of your banner-kin, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Swear an Iron Vow to serve your leader or faction on a mission, you may reroll any dice. When you Fulfil Your Vow and mark experience, take +1 experience."
+        "result": {
+          "description": "When you Swear an Iron Vow to serve your leader or faction on a mission, you may reroll any dice. When you Fulfil Your Vow and mark experience, take +1 experience."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Enter the Fray bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset."
+        "result": {
+          "description": "When you Enter the Fray bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset."
+        }
       }
     ],
     "custom-note": {
@@ -183,17 +219,23 @@
       {
         "id": "first",
         "enabled": false,
-        "result": "You focus your energies: Reduce your edge or iron by 1, and add up to +2 to wits or heart, or +1 to each (to a maximum of +4)."
+        "result": {
+          "description": "You focus your energies: Reduce your edge or iron by 1, and add up to +2 to wits or heart, or +1 to each (to a maximum of +4)."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "You overcome your limitations: Reduce your maximum health or spirit by 1 and ignore the max momentum penalty for being maimed."
+        "result": {
+          "description": "You overcome your limitations: Reduce your maximum health or spirit by 1 and ignore the max momentum penalty for being maimed."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "You have stared down death before: When you are reduced to 0 health, take +1 momentum. When you Face Death, add +1."
+        "result": {
+          "description": "You have stared down death before: When you are reduced to 0 health, take +1 momentum. When you Face Death, add +1."
+        }
       }
     ]
   },
@@ -205,17 +247,23 @@
       {
         "id": "first",
         "enabled": false,
-        "result": "When you Enter the Fray or Draw the Circle while wielding your kin-blade, take +1 momentum on a hit."
+        "result": {
+          "description": "When you Enter the Fray or Draw the Circle while wielding your kin-blade, take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Gather Information and fail to score a strong hit, you may listen to the whispers of your kin-blade for guidance and reroll any dice. If you do, Endure Stress (2 stress)."
+        "result": {
+          "description": "When you Gather Information and fail to score a strong hit, you may listen to the whispers of your kin-blade for guidance and reroll any dice. If you do, Endure Stress (2 stress)."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you inflict harm with your kin-blade, you may inflict +2 harm. If you do, Endure Stress (2 stress)."
+        "result": {
+          "description": "When you inflict harm with your kin-blade, you may inflict +2 harm. If you do, Endure Stress (2 stress)."
+        }
       }
     ],
     "custom-note": {
@@ -230,17 +278,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you say your daily prayers, you may Secure an Advantage by asking your god to grant you a blessing. If you do, roll +your god's stat. On a hit, take +1 momentum."
+        "result": {
+          "description": "When you say your daily prayers, you may Secure an Advantage by asking your god to grant you a blessing. If you do, roll +your god's stat. On a hit, take +1 momentum."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Swear an Iron Vow to serve your god on a divine quest, you may roll +your god's stat and reroll any dice. When you Fulfil Your Vow and mark experience, take +1 experience."
+        "result": {
+          "description": "When you Swear an Iron Vow to serve your god on a divine quest, you may roll +your god's stat and reroll any dice. When you Fulfil Your Vow and mark experience, take +1 experience."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Sojourn, and spread the word of your god, you may roll +your god's stat. If you do, take +1 momentum on a hit."
+        "result": {
+          "description": "When you Sojourn, and spread the word of your god, you may roll +your god's stat. If you do, take +1 momentum on a hit."
+        }
       }
     ],
     "custom-note": {
@@ -272,12 +326,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Heal a companion, ally, or other character, and you score a hit, take +1 spirit or +1 momentum."
+        "result": {
+          "description": "When you Heal a companion, ally, or other character, and you score a hit, take +1 spirit or +1 momentum."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Make Camp and choose the option to partake, you can use your supplies to create a restorative meal. If you do, you and your companions may take +1 health. Any allies who choose to partake may also take +1 health."
+        "result": {
+          "description": "When you Make Camp and choose the option to partake, you can use your supplies to create a restorative meal. If you do, you and your companions may take +1 health. Any allies who choose to partake may also take +1 health."
+        }
       }
     ]
   },
@@ -288,17 +346,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Turn the Tide, envision how your vows give you strength in this moment. Then, add +2 (instead of +1) when you make your move."
+        "result": {
+          "description": "When you Turn the Tide, envision how your vows give you strength in this moment. Then, add +2 (instead of +1) when you make your move."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Secure an Advantage or Compel by telling a hard truth, add +1 and take +1 momentum on a hit. On a weak hit or miss, envision how this truth complicates your current situation."
+        "result": {
+          "description": "When you Secure an Advantage or Compel by telling a hard truth, add +1 and take +1 momentum on a hit. On a weak hit or miss, envision how this truth complicates your current situation."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Fulfil Your Vow and score a weak hit or miss, you may reroll any dice as you Swear an Iron Vow to set things right. On a hit, take +2 momentum."
+        "result": {
+          "description": "When you Fulfil Your Vow and score a weak hit or miss, you may reroll any dice as you Swear an Iron Vow to set things right. On a hit, take +2 momentum."
+        }
       }
     ]
   },
@@ -309,12 +373,16 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Aid Your Ally, add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally."
+        "result": {
+          "description": "When you Aid Your Ally, add +1 and take +1 momentum on a hit. This is in addition to the benefits taken by your ally."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When an ally makes the Endure Stress move in your company, they add +1 and you take +1 momentum on a hit."
+        "result": {
+          "description": "When an ally makes the Endure Stress move in your company, they add +1 and you take +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
@@ -404,12 +472,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "As above, and you may instead add +2 and suffer -2 (decide before rolling)."
+        "result": {
+          "description": "As above, and you may instead add +2 and suffer -2 (decide before rolling)."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Face Death or Face Desolation while wearing the mask, you may roll +its stat (instead of +heart)."
+        "result": {
+          "description": "When you Face Death or Face Desolation while wearing the mask, you may roll +its stat (instead of +heart)."
+        }
       }
     ]
   },
@@ -421,17 +493,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Secure an Advantage to ready yourself for a ritual, envision how you prepare. Then, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage to ready yourself for a ritual, envision how you prepare. Then, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you perform a ritual, you may suffer -1 supply and add +1 (decide before rolling)."
+        "result": {
+          "description": "When you perform a ritual, you may suffer -1 supply and add +1 (decide before rolling)."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you tattoo the essence of a new ritual onto your skin, envision the mark you create. You may then purchase and upgrade that ritual asset for 1 less experience."
+        "result": {
+          "description": "When you tattoo the essence of a new ritual onto your skin, envision the mark you create. You may then purchase and upgrade that ritual asset for 1 less experience."
+        }
       }
     ]
   },
@@ -443,17 +521,23 @@
       {
         "id": "first",
         "enabled": false,
-        "result": "You harden your heart: Reduce your heart stat by 1 and add up to +2 to shadow (to a maximum of +4)."
+        "result": {
+          "description": "You harden your heart: Reduce your heart stat by 1 and add up to +2 to shadow (to a maximum of +4)."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "You are attuned to the realms of shadow: When you perform a ritual, add +1."
+        "result": {
+          "description": "You are attuned to the realms of shadow: When you perform a ritual, add +1."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "You know the sly ways of death: When you Face Death, you may roll +shadow (instead of +heart). You may also suffer -1 momentum and add +1 (decide before rolling):"
+        "result": {
+          "description": "You know the sly ways of death: When you Face Death, you may roll +shadow (instead of +heart). You may also suffer -1 momentum and add +1 (decide before rolling):"
+        }
       }
     ]
   },
@@ -464,17 +548,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Face Danger or Gather Information to identify or detect mystic forces, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Face Danger or Gather Information to identify or detect mystic forces, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Compel, Forge a Bond, or Test a Bond with a fellow mystic or mystical being, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Compel, Forge a Bond, or Test a Bond with a fellow mystic or mystical being, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Secure an Advantage by studying someone or something in a charged situation, add +1 and take +1 momentum on a hit. When you also pierce the veil to explore deeper truths (decide before rolling), you may reroll any dice. If you do, count a weak hit as a miss."
+        "result": {
+          "description": "When you Secure an Advantage by studying someone or something in a charged situation, add +1 and take +1 momentum on a hit. When you also pierce the veil to explore deeper truths (decide before rolling), you may reroll any dice. If you do, count a weak hit as a miss."
+        }
       }
     ]
   },
@@ -485,12 +575,16 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Gather Information by tracking a beast or horror, or when you Secure an Advantage by readying yourself to fight against them, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Gather Information by tracking a beast or horror, or when you Secure an Advantage by readying yourself to fight against them, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Swear an Iron Vow to slay a beast or horror, you may reroll any dice. When you Fulfil Your Vow and mark experience, take +1 experience."
+        "result": {
+          "description": "When you Swear an Iron Vow to slay a beast or horror, you may reroll any dice. When you Fulfil Your Vow and mark experience, take +1 experience."
+        }
       },
       {
         "id": "third",
@@ -518,17 +612,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Secure an Advantage, Compel or Forge a Bond by sharing an inspiring or enlightening song, poem, or tale, envision the story you tell. Then, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage, Compel or Forge a Bond by sharing an inspiring or enlightening song, poem, or tale, envision the story you tell. Then, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Make Camp and choose the option to relax, you may share a story with your allies or compose a new story if alone. If you do, envision the story you tell and take +1 spirit or +1 momentum. Any allies who choose to relax in your company may also take +1 spirit or +1 momentum."
+        "result": {
+          "description": "When you Make Camp and choose the option to relax, you may share a story with your allies or compose a new story if alone. If you do, envision the story you tell and take +1 spirit or +1 momentum. Any allies who choose to relax in your company may also take +1 spirit or +1 momentum."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Sojourn within a community with which you share a bond, add +2 (instead of +1)."
+        "result": {
+          "description": "When you Sojourn within a community with which you share a bond, add +2 (instead of +1)."
+        }
       }
     ]
   },
@@ -539,17 +639,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Face Danger, Secure an Advantage, or Compel by lying, bluffing, stealing, or cheating, add +1."
+        "result": {
+          "description": "When you Face Danger, Secure an Advantage, or Compel by lying, bluffing, stealing, or cheating, add +1."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Gather Information by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit."
+        "result": {
+          "description": "When you Gather Information by investigating a devious scheme, you may roll +shadow (instead of +wits). If you do, take +2 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you confess a lie as you Forge a Bond, you risk rejection for the chance of a stronger bond. On a strong hit, take +2 momentum and mark one more tick. A weak hit counts as a miss."
+        "result": {
+          "description": "When you confess a lie as you Forge a Bond, you risk rejection for the chance of a stronger bond. On a strong hit, take +2 momentum and mark one more tick. A weak hit counts as a miss."
+        }
       }
     ]
   },
@@ -560,17 +666,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you burn momentum to improve your result in combat, envision how your hard-won fighting experience gives you the upper hand. Then, take +1 momentum after you reset."
+        "result": {
+          "description": "When you burn momentum to improve your result in combat, envision how your hard-won fighting experience gives you the upper hand. Then, take +1 momentum after you reset."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Swear an Iron Vow to someone who fought beside you, or Forge a Bond with them, add +2 and take +2 momentum on a hit."
+        "result": {
+          "description": "When you Swear an Iron Vow to someone who fought beside you, or Forge a Bond with them, add +2 and take +2 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Resupply by looting the dead on a field of battle, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Resupply by looting the dead on a field of battle, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -581,17 +693,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Undertake a Journey and burn momentum to improve your result, envision how you reorient yourself. Then, take +2 momentum after you reset."
+        "result": {
+          "description": "When you Undertake a Journey and burn momentum to improve your result, envision how you reorient yourself. Then, take +2 momentum after you reset."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Secure an Advantage or Gather Information by carefully surveying the landscape or scouting ahead, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage or Gather Information by carefully surveying the landscape or scouting ahead, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Swear an Iron Vow to safely guide someone on a perilous journey, you may reroll any dice. When you Fulfil Your Vow and mark experience take +1 experience."
+        "result": {
+          "description": "When you Swear an Iron Vow to safely guide someone on a perilous journey, you may reroll any dice. When you Fulfil Your Vow and mark experience take +1 experience."
+        }
       }
     ]
   },
@@ -602,17 +720,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Face Danger, Secure an Advantage, or Gather Information using your knowledge of tracking, woodcraft, or woodland creatures, add+1."
+        "result": {
+          "description": "When you Face Danger, Secure an Advantage, or Gather Information using your knowledge of tracking, woodcraft, or woodland creatures, add+1."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Face Danger or Secure an Advantage  by hiding or sneaking in the woodlands, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Face Danger or Secure an Advantage  by hiding or sneaking in the woodlands, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Make Camp in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies may each choose 1 more option on a hit."
+        "result": {
+          "description": "When you Make Camp in the woodlands, you may roll +wits (instead of +supply). If you do, you and your allies may each choose 1 more option on a hit."
+        }
       }
     ]
   },
@@ -624,17 +748,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Secure an Advantage by sizing up you foe in a fight, or in a charged situation which may lead to a fight, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage by sizing up you foe in a fight, or in a charged situation which may lead to a fight, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you study or train in a new weapon or technique, you may obtain and upgrade that combat talent for 1 less experience."
+        "result": {
+          "description": "When you study or train in a new weapon or technique, you may obtain and upgrade that combat talent for 1 less experience."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Turn the Tide with a sudden change of weapon or technique, and your next move is a Strike, you may add +1 and inflict +2 harm on a strong hit."
+        "result": {
+          "description": "When you Turn the Tide with a sudden change of weapon or technique, and your next move is a Strike, you may add +1 and inflict +2 harm on a strong hit."
+        }
       }
     ]
   },
@@ -649,17 +779,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Secure an Advantage by crafting a useful item using your speciality, or when you Face Danger to create or repair an item in a perilous situation, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage by crafting a useful item using your speciality, or when you Face Danger to create or repair an item in a perilous situation, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "As above, and you may suffer -1 supply (after you roll) to add an additional +1."
+        "result": {
+          "description": "As above, and you may suffer -1 supply (after you roll) to add an additional +1."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you give the item you create as a gift to commemorate an important event or relationship, you may (one time only) reroll any dice when you Compel, Forge a Bond, or Test a Bond."
+        "result": {
+          "description": "When you give the item you create as a gift to commemorate an important event or relationship, you may (one time only) reroll any dice when you Compel, Forge a Bond, or Test a Bond."
+        }
       }
     ]
   },
@@ -671,17 +807,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Secure an Advantage +wits by taking a moment to aim, envision where you intend to land your shot. Then, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage +wits by taking a moment to aim, envision where you intend to land your shot. Then, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "Once per fight, when you Strike or Clash, you may take extra shots and suffer -1 supply. If you do, reroll any dice. On a hit, inflict +2 harm and take +1 momentum."
+        "result": {
+          "description": "Once per fight, when you Strike or Clash, you may take extra shots and suffer -1 supply. If you do, reroll any dice. On a hit, inflict +2 harm and take +1 momentum."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Resupply by hunting, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Resupply by hunting, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -693,17 +835,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Secure an Advantage +iron by engaging in close-quarters brawling (such as hitting, tripping, or smashing), add +1. If you score a hit, you may also inflict 1 harm."
+        "result": {
+          "description": "When you Secure an Advantage +iron by engaging in close-quarters brawling (such as hitting, tripping, or smashing), add +1. If you score a hit, you may also inflict 1 harm."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Strike or Clash with brutal intent, you may inflict 2 harm (instead of 1)."
+        "result": {
+          "description": "When you Strike or Clash with brutal intent, you may inflict 2 harm (instead of 1)."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Face Danger or Clash against a brawling attack (such as punches, kicks, slams, trips, or grapples), add +1."
+        "result": {
+          "description": "When you Face Danger or Clash against a brawling attack (such as punches, kicks, slams, trips, or grapples), add +1."
+        }
       }
     ]
   },
@@ -732,12 +880,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Compel someone at the point of your blade, or when you rely on your blade to Face Danger, add +1."
+        "result": {
+          "description": "When you Compel someone at the point of your blade, or when you rely on your blade to Face Danger, add +1."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "Once per fight, when you Secure an Advantage +shadow by performing a feint or misdirection, reroll any dice and +1 momentum on a hit."
+        "result": {
+          "description": "Once per fight, when you Secure an Advantage +shadow by performing a feint or misdirection, reroll any dice and +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -749,12 +901,16 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Clash or Strike, you may add +2. If you do (decide before rolling), inflict +1 harm on a strong hit and count a weak hit as a miss."
+        "result": {
+          "description": "When you Clash or Strike, you may add +2. If you do (decide before rolling), inflict +1 harm on a strong hit and count a weak hit as a miss."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "Once per fight, when you Secure an Advantage +edge by making a bold display of your combat prowess, you may reroll any dice."
+        "result": {
+          "description": "Once per fight, when you Secure an Advantage +edge by making a bold display of your combat prowess, you may reroll any dice."
+        }
       },
       {
         "id": "third",
@@ -800,12 +956,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Clash while you are geared for war, add +1."
+        "result": {
+          "description": "When you Clash while you are geared for war, add +1."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Compel in a situation where strength of arms is a factor, add +2."
+        "result": {
+          "description": "When you Compel in a situation where strength of arms is a factor, add +2."
+        }
       }
     ]
   },
@@ -817,17 +977,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "In your hands, a humble staff is a deadly weapon. You may inflict 2 harm (instead of 1)."
+        "result": {
+          "description": "In your hands, a humble staff is a deadly weapon. You may inflict 2 harm (instead of 1)."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Strike or Clash, you may roll +edge (instead of +iron). If you do, inflict 1 less harm in exchange for +1 momentum on a hit."
+        "result": {
+          "description": "When you Strike or Clash, you may roll +edge (instead of +iron). If you do, inflict 1 less harm in exchange for +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Secure an Advantage using your staff to disarm, trip, shove or stun your foe, you may roll +edge (instead of +iron) and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage using your staff to disarm, trip, shove or stun your foe, you may roll +edge (instead of +iron) and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -839,17 +1005,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Face Danger using your shield as a cover, add +1. When you Clash in close quarters, take +1 momentum on a strong hit."
+        "result": {
+          "description": "When you Face Danger using your shield as a cover, add +1. When you Clash in close quarters, take +1 momentum on a strong hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you bear a shield painted with a meaningful symbol, and you Endure Stress as you face off against a fearsome foe, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you bear a shield painted with a meaningful symbol, and you Endure Stress as you face off against a fearsome foe, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When forced to Endure Harm in a fight, you may instead sacrifice your shield and ignore all harm. If you do, your shield is destroyed or will require extensive repair; suffer -2 momentum."
+        "result": {
+          "description": "When forced to Endure Harm in a fight, you may instead sacrifice your shield and ignore all harm. If you do, your shield is destroyed or will require extensive repair; suffer -2 momentum."
+        }
       }
     ]
   },
@@ -878,12 +1050,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Strike or Clash in close combat and score a strong hit, you may drive your spear home and inflict +2 harm. If the fight continues, Face Danger +iron to retrieve your spear before using it again."
+        "result": {
+          "description": "When you Strike or Clash in close combat and score a strong hit, you may drive your spear home and inflict +2 harm. If the fight continues, Face Danger +iron to retrieve your spear before using it again."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Secure an Advantage by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Secure an Advantage by bracing your spear against a charging foe, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -895,12 +1071,16 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Strike or Clash in close quarters, you may suffer -1 momentum and inflict +1 harm on a hit (decide before rolling)."
+        "result": {
+          "description": "When you Strike or Clash in close quarters, you may suffer -1 momentum and inflict +1 harm on a hit (decide before rolling)."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you have your axe in a hand, and use the promise of violence to Compel or Secure an Advantage, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you have your axe in a hand, and use the promise of violence to Compel or Secure an Advantage, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
@@ -985,17 +1165,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Strike or Clash and burn momentum to improve your result, inflict +2 harm."
+        "result": {
+          "description": "When you Strike or Clash and burn momentum to improve your result, inflict +2 harm."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Clash and score a strong hit, you may add +1 if you immediately follow with a Strike."
+        "result": {
+          "description": "When you Clash and score a strong hit, you may add +1 if you immediately follow with a Strike."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Swear an Iron Vow by kneeling and grasping your sword's blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, Endure Harm (1 harm) in exchange for an additional +1 momentum on a hit."
+        "result": {
+          "description": "When you Swear an Iron Vow by kneeling and grasping your sword's blade, add +1 and take +1 momentum on a hit. If you let the edge draw blood from your hands, Endure Harm (1 harm) in exchange for an additional +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1040,7 +1226,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1085,7 +1273,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1130,7 +1320,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1175,7 +1367,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1220,7 +1414,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1329,7 +1525,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1374,7 +1572,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1419,7 +1619,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1464,7 +1666,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1509,7 +1713,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1618,7 +1824,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1630,17 +1838,23 @@
       {
         "id": "Skilled",
         "enabled": false,
-        "result": "When you make a move outside of combat (not a progress move) aided by your companion's expertise, add +1."
+        "result": {
+          "description": "When you make a move outside of combat (not a progress move) aided by your companion's expertise, add +1."
+        }
       },
       {
         "id": "Shield-Kin",
         "enabled": false,
-        "result": "When you Clash or Battle alongside your companion, or when you Face Danger against an attack by standing together, add +1."
+        "result": {
+          "description": "When you Clash or Battle alongside your companion, or when you Face Danger against an attack by standing together, add +1."
+        }
       },
       {
         "id": "Bonded",
         "enabled": false,
-        "result": "Once you mark a bond with your companion, add +1 when you Face Desolation in their presence."
+        "result": {
+          "description": "Once you mark a bond with your companion, add +1 when you Face Desolation in their presence."
+        }
       }
     ],
     "res-counter": {
@@ -1676,12 +1890,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Sojourn, you may reroll any dice. If you do (decide before your first roll), your needs are few, but your isolation sets you apart from others. A strong hit counts as a weak hit."
+        "result": {
+          "description": "When you Sojourn, you may reroll any dice. If you do (decide before your first roll), your needs are few, but your isolation sets you apart from others. A strong hit counts as a weak hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Reach Your Destination and roll a strong hit, you recall or recognise something helpful about this place. Envision what it is, and take +2 momentum."
+        "result": {
+          "description": "When you Reach Your Destination and roll a strong hit, you recall or recognise something helpful about this place. Envision what it is, and take +2 momentum."
+        }
       }
     ]
   },
@@ -1709,12 +1927,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "You may roll +shadow (instead of +heart) when you Sojourn under your false identity. If you do, take +1 momentum on a hit."
+        "result": {
+          "description": "You may roll +shadow (instead of +heart) when you Sojourn under your false identity. If you do, take +1 momentum on a hit."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Secure an Advantage by revealing your true identity in a dramatic moment, reroll any dice."
+        "result": {
+          "description": "When you Secure an Advantage by revealing your true identity in a dramatic moment, reroll any dice."
+        }
       }
     ]
   },
@@ -1726,17 +1948,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you are at 0 health, and Endure Harm or Face Death, add +1. If you then burn momentum to improve your result, envision what bond or vow binds you to this world, and take +2 momentum after you reset."
+        "result": {
+          "description": "When you are at 0 health, and Endure Harm or Face Death, add +1. If you then burn momentum to improve your result, envision what bond or vow binds you to this world, and take +2 momentum after you reset."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you make a move to investigate, oppose, or interact with a horror, spirit, or other undead being, add +1."
+        "result": {
+          "description": "When you make a move to investigate, oppose, or interact with a horror, spirit, or other undead being, add +1."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you bring death to your foe to End the Fight, you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, Endure Stress (2 stress)."
+        "result": {
+          "description": "When you bring death to your foe to End the Fight, you may burn momentum to cancel one (not both) of the challenge dice if your momentum is greater than the value of that die. If you do, Endure Stress (2 stress)."
+        }
       }
     ]
   },
@@ -1748,17 +1976,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Heal your horse, or when you Face Danger to calm or encourage it, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Heal your horse, or when you Face Danger to calm or encourage it, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Undertake a Journey, and your action score is equal to one or both challenge dice, you may push your horse harder and add +1. If you do, make the Companion Endure Harm move (1 harm)."
+        "result": {
+          "description": "When you Undertake a Journey, and your action score is equal to one or both challenge dice, you may push your horse harder and add +1. If you do, make the Companion Endure Harm move (1 harm)."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Reach Your Destination and roll a strong hit, you recall or recognise something helpful about this place. Envision what it is, and take +2 momentum."
+        "result": {
+          "description": "When you Reach Your Destination and roll a strong hit, you recall or recognise something helpful about this place. Envision what it is, and take +2 momentum."
+        }
       }
     ]
   },
@@ -1769,7 +2003,9 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Face Danger, Gather Information, or Secure an Advantage related to your knowledge of watercraft, water travel, or aquatic environments or creatures, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Face Danger, Gather Information, or Secure an Advantage related to your knowledge of watercraft, water travel, or aquatic environments or creatures, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
@@ -1795,7 +2031,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Enter the Fray aboard a boat or ship, reroll any dice."
+        "result": {
+          "description": "When you Enter the Fray aboard a boat or ship, reroll any dice."
+        }
       }
     ]
   },
@@ -1807,17 +2045,23 @@
       {
         "id": "first",
         "enabled": true,
-        "result": "When you Face Danger, Secure an Advantage, or Compel by hitting or breaking an inanimate object, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you Face Danger, Secure an Advantage, or Compel by hitting or breaking an inanimate object, add +1 and take +1 momentum on a hit."
+        }
       },
       {
         "id": "second",
         "enabled": false,
-        "result": "When you Strike a foe and score a strong hit, take +1 momentum as you also knock them back, stun them, or put them off-balance."
+        "result": {
+          "description": "When you Strike a foe and score a strong hit, take +1 momentum as you also knock them back, stun them, or put them off-balance."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you Turn the Tide, you may Strike with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +1 harm on a strong hit, but count a weak hit as a miss."
+        "result": {
+          "description": "When you Turn the Tide, you may Strike with all the fury and power you can muster. If you do (decide before rolling), you may reroll any dice and inflict +1 harm on a strong hit, but count a weak hit as a miss."
+        }
       }
     ]
   },
@@ -1845,12 +2089,16 @@
       {
         "id": "second",
         "enabled": false,
-        "result": "Your simulacrum has 6 health."
+        "result": {
+          "description": "Your simulacrum has 6 health."
+        }
       },
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   },
@@ -1895,7 +2143,9 @@
       {
         "id": "third",
         "enabled": false,
-        "result": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        "result": {
+          "description": "When you perform this ritual, add +1 and take +1 momentum on a hit."
+        }
       }
     ]
   }

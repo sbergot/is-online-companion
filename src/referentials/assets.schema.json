@@ -24,36 +24,34 @@
                             "type": "boolean"
                         },
                         "result": {
-                            "oneOf": [
-                                {
+                            "type": "object",
+                            "properties": {
+                                "description": {
                                     "type": "string"
                                 },
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "description": {
-                                            "type": "string"
-                                        },
-                                        "options": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "description": {
-                                                        "type": "string"
-                                                    }
-                                                }
+                                "options": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
                                             }
                                         }
                                     }
                                 }
-                            ]
+                            },
+                            "required": ["description"]
                         }
                     },
-                    "required": ["id", "enabled", "result"],
+                    "required": [
+                        "id",
+                        "enabled",
+                        "result"
+                    ],
                     "additionalProperties": false
                 }
             },
@@ -80,7 +78,11 @@
                 }
             }
         },
-        "required": ["name", "asset-type", "perks"],
+        "required": [
+            "name",
+            "asset-type",
+            "perks"
+        ],
         "additionalProperties": false
     }
 }
