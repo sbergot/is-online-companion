@@ -1,4 +1,9 @@
-* TODO new release
+* asset management
+** TODO import assets with types
+** TODO select asset component
+** TODO select assets at character creation
+** TODO spend xp to select new asset
+** TODO spend xp to improve asset
 
 * rework storage
 ** TODO everything under a campaign
