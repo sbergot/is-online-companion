@@ -1,3 +1,7 @@
+# 0.3.1
+
+minor bug fixes
+
 # 0.3.0
 
 - log page improvments
