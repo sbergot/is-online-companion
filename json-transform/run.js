@@ -24,14 +24,11 @@ function apply(name, cb) {
     });
 }
 
-function fix_variant(obj) {
+function fix_notes(obj) {
     return traverse([node => {
-        if (node.parent && node.parent.parent == null) {
-            const {name, type, value} = node.current;
-            return {
-                type,
-                value: {name, ...value}
-            }
+        if (node.key == "custom-note") {
+            const [title, placeholder] = node.current;
+            return {title, placeholder}
         }
     }])(obj);
 }
@@ -40,6 +37,6 @@ function fix_variant(obj) {
 //     apply(name, transform);
 // });
 
-["oracles"].forEach(name => {
-    apply(name, fix_variant).catch(console.error);
+["assets"].forEach(name => {
+    apply(name, fix_notes).catch(console.error);
 });

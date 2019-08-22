@@ -1,0 +1,86 @@
+{
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string"
+            },
+            "asset-type": {
+                "type": "string"
+            },
+            "description": {
+                "type": "string"
+            },
+            "perks": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "result": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "options": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "required": ["id", "enabled", "result"],
+                    "additionalProperties": false
+                }
+            },
+            "res-counter": {
+                "type": "object",
+                "properties": {
+                    "current": {
+                        "type": "number"
+                    },
+                    "max": {
+                        "type": "number"
+                    }
+                }
+            },
+            "custom-note": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "placeholder": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "required": ["name", "asset-type", "perks"],
+        "additionalProperties": false
+    }
+}

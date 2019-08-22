@@ -1,3 +1,5 @@
+* add favicon
+
 * asset management
 ** TODO import assets with types
 ** TODO select asset component
@@ -12,17 +14,19 @@
 
 * index
 contains narrative objects (places, NPCs, objects)
-contains rules elements (moves, assets, regions, foes)
+contains rules elements (moves, assets, regions, foes)????
 user should be able to reference index elements in the log
-** TODO referentials import from is android companion
-** TODO browse index
-** TODO create/edit/remove narrative objects
+** TODO add note category (character / community / location / object / other)
+** TODO allow custom categories
+** TODO referentials import from is android companion using specific categories
+** TODO allow custom items for rule referentials
+** TODO filter by category (list of checkboxes hidden by default)
 ** TODO direct link to index object
-** TODO reference an index object in the log
 
 
 * @ mentions in input editor
 see ckeditor or summernote
+** TODO reference an index object in the log
 
 * images
 add images to campaigns & character

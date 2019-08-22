@@ -24,10 +24,10 @@
       "current": 3,
       "max": 3
     },
-    "custom-note": [
-      "Name",
-      "Hawk"
-    ]
+    "custom-note": {
+      "title": "Name",
+      "placeholder": "Hawk"
+    }
   },
   {
     "name": "Horse",
@@ -54,10 +54,10 @@
       "current": 5,
       "max": 5
     },
-    "custom-note": [
-      "Name",
-      "Horse"
-    ]
+    "custom-note": {
+      "title": "Name",
+      "placeholder": "Horse"
+    }
   },
   {
     "name": "Hound",
@@ -84,10 +84,10 @@
       "current": 4,
       "max": 4
     },
-    "custom-note": [
-      "Name",
-      "Hound"
-    ]
+    "custom-note": {
+      "title": "Name",
+      "placeholder": "Hound"
+    }
   },
   {
     "name": "Raven",
@@ -114,10 +114,10 @@
       "current": 2,
       "max": 2
     },
-    "custom-note": [
-      "Name",
-      "Raven"
-    ]
+    "custom-note": {
+      "title": "Name",
+      "placeholder": "Raven"
+    }
   },
   {
     "name": "Young Wyvern",
@@ -144,10 +144,10 @@
       "current": 5,
       "max": 5
     },
-    "custom-note": [
-      "Name",
-      "Young Wyvern"
-    ]
+    "custom-note": {
+      "title": "Name",
+      "placeholder": "Young Wyvern"
+    }
   },
   {
     "name": "Banner-Sworn",
@@ -170,10 +170,10 @@
         "result": "When you Enter the Fray bearing your banner, add +1 and take +1 momentum on a hit. When you burn momentum while carrying your banner in combat, take +1 momentum after you reset."
       }
     ],
-    "custom-note": [
-      "Name",
-      "To Whom?"
-    ]
+    "custom-note": {
+      "title": "Name",
+      "placeholder": "To Whom?"
+    }
   },
   {
     "name": "Battle-Scarred",
@@ -218,10 +218,10 @@
         "result": "When you inflict harm with your kin-blade, you may inflict +2 harm. If you do, Endure Stress (2 stress)."
       }
     ],
-    "custom-note": [
-      "Name",
-      "Kin-Blade"
-    ]
+    "custom-note": {
+      "title": "Name",
+      "placeholder": "Kin-Blade"
+    }
   },
   {
     "name": "Devotant",
@@ -243,10 +243,10 @@
         "result": "When you Sojourn, and spread the word of your god, you may roll +your god's stat. If you do, take +1 momentum on a hit."
       }
     ],
-    "custom-note": [
-      "God Name (Stat)",
-      "Name (Stat)"
-    ]
+    "custom-note": {
+      "title": "God Name (Stat)",
+      "placeholder": "Name (Stat)"
+    }
   },
   {
     "name": "Herbalist",
@@ -371,10 +371,10 @@
     "name": "Masked",
     "asset-type": "Path",
     "description": "Once you mark a bond with elves, and are gifted with a mask of precious elderwood...",
-    "custom-note": [
-      "Mask",
-      "X-wood: Stat / Resource"
-    ],
+    "custom-note": {
+      "title": "Mask",
+      "placeholder": "X-wood: Stat / Resource"
+    },
     "perks": [
       {
         "id": "first",
@@ -641,10 +641,10 @@
   {
     "name": "Wright",
     "asset-type": "Path",
-    "custom-note": [
-      "Speciality",
-      "Choose one"
-    ],
+    "custom-note": {
+      "title": "Speciality",
+      "placeholder": "Choose one"
+    },
     "perks": [
       {
         "id": "first",
@@ -1647,10 +1647,10 @@
       "current": 4,
       "max": 4
     },
-    "custom-note": [
-      "Name/Expertise:",
-      "Some dood/stuff"
-    ]
+    "custom-note": {
+      "title": "Name/Expertise:",
+      "placeholder": "Some dood/stuff"
+    }
   },
   {
     "name": "Outcast",
