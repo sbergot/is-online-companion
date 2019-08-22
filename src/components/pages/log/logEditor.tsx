@@ -108,7 +108,7 @@ export function NewLogBlockEditor({ onLog, character }: NewLogBlockEditorProps) 
     const characterKey = character.key;
     const userInputLens = getUserInputLens(characterKey, '');
     const textLens = userInputLens.zoom('value').zoom('text');
-    const challengeRollLogLens = getChallengeRollLens(characterKey, { type: 'edge', bonus: 0, stat: 0 });
+    const challengeRollLogLens = getChallengeRollLens(characterKey, { type: 'edge', bonus: 0, stat: character.data.stats.edge });
 
     function roll(): ChallengeRoll {
         const currentMomentum = character.data.momentum.level;
