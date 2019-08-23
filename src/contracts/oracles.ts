@@ -1,4 +1,5 @@
 import { Variant } from "./variant";
+import { EventRange } from "./shared-referential";
 
 export type OracleTypeKeys = "simple" | "nested" | "options";
 
@@ -14,11 +15,6 @@ export type Oracle =
     Variant<"simple", SimpleOracle> |
     Variant<"nested", NestedOracle> |
     Variant<"options", OptionsOracle>;
-
-export interface EventRange {
-    upper: number;
-    description: string;
-}
 
 export interface SimpleOracle {
     name: string;

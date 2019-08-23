@@ -1,4 +1,111 @@
 {
+    "definitions": {
+        "options": {
+            "$id": "#options",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                },
+                "required": ["name", "description"],
+                "additionalProperties": false
+            }
+        },
+        "random-event": {
+            "$id": "#random-event",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "upper": {
+                        "type": "number"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                },
+                "required": ["upper", "description"],
+                "additionalProperties": false
+            }
+        },
+        "move-result": {
+            "$id": "#move-result",
+            "type": "object",
+            "properties": {
+                "description": {"type": "string"},
+                "options": {"$ref": "#options" }
+            },
+            "required": ["description"],
+            "additionalProperties": false
+        },
+        "move": {
+            "$id": "#move",
+            "type": "object",
+            "properties": {
+                "name": { "type": "string" },
+                "move-type": { "type": "string" },
+                "description": { "type": "string" },
+                "results": {
+                    "type": "object",
+                    "properties": {
+                        "Strong Hit": {"$ref": "#move-result" },
+                        "Weak Hit": {"$ref": "#move-result" },
+                        "Miss": {"$ref": "#move-result" }
+                    },
+                    "required": ["Strong Hit", "Weak Hit", "Miss"],
+                    "additionalProperties": false
+                }
+            },
+            "required": ["name", "move-type", "description", "results"],
+            "additionalProperties": false
+        },
+        "perk": {
+            "$id": "#perk",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "result": {
+                    "$ref": "#perk-result"
+                }
+            },
+            "required": [
+                "id",
+                "enabled",
+                "result"
+            ],
+            "additionalProperties": false
+        },
+        "perk-result": {
+            "$id": "#perk-result",
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "options": {
+                    "$ref": "#options"
+                },
+                "move": {
+                    "$ref": "#move"
+                }
+            },
+            "required": [
+                "description"
+            ],
+            "additionalProperties": false
+        }
+    },
     "type": "array",
     "items": {
         "type": "object",
@@ -15,46 +122,7 @@
             "perks": {
                 "type": "array",
                 "items": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "string"
-                        },
-                        "enabled": {
-                            "type": "boolean"
-                        },
-                        "result": {
-                            "type": "object",
-                            "properties": {
-                                "description": {
-                                    "type": "string"
-                                },
-                                "options": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "description": {
-                                                "type": "string"
-                                            }
-                                        }
-                                    }
-                                }
-                            },
-                            "required": [
-                                "description"
-                            ]
-                        }
-                    },
-                    "required": [
-                        "id",
-                        "enabled",
-                        "result"
-                    ],
-                    "additionalProperties": false
+                    "$ref": "#perk"
                 }
             },
             "res-counter": {
@@ -66,7 +134,9 @@
                     "max": {
                         "type": "number"
                     }
-                }
+                },
+                "required": ["current", "max"],
+                "additionalProperties": false
             },
             "custom-note": {
                 "type": "object",
@@ -77,7 +147,9 @@
                     "placeholder": {
                         "type": "string"
                     }
-                }
+                },
+                "required": ["title", "placeholder"],
+                "additionalProperties": false
             }
         },
         "required": [

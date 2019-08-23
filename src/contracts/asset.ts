@@ -20,10 +20,11 @@ export interface Perk {
 
 export interface PerkResult {
     description: string;
-    options?: PerkResultOption[];
+    options?: ResultOption[];
+    move?: Move;
 }
 
-export interface PerkResultOption {
+export interface ResultOption {
     name: string;
     description: string;
 }
@@ -31,4 +32,24 @@ export interface PerkResultOption {
 export interface CustomNote {
     title: string;
     placeholder: string;
+}
+
+export interface Move {
+    name: string;
+    "move-type": string;
+    description: string;
+    results: MoveResultTable;
+}
+
+export type MoveResultType = "Strong Hit" | "Weak Hit" | "Miss";
+
+export interface MoveResultTable {
+    "Strong Hit": MoveResult;
+    "Weak Hit": MoveResult;
+    "Miss": MoveResult;
+}
+
+export interface MoveResult {
+    description: string;
+    options?: ResultOption[];
 }

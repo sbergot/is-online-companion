@@ -1,5 +1,9 @@
 * add favicon
 
+* generic roll page
+** TODO generic challenge roll
+** TODO d6, d10, d100
+
 * asset management
 ** TODO import assets with types
 ** TODO select asset component

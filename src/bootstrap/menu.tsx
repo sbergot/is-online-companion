@@ -84,6 +84,9 @@ function MenuInner({ location }: RouteComponentProps<CampaignKeyParam>) {
             <NavigationLink current={pathname} to={routes.oraclesRoute}>
                 oracles
             </NavigationLink>
+            <NavigationLink current={pathname} to={routes.assetsRoute}>
+                assets
+            </NavigationLink>
             <NavigationLink current={pathname} to={routes.campaignSelectionRoute}>
                 campaign selection
             </NavigationLink>

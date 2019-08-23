@@ -26,7 +26,7 @@ function apply(name, cb) {
 
 function fix_result(obj) {
     return traverse([node => {
-        if (node.key == "result" && typeof node.current == "string") {
+        if ((node.key == "Weak Hit" || node.key == "Strong Hit" || node.key == "Miss") && typeof node.current == "string") {
             const description = node.current;
             return {description}
         }

@@ -14,7 +14,9 @@ function check(name) {
 
     const data = require(dataPath);
     const schema = require(schemaPath);
-    const ajv = new Ajv({allErrors: true});
+    const ajv = new Ajv({
+        allErrors: true,
+    });
     const validate = ajv.compile(schema);
     const valid = validate(data);
     if (!valid) return validate.errors;
