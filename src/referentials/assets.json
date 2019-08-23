@@ -1044,7 +1044,6 @@
         "id": "third",
         "enabled": false,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Pay Tribute",
             "move-type": "normal",
@@ -1101,7 +1100,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Summon crows",
             "move-type": "normal",
@@ -1144,7 +1142,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Enchant pelt",
             "move-type": "normal",
@@ -1187,7 +1184,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Commune with the dead",
             "move-type": "normal",
@@ -1230,7 +1226,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Read the runes",
             "move-type": "normal",
@@ -1273,7 +1268,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Sing a keen",
             "move-type": "normal",
@@ -1316,7 +1310,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "See the flames",
             "move-type": "normal",
@@ -1373,7 +1366,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Cloak with shadows",
             "move-type": "normal",
@@ -1416,7 +1408,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Whisper to the wind",
             "move-type": "normal",
@@ -1459,7 +1450,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Bond with your totem",
             "move-type": "normal",
@@ -1502,7 +1492,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Paint yourself in blood",
             "move-type": "normal",
@@ -1545,7 +1534,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Draw a circle",
             "move-type": "normal",
@@ -1681,7 +1669,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Establish false identity",
             "move-type": "normal",
@@ -1849,7 +1836,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Create a simulacrum",
             "move-type": "normal",
@@ -1859,7 +1845,7 @@
                 "description": "Your creation is given unnatural life. If you make a move using the simulacrum to assault or overcome an obstacle through strength or intimidation, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead."
               },
               "Weak Hit": {
-                "description": "Your creation is given unnatural life. If you make a move using the simulacrum to assault or overcome an obstacle through strength or intimidation, add +2. It has 3 health and suffers harm as appropriate, but is not a companion and may not be healed. At 0 health, it is dead. If you roll a 1 on your action die when aided by your simulacrum, it will betray you or turn on you (as at least a formidable foe)."
+                "description": "As above, but if you roll a 1 on your action die when aided by your simulacrum, it will betray you or turn on you (as at least a formidable foe)."
               },
               "Miss": {
                 "description": "It stays dead."
@@ -1892,7 +1878,6 @@
         "id": "first",
         "enabled": true,
         "result": {
-          "description": "You may",
           "move": {
             "name": "Make a specific charm",
             "move-type": "normal",

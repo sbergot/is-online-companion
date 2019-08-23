@@ -100,9 +100,6 @@
                     "$ref": "#move"
                 }
             },
-            "required": [
-                "description"
-            ],
             "additionalProperties": false
         }
     },

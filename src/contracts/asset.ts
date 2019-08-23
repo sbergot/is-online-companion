@@ -19,7 +19,7 @@ export interface Perk {
 }
 
 export interface PerkResult {
-    description: string;
+    description?: string;
     options?: ResultOption[];
     move?: Move;
 }
