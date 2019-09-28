@@ -8,4 +8,4 @@ export { CombatAndTravel } from './combatAndTravelPage';
 export { NotesPage } from './notesPage';
 export { OraclesPage } from './oraclesPage';
 export { AssetsPage } from './assetsPage';
-export { SelectAssetsPage } from './selectAssetsPage';
+export { AdvancePage as SelectAssetsPage } from './advancePage';

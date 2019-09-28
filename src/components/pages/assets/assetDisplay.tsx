@@ -1,11 +1,48 @@
 import * as React from 'react';
 import { PerkResult, Move, MoveResultTable, MoveResultType, Asset } from '../../../contracts/asset';
+import { Lens } from '../../../framework/contracts';
 
 interface AssetDisplayProps {
     asset: Asset;
 }
 
 export function AssetDisplay({ asset }: AssetDisplayProps) {
+    return <AssetCore asset={asset} />
+}
+
+interface AssetEditProps {
+    assetLens: Lens<Asset>;
+    xpLens: Lens<number>;
+}
+
+function AssetEdit({ assetLens, xpLens }: AssetEditProps) {
+    return <AssetCore
+        asset={assetLens.state}
+        assetUpdate={(asset) => assetLens.setState(() => asset)}
+        xpLens={xpLens}
+    />
+}
+
+interface AssetCoreProps {
+    asset: Asset;
+    assetUpdate?(newAsset: Asset): void;
+    xpLens?: Lens<number>;
+}
+
+function AssetCore({ asset, assetUpdate, xpLens }: AssetCoreProps) {
+
+    function togglePerk(i: number) {
+        if (!assetUpdate) { return; }
+        const currentActivation = asset.perks[i].enabled;
+        const newPerks = [...asset.perks];
+        newPerks[i] = {...newPerks[i], enabled: !currentActivation};
+        assetUpdate({...asset, perks: newPerks})
+        if (xpLens) {
+            const update = currentActivation ? +2 : -2;
+            xpLens.setState(xp => xp + update);
+        }
+    }
+
     return <div className="border max-w-sm mb-2 mr-2">
         <div className="text-sm font-bold mb-1 color-primary p-1">
             {asset["asset-type"]}
@@ -22,9 +59,9 @@ export function AssetDisplay({ asset }: AssetDisplayProps) {
             </div> : null}
             {asset.description ? <div>{asset.description}</div> : null}
             <ul className="mt-1">
-                {asset.perks.map(p => {
+                {asset.perks.map((p, i) => {
                     return (<li key={p.id} className="flex">
-                        <PerkActivation enabled={p.enabled} />
+                        <PerkActivation enabled={p.enabled} onClick={assetUpdate ? () => togglePerk(i) : undefined} />
                         <PerkResultDisplay result={p.result} />
                     </li>)
                 })}
