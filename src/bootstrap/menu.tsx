@@ -44,6 +44,9 @@ function CharacterMenu({ match, location }: RouteComponentProps<CampaignKeyParam
             <NavigationLink current={pathname} to={routes.notesRoute.to({ campaignKey, characterKey })}>
                 notes
             </NavigationLink>
+            <NavigationLink current={pathname} to={routes.selectAssetRoute.to({ campaignKey, characterKey })}>
+                advance
+            </NavigationLink>
         </div>
     );
 }

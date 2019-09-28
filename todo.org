@@ -5,7 +5,8 @@
 ** TODO d6, d10, d100
 
 * asset management
-** TODO import assets with types
+** DONE import assets with types
+** DONE display asset
 ** TODO select asset component
 ** TODO select assets at character creation
 ** TODO spend xp to select new asset

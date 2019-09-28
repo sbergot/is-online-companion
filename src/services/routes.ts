@@ -50,6 +50,11 @@ export const notesRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = create
     { campaignKey: null, characterKey: null },
 );
 
+export const selectAssetRoute: RouteDef<CampaignKeyParam & CharacterKeyParam> = createRouteDef(
+    ({ campaignKey, characterKey }) => `/campaign/${campaignKey}/character/${characterKey}/select-asset`,
+    { campaignKey: null, characterKey: null },
+);
+
 export const campaignSelectionRoute = '/campaign/selection';
 
 export const aboutRoute = '/about';

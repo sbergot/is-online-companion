@@ -28,6 +28,7 @@ export function Layout() {
                         <Route exact path={routes.aboutRoute} component={pages.AboutPage} />
                         <Route exact path={routes.oraclesRoute} component={pages.OraclesPage} />
                         <Route exact path={routes.assetsRoute} component={pages.AssetsPage} />
+                        <Route exact path={routes.selectAssetRoute.template} component={pages.SelectAssetsPage} />
                         <Route exact path="" component={pages.CampaignSelection} />
                     </Switch>
                 </div>

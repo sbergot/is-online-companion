@@ -1,5 +1,6 @@
 import { KeyMap } from '../framework/contracts';
 import { TrackProgress, ProgressChallenge } from './challenge';
+import { Asset } from './asset';
 
 export interface Character {
     name: string;
@@ -57,10 +58,6 @@ export interface Stats {
 }
 
 export type StatKey = keyof Stats;
-
-export interface Asset {
-    name: string;
-}
 
 export interface MomentumMeta {
     reset: number;

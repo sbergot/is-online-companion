@@ -11,6 +11,7 @@ import { getMomentumMeta } from '../../../services/characterHelpers';
 import { CharacterSheetSelection } from '../../../contracts/variant';
 import { KeyEntry, Lens } from '../../../framework/contracts';
 import { nullVariant } from '../../../services/variantHelpers';
+import { AssetDisplay } from '../assets/assetDisplay';
 
 interface CharacterSheetProps {
     lens: Lens<Character>;
@@ -58,6 +59,9 @@ export function CharacterSheet({ lens, selectionLens }: CharacterSheetProps) {
             </Section>
             <Section title="Debilities" className="mt-4">
                 <Debilities lens={zoom('debilities')} />
+            </Section>
+            <Section title="Assets" className="mt-4">
+                {character.assets.map(a => <AssetDisplay key={a.name} asset={a} />)}
             </Section>
         </>
     );
